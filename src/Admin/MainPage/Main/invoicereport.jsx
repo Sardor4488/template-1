@@ -88,10 +88,10 @@ class InvoiceReport extends Component {
         render: (text, record) => (
           <div className="actions">
             <a data-toggle="modal" href="#edit_invoice_report" onClick={()=>this.setState({iseditmodal : true})} className="btn btn-sm bg-success-light mr-2">
-              <i className="fe fe-pencil" /> Edit
+            <i className="fas fa-edit"></i> Edit
             </a>
             <a className="btn btn-sm bg-danger-light" data-toggle="modal" onClick={()=>this.setState({isdeletemodal : true})} href="#delete_modal">
-              <i className="fe fe-trash" /> Delete
+            <i className="fas fa-trash"></i> Delete
             </a>
           </div>
           ),

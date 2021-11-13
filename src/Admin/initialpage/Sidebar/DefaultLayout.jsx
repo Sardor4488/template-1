@@ -18,7 +18,7 @@ import $ from 'jquery';
 if(window.location.pathname.includes("admin")) {
 	require('../../assets/css/bootstrap.min.css');
 	require('../../assets/css/font-awesome.min.css');
-	require('../../assets/css/feathericon.min.css');
+	 require('../../assets/css/feather.css');
 }
 
 import 'bootstrap/dist/css/bootstrap.min.css';

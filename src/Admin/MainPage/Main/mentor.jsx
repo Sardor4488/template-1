@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import {  AVATAR_07, AVATAR_08 } from "../../imagepath"
+import {  AVATAR_07, AVATAR_08, AVATAR_06, AVATAR_17, AVATAR_18,  USER_7, USER_8, AVATAR_14  } from "../../imagepath"
 
 import { Table } from 'antd';
 import 'antd/dist/antd.css';
@@ -15,8 +15,14 @@ class Clients extends Component {
     super(props);
     this.state = {
        data : [
-         {id:1,image:AVATAR_07,name:"James Amen",course:"Maths",member_since_date:"14 Jan 2019",member_since_time:"02.59 AM",earned :"$3100.00"},
-         {id:2,image:AVATAR_08,name:"Jessica Fogarty",course:"Business Maths",member_since_date:"11 Jun 2019",member_since_time:"04.50 AM",earned :"$5000.00"}
+         {id:1,image:AVATAR_08,name:"James Amen",course:"Maths",member_since_date:"14 Jan 2019",member_since_time:"02.59 AM",earned :"$3100.00"},
+         {id:2,image:AVATAR_07,name:"Jessica Fogarty",course:"Business Maths",member_since_date:"11 Jun 2019",member_since_time:"04.50 AM",earned :"$5000.00"},
+         {id:3,image:AVATAR_06,name:"Jose Anderson",course:"Algebra",member_since_date:"4 Jan 2018",member_since_time:"9.40 AM",earned :"$3300.00"},
+         {id:4,image:AVATAR_17,name:"Linda Tobin",course:"Maths",member_since_date:"14 Dec 2018",member_since_time:"01.59 AM",earned :"$2000.00"},
+         {id:5,image:USER_7,name:"Marvin Campbell", course:"Flow chart",member_since_date:"24 Jan 2019",member_since_time:"02.59 AM",earned :"$3700.00"},
+         {id:6,image:USER_8,name:"Paul Richard", course:"Math Grade II",member_since_date:"11 Jan 2019",member_since_time:"02.59 AM",earned :"$3000.00"},
+         {id:7,image:AVATAR_06,name:"Sofia Brient", course:"Integrated Sum",member_since_date:"5 Jul 2019",member_since_time:"12.59 AM",earned :"$3500.00"},
+         {id:8, image:AVATAR_18,name:"Vern Campbell", course:"Basic Calculation",member_since_date:"23 Mar 2019",member_since_time:"02.50 PM",earned :"$4000.00"}
        ],          
     };
   }

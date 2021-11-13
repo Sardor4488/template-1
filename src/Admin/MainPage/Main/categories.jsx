@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {  USER, USER_1,USER_2,USER_3,USER_4,USER_5,USER_8,USER_9,USER_11,USER_12 } from "../../imagepath"
 import { Modal, ModalBody } from 'reactstrap';
 import { withRouter, Link } from 'react-router-dom';
-
+import Ratings from './rating';
 import { Table } from 'antd';
 import 'antd/dist/antd.css';
 import {itemRender,onShowSizeChange} from "../paginationfunction"
@@ -65,11 +65,7 @@ class Clients extends Component {
         dataIndex: 'reviews',
         render: (text, record) => (
           <div>
-            <i className="fe fe-star text-warning" />
-            <i className="fe fe-star text-warning" />
-            <i className="fe fe-star text-warning" />
-            <i className="fe fe-star text-warning" />
-            <i className="fe fe-star-o text-secondary" />
+            <Ratings rating={5} />
           </div>
           ),
         sorter: (a, b) => a.reviews.length - b.reviews.length,
@@ -79,10 +75,10 @@ class Clients extends Component {
         render: (text, record) => (
           <div className="actions">
             <a className="btn btn-sm bg-success-light mr-1" data-toggle="modal" onClick={()=>this.setState({iseditmodal : true})} href="#edit_modal">
-              <i className="fe fe-pencil" />Edit
+                <i className="fas fa-edit"></i> Edit
             </a>
             <a data-toggle="modal" href="#delete_modal" onClick={()=>this.setState({isdeletemodal : true})} className="btn btn-sm bg-danger-light">
-              <i className="fe fe-trash" /> Delete
+               <i className="fas fa-trash"></i> Delete
             </a>
           </div>
         ),

@@ -11,11 +11,11 @@ class Sidebar extends Component {
         <div className="user-widget">
           <div className="pro-avatar">JD</div>
           {/* <div className="rating">
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star" />
+              <i className="fas fa-star filled" />
+              <i className="fas fa-star filled" />
+              <i className="fas fa-star filled" />
+              <i className="fas fa-star filled" />
+              <i className="fas fa-star" />
           </div> */}
           <div className="user-info-cont">
             <h4 className="usr-name">Jonathan Doe</h4>
@@ -80,8 +80,8 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentee/favourites"
-                className={pathname.includes("favourites") ? "active" : ""}
+                to="/app/Mentee/invoices"
+                className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
                 To'lovlar{" "}

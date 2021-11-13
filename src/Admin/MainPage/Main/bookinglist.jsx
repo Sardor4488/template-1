@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import {  AVATAR_07, AVATAR_08,USER,USER_1 } from "../../imagepath"
+import {  AVATAR_07, AVATAR_08,USER,USER_1, AVATAR_17, AVATAR_14, AVATAR_06, USER_2, USER_3, USER_4  } from "../../imagepath"
 import { withRouter, Link } from 'react-router-dom';
 import { Table } from 'antd';
 import 'antd/dist/antd.css';
@@ -13,8 +13,11 @@ class Clients extends Component {
     super(props);
     this.state = {
        data : [
-         {id:1,image:AVATAR_07,name:"James Amen",course:"Maths",mentee_name:"Jonathan Doe",mentee_image:USER,booking_date:"9 Nov 2019",booking_time:"11.00 AM - 11.15 AM",amount :"$200.00"},
-         {id:2,image:AVATAR_08,name:"Jessica Fogarty",course:"Business Maths",mentee_name:"Julie Pennington",mentee_image:USER_1,booking_date:"5 Nov 2019",booking_time:"11.00 AM - 11.35 AM",amount :"$300.00"}
+         {id:1,image:AVATAR_08,name:"James Amen",course:"Maths",mentee_name:"Jonathan Doe",mentee_image:USER,booking_date:"9 Nov 2019",booking_time:"11.00 AM - 11.15 AM",amount :"$200.00"},
+         {id:2,image:AVATAR_07,name:"Jessica Fogarty",course:"Business Maths",mentee_name:"Julie Pennington",mentee_image:USER_1,booking_date:"5 Nov 2019",booking_time:"11.00 AM - 11.35 AM",amount :"$300.00"},
+         {id:3,image:AVATAR_17,name:"Jose Anderson",course:"Algebra",mentee_name:"Tyrone Roberts",mentee_image:USER_2,booking_date:"11 Nov 2019",booking_time:"12.00 PM - 12.15 PM",amount :"$150.00"},
+         {id:4,image:AVATAR_14,name:"Marvin Campbell",course:"Flow chart",mentee_name:"Patricia Manzi",mentee_image:USER_3,booking_date:"15 Nov 2019",booking_time:"1.00 PM - 1.15 PM",amount :"$200.00"},
+         {id:5,image:AVATAR_06,name:"Sofia Brient",course:"Integrated Sum",mentee_name:"Allen Davis",mentee_image:USER_4,booking_date:"7 Nov 2019",booking_time:"1.00 PM - 1.20 PM",amount :"$150.00"}
        ],          
     };
   }

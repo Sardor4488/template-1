@@ -5,7 +5,7 @@ import config from 'config';
 
 import './assets/css/bootstrap.min.css';
 import './assets/css/font-awesome.min.css';
-import './assets/css/feathericon.min.css';
+import './assets/css/feather.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,10 +19,10 @@ import './assets/js/app.js';
 import './assets/js/select2.min.js';
 import './assets/js/jquery-3.2.1.min.js';
 import './assets/js/jquery.slimscroll.min.js';
-
+import config from 'config';
 
 const MainApp = () => (
-   <Router basename={`/template`}>
+   <Router basename={`${config.publicPath}`}>
       <Switch>
          <Route path="/" component={App} />
       </Switch>
