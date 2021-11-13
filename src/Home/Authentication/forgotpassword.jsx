@@ -1,33 +1,38 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { Helmet } from "react-helmet";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import {AppLogo} from '../../constant/imagepath_home';
+import { AppLogo } from "../../constant/imagepath_home";
 
 class Home extends Component {
-   render() {
-      return ( 
-        <div className="bg-pattern-style">
+  render() {
+    return (
+      <div className="bg-pattern-style">
         <div className="content">
           {/* Account Content */}
           <div className="account-content">
             <div className="account-box">
               <div className="login-right">
                 <div className="login-header">
-                  <h3>Forgot Password?</h3>
-                  <p className="text-muted">Enter your email to get a password reset link</p>
+                  <h3>Parolini unutdingizmi?</h3>
+                  <p className="text-muted">
+                    Parolingizni tiklash uchun emailingizni kiriting
+                  </p>
                 </div>
                 {/* Forgot Password Form */}
-                <form >
+                <form>
                   <div className="form-group">
-                    <label className="form-control-label">Email Address</label>
+                    <label className="form-control-label">E-mail</label>
                     <input type="email" className="form-control" />
                   </div>
                   <div className="text-right">
-                    <Link className="forgot-link" to="/login">Remember your password?</Link>
+                    <Link className="forgot-link" to="/login">
+                      Parolingizni eslay olasizmi?
+                    </Link>
                   </div>
-                  <Link className="btn btn-primary login-btn" to="/login">Reset Password</Link>
+                  <Link className="btn btn-primary login-btn" to="/login">
+                    Parolni tiklash
+                  </Link>
                 </form>
                 {/* /Forgot Password Form */}
               </div>
@@ -36,8 +41,8 @@ class Home extends Component {
           {/* /Account Content */}
         </div>
       </div>
-      );
-   }
+    );
+  }
 }
 
 export default Home;

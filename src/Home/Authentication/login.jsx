@@ -1,40 +1,75 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { Helmet } from "react-helmet";
-import { Link } from 'react-router-dom';
-import {AppLogo} from '../../constant/imagepath_home';
+import { Link } from "react-router-dom";
+import { AppLogo } from "../../constant/imagepath_home";
 
 class Home extends Component {
-   render() {
-      return ( 
-        <div className="bg-pattern-style">
+  constructor(props) {
+    super(props);
+    this.state = { inputType: "password" };
+  }
+
+  changeInputPassword = () => {
+    this.setState((state) => {
+      if (this.state.inputType == "password") {
+        return { inputType: "text" };
+      } else if (this.state.inputType == "text") {
+        return { inputType: "password" };
+      }
+    });
+  };
+
+  render() {
+    return (
+      <div className="bg-pattern-style">
         <div className="content">
           {/* Login Tab Content */}
           <div className="account-content">
             <div className="account-box">
               <div className="login-right">
                 <div className="login-header">
-                  <h3>Login <span>Mentoring</span></h3>
-                  <p className="text-muted">Access to our dashboard</p>
+                  <h3>
+                    <span>MyTeacher</span>ga kirish
+                  </h3>
+                  <p className="text-muted">Shaxsiy kabinetga kirish</p>
                 </div>
                 <form action="/app/index">
                   <div className="form-group">
-                    <label className="form-control-label">Email Address</label>
+                    <label className="form-control-label">
+                      Telefon raqamingiz
+                    </label>
                     <input type="email" className="form-control" />
                   </div>
                   <div className="form-group">
-                    <label className="form-control-label">Password</label>
+                    <label className="form-control-label">Parolingiz</label>
                     <div className="pass-group">
-                      <input type="password" className="form-control pass-input" />
-                      <span className="fas fa-eye toggle-password" />
+                      <input
+                        type={this.state.inputType}
+                        className="form-control pass-input"
+                      />
+                      <span
+                        className={` ${
+                          this.state.inputType == "password"
+                            ? "fas fa-eye "
+                            : "fas fa-eye-slash"
+                        } toggle-password`}
+                        onClick={this.changeInputPassword}
+                      />
                     </div>
                   </div>
                   <div className="text-right">
-                    <Link className="forgot-link" to="/forgot-password">Forgot Password ?</Link>
+                    <Link className="forgot-link" to="/forgot-password">
+                      Parolni unutdingizmi?
+                    </Link>
                   </div>
-                  <Link className="btn btn-primary login-btn" to="/app/index">Login</Link>
+                  <Link className="btn btn-primary login-btn" to="/app/index">
+                    Kirish
+                  </Link>
                   {/* <button className="btn btn-primary login-btn" type="submit">Login</button> */}
-                  <div className="text-center dont-have">Don’t have an account? <Link to="/register">Register</Link></div>
+                  <div className="text-center dont-have">
+                    Ro'yxatdan o'tmaganmisiz?{" "}
+                    <Link to="/register">Ro'yxatdan o'tish</Link>
+                  </div>
                 </form>
               </div>
             </div>
@@ -42,8 +77,8 @@ class Home extends Component {
           {/* /Login Tab Content */}
         </div>
       </div>
-      );
-   }
+    );
+  }
 }
 
 export default Home;
