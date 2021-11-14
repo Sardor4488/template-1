@@ -5785,6 +5785,7 @@ table.table-inbox tbody tr.checked {
 }
 
 @media only screen and (max-width: 479px) {
+<<<<<<< HEAD
   .add-btn {
     font-size: 14px;
     padding: 6px 7px;
@@ -5806,3 +5807,17 @@ table.table-inbox tbody tr.checked {
     max-width: 160px;
   }
 }
+=======
+	.add-btn {
+		font-size: 14px;
+		padding: 6px 7px;
+	}
+	.chat-window .chat-cont-left .chat-users-list a.media .media-body > div:first-child .user-name, 
+	.chat-window .chat-cont-left .chat-users-list a.media .media-body > div:first-child .user-last-chat {
+		max-width: 160px;
+	}
+}
+.comment-input{
+	/* padding: ; */
+}
+>>>>>>> 17d97ca06ddb6cc90d9ea599780f185070d7f872

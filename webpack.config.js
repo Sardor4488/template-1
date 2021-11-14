@@ -22,9 +22,9 @@ module.exports = {
  devServer: {
    contentBase: path.join(__dirname, './'), // where dev server will look for static files, not compiled
   // publicPath: '/', //relative path to output path where  devserver will look for compiled files
-   host: '0.0.0.0',
+   host: '127.0.0.1',
     compress: true,
-    port: 8003, // port number
+    port: 8080, // port number
     historyApiFallback: true,
     quiet: true
  },

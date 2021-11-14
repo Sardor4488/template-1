@@ -143,7 +143,7 @@ class Lead extends Component {
         sorter: (a, b) => a.tel.length - b.tel.length,
       },
       {
-        title: "Fan nomi",
+        title: "E-mail",
         dataIndex: "course",
         sorter: (a, b) => a.course.length - b.course.length,
       },
@@ -172,9 +172,11 @@ class Lead extends Component {
               className="check"
               defaultChecked
             />
-            <label htmlFor="status_6" className="checktoggle">
-              checkbox
-            </label>
+           <select className="select form-control">
+           <option>Qayta qo'ng'iroq</option>
+           <option>Ulanib bo'lmadi</option>
+           <option>Sifatsiz Lead</option>
+                                 </select>
           </div>
         ),
       },
@@ -212,7 +214,7 @@ class Lead extends Component {
                         showTotal: (total, range) =>
                           `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                         showSizeChanger: true,
-                        onShowSizeChange: onShowSizeChange,
+                        // onShowSizeChange: onShowSizeChange,
                         itemRender: itemRender,
                       }}
                       style={{ overflowX: "auto" }}
@@ -222,6 +224,7 @@ class Lead extends Component {
                       rowKey={(record) => record.id}
                       onChange={this.handleTableChange}
                     />
+                    
                   </div>
                 </div>
               </div>
