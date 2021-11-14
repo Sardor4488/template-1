@@ -79,7 +79,7 @@ class LeadProfile extends Component {
                       data-toggle="tab"
                       href="#password_tab"
                     >
-                      Password
+                      Izohlar
                     </a>
                   </li>
                 </ul>
@@ -155,24 +155,20 @@ class LeadProfile extends Component {
                     <div className="card-body">
                       <h5 className="card-title">Change Password</h5>
                       <div className="row">
-                        <div className="col-md-10 col-lg-6">
+                        <div className="col-12 col-md-10">
                           <form>
                             <div className="form-group">
                               <label>Old Password</label>
                               <input type="password" className="form-control" />
-                            </div>
-                            <div className="form-group">
-                              <label>New Password</label>
-                              <input type="password" className="form-control" />
-                            </div>
-                            <div className="form-group">
-                              <label>Confirm Password</label>
-                              <input type="password" className="form-control" />
-                            </div>
-                            <button className="btn btn-primary" type="submit">
+                           
+                            
+                             </div>
+                          </form>
+                        </div>
+                        <div className="col-12 col-md-2 d-flex justify-content-center align-items-center">
+                        <button className="btn btn-primary" type="submit">
                               Save Changes
                             </button>
-                          </form>
                         </div>
                       </div>
                     </div>
