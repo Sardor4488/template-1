@@ -153,21 +153,20 @@ class LeadProfile extends Component {
                 <div id="password_tab" className="tab-pane fade">
                   <div className="card">
                     <div className="card-body">
-                      <h5 className="card-title">Change Password</h5>
-                      <div className="row">
+                      <h5 className="card-title">Izoh yozish</h5>
+                      <div className="row ">
                         <div className="col-12 col-md-10">
                           <form>
-                            <div className="form-group">
-                              <label>Old Password</label>
-                              <input type="password" className="form-control" />
+                            <div className="form-group comment-input">
+                               <input type="text" className="form-control" />
                            
                             
                              </div>
                           </form>
                         </div>
-                        <div className="col-12 col-md-2 d-flex justify-content-center align-items-center">
-                        <button className="btn btn-primary" type="submit">
-                              Save Changes
+                        <div className="col-12 col-md-2 d-flex pe-0 justify-content-end align-items-start">
+                        <button className="btn mt-2 btn-primary py-2" type="submit">
+                              Saqlash
                             </button>
                         </div>
                       </div>
