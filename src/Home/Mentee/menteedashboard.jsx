@@ -29,11 +29,11 @@ class MenteeDashboard extends Component {
                       <Link to="/app/index">Home</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Dashboard
+                    Umumiy
                     </li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Dashboard</h2>
+                <h2 className="breadcrumb-title">Umumiy</h2>
               </div>
             </div>
           </div>

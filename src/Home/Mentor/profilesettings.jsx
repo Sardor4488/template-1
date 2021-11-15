@@ -17,10 +17,10 @@ class ProfileSettings extends Component {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Profile Settings</li>
+                    <li className="breadcrumb-item active" aria-current="page">Kabinet sozlamari</li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Profile Settings</h2>
+                <h2 className="breadcrumb-title">Kabinet sozlamari</h2>
               </div>
             </div>
           </div>
@@ -52,29 +52,29 @@ class ProfileSettings extends Component {
                               </div>
                               <div className="upload-img">
                                 <div className="change-photo-btn">
-                                  <span><i className="fa fa-upload" /> Upload Photo</span>
+                                  <span><i className="fa fa-upload" />Rasm yuklash</span>
                                   <input type="file" className="upload" />
                                 </div>
-                                <small className="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                                <small className="form-text text-muted">Format:JPG, GIF yoki PNG. Maximum: 2MB</small>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>First Name</label>
+                            <label>Ism</label>
                             <input type="text" className="form-control" defaultValue="Jonathan" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Last Name</label>
+                            <label>Familya</label>
                             <input type="text" className="form-control" defaultValue="Doe" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Date of Birth</label>
+                            <label>Tug'ilgan yilingiz</label>
                             <div className="cal-icon">
                               <input type="text" className="form-control datetimepicker" defaultValue="24-07-1983" />
                             </div>
@@ -82,40 +82,38 @@ class ProfileSettings extends Component {
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Blood Group</label>
+                            <label>Fan nomi</label>
                             <select className="form-control select">
-                              <option>A-</option>
-                              <option>A+</option>
-                              <option>B-</option>
-                              <option>B+</option>
-                              <option>AB-</option>
-                              <option>AB+</option>
-                              <option>O-</option>
-                              <option>O+</option>
+                              <option>Ingiliz tili</option>
+                              <option>Rus tili</option>
+                              <option>Koreys tili</option>
+                              <option>Matematika</option>
+                              <option>Fizika</option>
+                              
                             </select>
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Email ID</label>
+                            <label>E-mail </label>
                             <input type="email" className="form-control" defaultValue="jonathandoe@example.com" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Mobile</label>
+                            <label>Telefon raqam</label>
                             <input type="text" defaultValue="+1 202-555-0125" className="form-control" />
                           </div>
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label>Address</label>
+                            <label>Manzil</label>
                             <input type="text" className="form-control" defaultValue="806 Twin Willow Lane" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>City</label>
+                            <label>Shahar</label>
                             <input type="text" className="form-control" defaultValue="Old Forge" />
                           </div>
                         </div>
@@ -127,14 +125,14 @@ class ProfileSettings extends Component {
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Zip Code</label>
+                            <label>Tajriba</label>
                             <input type="text" className="form-control" defaultValue={13420} />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Country</label>
-                            <input type="text" className="form-control" defaultValue="United States" />
+                            <label>Mamlakat</label>
+                            <input type="text" className="form-control" defaultValue="Uzbekistan" />
                           </div>
                         </div>
                       </div>

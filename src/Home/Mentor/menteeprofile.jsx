@@ -130,8 +130,8 @@ class MenteeProfile extends Component {
                       <li>
                         <div className="experience-content">
                           <div className="timeline-content">
-                            <span>Date of Birth</span>
-                            <div className="row-result">01 - 02 - 2000</div>
+                            <span>Tug'ilgan sana</span>
+                            <div className="row-result">01 - 02 - 20001111</div>
                           </div>
                         </div>
                       </li>

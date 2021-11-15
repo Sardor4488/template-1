@@ -63,9 +63,9 @@ class Header extends Component {
 						 ||pathname.includes('/Mentor/profile-settings')||pathname.includes('mentor-register') ||
 						 pathname.includes('profile-mentee') ||pathname.includes('mentee-list') ||
 						 pathname.includes('add-blog') ||pathname.includes('edit-blog')  ?"has-submenu active" :"has-submenu"}>
-					<a href="">Mentor <i className="fas fa-chevron-down" /></a>
+					<a href="">O'qituvchi <i className="fas fa-chevron-down" /></a>
 					<ul className="submenu">
-						<li className={pathname.includes('/Mentor/dashboard') ?"active" :""}><Link  to="/app/Mentor/dashboard">Mentor Dashboard</Link></li>
+						<li className={pathname.includes('/Mentor/dashboard') ?"active" :""}><Link  to="/app/Mentor/dashboard">O'qituvchi Dashboard</Link></li>
 						<li className={pathname.includes('Mentor/bookings') ?"active" :""}><Link to="/app/Mentor/bookings">Bookings</Link></li>
 						<li className={pathname.includes('schedule-timings') ?"active" :""}><Link to="/app/Mentor/schedule-timings">Schedule Timing</Link></li>
 						<li className={pathname.includes('mentee-list') ?"active" :""}><Link to="/app/Mentor/mentee-list">Mentee List</Link></li>
@@ -92,7 +92,7 @@ class Header extends Component {
 					 || pathname.includes('search') ||pathname.includes('bookings-mentee') || pathname.includes('dashboard-mentee') ||
 					 pathname.includes('favourites') || pathname.includes('Mentee/chat-mentee') || pathname.includes('profile-settings-mentee')||
 					 pathname.includes('change-password') ?"has-submenu active" :"has-submenu"}>
-					<a href="">Mentee <i className="fas fa-chevron-down" /></a>
+					<a href="">O'quvchi <i className="fas fa-chevron-down" /></a>
 					<ul className="submenu">
 						<li className={pathname.includes('map-grid') || pathname.includes('map-list') 
 						  ?"has-submenu active" :"has-submenu"}>
@@ -103,11 +103,11 @@ class Header extends Component {
 						</ul>
 						</li>
 						<li className={pathname.includes('search') ?"active" :""}><Link to="/app/Mentee/search">Search Mentor</Link></li>
-						<li className={pathname.includes('mentor-profile') ?"active" :""}><Link to="/app/Mentee/mentor-profile">Mentor Profile</Link></li>
+						<li className={pathname.includes('mentor-profile') ?"active" :""}><Link to="/app/Mentee/mentor-profile">O'qituvchi Profile</Link></li>
 						<li className={pathname.includes('bookings-mentee') ?"active" :""}><Link to="/app/Mentee/bookings-mentee">Bookings</Link></li>
 						<li className={pathname.includes('checkout') ?"active" :""}><Link to="/app/Mentee/checkout">Checkout</Link></li>
 						<li className={pathname.includes('booking-success') ?"active" :""}><Link to="/app/Mentee/booking-success">Booking Success</Link></li>
-						<li className={pathname.includes('dashboard-mentee') ?"active" :""}><Link to="/app/Mentee/dashboard-mentee">Mentee Dashboard</Link></li>
+						<li className={pathname.includes('dashboard-mentee') ?"active" :""}><Link to="/app/Mentee/dashboard-mentee">Oquvchi Dashboard</Link></li>
 						<li className={pathname.includes('favourites') ?"active" :""} ><Link to="/app/Mentee/favourites">Favourites</Link></li>
 						<li className={pathname.includes('Mentee/chat-mentee') ?"active" :""}><Link to="/app/Mentee/chat-mentee">Chat</Link></li>
 						<li className={pathname.includes('profile-settings-mentee') ?"active" :""}><Link to="/app/Mentee/profile-settings-mentee">Profile Settings</Link></li>

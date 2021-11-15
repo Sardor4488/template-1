@@ -91,7 +91,20 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/app/Mentor/profile-mentee">
+             
+              <Link to="/app/Mentee/mentee-profile"  className={pathname.includes("profile-mentee") ? "active" : ""}>
+                <i className="fas fa-user" />
+                Mening profilim{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/Mentee/profil-settings-mentee"
+                className={pathname.includes("profil-settings-mentee") ? "active" : ""}
+              >
                 <i className="fas fa-user-cog" />
                 Sozlash{" "}
                 <span>

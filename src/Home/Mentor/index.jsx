@@ -9,7 +9,7 @@ import Bookings from "./bookings"
 import Profilesettings from "./profilesettings"
 import ScheduleTiming from "./scheduletime"
 import MenteeList from "./menteelist"
-import Menteeprofile from "./menteeprofile"
+// import Menteeprofile from "./menteeprofile"
 import Blog from "./blog"
 import AddBlog from "./blogadd"
 import EditBlog from "./blogedit"
@@ -19,6 +19,8 @@ import InvoiceView from "./invoice-view"
 import Reviews from "./reviews"
 import MentorRegister from "./mentorregister"
 import Appointments from "./appointments"
+import MentorProfile from './mentorprofile';
+import StudentProfile from './studentProfile';
 
 
 const Mentorroute = ({ match }) => (
@@ -28,7 +30,6 @@ const Mentorroute = ({ match }) => (
         <Route path={`${match.url}/bookings`} component={Bookings} />
         <Route path={`${match.url}/schedule-timings`} component={ScheduleTiming} />
         <Route path={`${match.url}/mentee-list`} component={MenteeList} />
-        <Route path={`${match.url}/profile-mentee`} component={Menteeprofile} />
         <Route path={`${match.url}/blog`} component={Blog} />
         <Route path={`${match.url}/add-blog`} component={AddBlog} />
         <Route path={`${match.url}/edit-blog`} component={EditBlog} />
@@ -39,6 +40,8 @@ const Mentorroute = ({ match }) => (
         <Route path={`${match.url}/reviews`} component={Reviews} />
         <Route path={`${match.url}/mentor-register`} component={MentorRegister} />
         <Route path={`${match.url}/appointments`} component={Appointments} />
+        <Route path={`${match.url}/mentor-profile`} component={MentorProfile} />
+        <Route path={`${match.url}/studentProfile`} component={StudentProfile} />
     </Switch>
 );
 

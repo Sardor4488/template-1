@@ -6,6 +6,7 @@ import {USER} from '../../constant/imagepath_home';
 import Sidebar from "./sidebar"
 import StickyBox from "react-sticky-box";
 import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class ProfileSettingMentee extends Component {
    render() {
@@ -19,10 +20,10 @@ class ProfileSettingMentee extends Component {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Profile Settings</li>
+                    <li className="breadcrumb-item active" aria-current="page">Profil sozlamalari</li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Profile Settings</h2>
+                <h2 className="breadcrumb-title">Profil sozlamalari</h2>
               </div>
             </div>
           </div>
@@ -54,35 +55,35 @@ class ProfileSettingMentee extends Component {
                               </div>
                               <div className="upload-img">
                                 <div className="change-photo-btn">
-                                  <span><i className="fa fa-upload" /> Upload Photo</span>
+                                  <span><i className="fa fa-upload" />Rasm yuklash</span>
                                   <input type="file" className="upload" />
                                 </div>
-                                <small className="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                                <small className="form-text text-muted">Format: JPG, GIF or PNG. Hajmi 2MB dan oshmasin! </small>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>First Name</label>
+                            <label>Ism</label>
                             <input type="text" className="form-control" defaultValue="Jonathan" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Last Name</label>
+                            <label>Familya</label>
                             <input type="text" className="form-control" defaultValue="Doe" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Date of Birth</label>
+                            <label>Tug'ilgan kun, oy, yil</label>
                             <div className="cal-icon">
                               <input type="text" className="form-control datetimepicker" defaultValue="24-07-1983" />
                             </div>
                           </div>
                         </div>
-                        <div className="col-12 col-md-6">
+                        {/* <div className="col-12 col-md-6">
                           <div className="form-group">
                             <label>Blood Group</label>
                             <select className="form-control select">
@@ -96,28 +97,28 @@ class ProfileSettingMentee extends Component {
                               <option>O+</option>
                             </select>
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Email ID</label>
+                            <label>E-mail</label>
                             <input type="email" className="form-control" defaultValue="jonathandoe@example.com" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Mobile</label>
-                            <input type="text" defaultValue="+1 202-555-0125" className="form-control" />
+                            <label>Telefon raqam</label>
+                            <input type="text" defaultValue="+998 91 123 45 67" className="form-control" />
                           </div>
                         </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label>Address</label>
+                            <label>Manzil</label>
                             <input type="text" className="form-control" defaultValue="806 Twin Willow Lane" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>City</label>
+                            <label><Shahar></Shahar></label>
                             <input type="text" className="form-control" defaultValue="Old Forge" />
                           </div>
                         </div>

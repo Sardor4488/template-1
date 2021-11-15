@@ -102,18 +102,7 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/app/Mentor/reviews"
-                className={pathname.includes("reviews") ? "active" : ""}
-              >
-                <i className="fas fa-eye" />
-                Fikrlar{" "}
-                <span>
-                  <i className="fas fa-chevron-right" />
-                </span>
-              </Link>
-            </li>
+            
             <li>
               <Link
                 to="/app/Mentor/blog"
@@ -127,7 +116,21 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/app/Mentee/mentor-profile">
+              <Link
+                to="/app/Mentor/mentor-profile"
+                className={pathname.includes("mentor-profile") ? "active" : ""}
+              >
+                <i className="fas fa-user" />
+               Mening Profilim{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/app/Mentor/profile-settings" className={pathname.includes("profile-settings") ? "active" : ""}>
+              
+
                 <i className="fas fa-user-cog" />
                 Sozlamalar{" "}
                 <span>

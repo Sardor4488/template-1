@@ -58,11 +58,11 @@ class ScheduleTiming extends Component {
                       <Link to="/app/index">Home</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Schedule Timings
+                    Dars vaqtlari
                     </li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Schedule Timings</h2>
+                <h2 className="breadcrumb-title">Dars vaqtlari</h2>
               </div>
             </div>
           </div>
