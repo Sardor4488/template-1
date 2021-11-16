@@ -1,0 +1,69 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+svg {
+  border-radius: 50%;
+  animation: spin 1s ease infinite alternate;
+}
+
+/*Give each dot a radius of 20*/
+.shape {
+  r: 20;
+}
+
+/*Give each dot its positioning and set the default animation and color for each */
+.shape:nth-child(1) {
+  cy: 50;
+  cx: 50;
+  fill: #2374c6;
+  animation: movein 1s ease infinite alternate;
+}
+.shape:nth-child(2) {
+  cy: 50;
+  cx: 150;
+  fill: #fff;
+  animation: movein 1s ease infinite alternate;
+}
+.shape:nth-child(3) {
+  cy: 150;
+  cx: 50;
+  fill: #fff;
+  animation: movein 1s ease infinite alternate;
+}
+.shape:nth-child(4) {
+  cy: 150;
+  cx: 150;
+  fill: #2374c6;
+  animation: movein 1s ease infinite alternate;
+}
+
+/*Spin the svg so all the dots spin*/
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Move all the dots toward the center */
+@keyframes movein {
+  to {
+    cy: 100;
+    cx: 100;
+  }
+}
+
+/* Set a bouncy ball type movement for the dots */
+@keyframes moveup {
+  to {
+    cy: 20;
+  }
+}
