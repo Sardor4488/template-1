@@ -30,10 +30,10 @@ class MentorProfile extends Component {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><a href="/app/index">Home</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">Mentor Profile</li>
+                    <li className="breadcrumb-item active" aria-current="page">Oqituvchi Kabineti</li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Mentor Profile</h2>
+                <h2 className="breadcrumb-title">Oqituvchi Kabineti</h2>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ class MentorProfile extends Component {
                           </div>
                         </div>
                         <div className="user-info-cont">
-                          <h4 className="usr-name">Jonathan Doe</h4>
+                          <h4 className="usr-name">Еуьшкщм Doe</h4>
                           <p className="mentor-type">English Literature (M.A)</p>
                           <div className="mentor-action">
                             <p className="mentor-type social-title">Contact Me</p>
@@ -74,7 +74,7 @@ class MentorProfile extends Component {
                               <i className="fas fa-envelope" />
                             </Link>
                             <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
-                              <i className="fas fa-phone-alt" />
+                              <i className="fas fa-video" />
                             </a>
                           </div>
                         </div>

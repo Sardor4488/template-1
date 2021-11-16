@@ -29,11 +29,11 @@ class Invoices extends Component {
                       <Link to="/app/index">Home</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Invoices
+                    To'lovlar
                     </li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Invoices</h2>
+                <h2 className="breadcrumb-title">To'lovlar</h2>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ class Invoices extends Component {
                         <tbody>
                           <tr>
                             <td>
-                              <Link to="/app/Mentor/invoice-view">
+                              <Link to="/app/Mentee/invoice-view">
                                 #INV-0010
                               </Link>
                             </td>
@@ -87,7 +87,7 @@ class Invoices extends Component {
                                     alt="User Image"
                                   />
                                 </Link>
-                                <Link to="/app/Mentor/profile-mentee">
+                                <Link to="/app/Mentee/mentor-profile">
                                   Tyrone Roberts <span>16</span>
                                 </Link>
                               </h2>
@@ -97,7 +97,7 @@ class Invoices extends Component {
                             <td className="text-right">
                               <div className="table-action">
                                 <Link
-                                  to="/app/Mentor/invoice-view"
+                                  to="/app/Mentee/invoice-view"
                                   className="btn btn-sm bg-info-light mr-1"
                                 >
                                   <i className="far fa-eye" /> View

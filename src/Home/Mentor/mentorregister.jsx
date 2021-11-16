@@ -20,7 +20,7 @@ class MentorRegister extends Component {
                     <form>
                       <div className="form-group form-focus">
                         <input type="text" className="form-control floating" />
-                        <label className="focus-label">Name</label>
+                        <label className="focus-label">Ismi</label>
                       </div>
                       <div className="form-group form-focus">
                         <input type="text" className="form-control floating" />

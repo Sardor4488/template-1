@@ -69,7 +69,7 @@ class Bookings extends Component {
                               <td>
                                 <h2 className="table-avatar">
                                   <Link
-                                    to="/app/Mentee/mentor-profile"
+                                    to="/app/Mentor/studentProfile"
                                     className="avatar avatar-sm mr-2"
                                   >
                                     <img
@@ -78,7 +78,7 @@ class Bookings extends Component {
                                       alt="User Image"
                                     />
                                   </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
+                                  <Link  to="/app/Mentor/studentProfile">
                                     Tyrone Roberts
                                     <span>tyroneroberts@adobe.com</span>
                                   </Link>
@@ -92,285 +92,15 @@ class Bookings extends Component {
                               </td>
                               <td className="text-center">
                                 <Link
-                                  to="/app/Mentee/mentor-profile"
+                                 to="/app/Mentor/studentProfile"
                                   className="btn btn-sm bg-info-light"
                                 >
                                   <i className="far fa-eye" /> View
                                 </Link>
                               </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_1}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Julie Pennington{" "}
-                                    <span>julie@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>08 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_3}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Allen Davis{" "}
-                                    <span>allendavis@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>07 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_4}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Patricia Manzi{" "}
-                                    <span>patriciamanzi@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>07 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_5}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Olive Lawrence{" "}
-                                    <span>olivelawrence@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>06 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_6}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Frances Foster{" "}
-                                    <span>frances@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>06 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_7}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Deloris Briscoe{" "}
-                                    <span>delorisbriscoe@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>05 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_2}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Tyrone Roberts
-                                    <span>tyroneroberts@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>08 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_1}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Julie Pennington{" "}
-                                    <span>julie@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>08 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              <td className="text-center">
-                                <Link
-                                  to="/app/Mentee/mentor-profile"
-                                  className="btn btn-sm bg-info-light"
-                                >
-                                  <i className="far fa-eye" /> View
-                                </Link>
-                              </td>
-                            </tr>
+                           
+                           
                           </tbody>
                         </table>
                       </div>

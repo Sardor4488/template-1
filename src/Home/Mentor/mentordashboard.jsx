@@ -16,10 +16,10 @@ class Dashboard extends Component {
                         <nav aria-label="breadcrumb" className="page-breadcrumb">
                             <ol className="breadcrumb">
                             <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
-                            <li className="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            <li className="breadcrumb-item active" aria-current="page">Umumiy</li>
                             </ol>
                         </nav>
-                        <h2 className="breadcrumb-title">Dashboard</h2>
+                        <h2 className="breadcrumb-title">Umumiy</h2>
                         </div>
                     </div>
                     </div>
@@ -35,7 +35,7 @@ class Dashboard extends Component {
           </div>
           <div className="col-md-7 col-lg-8 col-xl-9">
             <div className="row">
-              <div className="col-md-12 col-lg-4 dash-board-list blue">
+              <div className="col-md-12 col-lg-3 dash-board-list blue">
                 <div className="dash-widget">
                   <div className="circle-bar">
                     <div className="icon-col">
@@ -44,12 +44,12 @@ class Dashboard extends Component {
                   </div>
                   <div className="dash-widget-info">
                     <h3>23</h3>
-                    <h6>Members</h6>															
+                    <h6>O'quvchi  </h6>															
                   </div>
                 </div>
               </div>
-              <div className="col-md-12 col-lg-4 dash-board-list yellow">
-                <div className="dash-widget">
+              <div className="col-md-12 col-lg-3 dash-board-list yellow">
+                <div className="dash-widget pe-0">
                   <div className="circle-bar">
                     <div className="icon-col">
                       <i className="fas fa-calendar-check" />
@@ -57,11 +57,11 @@ class Dashboard extends Component {
                   </div>
                   <div className="dash-widget-info">
                     <h3>33</h3>
-                    <h6>Appointments</h6>															
+                    <h6>Sinov darsi  </h6>															
                   </div>
                 </div>
               </div>
-              <div className="col-md-12 col-lg-4 dash-board-list pink">
+              <div className="col-md-12 col-lg-3 dash-board-list pink">
                 <div className="dash-widget">
                   <div className="circle-bar">
                     <div className="icon-col">
@@ -70,24 +70,37 @@ class Dashboard extends Component {
                   </div>
                   <div className="dash-widget-info">
                     <h3>$14</h3>
-                    <h6>Total Earned</h6>															
+                    <h6>Daromad</h6>															
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-12 col-lg-3 dash-board-list yellow">
+                <div className="dash-widget">
+                  <div className="circle-bar">
+                    <div className="icon-col">
+                      <i className="fas fa-wallet" />
+                    </div>
+                  </div>
+                  <div className="dash-widget-info">
+                    <h3>$14</h3>
+                    <h6>Bonuslar</h6>															
                   </div>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-md-12">
-                <h4 className="mb-4">Mentee Lists</h4>
+                <h4 className="mb-4">Bugungi Darslar</h4>
                 <div className="card card-table">
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table table-hover table-center mb-0">
                         <thead>
                           <tr>
-                            <th>BASIC INFO</th>
-                            <th>CREATED DATE</th>
-                            <th className="text-center">TAGS</th>
-                            <th className="text-center">ACTION</th>
+                            <th>Ism Familya</th>
+                            <th> Dars vaqti</th>
+                            <th className="text-center">Holat</th>
+                            <th className="text-center">Harakat</th>
                           </tr>
                         </thead>
                         <tbody>

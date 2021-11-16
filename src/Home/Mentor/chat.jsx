@@ -26,7 +26,7 @@ class Chat extends Component {
         <div className="container-fluid">
           <div className="settings-back mb-3">
             <Link to="/app/Mentor/dashboard">
-              <i className="fas fa-long-arrow-alt-left" /> <span>Back</span>
+              <i className="fas fa-long-arrow-alt-left" /> <span>Ortga qaytish</span>
             </Link>
           </div>
           <div className="row">
@@ -42,11 +42,11 @@ class Chat extends Component {
                       <div className="input-group-prepend">
                         <i className="fas fa-search" />
                       </div>
-                      <input type="text" className="form-control" placeholder="Search" />
+                      <input type="text" className="form-control" placeholder="Izlash..." />
                     </div>
                   </form>
                   <div className="chat-header">
-                    <span>Chats</span>
+                    <span>O'quvchilar</span>
                   </div>
                   <div className="chat-users-list">
                     <div className="chat-scroll">
