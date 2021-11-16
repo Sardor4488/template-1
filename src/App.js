@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch,HashRouter } from 'react-router-dom';
-import App from './app-universal.jsx';
-import config from 'config';
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  HashRouter,
+} from "react-router-dom";
+import App from "./app-universal.jsx";
+import "react-phone-number-input/style.css";
+import config from "config";
 
 const MainApp = () => (
-   <Router  basename={`${config.publicPath}`}>
-      <Switch>
-         <Route path="/" component={App} />
-      </Switch>
-	</Router>
+  <Router basename={`${config.publicPath}`}>
+    <Switch>
+      <Route path="/" component={App} />
+    </Switch>
+  </Router>
 );
 
 export default MainApp;
