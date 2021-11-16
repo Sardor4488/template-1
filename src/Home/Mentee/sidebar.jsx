@@ -80,6 +80,42 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
+                to="/app/Mentee/favourites"
+                className={pathname.includes("favourites") ? "active" : ""}
+              >
+                <i className="fas fa-user-tie" />
+                O'qituvchi tanlash{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/Mentee/favourites"
+                className={pathname.includes("favourites") ? "active" : ""}
+              >
+                <i className="fas fa-user-plus" />
+                Do'stimni taklif qilish{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/app/Mentee/favourites"
+                className={pathname.includes("favourites") ? "active" : ""}
+              >
+                <i className="fas fa-check-square" />
+                My teacher lug'at{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/app/Mentee/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >

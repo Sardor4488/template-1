@@ -52,7 +52,7 @@ class MenteeDashboard extends Component {
               </div>
               <div className="col-md-7 col-lg-8 col-xl-9">
                 <div className="row">
-                  <div className="col-md-12 col-lg-4 dash-board-list blue">
+                  <div className="col-md-12 col-lg-3 dash-board-list blue">
                     <div className="dash-widget">
                       <div className="circle-bar">
                         <div className="icon-col">
@@ -61,11 +61,11 @@ class MenteeDashboard extends Component {
                       </div>
                       <div className="dash-widget-info">
                         <h3>23/83</h3>
-                        <h6>Hamma darslar soni</h6>
+                        <h6>Hamma darslar</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-12 col-lg-4 dash-board-list yellow">
+                  <div className="col-md-12 col-lg-3 dash-board-list yellow">
                     <div className="dash-widget">
                       <div className="circle-bar">
                         <div className="icon-col">
@@ -78,7 +78,7 @@ class MenteeDashboard extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-12 col-lg-4 dash-board-list pink">
+                  <div className="col-md-12 col-lg-3 dash-board-list pink">
                     <div className="dash-widget">
                       <div className="circle-bar">
                         <div className="icon-col">
@@ -88,6 +88,19 @@ class MenteeDashboard extends Component {
                       <div className="dash-widget-info">
                         <h3>14</h3>
                         <h6>Qoldirilgan darslar</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-12 col-lg-3 dash-board-list yellow">
+                    <div className="dash-widget">
+                      <div className="circle-bar">
+                        <div className="icon-col">
+                          <i className="fas fa-users" />
+                        </div>
+                      </div>
+                      <div className="dash-widget-info">
+                        <h3>3/50</h3>
+                        <h6>Mening do'stlarim</h6>
                       </div>
                     </div>
                   </div>

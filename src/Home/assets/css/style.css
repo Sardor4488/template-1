@@ -2241,11 +2241,13 @@ html.menu-opened body {
 .search-box .form-control {
   border: 1px solid #e3e8eb;
   box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
-  border-radius: 50px;
-  padding-left: 45px;
-  min-height: 54px;
+  border-radius: 10px 0px 0px 10px;
+  /* padding-left: 45px;
+  min-height: 54px; */
   box-shadow: 0 0 1.25rem rgba(31, 45, 61, 0.05);
   font-size: 16px;
+  width: 300px !important;
+  
 }
 .search-box .form-control::-webkit-input-placeholder {
   color: #6c757d;
@@ -2268,15 +2270,13 @@ html.menu-opened body {
   font-size: 16px;
 }
 .search-box .search-location {
-  -ms-flex: 0 0 240px;
+  /* -ms-flex: 0 0 240px; */
   flex: 0 0 240px;
   margin-right: 12px;
   position: relative;
   width: 269px;
 }
-.search-location .form-control {
-  background: #fff url(../img/location.png) no-repeat 17px center;
-}
+ 
 .search-box .search-info {
   -ms-flex: 0 0 490px;
   flex: 0 0 490px;
@@ -2289,16 +2289,13 @@ html.menu-opened body {
   padding-left: 60px;
 }
 .search-box .search-btn {
-  width: 54px;
-  -ms-flex: 0 0 54px;
-  flex: 0 0 54px;
-  height: 54px;
-  border-radius: 100px;
+  padding-left: 30px;
+  border-radius: 0px 10px 10px 0px;
 }
-.search-box .search-btn span {
+/* .search-box .search-btn span {
   display: none;
   font-weight: 500;
-}
+} */
 .search-box .form-text {
   color: #757575;
   font-size: 13px;
@@ -7474,7 +7471,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     flex: 0 0 100%;
     width: 100%;
   }
-  .search-box .search-btn {
+  /* .search-box .search-btn {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     min-height: 46px;
@@ -7484,7 +7481,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     display: inline-block;
     margin-left: 5px;
     text-transform: uppercase;
-  }
+  } */
   .day-slot li span {
     font-size: 16px;
     text-transform: unset;
@@ -7893,6 +7890,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     -ms-flex: none;
     flex: none;
   }
+
   .search-box .search-info {
     width: 100%;
     -ms-flex: none;
@@ -8102,3 +8100,28 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-right: 0;
   }
 }
+.logotipSize {
+  width: 100px;
+}
+.science-link {
+  border-radius: 10px;
+  color: #1e88e5;
+  background-color: #fff;
+}
+.science-link:hover .science-link-hover {
+  background-color: #1e88e5 !important;
+  color: #fff !important;
+}
+.science-link:hover {
+  background-color: #1e88e5 !important;
+  color: #fff !important;
+}
+ .science-link:hover svg path {
+  fill: #fff;
+  stroke: #fff;
+}
+.science-link-hover{
+  color: #1e88e5;
+  
+}
+

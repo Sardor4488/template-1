@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 // import { Helmet } from "react-helmet";
 
-import {USER_1,USER_2,USER_3,USER_4,USER_5,USER_6} from '../../constant/imagepath_home';
-import Sidebar from "./sidebar"
+ import Sidebar from "./sidebar"
 import StickyBox from "react-sticky-box";
 import { Link } from 'react-router-dom';
 
@@ -49,7 +48,7 @@ class BookingsMentee extends Component {
                         <table className="table table-hover table-center mb-0">
                           <thead>
                             <tr>
-                              <th>O'qituvchilar</th>
+                              <th>Mavzu</th>
                               <th>Dars kuni</th>
                               <th className="text-center">Dars vaqti</th>
                               <th className="text-center">Harakat</th>
@@ -59,8 +58,7 @@ class BookingsMentee extends Component {
                             <tr>
                               <td>
                                 <h2 className="table-avatar">
-                                  <Link to="/app/Mentee/mentor-profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={USER_2} alt="User Image" /></Link>
-                                  <Link to="/app/Mentee/mentor-profile">Tyrone Roberts<span>tyroneroberts@adobe.com</span></Link>				
+                                   <Link to="/app/Mentee/mentee-profile">Matematika<span>Arfmetik amallar</span></Link>				
                                 </h2>
                               </td>
                               <td>08 April 2020</td>
