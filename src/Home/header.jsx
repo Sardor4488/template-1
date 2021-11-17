@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link  } from 'react-router-dom';
-import {AppLogo,USER} from '../constant/imagepath_home';
-
+import {USER} from '../constant/imagepath_home';
+import AppLogo from "./../constant/logo.png"
 class Header extends Component {
 	componentDidMount() {
 		$('.main-nav a').on('click', function(e) {
@@ -42,7 +42,7 @@ class Header extends Component {
 					</span>
 				</a>
 				<Link to="/app/index" className="navbar-brand logo">
-					<img src={AppLogo} className="img-fluid" alt="Logo" />
+					<img src={AppLogo} className="img-fluid ms-4 logotipSize" alt="Logo" />
 				</Link>
 				</div>
 				<div className="main-menu-wrapper">

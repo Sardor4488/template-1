@@ -1964,13 +1964,14 @@ pre code {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+ 
 .form-outline-danger {
   box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25);
 }
 .form-outline-danger:focus {
   box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25);
 }
-.form-control::-webkit-input-placeholder {
+ .form-control::-webkit-input-placeholder {
   color: #6c757d;
   opacity: 1;
 }
