@@ -13,7 +13,7 @@ import Store from "./redux/store.js";
 
 const MainApp = () => (
   <Provider store={Store}>
-    <Router basename={`${config.publicPath}`}>
+    <Router>
       <Switch>
         <Route path="/" component={App} />
       </Switch>

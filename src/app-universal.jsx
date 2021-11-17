@@ -12,6 +12,7 @@ import AdminLogin from './Admin/MainPage/Pages/Authentication/login';
 import AdminRegister from './Admin/MainPage/Pages/Authentication/register';
 import AdminForgotpassword from './Admin/MainPage/Pages/Authentication/forgotpassword';
 import LockScreen from './Admin/MainPage/Pages/Authentication/lockscreen';
+import Home from "./Home/Home_";
 
 export default class AppUniversal extends Component {
 	componentDidMount(){
@@ -27,7 +28,7 @@ export default class AppUniversal extends Component {
 	render(){
 		const { location, match } = this.props;
 		if (location.pathname === '/') {
-			return (<Redirect to={'/app/index'} />);		 
+			return (<Redirect to={'/app/home'} />);
 	  	}
 		return (
 			<Switch>

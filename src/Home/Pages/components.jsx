@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import {USER,USER_3,USER_8,IMG_01} from '../../constant/imagepath_home';
-import { Link } from 'react-router-dom';
 
 class Components extends Component {
    render() {

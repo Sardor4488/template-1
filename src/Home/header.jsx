@@ -41,13 +41,13 @@ class Header extends Component {
 					<span />
 					</span>
 				</a>
-				<Link to="/app/index" className="navbar-brand logo">
+				<Link to="/app/home" className="navbar-brand logo">
 					<img src={AppLogo} className="img-fluid ms-4 logotipSize" alt="Logo" />
 				</Link>
 				</div>
 				<div className="main-menu-wrapper">
 				<div className="menu-header">
-					<Link to="/app/index" className="menu-logo">
+					<Link to="/app/home" className="menu-logo">
 					<img src={AppLogo} className="img-fluid" alt="Logo" />
 					</Link>
 					<a id="menu_close" className="menu-close" href="#">
@@ -55,8 +55,8 @@ class Header extends Component {
 					</a>
 				</div>
 				<ul className="main-nav">
-					<li className={pathname.includes('index') ?"active" :""} >
-					<Link to="/app/index">Home</Link>
+					<li className={pathname.includes('home') ?"active" :""} >
+					<Link to="/app/home">Home</Link>
 					</li>
 					<li className={pathname.includes('/Mentor/dashboard') || pathname.includes('Mentor/bookings') ||pathname.includes('schedule-timings')
 						 ||pathname.includes('/Mentor/chat')||pathname.includes('invoice')||pathname.includes('reviews')||pathname.includes('/Mentor/blog') 
@@ -145,7 +145,7 @@ class Header extends Component {
 					</ul>
 					</li>
 					<li>
-					<a href="/template/admin/index" target="_blank">Admin</a>
+					<a href="/admin/index" target="_blank">Admin</a>
 					</li>
 					<li className="login-link">
 					<Link to="/login">Login / Signup</Link>

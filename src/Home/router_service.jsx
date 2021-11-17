@@ -8,7 +8,7 @@ import Blog from './Blog';
 
 export default [  
    {
-      path: 'index',
+      path: 'home',
       component: Home
    },
    {

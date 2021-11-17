@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import * as t from "../redux/types"
+import {dispatch} from "../redux/store";
 const BaseUrl = "http://teach-api.uz/teach-api/public/api/";
 export const registerStudents = (data) => {
     axios
@@ -44,18 +45,3 @@ export const loginMyteacher = (data) => {
 //         return Promise.reject(error);
 //     }
 // )
-export const author = () => {
-    const token = localStorage.getItem('token')
-    const config = {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }
-    const bodyParameters = {
-        key: "value"
-    };
-    axios.post("http://teach-api.uz/teach-api/public/api/teacher/teacher-me", bodyParameters, config).then((res) => {
-        console.log(res);
-    }).catch(err => console.log(err.message));
-
-}
