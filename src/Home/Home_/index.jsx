@@ -7,6 +7,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {Submit,ICON_1,ICON_2,ICON_3,USER,USER_1,USER_2,USER_3,USER_4,USER_6,USER_7,USER_15,USER_9,USER_11,USER_12,
     USER_13,IMG_1,IMG_2,IMG_3,IMG_4,IMG_5,IMG_6,IMG_7,IMG_8,BLOG_01,BLOG_02,BLOG_03,BLOG_04} from '../../constant/imagepath_home';
 import { Link, withRouter } from 'react-router-dom';
+import {author} from "../../Api";
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +17,12 @@ class Home extends Component {
     const{history} = this.props
     history.push('/app/Mentee/search')
   }
-   render() {
+  componentDidMount() {
+    author();
+    console.log(localStorage.getItem('token'))
+  }
+
+  render() {
     const settings = {
         dots:true,
         infinite: true,

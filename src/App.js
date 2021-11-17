@@ -8,13 +8,17 @@ import {
 import App from "./app-universal.jsx";
 import "react-phone-number-input/style.css";
 import config from "config";
+import { Provider } from "react-redux";
+import Store from "./redux/store.js";
 
 const MainApp = () => (
-  <Router basename={`${config.publicPath}`}>
-    <Switch>
-      <Route path="/" component={App} />
-    </Switch>
-  </Router>
+  <Provider store={Store}>
+    <Router basename={`${config.publicPath}`}>
+      <Switch>
+        <Route path="/" component={App} />
+      </Switch>
+    </Router>
+  </Provider>
 );
 
 export default MainApp;
