@@ -71,7 +71,64 @@ const Home = (props) => {
                   <span>
                     O'zingizga eng saralangan ustozni shu yerdan toping{" "}
                   </span>
+<<<<<<< HEAD
+                </p>
+              </div>
+              {/* Search */}
+              <div className="search-box">
+                <form action="/app/Pages/search">
+                  <div className="form-group search-location">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Masalan: IELTS..." 
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn btn-primary search-btn"
+                    onClick={() => this.searchmentee()}
+                  >
+                    <i>
+                      <img src={Submit} alt="" />
+                    </i>{" "}
+                    <span>Izlash...</span>
+                  </button>
+                </form>
+              </div>
+              {/* /Search */}
+              <div className="row mt-4">
+                <div className="col-12 col-md-4 pe-5 mt-3">
+                  {" "}
+                  <Link>
+                    <div className="d-flex w-100 science-link bg-white align-items-center">
+                      <div className="m-2 w-100 d-flex align-items-center">
+                        <div className="svg_content">
+                          {" "}
+                          <svg
+
+                            width="35"
+                            height="35"
+                            viewBox="0 0 56 56"
+                            fill="none"
+                            className="svg-icon ms-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M30.03 35.1633L24.1033 29.3067L24.1733 29.2367C28.2333 24.71 31.1267 19.5067 32.83 14H39.6667V9.33334H23.3333V4.66667H18.6667V9.33334H2.33333V13.9767H28.3967C26.8333 18.48 24.36 22.75 21 26.4833C18.83 24.08 17.0333 21.4433 15.61 18.6667H10.9433C12.6467 22.47 14.98 26.0633 17.8967 29.3067L6.02 41.02L9.33333 44.3333L21 32.6667L28.2567 39.9233L30.03 35.1633ZM43.1667 23.3333H38.5L28 51.3333H32.6667L35.28 44.3333H46.3633L49 51.3333H53.6667L43.1667 23.3333ZM37.0533 39.6667L40.8333 29.5633L44.6133 39.6667H37.0533Z"
+                              fill="#1e88e5"
+                            />
+                          </svg>
+                        </div>{" "}
+                        <div className="ms-2">
+ 
+                          <h4 className="mb-0 science-link-hover text-start w-100">
+                            Tillar
+                          </h4>
+                          <p className="mb-0">12ta o'qituvchi</p>
+=======
                             </p>
+>>>>>>> ccc2d2c1c3292159489ed862e105ccd94f5f602c
                         </div>
                         {/* Search */}
                         <div className="search-box">

@@ -1223,7 +1223,7 @@ class Components extends Component {
                         </ul>
                         <div className="tab-content">
                           <div className="tab-pane show active" id="solid-tab1">
-                            Tab content 1
+                            Tab content 11
                           </div>
                           <div className="tab-pane" id="solid-tab2">
                             Tab content 2

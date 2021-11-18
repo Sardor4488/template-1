@@ -8124,3 +8124,28 @@ div.dataTables_wrapper div.dataTables_filter input {
   
 }
 
+.sidebar-bottom{
+  position: fixed;
+  bottom: 0px;
+  right: 0%;
+  left: 0%;
+  background-color: #fff;
+  z-index: 999999 !important;
+  height: 40px;
+}
+li{
+   list-style: none;
+   
+}
+@media only screen and (max-width: 767px) {
+  .sidebar-bottom-show{
+    display: flex !important;
+    z-index: 9999;
+  }
+  .profile-sidebar-md-none{
+    display: none !important;
+  }
+}
+.bg-white{
+  background-color: #ffffff !important;
+}
