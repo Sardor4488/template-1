@@ -1,46 +1,47 @@
 import axios from "axios";
+import * as t from "../redux/types"
+import {dispatch} from "../redux/store";
+const BaseUrl = "http://teach-api.uz/teach-api/public/api/";
+export const registerStudents = (data) => {
+    axios
+        .post(BaseUrl + "create-student", data)
+        .then((res) => {
+            console.log(res.data.access_token);
+            localStorage.setItem('token', res.data.access_token);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+export const registerTeacher = (data) => {
+    axios
+        .post(BaseUrl + "create-teacher", data)
+        .then((res) => {
+            localStorage.setItem("token", res.data.access_token);
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+export const loginMyteacher = (data) => {
+    axios
+        .post(BaseUrl + "login", data)
+        .then((res) => {
+            console.log(res.data.access_token);
+            localStorage.setItem('token', res.data.access_token)
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
 
-const RegisterStudent =
-  "http://teach-api.uz/teach-api/public/api/create-student";
-const RegisteTeacher =
-  "http://teach-api.uz/teach-api/public/api/create-teacher";
-const Login = "http://teach-api.uz/teach-api/public/api/login";
-export const registerStudents = (obj, setLoading) => {
-  setLoading(true);
-  axios
-    .post(RegisterStudent, obj)
-    .then((res) => {
-      console.log(res);
-      setLoading(false);
-    })
-    .catch((err) => {
-      setLoading(false);
-      console.log(err);
-    });
-};
-export const registerTeacher = (obj, setLoading) => {
-  setLoading(true);
-  axios
-    .post(RegisteTeacher, obj)
-    .then((res) => {
-      console.log(res);
-      setLoading(false);
-    })
-    .catch((err) => {
-      setLoading(false);
-      console.log(err);
-    });
-};
-export const loginMyteacher = (obj, setLoading) => {
-  setLoading(true);
-  axios
-    .post(Login, obj)
-    .then((res) => {
-      console.log(res.data.access_token);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.log(err);
-      setLoading(false);
-    });
-};
+// const token = localStorage.getItem('token')
+// axios.interceptors.request.use(
+//     config => {
+//         config.headers.autharization = `Bearer ${token}`;
+//         return config;
+//     }, error => {
+//         return Promise.reject(error);
+//     }
+// )
