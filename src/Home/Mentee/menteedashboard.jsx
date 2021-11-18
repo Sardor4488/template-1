@@ -9,6 +9,10 @@ import {
   USER_13,
   USER_14,
   USER_15,
+  USER,
+  USER_4,
+  USER_2,
+  USER_1,
 } from "../../constant/imagepath_home";
 import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
@@ -29,7 +33,7 @@ class MenteeDashboard extends Component {
                       <Link to="/app/index">Home</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                    Umumiy
+                      Umumiy
                     </li>
                   </ol>
                 </nav>
@@ -105,61 +109,145 @@ class MenteeDashboard extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="row">
-                <div className="col-12">
+                <div className="row w-100">
+                  <div className="col-12">
                     <div className="card">
                       <div className="card-header d-flex justify-content-between align-items-center">
-                        <h4 className="card-title">Umumiy </h4> <Link className="text-info">My Teacher Lug'at <i className="fas fa-arrow-right" /></Link>
+                        <h4 className="card-title">Umumiy </h4>{" "}
+                         
                       </div>
                       <div className="card-body">
                         <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-                          <li className="nav-item"><a className="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Darslar </a></li>
-                          <li className="nav-item"><a className="nav-link" href="#bottom-justified-tab2" data-toggle="tab"> Sinov darslari</a></li>
-                          <li className="nav-item"><a className="nav-link" href="#bottom-justified-tab3" data-toggle="tab"> Uyga vazifa</a></li>
+                          <li className="nav-item">
+                            <a
+                              className="nav-link active"
+                              href="#bottom-justified-tab1"
+                              data-toggle="tab"
+                            >
+                              My teacher lug'at{" "}
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a
+                              className="nav-link"
+                              href="#bottom-justified-tab2"
+                              data-toggle="tab"
+                            >
+                              {" "}
+                              O'qituvchi tanlash
+                            </a>
+                          </li>
                         </ul>
                         <div className="tab-content">
-                          <div className="tab-pane show active" id="bottom-justified-tab1">
-                          
-                                    {/* MAVZULAR  */}
+                          <div
+                            className="tab-pane show active"
+                            id="bottom-justified-tab1"
+                          >
+                            {/* MAVZULAR  */}
 
-                                    <div className="  card-table">
-                    <div className="card-body">
-                      <div className="table-responsive">
-                        <table className="table table-hover table-center mb-0">
-                          <thead>
-                            <tr>
-                              <th>Mavzu</th>
-                              <th>Dars kuni</th>
-                              <th className="text-center">Dars vaqti</th>
-                              <th className="text-center">Harakat</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                   <Link to="/app/Mentee/mentee-profile">Matematika<span>Arfmetik amallar</span></Link>				
-                                </h2>
-                              </td>
-                              <td>08 April 2020</td>
-                              <td className="text-center"><span className="pending">9:00 AM - 10:00 AM</span></td>
-                              <td className="text-center"><Link to="/app/Mentee/mentor-profile" className="btn btn-sm bg-info-light"><i className="far fa-eye" /> View</Link></td>
-                            </tr>
-                            
-                            
-                          </tbody>
-                        </table>		
+                            <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
+                            <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
+
+                            {/* MAVZULAR  */}
+                          </div>
+                          <div className="tab-pane" id="bottom-justified-tab2">
+                          <div className="row w-100">
+
+                    {/* O'QITUVCHILAR */}
+
+                          <div className="col-md-12   w-100">
+                 <div className="border-bottom ">
+                  <div className="card-body">
+                    <div className="mentor-widget">
+                      <div className="user-info-left">
+                        <div className="mentor-img">
+                          <Link to="/app/Mentee/mentor-profile">
+                            <img src={USER} className="img-fluid" alt="User Image" />
+                          </Link>
+                        </div>
+                        <div className="user-info-cont">
+                          <h4 className="usr-name"><Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link></h4>
+                          <p className="mentor-type">Digital Marketer</p>
+                          <div className="rating">
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">(17)</span>
+                          </div>
+                          <div className="mentor-details">
+                            <p className="user-location"><i className="fas fa-map-marker-alt" /> Florida, USA</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="user-info-right">
+                        <div className="user-infos">
+                          <ul>
+                            <li><i className="far fa-comment" /> 17 Feedback</li>
+                            <li><i className="fas fa-map-marker-alt" /> Florida, USA</li>
+                            <li><i className="far fa-money-bill-alt" /> $300 - $1000 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /> </li>
+                          </ul>
+                        </div>
+                        <div className="mentor-booking">
+                          <Link className="apt-btn" to="/app/Mentee/booking">Book Appointment</Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                                     {/* MAVZULAR  */}
-
+                </div>
+                 <div className=" ">
+                  <div className="card-body">
+                    <div className="mentor-widget">
+                      <div className="user-info-left">
+                        <div className="mentor-img">
+                          <Link to="/app/Mentee/mentor-profile">
+                            <img src={USER_1} className="img-fluid" alt="User Image" />
+                          </Link>
+                        </div>
+                        <div className="user-info-cont">
+                          <h4 className="usr-name"><Link to="/app/Mentee/mentor-profile">Darren Elder</Link></h4>
+                          <p className="mentor-type">Digital Marketer</p>
+                          <div className="rating">
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">(35)</span>
                           </div>
-                          <div className="tab-pane" id="bottom-justified-tab2">
-                            Tab content 2
+                          <div className="mentor-details">
+                            <p className="user-location"><i className="fas fa-map-marker-alt" /> Newyork, USA</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="user-info-right">
+                        <div className="user-infos">
+                          <ul>
+                            <li><i className="far fa-comment" /> 35 Feedback</li>
+                            <li><i className="fas fa-map-marker-alt" /> Newyork, USA</li>
+                            <li><i className="far fa-money-bill-alt" /> $50 - $300 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /></li>
+                          </ul>
+                        </div>
+                        <div className="mentor-booking">
+                        <Link className="apt-btn" to="/app/Mentee/booking">Book Appointment</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    {/* O'QITUVCHILAR */}
+                
+               
+                <div className="load-more text-center">
+                  <a className="btn btn-primary btn-sm" href="">Load More</a>	
+                </div>	
+              </div>
+                            </div>
                           </div>
                           <div className="tab-pane" id="bottom-justified-tab3">
-                            Tab content 3
+                            {/* O'qituvchi tanlash */}
+                           
                           </div>
                         </div>
                       </div>

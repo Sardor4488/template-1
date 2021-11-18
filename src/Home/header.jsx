@@ -48,7 +48,7 @@ class Header extends Component {
 				<div className="main-menu-wrapper">
 				<div className="menu-header">
 					<Link to="/app/home" className="menu-logo">
-					<img src={AppLogo} className="img-fluid" alt="Logo" />
+					<img src={AppLogo} className="img-fluid logotipSize" alt="Logo" />
 					</Link>
 					<a id="menu_close" className="menu-close" href="#">
 					<i className="fas fa-times" />
@@ -152,7 +152,7 @@ class Header extends Component {
 					</li>
 				</ul>		 
 				</div>		 
-				{location.pathname.includes("p/index") ? <ul className="nav header-navbar-rht">
+				{location.pathname.includes("/app/home") ? <ul className="nav header-navbar-rht">
 					<li className="nav-item">
 						<Link className="nav-link " to="/login">Login</Link>
 					</li>

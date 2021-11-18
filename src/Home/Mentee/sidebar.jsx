@@ -46,6 +46,19 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
+            <li>
+              <Link
+                 to="/app/Mentee/favourites"
+                 className={pathname.includes("favourites") ? "active" : ""
+                }
+              >
+                <i className="fas fa-book-reader" />
+                Dars{" "}
+                <span>
+                  <i className="fas fa-chevron-right" />
+                </span>
+              </Link>
+            </li>
             {/* <li>
               <Link
                 to="/app/Mentee/bookings-mentee"
@@ -79,7 +92,7 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li> */}
-            <li>
+            {/* <li>
               <Link
                 to="/app/Mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
@@ -90,11 +103,11 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
-                to="/app/Mentee/favourites"
-                className={pathname.includes("favourites") ? "active" : ""}
+                to="/app/Mentee/share-friends"
+                className={pathname.includes("share-friends") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
                 Do'stimni taklif qilish{" "}
@@ -103,7 +116,7 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/app/Mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
@@ -114,8 +127,8 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link
                 to="/app/Mentee/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
@@ -126,18 +139,18 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
              
               <Link to="/app/Mentee/mentee-profile"  className={pathname.includes("profile-mentee") ? "active" : ""}>
-                <i className="fas fa-user" />
+              <i className="fas fa-user"></i>
                 Mening profilim{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/app/Mentee/profil-settings-mentee"
                 className={pathname.includes("profil-settings-mentee") ? "active" : ""}
@@ -148,7 +161,7 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/app/index">
                 <i className="fas fa-sign-out-alt" />
@@ -165,10 +178,11 @@ class Sidebar extends Component {
 
         <div className="sidebar-bottom-show d-none  sidebar-bottom">
           <div className="row bg-white d-flex justufy-content-center align-items-center w-100">
-            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user" />  </Link></div>
-            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user-plus" />  </Link></div>
-            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
-            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
+            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user-plus" />  </Link></div>
+            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-comments" />  </Link></div>
+            <div className="col-4 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
+            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index">                 <i className="fas fa-book-reader" />  </Link></div>
+            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user" />  </Link></div>
             {/* <div className="col-3"> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div> */}
           </div>
           

@@ -77,9 +77,9 @@ class MenteeProfile extends Component {
                             <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
                               <i className="fas fa-phone-alt" />
                             </a>
-                            <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
+                            <Link to="profil-settings-mentee" className="btn-blue" >
                               <i className="fas fa-user-edit" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </div>

@@ -8137,6 +8137,25 @@ li{
    list-style: none;
    
 }
+ 
+@media only screen and (max-width: 575px) {
+  .logotipSize {
+    width: 130px;
+  }
+}
+PhoneInput{
+  outline: none;
+}
+.share-friends{
+  width: 30%;
+  padding: 10px !important;
+  height: 30px !important;
+}
+@media only screen and (max-width: 1060px) {
+  .share-friends{
+    width: 70% !important;
+  }
+}
 @media only screen and (max-width: 767px) {
   .sidebar-bottom-show{
     display: flex !important;
@@ -8148,4 +8167,10 @@ li{
 }
 .bg-white{
   background-color: #ffffff !important;
+}
+.myTeacher-transletor{
+  min-height: 250px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #aaa;
 }

@@ -146,17 +146,6 @@ const Home = () => {
                       <label className="form-control-label">
                         Telefon raqamingiz
                       </label>
-                      {/* <PhoneInput
-                        type="tel"
-                        className="form-control"
-                        required
-                        onChange={(e) =>
-                          setStudents({
-                            ...students,
-                            phone_number: e.target.value,
-                          })
-                        }
-                      /> */}
                       <PhoneInput
                         international
                         // countryCallingCodeEditable={false}
