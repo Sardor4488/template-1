@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useEffect} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import HomeLayout from './Home/homelayout.jsx';
@@ -13,19 +13,44 @@ import AdminRegister from './Admin/MainPage/Pages/Authentication/register';
 import AdminForgotpassword from './Admin/MainPage/Pages/Authentication/forgotpassword';
 import LockScreen from './Admin/MainPage/Pages/Authentication/lockscreen';
 import Home from "./Home/Home_";
+import axios from "axios";
+import * as t from "./redux/types";
+import {dispatch} from "./redux/store";
+ const AppUniversal = () => {
 
-export default class AppUniversal extends Component {
-	componentDidMount(){
-        if (location.pathname.includes("login") || location.pathname.includes("register") || location.pathname.includes("forgotpassword")
-        || location.pathname.includes("otp")|| location.pathname.includes("lockscreen") ) {
-            $('body').addClass('account-page');
-        }else if (location.pathname.includes("error-404") || location.pathname.includes("error-500") ) {
-            $('body').addClass('error-page');
-        }else if (location.pathname.includes("chat")  ) {
-            $('body').addClass('chat-page');
-        }
-    }
-	render(){
+	const author = () => {
+		const token = localStorage.getItem('token')
+		const config = {
+			headers: {
+				"Authorization": `Bearer ${token}`
+			}
+		}
+		const bodyParameters = {
+			key: "value"
+		};
+		axios.post("http://teach-api.uz/teach-api/public/api/teacher/teacher-me", bodyParameters, config).then((res) => {
+			setData(res.data);
+		}).catch(err => console.log(err.message));
+	}
+	const autorizationUser = () => {
+		const action = {type: t.AUTHOR, payload: data};
+		dispatch(action);
+	}
+	useEffect(() => {
+		author();
+		if (location.pathname.includes("login") || location.pathname.includes("register") || location.pathname.includes("forgotpassword")
+			|| location.pathname.includes("otp")|| location.pathname.includes("lockscreen") ) {
+			$('body').addClass('account-page');
+		}else if (location.pathname.includes("error-404") || location.pathname.includes("error-500") ) {
+			$('body').addClass('error-page');
+		}else if (location.pathname.includes("chat")  ) {
+			$('body').addClass('chat-page');
+		}
+	}, []);
+	useEffect(() => {
+		autorizationUser();
+		console.log(data)
+	}, [data]);
 		const { location, match } = this.props;
 		if (location.pathname === '/') {
 			return (<Redirect to={'/app/home'} />);
@@ -44,5 +69,5 @@ export default class AppUniversal extends Component {
 			</Switch>
 	
 		);
-	}
 }
+export default AppUniversal;

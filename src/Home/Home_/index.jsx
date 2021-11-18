@@ -46,32 +46,6 @@ const Home = (props) => {
         history.push("/app/Mentee/search");
     }
 
-    const author = () => {
-        const token = localStorage.getItem('token')
-        const config = {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        }
-        const bodyParameters = {
-            key: "value"
-        };
-        axios.post("http://teach-api.uz/teach-api/public/api/teacher/teacher-me", bodyParameters, config).then((res) => {
-            setData(res.data);
-        }).catch(err => console.log(err.message));
-    }
-    const autorizationUser = () => {
-        const action = {type: t.AUTHOR, payload: data};
-        dispatch(action);
-    }
-    useEffect(() => {
-        author();
-    }, []);
-    useEffect(() => {
-        autorizationUser();
-        console.log(data)
-    }, [data]);
-
 
     const settings = {
         dots: true,
