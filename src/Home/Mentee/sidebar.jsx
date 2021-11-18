@@ -7,7 +7,8 @@ class Sidebar extends Component {
     const { location } = this.props;
     let pathname = location.pathname;
     return (
-      <div className="profile-sidebar">
+      <div>
+      <div className="profile-sidebar profile-sidebar-md-none">
         <div className="user-widget">
           <div className="pro-avatar">JD</div>
           {/* <div className="rating">
@@ -45,7 +46,7 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/app/Mentee/bookings-mentee"
                 className={pathname.includes("bookings-mentee") ? "active" : ""}
@@ -56,7 +57,7 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/app/Mentee/chat-mentee">
                 <i className="fas fa-comments" />
@@ -66,7 +67,7 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/app/Mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
@@ -77,7 +78,7 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/app/Mentee/favourites"
@@ -158,6 +159,19 @@ class Sidebar extends Component {
               </Link>
             </li>
           </ul>
+        </div>
+        </div>
+      {/* sidebar bottom  */}
+
+        <div className="sidebar-bottom-show d-none  sidebar-bottom">
+          <div className="row bg-white d-flex justufy-content-center align-items-center w-100">
+            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user" />  </Link></div>
+            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user-plus" />  </Link></div>
+            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
+            <div className="col-3 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
+            {/* <div className="col-3"> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div> */}
+          </div>
+          
         </div>
       </div>
     );

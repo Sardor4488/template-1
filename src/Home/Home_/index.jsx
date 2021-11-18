@@ -118,8 +118,7 @@ class Home extends Component {
                           </svg>
                         </div>{" "}
                         <div className="ms-2">
-                          {/* <TranslateIcon/> */}
-
+ 
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
