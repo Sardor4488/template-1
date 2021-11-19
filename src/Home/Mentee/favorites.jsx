@@ -48,7 +48,7 @@ class Favorites extends Component {
                       <div className="card-body">
                         <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
                           <li className="nav-item"><a className="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Sinov darslari</a></li>
-                          <li className="nav-item"><a className="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Mavzular</a></li>
+                          <li className="nav-item d-flex justify-content-center align-items-center"><a className="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Mavzular</a></li>
                           <li className="nav-item"><a className="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Uyga vazifalar</a></li>
                         </ul>
                         <div className="tab-content">

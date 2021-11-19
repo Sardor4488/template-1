@@ -22,6 +22,7 @@ import "./assets/js/jquery.min.js"
 import "./assets/js/popper.min.js"
 import "./assets/js/bootstrap.min.js"
 import "./assets/js/script.js"
+import SidebarBottom from './Mentee/SidebarBottom';
 
 class DefaultLayout extends Component {
 	
@@ -35,7 +36,8 @@ class DefaultLayout extends Component {
 					)}	
 				{location.pathname.includes("chat") || location.pathname.includes("voice-call")
 				|| location.pathname.includes("video-call")|| location.pathname.includes("map-list")
-				|| location.pathname.includes("map-grid") ? "" : <Footer/>}                
+				|| location.pathname.includes("map-grid") ? "" : <Footer/>}      
+				<SidebarBottom/>          
 			</div>
 		);
 	}

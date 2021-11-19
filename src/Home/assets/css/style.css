@@ -8125,13 +8125,17 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 .sidebar-bottom{
+  width: 100%;
+  background-color: #ffffff;
   position: fixed;
-  bottom: 0px;
-  right: 0%;
-  left: 0%;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background-color: #fff;
-  z-index: 999999 !important;
+  z-index: 1000 !important;
   height: 40px;
+  padding: 0;
+  margin: 0;
 }
 li{
    list-style: none;

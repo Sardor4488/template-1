@@ -48,7 +48,7 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                 to="/app/Mentee/favourites"
+                 to="/app/Mentee/favarites"
                  className={pathname.includes("favourites") ? "active" : ""
                 }
               >
@@ -176,17 +176,7 @@ class Sidebar extends Component {
         </div>
       {/* sidebar bottom  */}
 
-        <div className="sidebar-bottom-show d-none  sidebar-bottom">
-          <div className="row bg-white d-flex justufy-content-center align-items-center w-100">
-            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user-plus" />  </Link></div>
-            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-comments" />  </Link></div>
-            <div className="col-4 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div>
-            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index">                 <i className="fas fa-book-reader" />  </Link></div>
-            <div className="col-2 border text-center shadow bg-white py-3  "> <Link to="/app/index"> <i className="fas fa-user" />  </Link></div>
-            {/* <div className="col-3"> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div> */}
-          </div>
-          
-        </div>
+    
       </div>
     );
   }
