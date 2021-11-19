@@ -2,14 +2,18 @@ import React, { Component, useState } from "react";
 // import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { AppLogo } from "../../constant/imagepath_home";
-import { loginMyteacher } from "../../Api/index";
 import PhoneInput from "react-phone-number-input";
 import Loading from "../components/Loading/Loading";
-const Home = () => {
+import axios from "axios";
+import * as t from "../../redux/types";
+import {dispatch} from "../../redux/store";
+import {useSelector} from "react-redux";
+const Login = (props) => {
+    const {history} = props;
   const [inputType, setInputType] = useState("password");
-  const [loading, setLoading] = useState(false);
   const [loginNumber, setLoginNumber] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const loading = useSelector(state => state.Reducer.loading);
   const changeInputPassword = () => {
     if (inputType == "password") {
       setInputType("text");
@@ -17,14 +21,43 @@ const Home = () => {
       setInputType("password");
     }
   };
-
-  const postLogin = (e) => {
-    let loginObj = {
+  const LoadPage = (l = false ) => {
+    const action = {type: t.LOADING, payload: false}
+    dispatch(action);
+  }
+  LoadPage();
+  const author = (data) => {
+    const  action = {type: t.AUTHOR, payload: data}
+      dispatch(action);
+  }
+    const loginMyteacher = (e) => {
+    e.preventDefault();
+    let data = {
       phone_number: loginNumber,
       password: loginPassword,
     };
-    e.preventDefault();
-    loginMyteacher(loginObj, setLoading);
+    axios
+        .post("login", data)
+        .then((res) => {
+          localStorage.setItem('token', res.data.access_token);
+          localStorage.setItem("role", res.data.user.role);
+          console.log(res.data.user.role);
+          console.log(res);
+          if(res.data.user.role === "student"){
+              history.push("app/mentee/dashboard");
+              LoadPage(true);
+              author(res.data.user)
+          }
+
+          else if(res.data.user.role === "teacher") {
+              history.push("app/mentor/dashboard");
+              LoadPage(true);
+              author(res.data.user)
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 
   return (
@@ -44,7 +77,7 @@ const Home = () => {
                     </h3>
                     <p className="text-muted">Shaxsiy kabinetga kirish</p>
                   </div>
-                  <form onSubmit={postLogin}>
+                  <form onSubmit={loginMyteacher}>
                     <div className="form-group">
                       <label className="form-control-label">
                         Telefon raqamingiz
@@ -101,4 +134,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;

@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-// import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
-import { AppLogo } from "../../constant/imagepath_home";
-import { registerStudents, registerTeacher } from "../../Api/index";
+import {Link, Redirect} from "react-router-dom";
+// import {registerMyTeacher} from "../../Api/index";
 import Loading from "../components/Loading/Loading";
 import PhoneInput from "react-phone-number-input";
+import axios from "axios";
+import * as t from "../../redux/types";
+import {dispatch} from "../../redux/store";
 
-const Home = () => {
-  const [activeClassRegister, setActiveClassRegister] = useState(0);
-  const changeRegister = (id) => {
-    setActiveClassRegister(id);
-  };
+const Register = (props) => {
+  const {history} = props;
   const [loading, setLoading] = useState(false);
   const [registerPhoneNumber, setRegisterPhonePnumber] = useState("");
+  const [url, setUrl] = useState("create-student")
   const [register, setRegister] = useState({
     firstname: "",
     lastname: "",
@@ -22,33 +21,56 @@ const Home = () => {
     offert: 0,
   });
 
-  const RegisterStudent = (e) => {
-    e.preventDefault();
-    let data = {
-      first_name: register.firstname,
-      last_name: register.lastname,
-      email: register.email,
-      phone_number: registerPhoneNumber,
-      password: register.password,
-      password_confirmation: register.password_confirmation,
-      offert: register.offert,
-    };
-    if (activeClassRegister == 0) {
-      registerStudents(data, setLoading);
-    } else {
-      registerTeacher(data, setLoading);
-    }
-    console.log(data);
-  };
-
+  // const RegisterStudent = (e) => {
+  //   e.preventDefault();
+  //   let data = {
+  //     first_name: register.firstname,
+  //     last_name: register.lastname,
+  //     email: register.email,
+  //     phone_number: registerPhoneNumber,
+  //     password: register.password,
+  //     password_confirmation: register.password_confirmation,
+  //     offert: register.offert,
+  //   };
+  //     registerMyTeacher(url, data);
+  // };
+  console.log(url);
   const offerta = () => {
-    if (register.offert == 0) {
+    if (register.offert === 0) {
       setRegister({ ...register, offert: 1 });
     } else {
       setRegister({ ...register, offert: 0 });
     }
   };
-
+  const registerMyTeacher = (e) => {
+    e.preventDefault()
+    let data = {
+          first_name: register.firstname,
+          last_name: register.lastname,
+          email: register.email,
+          phone_number: registerPhoneNumber,
+          password: register.password,
+          password_confirmation: register.password_confirmation,
+          offert: register.offert,
+        };
+    axios
+        .post(url, data)
+        .then((res) => {
+          localStorage.setItem("token", res.data.access_token);
+          localStorage.setItem("role", res.data.user_data.role);
+          console.log(res.data.role);
+          const action = {type: t.ROLE, payload: res.data.user_data.role}
+          dispatch(action);
+          if (res.data.user_data.role === "student"){
+                history.push("app/mentee/dashboard")
+          }else if(res.data.user_data.role === "teacher"){
+            history.push("app/mentor/dashboard")
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  };
   return (
     <>
       {loading ? (
@@ -61,24 +83,24 @@ const Home = () => {
               <div className="d-flex justify-content-between align-content-center">
                 <div
                   className={`button_register text-uppercase ${
-                    activeClassRegister == 0 && "active"
+                    url == "create-student" && "active"
                   } `}
-                  onClick={() => changeRegister(0)}
+                  onClick={() => setUrl( "create-student")}
                 >
                   O'quvchi
                 </div>
                 <div
                   className={`button_register text-uppercase ${
-                    activeClassRegister == 1 && "active"
+                      url == "create-teacher" && "active" && "active"
                   } `}
-                  onClick={() => changeRegister(1)}
+                  onClick={() => setUrl( "create-teacher")}
                 >
                   O'qituvchi
                 </div>
               </div>
               <div className="account-box">
                 <div className="login-right">
-                  {activeClassRegister == 0 ? (
+                  {url == "create-student"  ? (
                     <div className="login-header">
                       <h3>
                         <span>O'quvchi bo'lib</span> ro'yxatdan o'tish
@@ -100,7 +122,7 @@ const Home = () => {
                     </div>
                   )}
                   {/* Register Form */}
-                  <form onSubmit={RegisterStudent}>
+                  <form onSubmit={registerMyTeacher}>
                     <div className="row">
                       <div className="col-lg-6">
                         <div className="form-group">
@@ -264,4 +286,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Register;

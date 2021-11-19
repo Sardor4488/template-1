@@ -28,7 +28,7 @@ const Menteeroute = ({ match }) => (
     <Route path={`${match.url}/map-list`} component={Maplist} />
     <Route path={`${match.url}/search`} component={Searchmentors} />
     <Route path={`${match.url}/bookings-mentee`} component={BookingsMentee} />
-    <Route path={`${match.url}/dashboard-mentee`} component={MenteeDashboard} />
+    <Route path={`${match.url}/dashboard`} component={MenteeDashboard} />
     <Route path={`${match.url}/booking`} component={Booking} />
     <Route path={`${match.url}/checkout`} component={Checkout} />
     <Route path={`${match.url}/booking-success`} component={BookingSuccess} />

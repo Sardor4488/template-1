@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-svg {
+#svg {
   border-radius: 50%;
   animation: spin 1s ease infinite alternate;
 }
