@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a91359d7-c237-4379-9825-022417528eb4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Home/components/Loading/done.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Home/components/Loading/loading.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Authentication/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Authentication/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Authentication/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Authentication/register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Home/Home_/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Home_/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Mentee/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Mentee/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Home/Mentee/menteedashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Mentee/menteedashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Mentee/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Mentee/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Mentor/mentordashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Mentor/mentordashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/Mentor/sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/Mentor/sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/components/Loading/Loading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/components/Loading/Loading.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/components/Loading/Loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/components/Loading/Loading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Home/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home/header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app-universal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app-universal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Reducers/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Reducers/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +58,7 @@
       <workItem from="1637231601701" duration="4540000" />
       <workItem from="1637252926547" duration="2807000" />
       <workItem from="1637257726025" duration="2272000" />
-      <workItem from="1637299259114" duration="3060000" />
+      <workItem from="1637299259114" duration="5586000" />
     </task>
     <servers />
   </component>
