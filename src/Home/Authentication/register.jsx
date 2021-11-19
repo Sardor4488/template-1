@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import {Link, Redirect} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 // import {registerMyTeacher} from "../../Api/index";
 import Loading from "../components/Loading/Loading";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
 import * as t from "../../redux/types";
-import {dispatch} from "../../redux/store";
+import { dispatch } from "../../redux/store";
 
 const Register = (props) => {
-  const {history} = props;
+  const { history } = props;
   const [loading, setLoading] = useState(false);
   const [registerPhoneNumber, setRegisterPhonePnumber] = useState("");
-  const [url, setUrl] = useState("create-student")
+  const [url, setUrl] = useState("create-student");
   const [register, setRegister] = useState({
     firstname: "",
     lastname: "",
@@ -43,33 +43,29 @@ const Register = (props) => {
     }
   };
   const registerMyTeacher = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let data = {
-          first_name: register.firstname,
-          last_name: register.lastname,
-          email: register.email,
-          phone_number: registerPhoneNumber,
-          password: register.password,
-          password_confirmation: register.password_confirmation,
-          offert: register.offert,
-        };
+      first_name: register.firstname,
+      last_name: register.lastname,
+      email: register.email,
+      phone_number: registerPhoneNumber,
+      password: register.password,
+      password_confirmation: register.password_confirmation,
+      offert: register.offert,
+    };
     axios
-        .post(url, data)
-        .then((res) => {
-          localStorage.setItem("token", res.data.access_token);
-          localStorage.setItem("role", res.data.user_data.role);
-          console.log(res.data.role);
-          const action = {type: t.ROLE, payload: res.data.user_data.role}
-          dispatch(action);
-          if (res.data.user_data.role === "student"){
-                history.push("app/mentee/dashboard")
-          }else if(res.data.user_data.role === "teacher"){
-            history.push("app/mentor/dashboard")
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .post(url, data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("role", res.data.user_data.role);
+        console.log(res);
+        const action = { type: t.ROLE, payload: res.data.user_data.role };
+        dispatch(action);
+        history.push(`app/${res.data.user_data.role}/dashboard`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
@@ -85,22 +81,22 @@ const Register = (props) => {
                   className={`button_register text-uppercase ${
                     url == "create-student" && "active"
                   } `}
-                  onClick={() => setUrl( "create-student")}
+                  onClick={() => setUrl("create-student")}
                 >
                   O'quvchi
                 </div>
                 <div
                   className={`button_register text-uppercase ${
-                      url == "create-teacher" && "active" && "active"
+                    url == "create-teacher" && "active" && "active"
                   } `}
-                  onClick={() => setUrl( "create-teacher")}
+                  onClick={() => setUrl("create-teacher")}
                 >
                   O'qituvchi
                 </div>
               </div>
               <div className="account-box">
                 <div className="login-right">
-                  {url == "create-student"  ? (
+                  {url == "create-student" ? (
                     <div className="login-header">
                       <h3>
                         <span>O'quvchi bo'lib</span> ro'yxatdan o'tish

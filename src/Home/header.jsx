@@ -1,6 +1,7 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { USER } from "../constant/imagepath_home";
+import { useSelector } from "react-redux";
 import AppLogo from "./../constant/logo.png";
 
 const Header = (props) => {
@@ -30,9 +31,14 @@ const Header = (props) => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
   };
+
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const author = useSelector((state) => state?.Reducer.author);
   const { location } = props;
   let pathname = location.pathname;
   let mentorarray = ["dashboard", "Mentor/bookings"];
+
   return (
     <header className="header">
       <div className="header-fixed">
@@ -94,35 +100,37 @@ const Header = (props) => {
                       pathname.includes("/Mentor/dashboard") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/dashboard">O'qituvchi Dashboard</Link>
+                    <Link to="/app/teacher/dashboard">
+                      O'qituvchi Dashboard
+                    </Link>
                   </li>
                   <li
                     className={
                       pathname.includes("Mentor/bookings") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/bookings">Bookings</Link>
+                    <Link to="/app/teacher/bookings">Bookings</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("schedule-timings") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/schedule-timings">
+                    <Link to="/app/teacher/schedule-timings">
                       Schedule Timing
                     </Link>
                   </li>
                   <li
                     className={pathname.includes("mentee-list") ? "active" : ""}
                   >
-                    <Link to="/app/Mentor/mentee-list">Mentee List</Link>
+                    <Link to="/app/teacher/mentee-list">Mentee List</Link>
                   </li>
                   <li
                     className={
-                      pathname.includes("profile-mentee") ? "active" : ""
+                      pathname.includes("mentor-profile") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/profile-mentee">Mentee Profile</Link>
+                    <Link to="/app/teacher/mentor-profile">Mentee Profile</Link>
                   </li>
                   <li
                     className={
@@ -133,14 +141,14 @@ const Header = (props) => {
                         : "has-submenu"
                     }
                   >
-                    <Link to="/app/Mentor/blog">Blog</Link>
+                    <Link to="/app/teacher/blog">Blog</Link>
                     <ul className="submenu">
                       <li
                         className={
                           pathname.includes("/Mentor/blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/Mentor/blog">Blog</Link>
+                        <Link to="/app/teacher/blog">Blog</Link>
                       </li>
                       <li>
                         <Link to="/app/Blog/blog-details">Blog View</Link>
@@ -150,14 +158,14 @@ const Header = (props) => {
                           pathname.includes("add-blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/Mentor/add-blog">Add Blog</Link>
+                        <Link to="/app/teacher/add-blog">Add Blog</Link>
                       </li>
                       <li
                         className={
                           pathname.includes("edit-blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/Mentor/edit-blog">Edit Blog</Link>
+                        <Link to="/app/teacher/edit-blog">Edit Blog</Link>
                       </li>
                     </ul>
                   </li>
@@ -166,10 +174,10 @@ const Header = (props) => {
                       pathname.includes("/Mentor/chat") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/chat">Chat</Link>
+                    <Link to="/app/teacher/chat">Chat</Link>
                   </li>
                   <li className={pathname.includes("invoice") ? "active" : ""}>
-                    <Link to="/app/Mentor/invoices">Invoices</Link>
+                    <Link to="/app/teacher/invoices">Invoices</Link>
                   </li>
                   <li
                     className={
@@ -178,19 +186,19 @@ const Header = (props) => {
                         : ""
                     }
                   >
-                    <Link to="/app/Mentor/profile-settings">
+                    <Link to="/app/teacher/profile-settings">
                       Profile Settings
                     </Link>
                   </li>
                   <li className={pathname.includes("reviews") ? "active" : ""}>
-                    <Link to="/app/Mentor/reviews">Reviews</Link>
+                    <Link to="/app/teacher/reviews">Reviews</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("mentor-register") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentor/mentor-register">
+                    <Link to="/app/teacher/mentor-register">
                       Mentor Register
                     </Link>
                   </li>
@@ -352,10 +360,10 @@ const Header = (props) => {
                     <a href="">Invoices</a>
                     <ul className="submenu">
                       <li>
-                        <Link to="/app/Mentor/invoices">Invoices</Link>
+                        <Link to="/app/teacher/invoices">Invoices</Link>
                       </li>
                       <li>
-                        <Link to="/app/Mentor/invoice-view">Invoice View</Link>
+                        <Link to="/app/teacher/invoice-view">Invoice View</Link>
                       </li>
                     </ul>
                   </li>
@@ -417,7 +425,7 @@ const Header = (props) => {
               </li>
             </ul>
           </div>
-          {location.pathname.includes("/app/home") ? (
+          {!token ? (
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
@@ -458,16 +466,18 @@ const Header = (props) => {
                       />
                     </div>
                     <div className="user-text">
-                      <h6>Jonathan Doe</h6>
-                      <p className="text-muted mb-0">Mentor</p>
+                      <h6>
+                        {author.first_name} {author.last_name}
+                      </h6>
+                      <p className="text-muted mb-0">{role}</p>
                     </div>
                   </div>
-                  <Link className="dropdown-item" to="/app/mentor/dashboard">
+                  <Link className="dropdown-item" to={`/app/${role}/dashboard`}>
                     Dashboard
                   </Link>
                   <Link
                     className="dropdown-item"
-                    to="/app/Mentor/profile-settings"
+                    to={`/app/${role}/profile-settings`}
                   >
                     Profile Settings
                   </Link>

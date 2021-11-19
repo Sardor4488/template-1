@@ -6,14 +6,14 @@ import PhoneInput from "react-phone-number-input";
 import Loading from "../components/Loading/Loading";
 import axios from "axios";
 import * as t from "../../redux/types";
-import {dispatch} from "../../redux/store";
-import {useSelector} from "react-redux";
+import { dispatch } from "../../redux/store";
+import { useSelector } from "react-redux";
 const Login = (props) => {
-    const {history} = props;
+  const { history } = props;
   const [inputType, setInputType] = useState("password");
   const [loginNumber, setLoginNumber] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const loading = useSelector(state => state.Reducer.loading);
+  const loading = useSelector((state) => state.Reducer.loading);
   const changeInputPassword = () => {
     if (inputType == "password") {
       setInputType("text");
@@ -21,43 +21,35 @@ const Login = (props) => {
       setInputType("password");
     }
   };
-  const LoadPage = (l = false ) => {
-    const action = {type: t.LOADING, payload: false}
+  const LoadPage = (l = false) => {
+    const action = { type: t.LOADING, payload: false };
     dispatch(action);
-  }
+  };
   LoadPage();
   const author = (data) => {
-    const  action = {type: t.AUTHOR, payload: data}
-      dispatch(action);
-  }
-    const loginMyteacher = (e) => {
+    const action = { type: t.AUTHOR, payload: data };
+    dispatch(action);
+  };
+  const loginMyteacher = (e) => {
     e.preventDefault();
     let data = {
       phone_number: loginNumber,
       password: loginPassword,
     };
     axios
-        .post("login", data)
-        .then((res) => {
-          localStorage.setItem('token', res.data.access_token);
-          localStorage.setItem("role", res.data.user.role);
-          console.log(res.data.user.role);
-          console.log(res);
-          if(res.data.user.role === "student"){
-              history.push("app/mentee/dashboard");
-              LoadPage(true);
-              author(res.data.user)
-          }
-
-          else if(res.data.user.role === "teacher") {
-              history.push("app/mentor/dashboard");
-              LoadPage(true);
-              author(res.data.user)
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .post("login", data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("role", res.data.user.role);
+        console.log(res.data.user.role);
+        console.log(res);
+        history.push(`app/${res.data.user.role}/dashboard`);
+        LoadPage(true);
+        author(res.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

@@ -58,7 +58,7 @@ class ScheduleTiming extends Component {
                       <Link to="/app/index">Home</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                    Dars vaqtlari
+                      Dars vaqtlari
                     </li>
                   </ol>
                 </nav>
@@ -472,7 +472,7 @@ class ScheduleTiming extends Component {
               </div>
               {addnewtimeslot &&
                 addnewtimeslot.map((newrow, index) => (
-                  <div className="hours-info">
+                  <div className="hours-info" key={index}>
                     <div className="row form-row hours-cont">
                       <div className="col-12 col-md-10">
                         <div className="row form-row">
@@ -661,7 +661,7 @@ class ScheduleTiming extends Component {
                 </div>
                 {edittimeslot &&
                   edittimeslot.map((timeslot, index) => (
-                    <div className="row form-row hours-cont">
+                    <div className="row form-row hours-cont" key={index}>
                       <div className="col-12 col-md-10">
                         <div className="row form-row">
                           <div className="col-12 col-md-6">
