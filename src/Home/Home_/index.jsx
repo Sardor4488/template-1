@@ -68,6 +68,7 @@ const Home = (props) => {
                             <span>
                     O'zingizga eng saralangan ustozni shu yerdan toping{" "}
                   </span>
+<<<<<<< HEAD
                             {/* Search */}
                             <div className="search-box">
                                 <form action="/app/Pages/search">
@@ -114,6 +115,40 @@ const Home = (props) => {
                                                         />
                                                     </svg>
                                                 </div>
+=======
+                            </p>
+                        </div>
+                        {/* Search */}
+                        <div className="search-box">
+                            <form action="/app/Pages/search">
+                                <div className="form-group search-location">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Masalan: IELTS..."
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary search-btn"
+                                    onClick={() => this.searchmentee()}
+                                >
+                                    <i>
+                                        <img src={Submit} alt=""/>
+                                    </i>{" "}
+                                    <span>Izlash...</span>
+                                </button>
+                            </form>
+                        </div>
+                        {/* /Search */}
+                        <div className="row mt-4">
+                            <div className="col-12 col-md-4 pe-5 mt-3">
+                                {" "}
+                                <Link to={"/"}>
+                                    <div className="d-flex w-100 science-link bg-white align-items-center">
+                                        <div className="m-2 w-100 d-flex align-items-center">
+                                            <div className="svg_content">
+>>>>>>> 8731bb89237e55c71a6177533b488bb648dc9784
                                                 {" "}
                                                 <div className="ms-2">
                                                     {/* <TranslateIcon/> */}

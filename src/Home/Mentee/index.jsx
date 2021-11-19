@@ -4,7 +4,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import MapGrid from "./mapgrid";
+// import MapGrid from "./mapgrid";
 import Maplist from "./maplist";
 import Searchmentors from "./searchmentors";
 import BookingsMentee from "./bookingsmentee";
@@ -19,13 +19,15 @@ import Changepassword from "./changepassword";
 import Invoiceview from "./invoice-view";
 import MenteeProfile from "./menteeprofile";
 import ProfileSettingMentee from "./profilesettingmentee";
+import Share from "./shareWebsite";
  
-const Menteeroute = ({ match }) => (
+const Menteeroute = ({ match }) => {
+  console.log(match); 
+  return (
   <Switch>
     <Redirect exact from={`${match.url}/`} to={`${match.url}/mentor-profile`} />
     <Route path={`${match.url}/mentee-profile`} component={MenteeProfile} />
-    <Route path={`${match.url}/map-grid`} component={MapGrid} />
-    <Route path={`${match.url}/map-list`} component={Maplist} />
+     <Route path={`${match.url}/map-list`} component={Maplist} />
     <Route path={`${match.url}/search`} component={Searchmentors} />
     <Route path={`${match.url}/bookings-mentee`} component={BookingsMentee} />
     <Route path={`${match.url}/dashboard`} component={MenteeDashboard} />
@@ -33,16 +35,18 @@ const Menteeroute = ({ match }) => (
     <Route path={`${match.url}/checkout`} component={Checkout} />
     <Route path={`${match.url}/booking-success`} component={BookingSuccess} />
     <Route path={`${match.url}/chat-mentee`} component={Chatmentee} />
-    <Route path={`${match.url}/favourites`} component={Favorites} />
+    <Route path={`${match.url}/share-friends`} component={Share} />
     <Route path={`${match.url}/invoices`} component={Invoice} />
     <Route path={`${match.url}/invoice-view`} component={Invoiceview} />
     <Route path={`${match.url}/profil-settings-mentee`} component={ProfileSettingMentee} />
+    <Route path={`${match.url}/favarites`} component={Favorites} />
     {/* <Route
       path={`${match.url}/profile-settings-mentee`}
       component={Profilesettingmentee}
     /> */}
     <Route path={`${match.url}/change-password`} component={Changepassword} />
   </Switch>
-);
+)}
+;
 
 export default Menteeroute;

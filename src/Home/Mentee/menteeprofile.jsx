@@ -52,41 +52,19 @@ class MenteeProfile extends Component {
                       <div className="user-info-left align-items-center">
                         <div className="mentor-img d-flex flex-wrap justify-content-center">
                           <div className="pro-avatar">JD</div>
-                          <div className="rating text-center">
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star" />
-                          </div>
-                          <div className="mentor-details m-0">
+                           <div className="mentor-details m-0">
                             <p className="user-location m-0"><i className="fas fa-map-marker-alt" /> Tamil Nadu, India</p>
                           </div>
                         </div>
                         <div className="user-info-cont">
                           <h4 className="usr-name">Еуьшкщм Doe</h4>
                           <p className="mentor-type">English Literature (M.A)</p>
-                          <div className="mentor-action">
-                            <p className="mentor-type social-title">Contact Me</p>
-                            <a href="" className="btn-blue">
-                              <i className="fas fa-comments" />
-                            </a>
-                            <Link to="/app/Mentor/chat" className="btn-blue">
-                              <i className="fas fa-envelope" />
-                            </Link>
-                            <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
-                              <i className="fas fa-phone-alt" />
-                            </a>
-                            <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
-                              <i className="fas fa-user-edit" />
-                            </a>
-                          </div>
+                      
                         </div>
                       </div>
                       <div className="user-info-right d-flex align-items-end flex-wrap">
                         <div className="hireme-btn text-center">
-                          <span className="hire-rate">$500 / Hour</span>
-                          <Link className="blue-btn-radius" to="/app/Mentee/booking">Hire Me</Link>
+                           <Link className="blue-btn-radius" to="/app/Mentee/profil-settings-mentee">Tahrirlash</Link>
                         </div>
                       </div>
                     </div>

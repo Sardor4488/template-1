@@ -118,7 +118,7 @@ class ProfileSettingMentee extends Component {
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label><Shahar></Shahar></label>
+                            <label>Shahar</label>
                             <input type="text" className="form-control" defaultValue="Old Forge" />
                           </div>
                         </div>

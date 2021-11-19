@@ -24,16 +24,7 @@ class Favorites extends Component {
                 </nav>
                 <h2 className="breadcrumb-title">Favourites</h2>
               </div>
-              <div className="col-md-4 col-12">
-                <form className="search-form custom-search-form">
-                  <div className="input-group">
-                    <input type="text" placeholder="Search Favourites..." className="form-control" />
-                    <div className="input-group-append">
-                      <button type="submit" className="btn btn-primary"><i className="fa fa-search" /></button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+             
             </div>
           </div>
         </div>
@@ -49,595 +40,108 @@ class Favorites extends Component {
                  {/* /Sidebar */}
               </div>
               <div className="col-md-7 col-lg-8 col-xl-9">
-                <div className="row row-grid">
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
+               
+              <div className="card">
+                      <div className="card-header">
+                        <h4 className="card-title">Darslar bo'limi</h4>
                       </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Digital Marketer</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <span className="d-inline-block average-rating">(17)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Florida, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $300 - $1000 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
+                      <div className="card-body">
+                        <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
+                          <li className="nav-item"><a className="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Sinov darslari</a></li>
+                          <li className="nav-item d-flex justify-content-center align-items-center"><a className="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Mavzular</a></li>
+                          <li className="nav-item"><a className="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Uyga vazifalar</a></li>
                         </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
+                        <div className="tab-content">
+                          <div className="tab-pane show active" id="bottom-justified-tab1">
+                           
+                           
+                            {/* Sinov darsi  */}
+
+                            <div className="  card-table">
+                    <div className="card-body">
+                      <div className="table-responsive">
+                        <table className="table table-hover table-center mb-0">
+                          <thead>
+                            <tr>
+                              <th>Mavzu</th>
+                              <th>Dars kuni</th>
+                              <th className="text-center">Dars vaqti</th>
+                              <th className="text-center">Harakat</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h2 className="table-avatar">
+                                   <Link to="/app/Mentee/mentee-profile">Matematika<span>Arfmetik amallar</span></Link>				
+                                </h2>
+                              </td>
+                              <td>08 April 2020</td>
+                              <td className="text-center"><span className="pending">9:00 AM - 10:00 AM</span></td>
+                              <td className="text-center"><Link to="/app/Mentee/mentor-profile" className="btn btn-sm bg-info-light"><i className="far fa-eye" /> View</Link></td>
+                            </tr>
+                            
+                            
+                          </tbody>
+                        </table>		
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_1} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Darren Elder</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">UNIX, Calculus, Trigonometry</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(35)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Newyork, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $50 - $300 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
+
+                            {/* Sinov darsi  */}
+                            
                           </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
+                          <div className="tab-pane" id="bottom-justified-tab2">
+                            
+                            {/* Mavzular  */}
+                          
+                            <div className="  card-table">
+                    <div className="card-body">
+                      <div className="table-responsive">
+                        <table className="table table-hover table-center mb-0">
+                          <thead>
+                            <tr>
+                              <th>Mavzu</th>
+                              <th>Dars kuni</th>
+                              <th className="text-center">Dars vaqti</th>
+                              <th className="text-center">Harakat</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <h2 className="table-avatar">
+                                   <Link to="/app/Mentee/mentee-profile">Matematika<span>Arfmetik amallar</span></Link>				
+                                </h2>
+                              </td>
+                              <td>08 April 2020</td>
+                              <td className="text-center"><span className="pending">9:00 AM - 10:00 AM</span></td>
+                              <td className="text-center"><Link to="/app/Mentee/mentor-profile" className="btn btn-sm bg-info-light"><i className="far fa-eye" /> View</Link></td>
+                            </tr>
+                            
+                            
+                          </tbody>
+                        </table>		
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_2} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Deborah Angel</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Computer Programming</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(27)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Georgia, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $100 - $400 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
+
+                            {/* Mavzular  */}
+                          
                           </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_3} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Sofia Brient</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">ASP.NET,Computer Gaming</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(4)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Louisiana, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $150 - $250 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_4} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Marvin Campbell</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Digital Marketer</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(66)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Michigan, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $50 - $700 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_5} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Katharine Berthold</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">UNIX, Calculus, Trigonometry</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(52)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Texas, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $100 - $500 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_6} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Linda Tobin</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">General Course</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(43)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Kansas, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $100 - $1000 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_7} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Paul Richard</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">ASP.NET,Computer Gaming</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(49)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> California, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $100 - $400 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_8} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">John Gibbs</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Digital Marketer</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(112)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Oklahoma, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $500 - $2500 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_9} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Olga Barlow</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Digital Marketer</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(65)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Montana, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $75 - $250 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_10} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Julia Washington</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">UNIX, Calculus, Trigonometry</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(5)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Oklahoma, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $275 - $450 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-lg-4 col-xl-3">
-                    <div className="profile-widget">
-                      <div className="user-avatar">
-                        <Link to="/app/Mentee/mentor-profile">
-                          <img className="img-fluid" alt="User Image" src={USER_11} />
-                        </Link>
-                        <a href="javascript:void(0)" className="fav-btn">
-                          <i className="far fa-bookmark" />
-                        </a>
-                      </div>
-                      <div className="pro-content">
-                        <h3 className="title">
-                          <Link to="/app/Mentee/mentor-profile">Shaun Aponte</Link> 
-                          <i className="fas fa-check-circle verified" />
-                        </h3>
-                        <p className="speciality">Diploma in (DLO)</p>
-                        <div className="rating">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">(5)</span>
-                        </div>
-                        <ul className="available-info">
-                          <li>
-                            <i className="fas fa-map-marker-alt" /> Indiana, USA
-                          </li>
-                          <li>
-                            <i className="far fa-clock" /> Available on Fri, 22 Mar
-                          </li>
-                          <li>
-                            <i className="far fa-money-bill-alt" /> $150 - $350 
-                            <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" />
-                          </li>
-                        </ul>
-                        <div className="row row-sm">
-                          <div className="col-6">
-                            <Link to="/app/Mentee/mentor-profile" className="btn view-btn">View Profile</Link>
-                          </div>
-                          <div className="col-6">
-                            <Link to="/app/Mentee/booking" className="btn book-btn">Book Now</Link>
+                          <div className="tab-pane" id="bottom-justified-tab3">
+                            Tab content 3
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="blog-pagination mt-4">
-                  <nav>
-                    <ul className="pagination justify-content-center">
-                      <li className="page-item disabled">
-                        <a className="page-link" href="#" tabIndex={-1}><i className="fas fa-angle-double-left" /></a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">1</a>
-                      </li>
-                      <li className="page-item active">
-                        <a className="page-link" href="#">2 <span className="sr-only">(current)</span></a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">3</a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#"><i className="fas fa-angle-double-right" /></a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
+
               </div>
             </div>
           </div>
-        </div>		
-        {/* /Page Content */}
-      </div>
+      
 
       );
    }

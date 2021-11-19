@@ -8124,17 +8124,40 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 .sidebar-bottom{
+  width: 100%;
+  background-color: #ffffff;
   position: fixed;
-  bottom: 0px;
-  right: 0%;
-  left: 0%;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background-color: #fff;
-  z-index: 999999 !important;
+  z-index: 1000 !important;
   height: 40px;
+  padding: 0;
+  margin: 0;
 }
 li{
    list-style: none;
    
+}
+ 
+@media only screen and (max-width: 575px) {
+  .logotipSize {
+    width: 130px;
+  }
+}
+PhoneInput{
+  outline: none;
+}
+.share-friends{
+  width: 30%;
+  padding: 10px !important;
+  height: 30px !important;
+}
+@media only screen and (max-width: 1060px) {
+  .share-friends{
+    width: 70% !important;
+  }
 }
 @media only screen and (max-width: 767px) {
   .sidebar-bottom-show{
@@ -8147,4 +8170,10 @@ li{
 }
 .bg-white{
   background-color: #ffffff !important;
+}
+.myTeacher-transletor{
+  min-height: 250px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #aaa;
 }
