@@ -2,16 +2,8 @@ import React, { Component } from "react";
 // import { Helmet } from "react-helmet";
 
 import {
-  USER_5,
-  USER_7,
-  USER_10,
-  USER_12,
-  USER_13,
-  USER_14,
-  USER_15,
-  USER,
-  USER_4,
-  USER_2,
+   USER,
+   USER_2,
   USER_1,
 } from "../../constant/imagepath_home";
 import Sidebar from "./sidebar";
@@ -30,7 +22,7 @@ class MenteeDashboard extends Component {
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <Link to="/app/index">Home</Link>
+                      <Link to="/app/index">My teacher</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       Umumiy
@@ -137,22 +129,22 @@ class MenteeDashboard extends Component {
                               O'qituvchi tanlash
                             </a>
                           </li>
+                          <li className="nav-item">
+                            <a
+                              className="nav-link"
+                              href="#bottom-justified-tab3"
+                              data-toggle="tab"
+                            >
+                              {" "}
+                              To'lovlar
+                            </a>
+                          </li>
                         </ul>
                         <div className="tab-content">
-                          <div
-                            className="tab-pane show active"
-                            id="bottom-justified-tab1"
-                          >
-                            {/* MAVZULAR  */}
-
-                            <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
-                            <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
-
-                            {/* MAVZULAR  */}
-                          </div>
-                          <div className="tab-pane" id="bottom-justified-tab2">
+                         
+                          <div className="tab-pane" id="bottom-justified-tab1">
                           <div className="row w-100">
-
+d
                     {/* O'QITUVCHILAR */}
 
                           <div className="col-md-12   w-100">
@@ -245,25 +237,88 @@ class MenteeDashboard extends Component {
               </div>
                             </div>
                           </div>
+
+            {/* O'qituvchi tanlash */}
+
+
+                                {/* My teacher tarjimon       */}
+                                <div
+                            className="tab-pane show active"
+                            id="bottom-justified-tab2"
+                          >
+                             <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
+                            <textarea className=" w-100 my-3 myTeacher-transletor"></textarea>
+                            </div>
+
+                                {/* My teacher tarjimon       */}
+
+                            {/* To'lovlar */}
                           <div className="tab-pane" id="bottom-justified-tab3">
-                            {/* O'qituvchi tanlash */}
-                           
-                          </div>
-                        </div>
+                          <div className="row align-items-center">
+
+
+                          <div className="  card-table">
+                    <div className="card-body">
+                      <div className="table-responsive">
+                        <table className="table table-hover table-center mb-0">
+                          <thead>
+                            <tr>
+                              <th>Chek raqami</th>
+                              <th>O'quvchi</th>
+                              <th className="text-center">To'lov miqdori</th>
+                              <th className="text-center">To'langan sana</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                            <td>
+                              <Link to="/app/Mentee/invoice-view">
+                                #INV-0010
+                              </Link>
+                            </td>
+                            <td>
+                              <h5 className="table-avatar">
+                                <Link
+                                  to="/app/Mentor/profile-mentee"
+                                  className="avatar avatar-sm mr-2"
+                                >
+                                  <img
+                                    className="avatar-img rounded-circle"
+                                    src={USER_2}
+                                    alt="User Image"
+                                  />
+                                </Link>
+                                <Link to="/app/Mentee/mentor-profile">
+                                  Tyrone Roberts <span>16</span>
+                                </Link>
+                              </h5>
+                            </td>
+                            <td>$450</td>
+                            <td>14 Nov 2019</td>
+                            </tr>
+                            
+                            
+                          </tbody>
+                        </table>		
                       </div>
                     </div>
                   </div>
-                  {/* <div className="col-md-12">
-                    <h4 className="mb-4">Mavzular</h4>
-                   
-                  </div> */}
+                </div>
+                          </div>
+
+                            {/* To'lovlar */}
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* /Page Content */}
-      </div>
+       </div>
     );
   }
 }

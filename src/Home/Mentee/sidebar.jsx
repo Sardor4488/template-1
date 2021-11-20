@@ -49,7 +49,7 @@ class Sidebar extends Component {
             <li>
               <Link
                  to="/app/Mentee/favarites"
-                 className={pathname.includes("favourites") ? "active" : ""
+                 className={pathname.includes("favarites") ? "active" : ""
                 }
               >
                 <i className="fas fa-book-reader" />

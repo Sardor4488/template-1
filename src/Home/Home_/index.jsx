@@ -88,7 +88,7 @@ const Home = (props) => {
             <section className="section section-search">
                 <div className="container">
                     <div className="banner-wrapper m-auto text-center">
-                        <div className="banner-header">
+                        <div className="banner-header mb-5">
                             <h2 className="text-white">
                                 {" "}
                                 Online til va dasturlash kurslari
@@ -101,7 +101,7 @@ const Home = (props) => {
                         </div>
                         {/* Search */}
                         <div className="search-box">
-                            <form action="/app/Pages/search">
+                            <form action="/app/Pages/search" className="d-flex">
                                 <div className="form-group search-location">
                                     <input
                                         type="text"
@@ -117,7 +117,7 @@ const Home = (props) => {
                                     <i>
                                         <img src={Submit} alt=""/>
                                     </i>{" "}
-                                    <span>Izlash...</span>
+                                    <span></span>
                                 </button>
                             </form>
                         </div>
@@ -152,7 +152,7 @@ const Home = (props) => {
                                                 <h4 className="mb-0 science-link-hover text-start w-100">
                                                     Tillar
                                                 </h4>
-                                                <p className="mb-0">12ta o'qituvchi</p>
+                                                <p className="mb-0"><span>7</span> nafar o'qituvchi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@ const Home = (props) => {
                                                 <h4 className="mb-0 science-link-hover text-start w-100">
                                                     Aniq fanlar
                                                 </h4>
-                                                <p className="mb-0">32ta o'qituvchi</p>
+                                                <p className="mb-0"><span>32</span> nafar o'qituvchi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +243,7 @@ const Home = (props) => {
                                                 <h4 className="mb-0 science-link-hover text-start w-100">
                                                     Tabiy fanlar
                                                 </h4>
-                                                <p className="mb-0">22ta o'qituvchi</p>
+                                                <p className="mb-0"><span>65</span> nafar  o'qituvchi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@ const Home = (props) => {
                                                 <h4 className="mb-0 science-link-hover text-start w-100">
                                                     IT texnologiyalari
                                                 </h4>
-                                                <p className="mb-0 text-start">31ta o'qituvchi</p>
+                                                <p className="mb-0 text-start"><span>11</span> nafar o'qituvchi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -334,7 +334,7 @@ const Home = (props) => {
                                                 <h4 className="mb-0 science-link-hover text-start w-100">
                                                     Gumonitar fanlar
                                                 </h4>
-                                                <p className="mb-0 text-start">41ta o'qituvchi</p>
+                                                <p className="mb-0 text-start"><span>33</span> nafar o'qituvchi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -420,26 +420,27 @@ const Home = (props) => {
             <section className="section popular-courses">
                 <div className="container">
                     <div className="section-header text-center">
-                        <span>Mentoring Goals</span>
-                        <h2>Popular Mentors</h2>
-                        <p className="sub-title">
-                            Do you want to move on next step? Choose your most popular
-                            leaning mentors, it will help you to achieve your professional
-                            goals.
+                        {/* <span>Mentoring Goals</span> */}
+                        <h2> Bizning top o'qituvchilarimiz</h2>
+                        <p className="sub-title ">
+                        Hoziroq o'zingizga ma'qul ustozni tanlang va o'rganishni boshlang.
+                         MyTeacher sizga O'zbekistonning barcha burchagidan eng kuchli va 
+                         saralangan ustozlarni topadi hamda ushbu ro'yxatda ko'rsatadi.
+                          Darslar individual tarzda onlayn o'tiladi, har bir dars 1 soatdan davom etadi.
                         </p>
                     </div>
                     {/* <div className="owl-carousel owl-theme"> */}
                     <OwlCarousel
                         className="owl-theme"
                         loop
-                        margin={30}
+                        margin={20}
                         items={4}
                         responsive={{
                             0: {
                                 items: 1,
                             },
                             768: {
-                                items: 3,
+                                items: 2,
                             },
                             1170: {
                                 items: 4,

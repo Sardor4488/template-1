@@ -19,8 +19,8 @@ const Share  = () =>  {
               <div className="col-md-8 col-12">
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Favourites</li>
+                    <li className="breadcrumb-item"><Link to="/app/index">My teacher</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Do'stimni taklif qilish</li>
                   </ol>
                 </nav>
                 <h2 className="breadcrumb-title">Do'stimni taklif qilish</h2>

@@ -19,7 +19,7 @@ class ProfileSettingMentee extends Component {
               <div className="col-md-12 col-12">
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
+                    <li className="breadcrumb-item"><Link to="/app/index">My teacher</Link></li>
                     <li className="breadcrumb-item active" aria-current="page">Profil sozlamalari</li>
                   </ol>
                 </nav>

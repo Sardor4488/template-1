@@ -333,6 +333,7 @@ table.table td h2 span {
 .card-table .card-body {
   padding: 0;
 }
+
 .card-table .card-body .table > thead > tr > th {
   border-top: 0;
 }
@@ -2195,7 +2196,7 @@ html.menu-opened body {
 .section-header .sub-title {
   color: #26292c;
   font-size: 16px;
-  max-width: 600px;
+  max-width: 800px;
   margin-top: 15px;
 }
 .section-header p {
@@ -2222,7 +2223,7 @@ html.menu-opened body {
   color: #1e88e5;
 }
 .banner-wrapper .banner-header p {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 0;
   color: #fff;
 }
@@ -2245,7 +2246,7 @@ html.menu-opened body {
   min-height: 54px; */
   box-shadow: 0 0 1.25rem rgba(31, 45, 61, 0.05);
   font-size: 16px;
-  width: 300px !important;
+  width: 200px !important;
   
 }
 .search-box .form-control::-webkit-input-placeholder {
@@ -2290,6 +2291,7 @@ html.menu-opened body {
 .search-box .search-btn {
   padding-left: 30px;
   border-radius: 0px 10px 10px 0px;
+  /* width: 40px !important; */
 }
 /* .search-box .search-btn span {
   display: none;
@@ -8177,4 +8179,7 @@ PhoneInput{
   outline: none;
   border-radius: 5px;
   border: 1px solid #aaa;
+}
+.img-mentee{
+  min-width: 175px;
 }
