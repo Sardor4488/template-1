@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --mode development --inline --progress",
-    "build": "sapper build --output export",
+    "build": "webpack --mode production",
     "dev": "webpack-dev-server",
     "production": "webpack --mode production"
   },
