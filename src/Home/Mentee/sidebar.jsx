@@ -36,7 +36,7 @@ const Sidebar = (props) => {
           <ul>
             <li>
               <Link
-                to="/app/Mentee/dashboard"
+                to="/app/student/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -49,7 +49,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/Mentee/bookings-mentee"
+                to="/app/student/bookings-mentee"
                 className={pathname.includes("bookings-mentee") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
@@ -60,7 +60,7 @@ const Sidebar = (props) => {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/Mentee/chat-mentee">
+              <Link to="/app/student/chat-mentee">
                 <i className="fas fa-comments" />
                 Yozishmalar{" "}
                 <span>
@@ -70,7 +70,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -82,7 +82,7 @@ const Sidebar = (props) => {
             </li> */}
             <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-tie" />
@@ -94,7 +94,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
@@ -106,7 +106,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -118,7 +118,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/Mentee/invoices"
+                to="/app/student/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
@@ -130,7 +130,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/Mentee/mentee-profile"
+                to="/app/student/mentee-profile"
                 className={pathname.includes("profile-mentee") ? "active" : ""}
               >
                 <i className="fas fa-user" />
@@ -142,7 +142,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/Mentee/profil-settings-mentee"
+                to="/app/student/profil-settings-mentee"
                 className={
                   pathname.includes("profil-settings-mentee") ? "active" : ""
                 }
