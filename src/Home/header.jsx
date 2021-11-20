@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
-import AppLogo from "../constant/logo.png";
+import AppLogo from "../constant/Logo.png";
 
 const Header = (props) => {
   useEffect(() => {
