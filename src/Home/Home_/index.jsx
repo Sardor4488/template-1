@@ -65,25 +65,22 @@ const Home = (props) => {
 
               <span className="text-white mb-3">O'zingizga eng saralangan ustozni shu yerdan toping </span>
               {/* Search */}
-              <div className="search-box">
-                <form action="/app/Pages/search">
-                  <div className="form-group search-location ">
-                    <input
+              <div className=" ">
+                <form className="w-100 d-flex align-items-center w-100 justify-content-center" action="/app/Pages/search">
+                     <input
                       type="text"
-                      className="form-control"
+                      className=" search-input"
                       placeholder="Masalan: IELTS..."
                     />
-                  </div>
-                  <button
+                   <button
                     type="submit"
-                    className="btn btn-primary search-btn"
+                    className="btn btn-primary btn_search "
                     onClick={() => searchmentee()}
                   >
                     <i>
                       <img src={Submit} alt="" />
                     </i>{" "}
-                    <span>Izlash...</span>
-                  </button>
+                   </button>
                 </form>
               </div>
               {/* /Search */}
@@ -115,7 +112,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-primary">12ta o'qituvchi</p>
+                          <p className="mb-0 science-link-hover size-link-main text-primary">12 ta o'qituvchi</p>
                         </div>
                       </div>
                     </div>{" "}
@@ -252,7 +249,7 @@ const Home = (props) => {
                             IT texnologiyalari
                           </h4>
                           <p className="mb-0 text-start science-link-hover size-link-main text-primary">
-                            <span>11</span> nafar o'qituvchi
+                            <span>11 </span> nafar o'qituvchi
                           </p>
                         </div>
                       </div>
@@ -293,7 +290,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Gumonitar fanlar
                           </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">41ta o'qituvchi</p>
+                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">41 ta o'qituvchi</p>
                         </div>
                       </div>
                     </div>{" "}
@@ -388,7 +385,62 @@ const Home = (props) => {
           </div>
           {/* <div className="owl-carousel owl-theme"> */}
           <div className="row">
-            <div className="col-12 col-md-6">
+
+          <div className="col-md-12 card-mentors-lg col-lg-8 col-xl-9 ">
+                {/* Mentor Widget */}
+                <div className="card card-size">
+                  <div className="card-body ">
+                    <div className="mentor-widget">
+                      <div className="user-info-left">
+                        <div className="mentor-img">
+                          <Link to="/app/Mentee/mentor-profile">
+                            <img src={USER} className="img-fluid img-mentee " alt="User Image" />
+                          </Link>
+                        </div>
+                        <div className="user-info-cont ">
+                          <h4 className="usr-name mb-3"><Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link></h4>
+                          <p className="mentor-type mb-1">Digital Marketer</p>
+                          <p className="mb-1"><span>550 000</span> UZS <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /></p>
+                          <div className="rating">
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">(17)</span>
+                          </div>
+                          <div className="mentor-details">
+                           </div>
+                        </div>
+                      </div>
+                      <div className="user-info-right">
+                        <div className="user-infos">
+                          <ul>
+                            <li><i className="far fa-comment pt-3" /> <span>17</span> ta fikr</li>
+                            <li><i className="fas fa-user-graduate " /> <span className="text-primary">25</span> ta o'quvchi</li>
+                            <li><i className="fas fa-user-graduate pt-2" /> <span>55</span> % O'quvchi sodiqligi </li>
+                           </ul>
+                          </div>
+                          <div className="mentor-booking">
+                          <Link className="apt-btn" to="/app/Mentee/booking">Sinab ko'rish</Link>
+                        </div>
+                      </div>
+                    </div>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta fugiat quae expedita error tempora qui et repellendus sapiente quasi?  <span className="text-primary">Batafsil</span>                    <div className="col-12 pt-2"></div>
+                  </div>
+                </div>
+                
+                
+                {/* /Mentor Widget */}
+                {/* Mentor Widget */}
+               
+                <div className="load-more text-center">
+                  <a className="btn btn-primary btn-sm" href="">Yana ko'rish</a>	
+                </div>	
+              </div>
+
+
+            <div className="col-12 card-mentors-md d-none col-md-6">
               <div className="card w-100 px-3 pb-2">
 
 

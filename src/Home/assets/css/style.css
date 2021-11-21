@@ -7111,6 +7111,16 @@ div.dataTables_wrapper div.dataTables_filter input {
   }
 }
 @media only screen and (max-width: 991.98px) {
+  .card-mentors-md{
+    display: flex !important;
+  }
+  .img-mentee {
+    min-width: 135px !important;
+    min-height: 135px !important;
+}
+.card-mentors-lg{
+  display: none !important;
+}
   .main-nav {
     padding: 0;
     -ms-flex-direction: column;
@@ -7119,6 +7129,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-bottom: 0;
     list-style: none;
   }
+  
   .main-nav ul {
     background-color: #3474ac;
     display: none;
@@ -8203,6 +8214,7 @@ PhoneInput{
   min-height: 120px !important;
   
 }
+
 @media only screen and (max-width: 992px) {
  .Md-Display-Flex{
    display: flex;
@@ -8231,3 +8243,18 @@ PhoneInput{
  .size-link-main{
    font-size: 15px !important;
  }
+ .search-input{
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 8px 0 0 8px;
+  padding: 7px;
+  }
+ @media only screen and (min-width: 992px) {
+  .search-input{
+  width: 500px;
+  }
+}
+.btn_search {
+  border-radius: 0 8px 8px 0;
+
+}
