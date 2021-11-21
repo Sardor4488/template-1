@@ -41,7 +41,7 @@ import { dispatch } from "../../redux/store";
 const Home = (props) => {
   const { history } = props;
   const searchmentee = () => {
-    history.push("/app/Mentee/search");
+    history.push("/app/mentee/search");
   };
 
   const settings = {

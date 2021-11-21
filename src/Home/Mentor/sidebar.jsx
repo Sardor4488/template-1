@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
   const { location } = props;
   let pathname = location.pathname;
-  const data = props.data;
-  console.log(props.data);
+  const data = useSelector((state) => state.Reducer.userdata);
   return (
     <>
       <div className="profile-sidebar">
@@ -37,7 +37,7 @@ const Sidebar = (props) => {
           <ul>
             <li>
               <Link
-                to="/app/teacher/dashboard"
+                to="/app/mentor/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -49,7 +49,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/bookings"
+                to="/app/mentor/bookings"
                 className={
                   pathname.includes("teacher/bookings") ? "active" : ""
                 }
@@ -63,7 +63,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/mentee-list"
+                to="/app/mentor/mentee-list"
                 className={pathname.includes("mentee-list") ? "active" : ""}
               >
                 <i className="fas fa-user-graduate" />
@@ -75,7 +75,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/schedule-timings"
+                to="/app/mentor/schedule-timings"
                 className={
                   pathname.includes("schedule-timings") ? "active" : ""
                 }
@@ -88,7 +88,7 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to="/app/teacher/chat">
+              <Link to="/app/mentor/chat">
                 <i className="fas fa-comments" />
                 Chat{" "}
                 <span>
@@ -98,7 +98,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/invoices"
+                to="/app/mentor/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-file-invoice" />
@@ -111,7 +111,7 @@ const Sidebar = (props) => {
 
             <li>
               <Link
-                to="/app/teacher/blog"
+                to="/app/mentor/blog"
                 className={pathname.includes("blog") ? "active" : ""}
               >
                 <i className="fab fa-blogger-b" />
@@ -123,7 +123,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/mentor-profile"
+                to="/app/mentor/mentor-profile"
                 className={pathname.includes("mentor-profile") ? "active" : ""}
               >
                 <i className="fas fa-user" />
@@ -135,7 +135,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/teacher/profile-settings"
+                to="/app/mentor/profile-settings"
                 className={
                   pathname.includes("profile-settings") ? "active" : ""
                 }

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 
 const Sidebar = (props) => {
+  const data = useSelector((state) => state.Reducer.userdata);
   const { location } = props;
-  const data = props.data;
   let pathname = location.pathname;
   return (
     <div>
@@ -36,7 +36,7 @@ const Sidebar = (props) => {
           <ul>
             <li>
               <Link
-                to="/app/student/dashboard"
+                to="/app/mentee/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -49,7 +49,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/student/bookings-mentee"
+                to="/app/mentee/bookings-mentee"
                 className={pathname.includes("bookings-mentee") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
@@ -60,7 +60,7 @@ const Sidebar = (props) => {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/student/chat-mentee">
+              <Link to="/app/mentee/chat-mentee">
                 <i className="fas fa-comments" />
                 Yozishmalar{" "}
                 <span>
@@ -70,7 +70,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/student/favourites"
+                to="/app/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -82,7 +82,7 @@ const Sidebar = (props) => {
             </li> */}
             <li>
               <Link
-                to="/app/student/favourites"
+                to="/app/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-tie" />
@@ -94,7 +94,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/student/favourites"
+                to="/app/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
@@ -106,7 +106,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/student/favourites"
+                to="/app/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -118,7 +118,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/student/invoices"
+                to="/app/mentee/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
@@ -130,7 +130,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/student/mentee-profile"
+                to="/app/mentee/mentee-profile"
                 className={pathname.includes("profile-mentee") ? "active" : ""}
               >
                 <i className="fas fa-user" />
@@ -142,7 +142,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/student/profil-settings-mentee"
+                to="/app/mentee/profil-settings-mentee"
                 className={
                   pathname.includes("profil-settings-mentee") ? "active" : ""
                 }
