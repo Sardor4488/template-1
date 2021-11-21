@@ -100,37 +100,35 @@ const Header = (props) => {
                       pathname.includes("/Mentor/dashboard") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/dashboard">
-                      O'qituvchi Dashboard
-                    </Link>
+                    <Link to="/app/mentor/dashboard">O'qituvchi Dashboard</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("Mentor/bookings") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/bookings">Bookings</Link>
+                    <Link to="/app/mentor/bookings">Bookings</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("schedule-timings") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/schedule-timings">
+                    <Link to="/app/mentor/schedule-timings">
                       Schedule Timing
                     </Link>
                   </li>
                   <li
                     className={pathname.includes("mentee-list") ? "active" : ""}
                   >
-                    <Link to="/app/teacher/mentee-list">Mentee List</Link>
+                    <Link to="/app/mentor/mentee-list">Mentee List</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("mentor-profile") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/mentor-profile">Mentee Profile</Link>
+                    <Link to="/app/mentor/mentor-profile">Mentee Profile</Link>
                   </li>
                   <li
                     className={
@@ -141,14 +139,14 @@ const Header = (props) => {
                         : "has-submenu"
                     }
                   >
-                    <Link to="/app/teacher/blog">Blog</Link>
+                    <Link to="/app/mentor/blog">Blog</Link>
                     <ul className="submenu">
                       <li
                         className={
                           pathname.includes("/Mentor/blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/teacher/blog">Blog</Link>
+                        <Link to="/app/mentor/blog">Blog</Link>
                       </li>
                       <li>
                         <Link to="/app/Blog/blog-details">Blog View</Link>
@@ -158,14 +156,14 @@ const Header = (props) => {
                           pathname.includes("add-blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/teacher/add-blog">Add Blog</Link>
+                        <Link to="/app/mentor/add-blog">Add Blog</Link>
                       </li>
                       <li
                         className={
                           pathname.includes("edit-blog") ? "active" : ""
                         }
                       >
-                        <Link to="/app/teacher/edit-blog">Edit Blog</Link>
+                        <Link to="/app/mentor/edit-blog">Edit Blog</Link>
                       </li>
                     </ul>
                   </li>
@@ -174,10 +172,10 @@ const Header = (props) => {
                       pathname.includes("/Mentor/chat") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/chat">Chat</Link>
+                    <Link to="/app/mentor/chat">Chat</Link>
                   </li>
                   <li className={pathname.includes("invoice") ? "active" : ""}>
-                    <Link to="/app/teacher/invoices">Invoices</Link>
+                    <Link to="/app/mentor/invoices">Invoices</Link>
                   </li>
                   <li
                     className={
@@ -186,19 +184,19 @@ const Header = (props) => {
                         : ""
                     }
                   >
-                    <Link to="/app/teacher/profile-settings">
+                    <Link to="/app/mentor/profile-settings">
                       Profile Settings
                     </Link>
                   </li>
                   <li className={pathname.includes("reviews") ? "active" : ""}>
-                    <Link to="/app/teacher/reviews">Reviews</Link>
+                    <Link to="/app/mentor/reviews">Reviews</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("mentor-register") ? "active" : ""
                     }
                   >
-                    <Link to="/app/teacher/mentor-register">
+                    <Link to="/app/mentor/mentor-register">
                       Mentor Register
                     </Link>
                   </li>
@@ -241,26 +239,26 @@ const Header = (props) => {
                           pathname.includes("map-grid") ? "active" : ""
                         }
                       >
-                        <Link to="/app/Mentee/map-grid">Map Grid</Link>
+                        <Link to="/app/mentee/map-grid">Map Grid</Link>
                       </li>
                       <li
                         className={
                           pathname.includes("map-list") ? "active" : ""
                         }
                       >
-                        <Link to="/app/Mentee/map-list">Map List</Link>
+                        <Link to="/app/mentee/map-list">Map List</Link>
                       </li>
                     </ul>
                   </li>
                   <li className={pathname.includes("search") ? "active" : ""}>
-                    <Link to="/app/Mentee/search">Search Mentor</Link>
+                    <Link to="/app/mentee/search">Search Mentor</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("mentor-profile") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentee/mentor-profile">
+                    <Link to="/app/mentee/mentee-profile">
                       O'qituvchi Profile
                     </Link>
                   </li>
@@ -269,17 +267,17 @@ const Header = (props) => {
                       pathname.includes("bookings-mentee") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentee/bookings-mentee">Bookings</Link>
+                    <Link to="/app/mentee/bookings-mentee">Bookings</Link>
                   </li>
                   <li className={pathname.includes("checkout") ? "active" : ""}>
-                    <Link to="/app/Mentee/checkout">Checkout</Link>
+                    <Link to="/app/mentee/checkout">Checkout</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("booking-success") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentee/booking-success">
+                    <Link to="/app/mentee/booking-success">
                       Booking Success
                     </Link>
                   </li>
@@ -293,14 +291,14 @@ const Header = (props) => {
                   <li
                     className={pathname.includes("favourites") ? "active" : ""}
                   >
-                    <Link to="/app/Mentee/favourites">Favourites</Link>
+                    <Link to="/app/mentee/favourites">Favourites</Link>
                   </li>
                   <li
                     className={
                       pathname.includes("Mentee/chat-mentee") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentee/chat-mentee">Chat</Link>
+                    <Link to="/app/mentee/chat-mentee">Chat</Link>
                   </li>
                   <li
                     className={
@@ -309,7 +307,7 @@ const Header = (props) => {
                         : ""
                     }
                   >
-                    <Link to="/app/Mentee/profile-settings-mentee">
+                    <Link to="/app/mentee/profile-settings-mentee">
                       Profile Settings
                     </Link>
                   </li>
@@ -318,7 +316,7 @@ const Header = (props) => {
                       pathname.includes("change-password") ? "active" : ""
                     }
                   >
-                    <Link to="/app/Mentee/change-password">
+                    <Link to="/app/mentee/change-password">
                       Change Password
                     </Link>
                   </li>
@@ -349,7 +347,7 @@ const Header = (props) => {
                     <Link to="/app/Pages/video-call">Video Call</Link>
                   </li>
                   <li>
-                    <Link to="/app/Mentee/search">Search Mentors</Link>
+                    <Link to="/app/mentee/search">Search Mentors</Link>
                   </li>
                   <li
                     className={pathname.includes("components") ? "active" : ""}
@@ -360,10 +358,10 @@ const Header = (props) => {
                     <a href="">Invoices</a>
                     <ul className="submenu">
                       <li>
-                        <Link to="/app/teacher/invoices">Invoices</Link>
+                        <Link to="/app/mentor/invoices">Invoices</Link>
                       </li>
                       <li>
-                        <Link to="/app/teacher/invoice-view">Invoice View</Link>
+                        <Link to="/app/mentor/invoice-view">Invoice View</Link>
                       </li>
                     </ul>
                   </li>
