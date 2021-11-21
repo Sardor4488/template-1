@@ -1,5 +1,5 @@
 import React from 'react';
-import AppLogo from "../constant/logo.png"
+import AppLogo from "../constant/Logo.png"
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
