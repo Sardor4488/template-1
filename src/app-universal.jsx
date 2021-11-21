@@ -41,7 +41,7 @@ const AppUniversal = (props) => {
   }, []);
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const url = role == "student" ? "student/student-me" : "teacher/teacher-me";
+  const url = role == "mentee" ? "student/student-me" : "teacher/teacher-me";
   const [path, setPath] = useState("");
   const author = () => {
     if (token) {
@@ -56,37 +56,21 @@ const AppUniversal = (props) => {
         .then((res) => {
           const action = { type: t.AUTHOR, payload: res.data };
           dispatch(action);
-          // localStorage.setItem("role", res.data.role);
-          // console.log(res);
           setPath(`/app/${role}/dashboard`);
-          // history.push(
-          //   res.data.role === "student"
-          //     ? "app/mentee/dashboard"
-          //     : "app/teacher/dashboard"
-          // );
-          // <Redirect
-          //   to={
-          //     res.data.role === "student"
-          // //      ? "app/mentee/dashboard"
-          //       : "app/teacher/dashboard"
-          //   }
-          //>;
         })
         .catch((err) => {
           console.log(err.message);
+          setPath(`/app/home`);
+          localStorage.removeItem("token");
+          localStorage.removeItem("role");
         });
     } else if (token == "" || token == null || token == undefined) {
-      // history.push("app/home");
-      // <Redirect to={"app/home"} />;
       setPath("app/home");
     }
   };
   useEffect(() => {
     author();
   }, []);
-  // if (location.pathname === "/") {
-  //   return <Redirect to={"app/home"} />;
-  // }
   return (
     <>
       <Switch>
@@ -99,7 +83,7 @@ const AppUniversal = (props) => {
         <Route path="/admin_register" component={AdminRegister} />
         <Route path="/admin_forgot-password" component={AdminForgotpassword} />
         <Route path="/lock-screen" component={LockScreen} />
-        <Route path="/">
+        <Route exact path="/">
           <Redirect to={path} />
         </Route>
       </Switch>

@@ -11,11 +11,11 @@ export default [
     component: Home,
   },
   {
-    path: "teacher",
+    path: "mentor",
     component: Mentor,
   },
   {
-    path: "student",
+    path: "mentee",
     component: Mentee,
   },
   {
