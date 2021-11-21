@@ -53,6 +53,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-input-mask": "^2.0.4",
+    "react-lottie": "^1.2.3",
     "react-owl-carousel": "^2.3.1",
     "react-phone-number-input": "^3.1.38",
     "react-rating-stars-component": "^2.2.0",

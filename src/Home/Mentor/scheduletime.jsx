@@ -19,7 +19,9 @@ class ScheduleTiming extends Component {
   render() {
    
     return (
-        <div></div>
+        <div>
+          <span>delete</span>
+        </div>
     );
   }
 }

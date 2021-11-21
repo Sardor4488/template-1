@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-class Sidebar extends Component {
-  render() {
-    const { location } = this.props;
-    let pathname = location.pathname;
-    return (
-      <div>
+const Sidebar = (props) => {
+  const { location } = props;
+  const data = props.data;
+  let pathname = location.pathname;
+  return (
+    <div>
       <div className="profile-sidebar profile-sidebar-md-none">
         <div className="user-widget">
           <div className="pro-avatar">JD</div>
@@ -19,7 +19,9 @@ class Sidebar extends Component {
               <i className="fas fa-star" />
           </div> */}
           <div className="user-info-cont">
-            <h4 className="usr-name">Jonathan Doe</h4>
+            <h4 className="usr-name">
+              {data?.first_name} {data?.last_name}
+            </h4>
             <p className="mentor-type"> Fan nomi</p>
           </div>
         </div>
@@ -34,10 +36,8 @@ class Sidebar extends Component {
           <ul>
             <li>
               <Link
-                to="/app/Mentee/dashboard-mentee"
-                className={
-                  pathname.includes("dashboard-mentee") ? "active" : ""
-                }
+                to="/app/student/dashboard"
+                className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
                 Umumiy{" "}
@@ -48,7 +48,7 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                 to="/app/Mentee/favarites"
+                 to="/app/student/favarites"
                  className={pathname.includes("favarites") ? "active" : ""
                 }
               >
@@ -61,7 +61,7 @@ class Sidebar extends Component {
             </li>
             {/* <li>
               <Link
-                to="/app/Mentee/bookings-mentee"
+                to="/app/student/bookings-mentee"
                 className={pathname.includes("bookings-mentee") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
@@ -72,7 +72,7 @@ class Sidebar extends Component {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/Mentee/chat-mentee">
+              <Link to="/app/student/chat-mentee">
                 <i className="fas fa-comments" />
                 Yozishmalar{" "}
                 <span>
@@ -82,7 +82,7 @@ class Sidebar extends Component {
             </li>
             {/* <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -92,9 +92,9 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li> */}
-            {/* <li>
+            <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-tie" />
@@ -103,11 +103,11 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link
-                to="/app/Mentee/share-friends"
-                className={pathname.includes("share-friends") ? "active" : ""}
+                to="/app/student/favourites"
+                className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
                 Do'stimni taklif qilish{" "}
@@ -116,9 +116,9 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link
-                to="/app/Mentee/favourites"
+                to="/app/student/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -127,10 +127,10 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li> */}
-            {/* <li>
+            </li>
+            <li>
               <Link
-                to="/app/Mentee/invoices"
+                to="/app/student/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
@@ -139,21 +139,25 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li> */}
+            </li>
             <li>
-             
-              <Link to="/app/Mentee/mentee-profile"  className={pathname.includes("profile-mentee") ? "active" : ""}>
-              <i className="fas fa-user"></i>
+              <Link
+                to="/app/student/mentee-profile"
+                className={pathname.includes("profile-mentee") ? "active" : ""}
+              >
+                <i className="fas fa-user" />
                 Mening profilim{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link
-                to="/app/Mentee/profil-settings-mentee"
-                className={pathname.includes("profil-settings-mentee") ? "active" : ""}
+                to="/app/student/profil-settings-mentee"
+                className={
+                  pathname.includes("profil-settings-mentee") ? "active" : ""
+                }
               >
                 <i className="fas fa-user-cog" />
                 Sozlash{" "}
@@ -161,7 +165,7 @@ class Sidebar extends Component {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li> */}
+            </li>
             <li>
               <Link to="/app/index">
                 <i className="fas fa-sign-out-alt" />
@@ -173,13 +177,40 @@ class Sidebar extends Component {
             </li>
           </ul>
         </div>
-        </div>
+      </div>
       {/* sidebar bottom  */}
 
-    
+      <div className="sidebar-bottom-show d-none  sidebar-bottom">
+        <div className="row bg-white d-flex justufy-content-center align-items-center w-100">
+          <div className="col-3 border text-center shadow bg-white py-3  ">
+            <Link to="/app/index">
+              {" "}
+              <i className="fas fa-user" />{" "}
+            </Link>
+          </div>
+          <div className="col-3 border text-center shadow bg-white py-3  ">
+            <Link to="/app/index">
+              {" "}
+              <i className="fas fa-user-plus" />{" "}
+            </Link>
+          </div>
+          <div className="col-3 border text-center shadow bg-white py-3  ">
+            <Link to="/app/index">
+              {" "}
+              <i className="fas fa-home" />{" "}
+            </Link>
+          </div>
+          <div className="col-3 border text-center shadow bg-white py-3  ">
+            <Link to="/app/index">
+              {" "}
+              <i className="fas fa-home" />{" "}
+            </Link>
+          </div>
+          {/* <div className="col-3"> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div> */}
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default withRouter(Sidebar);

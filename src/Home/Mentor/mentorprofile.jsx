@@ -107,36 +107,31 @@ class MentorProfile extends Component {
                           </p>
                           <div className="mentor-action">
                             <p className="mentor-type social-title">
-                              Contact Me
+                             blabla@gmail.com
                             </p>
-                            <a href="" className="btn-blue">
-                              <i className="fas fa-comments" />
+                            <a href="#infonmation-mentor" className="btn-blue">
+                              <i className="fas fa-book-reader" />
                             </a>
-                            <Link to="/app/Mentor/chat" className="btn-blue">
-                              <i className="fas fa-envelope" />
-                            </Link>
+                            <a href="#location" className="btn-blue">
+                              <i className="fas fa-map-marker-alt" />
+                            </a>
                             <a
-                              href=""
+                              href="#sectionTime"
                               className="btn-blue"
-                              onClick={() =>
-                                this.setState({ isvoicecallmodal: true })
-                              }
-                              data-toggle="modal"
-                              data-target="#voice_call"
-                            >
-                              <i className="fas fa-video" />
+                             >
+                              <i className="fas fa-calendar-alt" />
                             </a>
                           </div>
                         </div>
                       </div>
                       <div className="user-info-right d-flex align-items-end flex-wrap">
                         <div className="hireme-btn text-center">
-                          <span className="hire-rate">$500 / Hour</span>
+                          <span className="hire-rate">50 000 USZ / soat</span>
                           <Link
-                            className="blue-btn-radius"
-                            to="/app/Mentee/booking"
-                          >
-                            Hire Me
+                            className="blue-btn-radius   p-2"
+                            to="/app/teacher/profile-settings"
+                           >
+                           Tahrirlash
                           </Link>
                         </div>
                       </div>
@@ -149,7 +144,7 @@ class MentorProfile extends Component {
                   <div className="card-body custom-border-card pb-0">
                     {/* About Details */}
                     <div className="widget about-widget custom-about mb-0">
-                      <h4 className="widget-title">About Me</h4>
+                      <h4 className="widget-title">Men haqimda</h4>
                       <hr />
                       <p>
                         Lorem Ipsum is simply dummy text of the printing and
@@ -165,62 +160,23 @@ class MentorProfile extends Component {
                         random text. It has roots in a piece of classical Latin
                         literature from 45 BC, making it over 2000 years old.
                       </p>
-                    </div>
+                      </div>
                     {/* /About Details */}
                   </div>
                 </div>
-                <div className="card">
-                  <div className="card-body custom-border-card pb-0">
-                    {/* Personal Details */}
-                    <div className="widget education-widget mb-0">
-                      <h4 className="widget-title">Personal Details</h4>
-                      <hr />
-                      <div className="experience-box">
-                        <ul className="experience-list profile-custom-list">
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>Gender</span>
-                                <div className="row-result">Male</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>Date of Birth</span>
-                                <div className="row-result">01 - 02 - 2000</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>Where did you hear about us?</span>
-                                <div className="row-result">
-                                  Through web search
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    {/* /Personal Details */}
-                  </div>
-                </div>
-                <div className="card">
+                
+                <div className="card" id="infonmation-mentor">
                   <div className="card-body custom-border-card pb-0">
                     {/* Qualification Details */}
                     <div className="widget experience-widget mb-0">
-                      <h4 className="widget-title">Qualification</h4>
+                      <h4 className="widget-title">Ma'lumoti va malakasi</h4>
                       <hr />
                       <div className="experience-box">
                         <ul className="experience-list profile-custom-list">
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Undergraduate College</span>
+                                <span>Qayerni tugatgan (o'qiyapti)</span>
                                 <div className="row-result">
                                   Coimbatore University
                                 </div>
@@ -230,7 +186,7 @@ class MentorProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Undergraduate Major</span>
+                                <span>Mutaxassisligi</span>
                                 <div className="row-result">Mathematics</div>
                               </div>
                             </div>
@@ -238,9 +194,9 @@ class MentorProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Graduate College</span>
+                                <span>Sertifikatlari</span>
                                 <div className="row-result">
-                                  Coimbatore University
+                                  IELTS, Topik va h.k
                                 </div>
                               </div>
                             </div>
@@ -248,8 +204,16 @@ class MentorProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Type of Degree</span>
-                                <div className="row-result">B.Sc (Maths)</div>
+                                <span>Qaysi tilda dars o'tadi</span>
+                                <div className="row-result">Rus, ingiliz, o'zbek</div>
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="experience-content">
+                              <div className="timeline-content">
+                                <span>Pedagogik tajribasi</span>
+                                <div className="row-result"><span>1</span> yil</div>
                               </div>
                             </div>
                           </li>
@@ -259,20 +223,20 @@ class MentorProfile extends Component {
                     {/* /Qualification Details */}
                   </div>
                 </div>
-                <div className="card">
+                <div className="card" id="location">
                   <div className="card-body pb-1 custom-border-card">
                     {/* Location Details */}
                     <div className="widget awards-widget m-0">
-                      <h4 className="widget-title">Location</h4>
+                      <h4 className="widget-title">Manzil</h4>
                       <hr />
                       <div className="experience-box">
                         <ul className="experience-list profile-custom-list">
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Address 1</span>
+                                <span>Hozir qayerda yashaydi</span>
                                 <div className="row-result">
-                                  No : 5 ABC Avenue
+                                  Toshkent.sh
                                 </div>
                               </div>
                             </div>
@@ -280,64 +244,32 @@ class MentorProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Address 2</span>
+                                <span>Doiiy yashash manzili</span>
                                 <div className="row-result">
                                   National highway road
                                 </div>
                               </div>
                             </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>Country</span>
-                                <div className="row-result">India</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>City</span>
-                                <div className="row-result">Coimbatore</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>State</span>
-                                <div className="row-result">Tamil Nadu</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="experience-content">
-                              <div className="timeline-content">
-                                <span>Postal Code</span>
-                                <div className="row-result">641001</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
+                          </li> 
+                           </ul>
                       </div>
                     </div>
                     {/* /Location Details */}
                   </div>
                 </div>
-                <div className="card">
+                <div className="card" id="sectionTime">
                   <div className="card-body custom-border-card">
                     <h4 className="card-title"> Dars vaqtlari</h4>
                     <div className="profile-box">
                       <div className="row">
-                        <div className="col-lg-4">
+                        <div className="col-lg-7 w-100">
                           <div className="form-group">
-                            <label>
+                            <label className="date-information-label">
                               {" "}
                               Dars o'tish uchun bo'sh vaqtlaringizni shu yerdan
                               belgilashingiz mumkin
                             </label>
-                            <select className="select form-control">
+                            <select className="select form-control w-25">
                               <option>1 Soat</option>
                             </select>
                           </div>

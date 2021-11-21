@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-class Sidebar extends Component {
-  render() {
-    const { location } = this.props;
-    let pathname = location.pathname;
-    return (
+const Sidebar = (props) => {
+  const { location } = props;
+  let pathname = location.pathname;
+  const data = props.data;
+  console.log(props.data);
+  return (
+    <>
       <div className="profile-sidebar">
         <div className="user-widget">
           <div className="pro-avatar">JD</div>
@@ -18,7 +20,9 @@ class Sidebar extends Component {
             <i className="fas fa-star" />
           </div>
           <div className="user-info-cont">
-            <h4 className="usr-name">Jonathan Doe</h4>
+            <h4 className="usr-name">
+              {data?.first_name} {data?.last_name}
+            </h4>
             <p className="mentor-type">English (M.A)</p>
           </div>
         </div>
@@ -33,7 +37,7 @@ class Sidebar extends Component {
           <ul>
             <li>
               <Link
-                to="/app/Mentor/dashboard"
+                to="/app/teacher/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -45,8 +49,10 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentor/bookings"
-                className={pathname.includes("Mentor/bookings") ? "active" : ""}
+                to="/app/teacher/bookings"
+                className={
+                  pathname.includes("teacher/bookings") ? "active" : ""
+                }
               >
                 <i className="fas fa-clock" />
                 Sinov darslarim{" "}
@@ -57,7 +63,7 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentor/mentee-list"
+                to="/app/teacher/mentee-list"
                 className={pathname.includes("mentee-list") ? "active" : ""}
               >
                 <i className="fas fa-user-graduate" />
@@ -69,7 +75,7 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentor/schedule-timings"
+                to="/app/teacher/schedule-timings"
                 className={
                   pathname.includes("schedule-timings") ? "active" : ""
                 }
@@ -82,7 +88,7 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/app/Mentor/chat">
+              <Link to="/app/teacher/chat">
                 <i className="fas fa-comments" />
                 Chat{" "}
                 <span>
@@ -92,7 +98,7 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentor/invoices"
+                to="/app/teacher/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-file-invoice" />
@@ -102,10 +108,10 @@ class Sidebar extends Component {
                 </span>
               </Link>
             </li>
-            
+
             <li>
               <Link
-                to="/app/Mentor/blog"
+                to="/app/teacher/blog"
                 className={pathname.includes("blog") ? "active" : ""}
               >
                 <i className="fab fa-blogger-b" />
@@ -117,20 +123,23 @@ class Sidebar extends Component {
             </li>
             <li>
               <Link
-                to="/app/Mentor/mentor-profile"
+                to="/app/teacher/mentor-profile"
                 className={pathname.includes("mentor-profile") ? "active" : ""}
               >
                 <i className="fas fa-user" />
-               Mening Profilim{" "}
+                Mening Profilim{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
             </li>
             <li>
-              <Link to="/app/Mentor/profile-settings" className={pathname.includes("profile-settings") ? "active" : ""}>
-              
-
+              <Link
+                to="/app/teacher/profile-settings"
+                className={
+                  pathname.includes("profile-settings") ? "active" : ""
+                }
+              >
                 <i className="fas fa-user-cog" />
                 Sozlamalar{" "}
                 <span>
@@ -139,7 +148,7 @@ class Sidebar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/login">
+              <Link to="/app/home">
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>
@@ -150,8 +159,8 @@ class Sidebar extends Component {
           </ul>
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default withRouter(Sidebar);

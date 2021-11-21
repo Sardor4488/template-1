@@ -5897,6 +5897,9 @@ html.menu-opened body {
   font-size: 16px;
   font-weight: 600;
 }
+.date-information-label{
+  width: 100% !important;
+}
 .new-comment label {
   font-weight: 500;
 }
@@ -8123,7 +8126,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 .science-link-hover{
   color: #1e88e5;
-  
 }
 
 .sidebar-bottom{
@@ -8181,5 +8183,51 @@ PhoneInput{
   border: 1px solid #aaa;
 }
 .img-mentee{
-  min-width: 175px;
+  min-width: 135px !important;
+  min-height: 135px !important;
 }
+.PhoneInputInput{
+  padding: 6px 5px;
+   border: 1px solid #dce0eb;
+   outline: none !important;
+}
+.chackbox-with{
+ min-width: 120px !important;
+}
+.img-size-mentor{
+  width: 175px !important;
+  height: 175px !important;
+}
+.img-size-md-mentor{
+  min-width: 120px !important;
+  min-height: 120px !important;
+  
+}
+@media only screen and (max-width: 992px) {
+ .Md-Display-Flex{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ }
+ .container-mentee-mini-information{
+   display: flex;
+   align-items: center;
+ }
+.d-md-show{
+  display: flex;
+}
+.md-d-none{
+  display: none !important;
+}
+
+
+ .line-height{
+   line-height: 20px !important;
+   }
+}
+.band-qilish{
+  font-size: 15px !important;
+}
+ .size-link-main{
+   font-size: 15px !important;
+ }

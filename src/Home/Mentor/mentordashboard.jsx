@@ -4,10 +4,12 @@ import {USER_1,USER_2,USER_3,USER_4,USER_5,USER_6,USER_7} from '../../constant/i
 import Sidebar from "./sidebar"
 import StickyBox from "react-sticky-box";
 import { Link } from 'react-router-dom';
+import {useSelector} from "react-redux";
 
-class Dashboard extends Component {
-   render() {
-      return ( 
+const Dashboard = () =>{
+  const authData = useSelector(state => state.Reducer.author);
+  console.log(authData);
+      return (
           <div>
                <div className="breadcrumb-bar">
                     <div className="container-fluid">
@@ -30,7 +32,7 @@ class Dashboard extends Component {
           <div className="col-md-5 col-lg-4 col-xl-3">
             {/* Sidebar */}
                 <StickyBox offsetTop={20} offsetBottom={20}>
-                <Sidebar/></StickyBox>
+                <Sidebar data={authData}/></StickyBox>
             {/* /Sidebar */}
           </div>
           <div className="col-md-7 col-lg-8 col-xl-9">
@@ -193,9 +195,7 @@ class Dashboard extends Component {
       </div>
         </div>
           </div>
-        
       );
-   }
 }
 
 export default Dashboard;
