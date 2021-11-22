@@ -48,9 +48,8 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                 to="/app/student/favarites"
-                 className={pathname.includes("favarites") ? "active" : ""
-                }
+                to="/app/student/favourites"
+                className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-book-reader" />
                 Dars{" "}
