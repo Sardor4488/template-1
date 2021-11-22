@@ -60,6 +60,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-slick": "^0.28.1",
     "react-star-rating-component": "^1.4.1",
     "react-sticky-box": "^0.9.3",
     "react-summernote": "^2.0.2",
