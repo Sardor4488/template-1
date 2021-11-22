@@ -148,7 +148,7 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to="/login">
+              <Link to="/app/home">
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>

@@ -18,11 +18,11 @@ class Favorites extends Component {
               <div className="col-md-8 col-12">
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/app/index">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Favourites</li>
+                    <li className="breadcrumb-item"><Link to="/app/index">My teacher</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Dars</li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">Favourites</h2>
+                <h2 className="breadcrumb-title">Dars</h2>
               </div>
              
             </div>

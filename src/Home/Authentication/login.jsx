@@ -8,6 +8,7 @@ import axios from "axios";
 import * as t from "../../redux/types";
 import { dispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
+import { LoadingOff, LoadingOn, UserData } from "../../redux/Actions";
 const Login = (props) => {
   const { history } = props;
   const [inputType, setInputType] = useState("password");
@@ -21,21 +22,13 @@ const Login = (props) => {
       setInputType("password");
     }
   };
-  const LoadPage = (l = false) => {
-    const action = { type: t.LOADING, payload: false };
-    dispatch(action);
-  };
-  LoadPage();
-  const author = (data) => {
-    const action = { type: t.AUTHOR, payload: data };
-    dispatch(action);
-  };
   const loginMyteacher = (e) => {
     e.preventDefault();
     let data = {
       phone_number: loginNumber,
       password: loginPassword,
     };
+    LoadingOn();
     axios
       .post("login", data)
       .then((res) => {
@@ -44,11 +37,12 @@ const Login = (props) => {
         console.log(res.data.user.role);
         console.log(res);
         history.push(`app/${res.data.user.role}/dashboard`);
-        LoadPage(true);
-        author(res.data.user);
+        UserData(res.data.user);
+        LoadingOff();
       })
       .catch((err) => {
         console.log(err);
+        LoadingOff();
       });
   };
 

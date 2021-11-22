@@ -30,7 +30,7 @@ class MenteeProfile extends Component {
               <div className="col-md-12 col-12">
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="/app/index">Home</a></li>
+                    <li className="breadcrumb-item"><a href="/app/index">My teacher</a></li>
                     <li className="breadcrumb-item active" aria-current="page">O'qituvchi profili</li>
                   </ol>
                 </nav>

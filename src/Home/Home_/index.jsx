@@ -34,6 +34,7 @@ import {
   BLOG_03,
   BLOG_04,
 } from "../../constant/imagepath_home";
+import img from "../../constant/TemirovSardor.jpg"
 import axios from "axios";
 import * as t from "../../redux/types";
 import { dispatch } from "../../redux/store";
@@ -41,7 +42,7 @@ import { dispatch } from "../../redux/store";
 const Home = (props) => {
   const { history } = props;
   const searchmentee = () => {
-    history.push("/app/mentee/search");
+    history.push("/app/Mentee/search");
   };
 
   const settings = {
@@ -62,27 +63,24 @@ const Home = (props) => {
             <div className="banner-header">
               <h2 className="text-white"> Online til va dasturlash kurslari</h2>
 
-              <span>O'zingizga eng saralangan ustozni shu yerdan toping </span>
+              <span className="text-white mb-3">O'zingizga eng saralangan ustozni shu yerdan toping </span>
               {/* Search */}
-              <div className="search-box">
-                <form action="/app/Pages/search">
-                  <div className="form-group search-location">
-                    <input
+              <div className=" ">
+                <form className="w-100 d-flex align-items-center w-100 justify-content-center" action="/app/Pages/search">
+                     <input
                       type="text"
-                      className="form-control"
+                      className=" search-input"
                       placeholder="Masalan: IELTS..."
                     />
-                  </div>
-                  <button
+                   <button
                     type="submit"
-                    className="btn btn-primary search-btn"
+                    className="btn btn-primary btn_search "
                     onClick={() => searchmentee()}
                   >
                     <i>
                       <img src={Submit} alt="" />
                     </i>{" "}
-                    <span>Izlash...</span>
-                  </button>
+                   </button>
                 </form>
               </div>
               {/* /Search */}
@@ -114,13 +112,12 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
-                          <p className="mb-0">12ta o'qituvchi</p>
+                          <p className="mb-0 science-link-hover size-link-main text-primary">12 ta o'qituvchi</p>
                         </div>
                       </div>
                     </div>{" "}
                   </Link>
                 </div>
-
                 <div className="col-12 col-md-4 pe-5 mt-3">
                   {" "}
                   <Link to={"/"}>
@@ -154,7 +151,9 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Aniq fanlar
                           </h4>
-                          <p className="mb-0">32ta o'qituvchi</p>
+                          <p className="mb-0 science-link-hover size-link-main text-primary">
+                            <span>32</span> nafar o'qituvchi
+                          </p>
                         </div>
                       </div>
                     </div>{" "}
@@ -202,7 +201,9 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tabiy fanlar
                           </h4>
-                          <p className="mb-0">22ta o'qituvchi</p>
+                          <p className="mb-0 science-link-hover size-link-main text-primary">
+                            <span>65</span> nafar o'qituvchi
+                          </p>
                         </div>
                       </div>
                     </div>{" "}
@@ -247,10 +248,12 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             IT texnologiyalari
                           </h4>
-                          <p className="mb-0 text-start">31ta o'qituvchi</p>
+                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">
+                            <span>11 </span> nafar o'qituvchi
+                          </p>
                         </div>
                       </div>
-                    </div>
+                    </div>{" "}
                   </Link>
                 </div>
 
@@ -287,7 +290,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Gumonitar fanlar
                           </h4>
-                          <p className="mb-0 text-start">41ta o'qituvchi</p>
+                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">41 ta o'qituvchi</p>
                         </div>
                       </div>
                     </div>{" "}
@@ -381,463 +384,172 @@ const Home = (props) => {
             </p>
           </div>
           {/* <div className="owl-carousel owl-theme"> */}
-          <OwlCarousel
-            className="owl-theme"
-            loop
-            margin={30}
-            items={4}
-            responsive={{
-              0: {
-                items: 1,
-              },
-              768: {
-                items: 3,
-              },
-              1170: {
-                items: 4,
-              },
-            }}
-            nav
-          >
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_1}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Donna Yancey</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Digital Marketer</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_2}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">James Amen</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">
-                      UNIX, Calculus, Trigonometry
+          <div className="row">
+
+          <div className="col-md-6 col-12 card-mentors-lg   ">
+                {/* Mentor Widget */}
+                <div className="card card-size">
+                  <div className="card-body ">
+                    <div className="mentor-widget">
+                      <div className="user-info-left">
+                        <div className="mentor-img">
+                          <Link to="/app/Mentee/mentor-profile">
+                            <img src={USER} className="img-fluid img-mentee " alt="User Image" />
+                          </Link>
+                        </div>
+                        <div className="user-info-cont ">
+                          <h4 className="usr-name mb-3"><Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link></h4>
+                          <p className="mentor-type mb-1">Digital Marketer</p>
+                          <p className="mb-1"><span>550 000</span> UZS <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /></p>
+                          <div className="rating">
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">(17)</span>
+                          </div>
+                          <div className="mentor-details">
+                           </div>
+                        </div>
+                      </div>
+                      <div className="user-info-right">
+                        <div className="user-infos">
+                          <ul>
+                            <li><i className="far fa-comment pt-3" /> <span>17</span> ta fikr</li>
+                            <li><i className="fas fa-user-graduate " /> <span className="text-primary">25</span> ta o'quvchi</li>
+                            <li><i className="fas fa-user-graduate pt-2" /> <span>55</span> % O'quvchi sodiqligi </li>
+                           </ul>
+                          </div>
+                          <div className="mentor-booking">
+                          <Link className="apt-btn" to="/app/Mentee/booking">Sinab ko'rish</Link>
+                        </div>
+                      </div>
                     </div>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta fugiat quae expedita error tempora qui et repellendus sapiente quasi?  <span className="text-primary">Batafsil</span>                    <div className="col-12 pt-2"></div>
                   </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
+                </div>
+                
+                
+                {/* /Mentor Widget */}
+                {/* Mentor Widget */}
+               
+                <div className="load-more text-center">
+                  <a className="btn btn-primary btn-sm" href="">Yana ko'rish</a>	
+                </div>	
+              </div>
+
+
+            <div className="col-12 card-mentors-md d-none col-md-6">
+              <div className="card w-100 px-3 pb-2">
+
+
+
+
+              <div className="row mt-5">
+                <div className="col-6 col-lg-4">
+                      <Link to="/app/Mentee/mentor-profile">
+                          <img
+                            src={USER}
+                            className="img-fluid img-mentee "
+                            alt="User Image"
+                          />
+                         </Link>
+                         <div className="rating text-center mt-1  ">
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star" />
+                          <span className="d-inline-block average-rating">
+                            (17)
+                          </span>
+                        </div>
+                </div>
+                <div className="col-6 col-lg-4 pe-0 line-height">
+                <h4 className="usr-name">
+                          <Link to="/app/Mentee/mentor-profile">
+                            Ruby Perrin
+                          </Link>
+                        </h4>
+                        <p className="mentor-type mb-0">Digital Marketer </p>
+ 
+                        <p className="mentor-type mb-0 line-height"> <i className="far fa-money-bill-alt " />{" "}
+                          <span>550 000</span> UZS{" "}
+                          <i
+                            className="fas fa-info-circle"
+                            data-toggle="tooltip"
+                            title="Lorem Ipsum"
+                          />  
+                           </p>
+                           <span className=" line-height ">
+                              <i className="fas fa-user-graduate  " />{" "}
+                          <span className="text-primary">25</span> ta o'quvchi
+                          </span> <br />
+                          <span> <i className="fas fa-heart" /> <span>55</span> %
+                            O'quvchi sodiqligi</span> 
+                            <p className="mb-2">
+                            Dars tili: <span>O'zbek, rus</span>
+                          </p>
+                            <button className="btn btn-primary band-qilish">Band qilish</button>
+
+                        <div className="rating d-none">
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star filled" />
+                          <i className="fas fa-star" />
+                          <span className="d-inline-block average-rating">
+                            (17)
+                          </span>
+                        </div>
+                       
+                        <div>
+                         
+                        </div>
+                </div>
+                <div className="col-12 col-lg-4 container-mentee-mini-information"
+                > <ul className="ps-0 line-height d-none">
+                      <li className="d-flex align-items-end d-none">
+                          <i className="far fa-comment pb-1 pe-1" /> <span>17 </span>{" "} 
+                           ta fikr
+                        </li>
+                        <li className="md-d-none">
+                               <i className="fas fa-user-graduate py-3" />{" "}
+                          <span className="text-primary">25</span> ta o'quvchi
+                         </li> 
+                        <li className="mb-1">
+                        <i className="fas fa-heart" /> <span>55</span> %
+                            O'quvchi sodiqligi
+                         {" "}
+                        </li>
+                      </ul>
+                <ul className="ps-0 Md-Display-Flex ">
+                        
+                        <li>
+                           <button className="btn btn-primary band-qilish d-none">Band qilish</button>
+                        </li>
+                      </ul>
+                     
+                </div>
+                <div className="col-12">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus ducimus velit veniam quis modi nostrum quisquam! 
+                   <Link to="">
+                     Batafsil
+                   </Link>
                 </div>
               </div>
+
+
+
+
+
+
+
+             
+               </div>
             </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_3}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">Marvin Downey</h3>
-                  <div className="author-info">
-                    <div className="author-name">ASP.NET,Computer Gaming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_4}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Betty Hairston</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Computer Programming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Jose Anderson</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Digital Marketer</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star " />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_6}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Aaron Pietrzak</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">
-                      UNIX,Calculus,Trigonometry
-                    </div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_7}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Brian Martinez</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">ASP.NET,Computer Gaming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_15}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Misty Lundy</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Computer Programming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_9}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Vern Campbell</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Digital Marketer</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_13}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Jessica Fogarty</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">
-                      UNIX,Calculus,Trigonometry
-                    </div>
-                  </div>
-                  <div className="rating">
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star filled" />
-                    <i className="fas fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_11}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">Evelyn Stafford</Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">ASP.NET,Computer Gaming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star " />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="course-box">
-              <div className="product">
-                <div className="product-img">
-                  <Link to="/app/Mentee/mentor-profile">
-                    <img
-                      className="img-fluid"
-                      alt=""
-                      src={USER_12}
-                      width={600}
-                      height={300}
-                    />
-                  </Link>
-                </div>
-                <div className="product-content">
-                  <h3 className="title">
-                    <Link to="/app/Mentee/mentor-profile">
-                      Christopher Carroll
-                    </Link>
-                  </h3>
-                  <div className="author-info">
-                    <div className="author-name">Computer Programming</div>
-                  </div>
-                  <div className="rating">
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star filled" />
-                    <i className="fa fa-star" />
-                    <span className="d-inline-block average-rating">4.4</span>
-                  </div>
-                  <div className="author-country">
-                    <p className="mb-0">
-                      <i className="fas fa-map-marker-alt" /> Paris, France
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </OwlCarousel>
+           </div>
         </div>
         {/* </div> */}
       </section>
