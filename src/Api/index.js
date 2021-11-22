@@ -5,7 +5,7 @@ const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 const url = role == "mentee" ? "student/student-me" : "teacher/teacher-me";
 const UserAuth = (setPath) => {
-  if (token) {
+  if (token !== null || token !== undefined || token !== "") {
     LoadingOn();
     const config = {
       headers: {
@@ -21,9 +21,9 @@ const UserAuth = (setPath) => {
         LoadingOff();
       })
       .catch((err) => {
-        console.log(err.message);
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
         setPath(`/app/home`);
         LoadingOff();
       });

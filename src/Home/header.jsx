@@ -34,10 +34,10 @@ const Header = (props) => {
 
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const author = useSelector((state) => state?.Reducer.author);
+  const userdata = useSelector((state) => state?.Reducer.userdata);
+  console.log(userdata);
   const { location } = props;
   let pathname = location.pathname;
-  let mentorarray = ["dashboard", "Mentor/bookings"];
 
   return (
     <header className="header">
@@ -74,14 +74,14 @@ const Header = (props) => {
               </li>
               <li
                 className={
-                  pathname.includes("/Mentor/dashboard") ||
-                  pathname.includes("Mentor/bookings") ||
+                  pathname.includes("/mentor/dashboard") ||
+                  pathname.includes("mentor/bookings") ||
                   pathname.includes("schedule-timings") ||
-                  pathname.includes("/Mentor/chat") ||
+                  pathname.includes("/mentor/chat") ||
                   pathname.includes("invoice") ||
                   pathname.includes("reviews") ||
-                  pathname.includes("/Mentor/blog") ||
-                  pathname.includes("/Mentor/profile-settings") ||
+                  pathname.includes("/mentor/blog") ||
+                  pathname.includes("/mentor/profile-settings") ||
                   pathname.includes("mentor-register") ||
                   pathname.includes("profile-mentee") ||
                   pathname.includes("mentee-list") ||
@@ -97,14 +97,14 @@ const Header = (props) => {
                 <ul className="submenu">
                   <li
                     className={
-                      pathname.includes("/Mentor/dashboard") ? "active" : ""
+                      pathname.includes("/mentor/dashboard") ? "active" : ""
                     }
                   >
                     <Link to="/app/mentor/dashboard">O'qituvchi Dashboard</Link>
                   </li>
                   <li
                     className={
-                      pathname.includes("Mentor/bookings") ? "active" : ""
+                      pathname.includes("mentor/bookings") ? "active" : ""
                     }
                   >
                     <Link to="/app/mentor/bookings">Bookings</Link>
@@ -132,7 +132,7 @@ const Header = (props) => {
                   </li>
                   <li
                     className={
-                      pathname.includes("/Mentor/blog") ||
+                      pathname.includes("/mentor/blog") ||
                       pathname.includes("add-blog") ||
                       pathname.includes("edit-blog")
                         ? "has-submenu active"
@@ -143,7 +143,7 @@ const Header = (props) => {
                     <ul className="submenu">
                       <li
                         className={
-                          pathname.includes("/Mentor/blog") ? "active" : ""
+                          pathname.includes("/mentor/blog") ? "active" : ""
                         }
                       >
                         <Link to="/app/mentor/blog">Blog</Link>
@@ -169,7 +169,7 @@ const Header = (props) => {
                   </li>
                   <li
                     className={
-                      pathname.includes("/Mentor/chat") ? "active" : ""
+                      pathname.includes("/mentor/chat") ? "active" : ""
                     }
                   >
                     <Link to="/app/mentor/chat">Chat</Link>
@@ -179,7 +179,7 @@ const Header = (props) => {
                   </li>
                   <li
                     className={
-                      pathname.includes("/Mentor/profile-settings")
+                      pathname.includes("/mentor/profile-settings")
                         ? "active"
                         : ""
                     }
@@ -197,7 +197,7 @@ const Header = (props) => {
                     }
                   >
                     <Link to="/app/mentor/mentor-register">
-                      Mentor Register
+                      mentor Register
                     </Link>
                   </li>
                 </ul>
@@ -232,7 +232,7 @@ const Header = (props) => {
                         : "has-submenu"
                     }
                   >
-                    <a href="#">Mentors</a>
+                    <a href="#">mentors</a>
                     <ul className="submenu">
                       <li
                         className={
@@ -251,7 +251,7 @@ const Header = (props) => {
                     </ul>
                   </li>
                   <li className={pathname.includes("search") ? "active" : ""}>
-                    <Link to="/app/mentee/search">Search Mentor</Link>
+                    <Link to="/app/mentee/search">Search mentor</Link>
                   </li>
                   <li
                     className={
@@ -302,12 +302,10 @@ const Header = (props) => {
                   </li>
                   <li
                     className={
-                      pathname.includes("profile-settings-mentee")
-                        ? "active"
-                        : ""
+                      pathname.includes("profile-settings") ? "active" : ""
                     }
                   >
-                    <Link to="/app/mentee/profile-settings-mentee">
+                    <Link to="/app/mentee/profile-settings">
                       Profile Settings
                     </Link>
                   </li>
@@ -347,7 +345,7 @@ const Header = (props) => {
                     <Link to="/app/Pages/video-call">Video Call</Link>
                   </li>
                   <li>
-                    <Link to="/app/mentee/search">Search Mentors</Link>
+                    <Link to="/app/mentee/search">Search mentors</Link>
                   </li>
                   <li
                     className={pathname.includes("components") ? "active" : ""}
@@ -423,20 +421,7 @@ const Header = (props) => {
               </li>
             </ul>
           </div>
-          {!token ? (
-            <ul className="nav header-navbar-rht">
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link header-login" to="/register">
-                  Register
-                </Link>
-              </li>
-            </ul>
-          ) : (
+          {userdata ? (
             <ul className="nav header-navbar-rht">
               {/* User Menu */}
               <li className="nav-item dropdown has-arrow logged-item">
@@ -465,9 +450,9 @@ const Header = (props) => {
                     </div>
                     <div className="user-text">
                       <h6>
-                        {author.first_name} {author.last_name}
+                        {userdata?.first_name} {userdata?.last_name}
                       </h6>
-                      <p className="text-muted mb-0">{role}</p>
+                      <p className="text-muted mb-0">{userdata?.role}</p>
                     </div>
                   </div>
                   <Link className="dropdown-item" to={`/app/${role}/dashboard`}>
@@ -489,6 +474,19 @@ const Header = (props) => {
                 </div>
               </li>
               {/* /User Menu */}
+            </ul>
+          ) : (
+            <ul className="nav header-navbar-rht">
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link header-login" to="/register">
+                  Register
+                </Link>
+              </li>
             </ul>
           )}
         </nav>

@@ -1,28 +1,27 @@
-
-import React, { Component } from 'react';
-import {USER} from '../../constant/imagepath_home';
-import { Modal, ModalBody } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import {USER_2} from '../../constant/imagepath_home';
+import React, { Component } from "react";
+import { USER } from "../../constant/imagepath_home";
+import { Modal, ModalBody } from "reactstrap";
+import { Link } from "react-router-dom";
+import { USER_2 } from "../../constant/imagepath_home";
 
 class MenteeProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {   
-            isvoicecallmodal : false ,
-            isvideocallmodal : false
-        }
-    }
-    
-    voicecallmodalClose() {
-      this.setState({ isvoicecallmodal: false })
-    }
-    videocallModalClose() {
-     this.setState({ isvideocallmodal: false })
-    }
-   render() {
-      return ( 
-        <div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      isvoicecallmodal: false,
+      isvideocallmodal: false,
+    };
+  }
+
+  voicecallmodalClose() {
+    this.setState({ isvoicecallmodal: false });
+  }
+  videocallModalClose() {
+    this.setState({ isvideocallmodal: false });
+  }
+  render() {
+    return (
+      <div>
         {/* Breadcrumb */}
         <div className="breadcrumb-bar">
           <div className="container-fluid">
@@ -30,8 +29,12 @@ class MenteeProfile extends Component {
               <div className="col-md-12 col-12">
                 <nav aria-label="breadcrumb" className="page-breadcrumb">
                   <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="/app/index">My teacher</a></li>
-                    <li className="breadcrumb-item active" aria-current="page">O'qituvchi profili</li>
+                    <li className="breadcrumb-item">
+                      <a href="/app/index">My teacher</a>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                      O'qituvchi profili
+                    </li>
                   </ol>
                 </nav>
                 <h2 className="breadcrumb-title">O'qituvchi profili</h2>
@@ -52,19 +55,28 @@ class MenteeProfile extends Component {
                       <div className="user-info-left align-items-center">
                         <div className="mentor-img d-flex flex-wrap justify-content-center">
                           <div className="pro-avatar">JD</div>
-                           <div className="mentor-details m-0">
-                            <p className="user-location m-0"><i className="fas fa-map-marker-alt" /> Tamil Nadu, India</p>
+                          <div className="mentor-details m-0">
+                            <p className="user-location m-0">
+                              <i className="fas fa-map-marker-alt" /> Tamil
+                              Nadu, India
+                            </p>
                           </div>
                         </div>
                         <div className="user-info-cont">
                           <h4 className="usr-name">Еуьшкщм Doe</h4>
-                          <p className="mentor-type">English Literature (M.A)</p>
-                      
+                          <p className="mentor-type">
+                            English Literature (M.A)
+                          </p>
                         </div>
                       </div>
                       <div className="user-info-right d-flex align-items-end flex-wrap">
                         <div className="hireme-btn text-center">
-                           <Link className="blue-btn-radius" to="/app/Mentee/profil-settings-mentee">Tahrirlash</Link>
+                          <Link
+                            className="blue-btn-radius"
+                            to="/app/mentee/profile-settings"
+                          >
+                            Tahrirlash
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -78,8 +90,20 @@ class MenteeProfile extends Component {
                     <div className="widget about-widget custom-about mb-0">
                       <h4 className="widget-title">About Me</h4>
                       <hr />
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                      <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                      </p>
+                      <p>
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC, making it over 2000 years old.
+                      </p>
                     </div>
                     {/* /About Details */}
                   </div>
@@ -112,7 +136,9 @@ class MenteeProfile extends Component {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Where did you hear about us?</span>
-                                <div className="row-result">Through web search</div>
+                                <div className="row-result">
+                                  Through web search
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -134,7 +160,9 @@ class MenteeProfile extends Component {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Undergraduate College</span>
-                                <div className="row-result">Coimbatore University</div>
+                                <div className="row-result">
+                                  Coimbatore University
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -150,7 +178,9 @@ class MenteeProfile extends Component {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Graduate College</span>
-                                <div className="row-result">Coimbatore University</div>
+                                <div className="row-result">
+                                  Coimbatore University
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -180,7 +210,9 @@ class MenteeProfile extends Component {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Address 1</span>
-                                <div className="row-result">No : 5 ABC Avenue</div>
+                                <div className="row-result">
+                                  No : 5 ABC Avenue
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -188,7 +220,9 @@ class MenteeProfile extends Component {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Address 2</span>
-                                <div className="row-result">National highway road</div>
+                                <div className="row-result">
+                                  National highway road
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -231,41 +265,39 @@ class MenteeProfile extends Component {
                   </div>
                 </div>
                 <table className="table table-hover table-center mb-0">
-                          <thead>
-                            <tr>
-                              <th>O'qituvchi ismi</th>
-                              <th>Dars sanasi</th>
-                              <th className="text-center">Dars vaqti</th>
-                              {/* <th className="text-center">Harakat</th> */}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/app/Mentee/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={USER_2}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
-                                    Tyrone Roberts
-                                    <span>tyroneroberts@adobe.com</span>
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>08 April 2020</td>
-                              <td className="text-center">
-                                <span className="pending">
-                                  9:00 AM - 10:00 AM
-                                </span>
-                              </td>
-                              {/* <td className="text-center">
+                  <thead>
+                    <tr>
+                      <th>O'qituvchi ismi</th>
+                      <th>Dars sanasi</th>
+                      <th className="text-center">Dars vaqti</th>
+                      {/* <th className="text-center">Harakat</th> */}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h2 className="table-avatar">
+                          <Link
+                            to="/app/Mentee/mentor-profile"
+                            className="avatar avatar-sm mr-2"
+                          >
+                            <img
+                              className="avatar-img rounded-circle"
+                              src={USER_2}
+                              alt="User Image"
+                            />
+                          </Link>
+                          <Link to="/app/Mentee/mentor-profile">
+                            Tyrone Roberts
+                            <span>tyroneroberts@adobe.com</span>
+                          </Link>
+                        </h2>
+                      </td>
+                      <td>08 April 2020</td>
+                      <td className="text-center">
+                        <span className="pending">9:00 AM - 10:00 AM</span>
+                      </td>
+                      {/* <td className="text-center">
                                 <Link
                                   to="/app/Mentee/mentor-profile"
                                   className="btn btn-sm bg-info-light"
@@ -273,34 +305,50 @@ class MenteeProfile extends Component {
                                   <i className="far fa-eye" /> View
                                 </Link>
                               </td> */}
-                            </tr>
-                            
-                          </tbody>
-                        </table>                {/* /Mentor Details Tab */}
+                    </tr>
+                  </tbody>
+                </table>{" "}
+                {/* /Mentor Details Tab */}
               </div>
             </div>
           </div>
-        </div>		
+        </div>
         {/* /Page Content */}
         {/* Voice Call Modal */}
-        <Modal className="modal-dialog-centered" isOpen={this.state.isvoicecallmodal} toggle={() => this.voicecallmodalClose()}>
-            <ModalBody>
-                <div className="call-box incoming-box">
-                  <div className="call-wrapper">
-                    <div className="call-inner">
-                      <div className="call-user">
-                        <img alt="User Image" src={USER} className="call-avatar" />
-                        <h4>Jonathan Doe</h4>
-                        <span>Connecting...</span>
-                      </div>							
-                      <div className="call-items">
-                        <a href="" className="btn call-item call-end" data-dismiss="modal" aria-label="Close"><i className="material-icons">call_end</i></a>
-                        <Link to="/app/Pages/voice-call" className="btn call-item call-start"><i className="material-icons">call</i></Link>
-                      </div>
-                    </div>
+        <Modal
+          className="modal-dialog-centered"
+          isOpen={this.state.isvoicecallmodal}
+          toggle={() => this.voicecallmodalClose()}
+        >
+          <ModalBody>
+            <div className="call-box incoming-box">
+              <div className="call-wrapper">
+                <div className="call-inner">
+                  <div className="call-user">
+                    <img alt="User Image" src={USER} className="call-avatar" />
+                    <h4>Jonathan Doe</h4>
+                    <span>Connecting...</span>
+                  </div>
+                  <div className="call-items">
+                    <a
+                      href=""
+                      className="btn call-item call-end"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <i className="material-icons">call_end</i>
+                    </a>
+                    <Link
+                      to="/app/Pages/voice-call"
+                      className="btn call-item call-start"
+                    >
+                      <i className="material-icons">call</i>
+                    </Link>
                   </div>
                 </div>
-            </ModalBody>               
+              </div>
+            </div>
+          </ModalBody>
         </Modal>
         {/* /Voice Call Modal */}
         {/* Video Call Modal */}
@@ -313,13 +361,29 @@ class MenteeProfile extends Component {
                   <div className="call-wrapper">
                     <div className="call-inner">
                       <div className="call-user">
-                        <img className="call-avatar" src={USER} alt="User Image" />
+                        <img
+                          className="call-avatar"
+                          src={USER}
+                          alt="User Image"
+                        />
                         <h4>Dr. Darren Elder</h4>
                         <span>Calling ...</span>
-                      </div>							
+                      </div>
                       <div className="call-items">
-                        <a href="" className="btn call-item call-end" data-dismiss="modal" aria-label="Close"><i className="material-icons">call_end</i></a>
-                        <Link to="/app/Pages/video-call" className="btn call-item call-start"><i className="material-icons">videocam</i></Link>
+                        <a
+                          href=""
+                          className="btn call-item call-end"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <i className="material-icons">call_end</i>
+                        </a>
+                        <Link
+                          to="/app/Pages/video-call"
+                          className="btn call-item call-start"
+                        >
+                          <i className="material-icons">videocam</i>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -331,9 +395,8 @@ class MenteeProfile extends Component {
         </div>
         {/* Video Call Modal */}
       </div>
-      
-      );
-   }
+    );
+  }
 }
 
 export default MenteeProfile;

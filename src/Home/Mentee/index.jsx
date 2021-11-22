@@ -50,7 +50,7 @@ const Menteeroute = ({ match }) => {
         <Route path={`${match.url}/invoices`} component={Invoice} />
         <Route path={`${match.url}/invoice-view`} component={Invoiceview} />
         <Route
-          path={`${match.url}/profile-settings-mentee`}
+          path={`${match.url}/profile-settings`}
           component={ProfileSettingMentee}
         />
         <Route path={`${match.url}/favourites`} component={Favorites} />

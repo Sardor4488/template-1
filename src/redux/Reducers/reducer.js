@@ -2,7 +2,7 @@ import * as t from "../types";
 
 const initialState = {
   loading: true,
-  author: "",
+  userdata: "",
   role: "",
 };
 
@@ -12,9 +12,9 @@ const Reducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case t.LOADINGON:
       return { ...state, loading: true };
-    case t.AUTHOR:
-      console.log("author");
-      return { ...state, author: action.payload, loading: false };
+    case t.USERDATA:
+      console.log("userData");
+      return { ...state, userdata: action.payload, loading: false };
     case t.ROLE:
       return { ...state, role: action.payload };
     default:
