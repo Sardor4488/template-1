@@ -386,7 +386,7 @@ const Home = (props) => {
           {/* <div className="owl-carousel owl-theme"> */}
           <div className="row">
 
-          <div className="col-md-12 card-mentors-lg col-lg-8 col-xl-9 ">
+          <div className="col-md-6 col-12 card-mentors-lg   ">
                 {/* Mentor Widget */}
                 <div className="card card-size">
                   <div className="card-body ">
