@@ -295,7 +295,7 @@ const Header = (props) => {
                   </li>
                   <li
                     className={
-                      pathname.includes("Mentee/chat-mentee") ? "active" : ""
+                      pathname.includes("mentee/chat-mentee") ? "active" : ""
                     }
                   >
                     <Link to="/app/mentee/chat-mentee">Chat</Link>

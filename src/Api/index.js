@@ -7,14 +7,9 @@ const url = role == "mentee" ? "student/student-me" : "teacher/teacher-me";
 const UserAuth = (setPath) => {
   if (token !== null || token !== undefined || token !== "") {
     LoadingOn();
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
     const bodyParameters = {};
     axios
-      .post(url, bodyParameters, config)
+      .post(url, bodyParameters)
       .then((res) => {
         UserData(res.data);
         setPath(`/app/${role}/dashboard`);
