@@ -10,36 +10,25 @@ import {
   ICON_2,
   ICON_3,
   USER,
-  USER_1,
-  USER_2,
-  USER_3,
-  USER_4,
-  USER_6,
-  USER_7,
-  USER_15,
-  USER_9,
-  USER_11,
-  USER_12,
-  USER_13,
-  IMG_1,
-  IMG_2,
-  IMG_3,
-  IMG_4,
-  IMG_5,
-  IMG_6,
-  IMG_7,
-  IMG_8,
   BLOG_01,
   BLOG_02,
   BLOG_03,
   BLOG_04,
-} from "../../constant/imagepath_home";
-import img from "../../constant/TemirovSardor.jpg"
-import axios from "axios";
-import * as t from "../../redux/types";
-import { dispatch } from "../../redux/store";
+  USER_1,
+} from "../../constant/imagepath_home"; 
+import userimg from "../assets/img/user/user.jpg"
+import Slider from "@ant-design/react-slick";
+import { Avatar } from "antd";
 
 const Home = (props) => {
+  
+  const [more , setMore] = useState(false);
+
+  const moreInfo = () => {
+    setMore(!more);
+  } 
+
+
   const { history } = props;
   const searchmentee = () => {
     history.push("/app/Mentee/search");
@@ -55,39 +44,62 @@ const Home = (props) => {
     arrows: false,
     centerMode: true,
   };
+
+
+  const settingSlider = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+    
+  };
   return (
     <div>
       <section className="section section-search">
         <div className="container">
           <div className="banner-wrapper m-auto text-center">
             <div className="banner-header">
-              <h2 className="text-white"> Online til va dasturlash kurslari</h2>
+              <div className="mb-5">
+                <h2 className="text-white">
+                  {" "}
+                  Online til va dasturlash kurslari
+                </h2>
 
-              <span className="text-white mb-3">O'zingizga eng saralangan ustozni shu yerdan toping </span>
-              {/* Search */}
-              <div className=" ">
-                <form className="w-100 d-flex align-items-center w-100 justify-content-center" action="/app/Pages/search">
-                     <input
-                      type="text"
-                      className=" search-input"
-                      placeholder="Masalan: IELTS..."
-                    />
-                   <button
-                    type="submit"
-                    className="btn btn-primary btn_search "
-                    onClick={() => searchmentee()}
-                  >
-                    <i>
-                      <img src={Submit} alt="" />
-                    </i>{" "}
-                   </button>
-                </form>
-              </div>
-              {/* /Search */}
+                <span className="text-white mb-3">
+                  O'zingizga eng saralangan ustozni shu yerdan toping{" "}
+                </span>
+              </div> 
               <div className="row mt-4">
                 <div className="col-12 col-md-4 pe-5 mt-3">
                   {" "}
-                  <Link to={"/"}>
+                  <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
@@ -112,7 +124,9 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-primary">12 ta o'qituvchi</p>
+                          <p className="mb-0 science-link-hover size-link-main text-primary">
+                            12 ta o'qituvchi
+                          </p>
                         </div>
                       </div>
                     </div>{" "}
@@ -290,7 +304,9 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Gumonitar fanlar
                           </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">41 ta o'qituvchi</p>
+                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">
+                            41 ta o'qituvchi
+                          </p>
                         </div>
                       </div>
                     </div>{" "}
@@ -376,124 +392,42 @@ const Home = (props) => {
       <section className="section popular-courses">
         <div className="container">
           <div className="section-header text-center">
-            <span>Mentoring Goals</span>
-            <h2>Popular Mentors</h2>
+            <span>Mentoring Flow</span>
+            <h2>Bizning TOP o'qituvchilarimiz</h2>
             <p className="sub-title">
-              Do you want to move on next step? Choose your most popular leaning
-              mentors, it will help you to achieve your professional goals.
+              Bu yerda siz o'qituvchilarni narxi, bilim darajasi, reytingi hamda
+              o'quvchilari tomonidan bildirilgan fikrlarga ko'ra saralab
+              olishingiz mumkin. Sinov darsi uchun "Band qilish" tugmasini
+              bosing. Darslar individual tarzda o'tiladi.
             </p>
           </div>
-          {/* <div className="owl-carousel owl-theme"> */}
-          <div className="row">
-
-          <div className="col-md-6 col-12 card-mentors-lg   ">
-                {/* Mentor Widget */}
-                <div className="card card-size">
-                  <div className="card-body ">
-                    <div className="mentor-widget">
-                      <div className="user-info-left">
-                        <div className="mentor-img">
-                          <Link to="/app/Mentee/mentor-profile">
-                            <img src={USER} className="img-fluid img-mentee " alt="User Image" />
-                          </Link>
-                        </div>
-                        <div className="user-info-cont ">
-                          <h4 className="usr-name mb-3"><Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link></h4>
-                          <p className="mentor-type mb-1">Digital Marketer</p>
-                          <p className="mb-1"><span>550 000</span> UZS <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /></p>
-                          <div className="rating">
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">(17)</span>
-                          </div>
-                          <div className="mentor-details">
-                           </div>
-                        </div>
-                      </div>
-                      <div className="user-info-right">
-                        <div className="user-infos">
-                          <ul>
-                            <li><i className="far fa-comment pt-3" /> <span>17</span> ta fikr</li>
-                            <li><i className="fas fa-user-graduate " /> <span className="text-primary">25</span> ta o'quvchi</li>
-                            <li><i className="fas fa-user-graduate pt-2" /> <span>55</span> % O'quvchi sodiqligi </li>
-                           </ul>
-                          </div>
-                          <div className="mentor-booking">
-                          <Link className="apt-btn" to="/app/Mentee/booking">Sinab ko'rish</Link>
-                        </div>
-                      </div>
-                    </div>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta fugiat quae expedita error tempora qui et repellendus sapiente quasi?  <span className="text-primary">Batafsil</span>                    <div className="col-12 pt-2"></div>
-                  </div>
-                </div>
-                
-                
-                {/* /Mentor Widget */}
-                {/* Mentor Widget */}
-               
-                <div className="load-more text-center">
-                  <a className="btn btn-primary btn-sm" href="">Yana ko'rish</a>	
-                </div>	
-              </div>
-
-
-            <div className="col-12 card-mentors-md d-none col-md-6">
-              <div className="card w-100 px-3 pb-2">
-
-
-
-
-              <div className="row mt-5">
-                <div className="col-6 col-lg-4">
-                      <Link to="/app/Mentee/mentor-profile">
+           <div className="row">
+            <div className="col-md-6 col-12 card-mentors-lg   ">
+              {/* Mentor Widget */}
+              <div className="card card-size">
+                <div className="card-body">
+                  <div className="mentor-widget">
+                    <div className="user-info-left">
+                      <div className="mentor-img">
+                        <Link to="/app/Mentee/mentor-profile">
                           <img
                             src={USER}
                             className="img-fluid img-mentee "
                             alt="User Image"
                           />
-                         </Link>
-                         <div className="rating text-center mt-1  ">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            (17)
-                          </span>
-                        </div>
-                </div>
-                <div className="col-6 col-lg-4 pe-0 line-height">
-                <h4 className="usr-name">
+                        </Link>
+                      </div>
+                      <div className="user-info-cont ">
+                        <h4 className="usr-name mb-3">
                           <Link to="/app/Mentee/mentor-profile">
                             Ruby Perrin
                           </Link>
                         </h4>
-                        <p className="mentor-type mb-0">Digital Marketer </p>
- 
-                        <p className="mentor-type mb-0 line-height"> <i className="far fa-money-bill-alt " />{" "}
-                          <span>550 000</span> UZS{" "}
-                          <i
-                            className="fas fa-info-circle"
-                            data-toggle="tooltip"
-                            title="Lorem Ipsum"
-                          />  
-                           </p>
-                           <span className=" line-height ">
-                              <i className="fas fa-user-graduate  " />{" "}
-                          <span className="text-primary">25</span> ta o'quvchi
-                          </span> <br />
-                          <span> <i className="fas fa-heart" /> <span>55</span> %
-                            O'quvchi sodiqligi</span> 
-                            <p className="mb-2">
-                            Dars tili: <span>O'zbek, rus</span>
-                          </p>
-                            <button className="btn btn-primary band-qilish">Band qilish</button>
-
-                        <div className="rating d-none">
+                        <p className="mentor-type mb-1">Matematika</p>
+                        <p className="mb-1">
+                          <span>550 000</span> UZS
+                        </p>
+                        <div className="rating ">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
@@ -503,175 +437,170 @@ const Home = (props) => {
                             (17)
                           </span>
                         </div>
-                       
-                        <div>
-                         
-                        </div>
+                        <div className="mentor-details"></div>
+                      </div>
+                    </div>
+                    <div className="user-info-right">
+                      <div className="user-infos">
+                        <ul>
+                          <li>
+                            <i className="fas fa-comment pt-3" />{" "}
+                            <span>17</span> ta fikr
+                          </li>
+                          <li>
+                            <i className="fas fa-user-graduate " />{" "}
+                            <span className="text-primary">25</span> ta o'quvchi
+                          </li>
+                          <li>
+                            <i className="fas fa-heart pt-2" /> <span>55</span>{" "}
+                            % sodiqlik
+                            <i className="far fa-question-circle ps-1 "></i>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="mentor-booking">
+                        <Link
+                          className="apt-btn p-1 w-75 m-auto"
+                          to="/app/Mentee/booking"
+                        >
+                          Band qilish
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                <div>
+                <div className={`pt-2  ${more ? "about_text_size_long" : "about_text_size_short"}`}>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    sapiente quasi?{" "}
+                   
+                  </div>
+                  <div className={more ? "about_message" : "d-none"}>
+                    <div className="row w-100 m-0"> 
+                    <div className="col-6 d-flex align-items-center p-0">
+                        <Avatar/>
+                        <p className="user_message_name mb-0  ms-3">Sardor Safarov</p>
+                    </div>
+                    <div className="col-6 text-end p-0">
+                      <p className="m-0">01.10.2021</p>
+                    </div>
+                     </div>
+                     <div className="d-block w-100 mt-3">
+                          <p className="m-0 user_message_text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque nobis qui voluptates autem quos libero quod a voluptas id vero.
+                          </p>
+                     </div>
+                  </div>
+                  <p className="text-primary m-0" onClick={moreInfo}>{more ? "Yopish" : "Batafsil"}</p>
                 </div>
-                <div className="col-12 col-lg-4 container-mentee-mini-information"
-                > <ul className="ps-0 line-height d-none">
-                      <li className="d-flex align-items-end d-none">
-                          <i className="far fa-comment pb-1 pe-1" /> <span>17 </span>{" "} 
-                           ta fikr
-                        </li>
-                        <li className="md-d-none">
-                               <i className="fas fa-user-graduate py-3" />{" "}
-                          <span className="text-primary">25</span> ta o'quvchi
-                         </li> 
-                        <li className="mb-1">
-                        <i className="fas fa-heart" /> <span>55</span> %
-                            O'quvchi sodiqligi
-                         {" "}
-                        </li>
-                      </ul>
-                <ul className="ps-0 Md-Display-Flex ">
-                        
-                        <li>
-                           <button className="btn btn-primary band-qilish d-none">Band qilish</button>
-                        </li>
-                      </ul>
-                     
-                </div>
-                <div className="col-12">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio natus ducimus velit veniam quis modi nostrum quisquam! 
-                   <Link to="">
-                     Batafsil
-                   </Link>
+               
                 </div>
               </div>
 
-
-
-
-
-
-
-             
-               </div>
+              {/* /Mentor Widget */}
+              {/* Mentor Widget */}
             </div>
-           </div>
+          </div>
+
+          <div className="load-more text-center">
+            <a className="btn btn-primary btn-sm" href="">
+              Yana ko'rish
+            </a>
+          </div>
         </div>
-        {/* </div> */}
-      </section>
+       </section>
       {/* Path section start */}
       <section className="section path-section">
         <div className="section-header text-center">
           <div className="container">
             <span>Choose the</span>
-            <h2>Different All Learning Paths</h2>
+            <h2>O'quvchilarimiz tomonidan bildirilgan fikrlar</h2>
             <p className="sub-title">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt
+              Online o'rganish bugungi kunda keng ommalashayotgan bo'lsada, ko'pchilikning unga ishonmayotganini ko'ramiz.
+              Quyida esa bizning o'quvchilar online o'rgangan holda qanday natijalarga erishayotganlari haqida o'qishingiz mumkin.
             </p>
-          </div>
+           </div>
         </div>
-        <div className="learning-path-col">
-          <div className="container">
-            <div className="row">
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_1} alt="" />
-                      <div className="text-col">
-                        <h5>Digital Marketer</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_2} alt="" />
-                      <div className="text-col">
-                        <h5>Ui designer</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_3} alt="" />
-                      <div className="text-col">
-                        <h5>IT Security</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_4} alt="" />
-                      <div className="text-col">
-                        <h5>Front-End Developer</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_5} alt="" />
-                      <div className="text-col">
-                        <h5>Web Developer</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_6} alt="" />
-                      <div className="text-col">
-                        <h5>Administrator</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_7} alt="" />
-                      <div className="text-col">
-                        <h5>Project Manager</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-12 col-md-4 col-lg-3">
-                <div className="large-col">
-                  <Link to="/app/Pages/search" className="large-col-image">
-                    <div className="image-col-merge">
-                      <img src={IMG_8} alt="" />
-                      <div className="text-col">
-                        <h5>PHP Developer</h5>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="view-all text-center">
-              <a href="#" className="btn btn-primary">
-                View All
-              </a>
-            </div>
+         
+     <div className="container">
+     <Slider {...settingSlider}>
+          <div className="pe-3">
+           <div className="card card-comments-mainPage ">
+             <div className="p-3 px-4">
+               <div className="d-flex align-items-center py-3 ">
+                   <div className="avatar me-2">
+                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
+                   </div>
+                  <div>
+                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                  <p className="mb-0">Qashqadaryo</p>
+                  </div>
+               </div>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
+                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
+             </div>
+           </div>
           </div>
-        </div>
+          <div className="pe-3">
+           <div className="card card-comments-mainPage ">
+             <div className="p-3 px-4">
+               <div className="d-flex align-items-center py-3 ">
+                   <div className="avatar me-2">
+                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
+                   </div>
+                  <div>
+                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                  <p className="mb-0">Qashqadaryo</p>
+                  </div>
+               </div>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
+                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
+             </div>
+           </div>
+          </div>
+          <div className="pe-3">
+           <div className="card card-comments-mainPage ">
+             <div className="p-3 px-4">
+               <div className="d-flex align-items-center py-3 ">
+                   <div className="avatar me-2">
+                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
+                   </div>
+                  <div>
+                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                  <p className="mb-0">Qashqadaryo</p>
+                  </div>
+               </div>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
+                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
+             </div>
+           </div>
+          </div>
+          <div className="pe-3">
+           <div className="card card-comments-mainPage ">
+             <div className="p-3 px-4">
+               <div className="d-flex align-items-center py-3 ">
+                   <div className="avatar me-2">
+                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
+                   </div>
+                  <div>
+                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                  <p className="mb-0">Qashqadaryo</p>
+                  </div>
+               </div>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
+                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
+             </div>
+           </div>
+          </div>
+          
+        </Slider>
+     </div>
+
       </section>
       {/* Path section end */}
       {/* Blog Section */}
