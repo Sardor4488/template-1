@@ -15,14 +15,20 @@ import {
   BLOG_03,
   BLOG_04,
   USER_1,
-} from "../../constant/imagepath_home";
-import img from "../../constant/TemirovSardor.jpg";
-import axios from "axios";
-import * as t from "../../redux/types";
-import { dispatch } from "../../redux/store";
+} from "../../constant/imagepath_home"; 
+import userimg from "../assets/img/user/user.jpg"
 import Slider from "@ant-design/react-slick";
+import { Avatar } from "antd";
 
 const Home = (props) => {
+  
+  const [more , setMore] = useState(false);
+
+  const moreInfo = () => {
+    setMore(!more);
+  } 
+
+
   const { history } = props;
   const searchmentee = () => {
     history.push("/app/Mentee/search");
@@ -89,34 +95,11 @@ const Home = (props) => {
                 <span className="text-white mb-3">
                   O'zingizga eng saralangan ustozni shu yerdan toping{" "}
                 </span>
-              </div>
-              {/* Search */}
-              <div className=" ">
-                <form
-                  className="w-100 d-flex align-items-center w-100 justify-content-center"
-                  action="/app/Pages/search"
-                >
-                  <input
-                    type="text"
-                    className=" search-input"
-                    placeholder="Masalan: IELTS..."
-                  />
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn_search "
-                    onClick={() => searchmentee()}
-                  >
-                    <i>
-                      <img src={Submit} alt="" />
-                    </i>{" "}
-                  </button>
-                </form>
-              </div>
-              {/* /Search */}
+              </div> 
               <div className="row mt-4">
                 <div className="col-12 col-md-4 pe-5 mt-3">
                   {" "}
-                  <Link to={"/"}>
+                  <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
@@ -418,12 +401,11 @@ const Home = (props) => {
               bosing. Darslar individual tarzda o'tiladi.
             </p>
           </div>
-          {/* <div className="owl-carousel owl-theme"> */}
-          <div className="row">
+           <div className="row">
             <div className="col-md-6 col-12 card-mentors-lg   ">
               {/* Mentor Widget */}
               <div className="card card-size">
-                <div className="card-body ">
+                <div className="card-body">
                   <div className="mentor-widget">
                     <div className="user-info-left">
                       <div className="mentor-img">
@@ -445,7 +427,7 @@ const Home = (props) => {
                         <p className="mb-1">
                           <span>550 000</span> UZS
                         </p>
-                        <div className="rating">
+                        <div className="rating ">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
@@ -472,7 +454,7 @@ const Home = (props) => {
                           <li>
                             <i className="fas fa-heart pt-2" /> <span>55</span>{" "}
                             % sodiqlik
-                            <i class="far fa-question-circle ps-1 "></i>
+                            <i className="far fa-question-circle ps-1 "></i>
                           </li>
                         </ul>
                       </div>
@@ -486,120 +468,42 @@ const Home = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className="pt-2">
+                <div>
+                <div className={`pt-2  ${more ? "about_text_size_long" : "about_text_size_short"}`}>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
+                    Soluta fugiat quae expedita error tempora qui et repellendus
                     sapiente quasi?{" "}
-                    <span className="text-primary">Batafsil</span>{" "}
+                   
                   </div>
-                  <div className="col-12 pt-2"></div>
+                  <div className={more ? "about_message" : "d-none"}>
+                    <div className="row w-100 m-0"> 
+                    <div className="col-6 d-flex align-items-center p-0">
+                        <Avatar/>
+                        <p className="user_message_name mb-0  ms-3">Sardor Safarov</p>
+                    </div>
+                    <div className="col-6 text-end p-0">
+                      <p className="m-0">01.10.2021</p>
+                    </div>
+                     </div>
+                     <div className="d-block w-100 mt-3">
+                          <p className="m-0 user_message_text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque nobis qui voluptates autem quos libero quod a voluptas id vero.
+                          </p>
+                     </div>
+                  </div>
+                  <p className="text-primary m-0" onClick={moreInfo}>{more ? "Yopish" : "Batafsil"}</p>
+                </div>
+               
                 </div>
               </div>
 
               {/* /Mentor Widget */}
               {/* Mentor Widget */}
-            </div>
-           
-          
-          
-            {/* Mentor-md-show */}
-            <div className="col-12 card-mentors-md d-none col-md-6">
-              <div className="card w-100 px-3 pb-2">
-                <div className="row mt-5">
-                  <div className="col-6 col-lg-4">
-                    <Link to="/app/Mentee/mentor-profile">
-                      <img
-                        src={USER}
-                        className="img-fluid img-mentee "
-                        alt="User Image"
-                      />
-                    </Link>
-                    <div className="rating text-center mt-1  ">
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star" />
-                      <span className="d-inline-block average-rating">
-                        (17)
-                      </span>
-                    </div>
-                  </div>
-                  <div className="col-6 col-lg-4 pe-0 line-height">
-                    <h4 className="usr-name">
-                      <Link to="/app/Mentee/mentor-profile">Ruby Perrin</Link>
-                    </h4>
-                    <p className="mentor-type mb-0">Digital Marketer </p>
-                    <p className=" mb-0 line-height">
-                      {" "}
-                      <i className="far fa-money-bill-alt " />{" "}
-                      <span>550 000</span> UZS{" "}
-                      <i
-                        className="fas fa-info-circle"
-                        data-toggle="tooltip"
-                        title="Lorem Ipsum"
-                      />
-                    </p>
-                    <span className=" line-height ">
-                      <i className="fas fa-user-graduate  " />{" "}
-                      <span className="text-primary">25</span> ta o'quvchi
-                    </span>{" "}
-                    <br />
-                    <span>
-                      {" "}
-                      <i className="fas fa-heart pt-2" /> <span>55</span>{" "}
-                            % sodiqlik
-                            <i class="far fa-question-circle ps-1 "></i>
-                    </span>
-                    <p className="mb-2">
-                      Dars tili: <span>O'zbek, rus</span>
-                    </p>
-                    <button className="btn btn-primary band-qilish">
-                      Band qilish
-                    </button>
-                    <div className="rating d-none">
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star" />
-                      <span className="d-inline-block average-rating">
-                        (17)
-                      </span>
-                    </div>
-                    <div></div>
-                  </div>
-                  <div className="col-12 col-lg-4 container-mentee-mini-information">
-                    {" "}
-                    <ul className="ps-0 line-height d-none">
-                      <li className="d-flex align-items-end d-none">
-                        <i className="far fa-comment pb-1 pe-1" />{" "}
-                        <span>17 </span> ta fikr
-                      </li>
-                      <li className="md-d-none">
-                        <i className="fas fa-user-graduate py-3" />{" "}
-                        <span className="text-primary">25</span> ta o'quvchi
-                      </li>
-                      <li className="mb-1">
-                        <i className="fas fa-heart" /> <span>55</span> %
-                        O'quvchi sodiqligi{" "}
-                      </li>
-                    </ul>
-                    <ul className="ps-0 Md-Display-Flex ">
-                      <li>
-                        <button className="btn btn-primary band-qilish d-none">
-                          Band qilish
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-12">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Odio natus ducimus velit veniam quis modi nostrum quisquam!
-                    <Link to="">Batafsil</Link>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -609,8 +513,7 @@ const Home = (props) => {
             </a>
           </div>
         </div>
-        {/* </div> */}
-      </section>
+       </section>
       {/* Path section start */}
       <section className="section path-section">
         <div className="section-header text-center">

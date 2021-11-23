@@ -876,7 +876,7 @@ button.bg-danger:hover {
   border-radius: 0;
 }
 .card-body {
-  padding: 1.5rem;
+  padding: 20px;
 }
 .card-title {
   margin-bottom: 15px;
@@ -7118,9 +7118,9 @@ div.dataTables_wrapper div.dataTables_filter input {
     min-width: 135px !important;
     min-height: 135px !important;
 }
-.card-mentors-lg{
-  display: none !important;
-}
+
+  
+
   .main-nav {
     padding: 0;
     -ms-flex-direction: column;
@@ -7861,7 +7861,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-bottom: 0.9375rem;
   }
   .card-body {
-    padding: 1.25rem;
+    padding: 20px;
   }
   .card-header {
     padding: 0.75rem 1.25rem;
@@ -8260,4 +8260,31 @@ PhoneInput {
 .card-comments-mainPage{
   border-radius: 8px;
   min-height: 200px;
+}
+.about_text_size_short{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.about_text_size_long{
+  height: auto !important;
+  overflow-y: hidden;
+  transition: 00.4s;
+  margin-bottom: 15px;
+}
+
+.about_message {
+  margin: 30px 0 15px 0;
+  background-color: #f1f1f1;
+  color: #000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+.card-mentors-lg .card  { 
+  border-radius: 8px !important;
 }
