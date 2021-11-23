@@ -23,8 +23,10 @@ import { LoadingOff, LoadingOn } from "./redux/Actions.js";
 import { UserAuth } from "./Api/index.js";
 const AppUniversal = (props) => {
   const { location, history } = props;
+  const [path, setPath] = useState("");
 
   useEffect(() => {
+    UserAuth(setPath);
     if (
       location.pathname.includes("login") ||
       location.pathname.includes("register") ||
@@ -41,11 +43,6 @@ const AppUniversal = (props) => {
     } else if (location.pathname.includes("chat")) {
       $("body").addClass("chat-page");
     }
-  }, []);
-  const [path, setPath] = useState("");
-
-  useEffect(() => {
-    UserAuth(setPath);
   }, []);
   const loading = useSelector((state) => state.Reducer.loading);
   return (
