@@ -146,7 +146,7 @@ const Home = (props) => {
                 </span>
               </div>
               <div className="row m-0  mt-4 justify-content-center">
-                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -181,7 +181,7 @@ const Home = (props) => {
                     </div>{" "}
                   </Link>
                 </div>
-                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -223,7 +223,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -273,7 +273,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 px-4 mt-3 ">
+                <div className="col-12 col-md-6 px-0  px-sm-4 mt-3 ">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog ">
@@ -320,7 +320,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 px-4 mt-3 ">
+                <div className="col-12 col-md-6 px-0  px-sm-4 mt-3 ">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center gumonitars ">
@@ -604,7 +604,7 @@ const Home = (props) => {
           <Slider {...settingSlider}>
             <div className="px-3">
               <div className="card card-comments-mainPage ">
-                <div className="p-3 px-4">
+                <div className="p-3 px-0  px-sm-4">
                   <div className="d-flex align-items-center py-3 ">
                     <div className="avatar me-2">
                       <img
@@ -626,7 +626,7 @@ const Home = (props) => {
             </div>
             <div className="px-3">
               <div className="card card-comments-mainPage ">
-                <div className="p-3 px-4">
+                <div className="p-3 px-0  px-sm-4">
                   <div className="d-flex align-items-center py-3 ">
                     <div className="avatar me-2">
                       <img
@@ -648,7 +648,7 @@ const Home = (props) => {
             </div>
             <div className="px-3">
               <div className="card card-comments-mainPage ">
-                <div className="p-3 px-4">
+                <div className="p-3 px-0  px-sm-4">
                   <div className="d-flex align-items-center py-3 ">
                     <div className="avatar me-2">
                       <img
@@ -670,7 +670,7 @@ const Home = (props) => {
             </div>
             <div className="px-3">
               <div className="card card-comments-mainPage ">
-                <div className="p-3 px-4">
+                <div className="p-3 px-0  px-sm-4">
                   <div className="d-flex align-items-center py-3 ">
                     <div className="avatar me-2">
                       <img
