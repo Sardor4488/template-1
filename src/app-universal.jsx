@@ -17,7 +17,10 @@ import MenteeDashboard from "./Home/Mentee/menteedashboard";
 import axios from "axios";
 import { dispatch } from "./redux/store.js";
 import * as t from "./redux/types";
-
+import Loading from "./Home/components/Loading/Loading.js";
+import { useSelector } from "react-redux";
+import { LoadingOff, LoadingOn } from "./redux/Actions.js";
+import { UserAuth } from "./Api/index.js";
 const AppUniversal = (props) => {
   const { location, history } = props;
 
@@ -39,54 +42,36 @@ const AppUniversal = (props) => {
       $("body").addClass("chat-page");
     }
   }, []);
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
-  const url = role == "mentee" ? "student/student-me" : "teacher/teacher-me";
   const [path, setPath] = useState("");
-  const author = () => {
-    if (token) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const bodyParameters = {};
-      axios
-        .post(url, bodyParameters, config)
-        .then((res) => {
-          const action = { type: t.AUTHOR, payload: res.data };
-          dispatch(action);
-          setPath(`/app/${role}/dashboard`);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setPath(`/app/home`);
-          localStorage.removeItem("token");
-          localStorage.removeItem("role");
-        });
-    } else if (token == "" || token == null || token == undefined) {
-      setPath("app/home");
-    }
-  };
+
   useEffect(() => {
-    author();
+    UserAuth(setPath);
   }, []);
+  const loading = useSelector((state) => state.Reducer.loading);
   return (
     <>
-      <Switch>
-        <Route path="/app" component={HomeLayout} />
-        <Route path="/admin" component={AdminLayout} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/forgot-password" component={Forgotpassword} />
-        <Route path="/admin_login" component={AdminLogin} />
-        <Route path="/admin_register" component={AdminRegister} />
-        <Route path="/admin_forgot-password" component={AdminForgotpassword} />
-        <Route path="/lock-screen" component={LockScreen} />
-        <Route exact path="/">
-          <Redirect to={path} />
-        </Route>
-      </Switch>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Switch>
+          <Route path="/app" component={HomeLayout} />
+          <Route path="/admin" component={AdminLayout} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/forgot-password" component={Forgotpassword} />
+          <Route path="/admin_login" component={AdminLogin} />
+          <Route path="/admin_register" component={AdminRegister} />
+          <Route
+            path="/admin_forgot-password"
+            component={AdminForgotpassword}
+          />
+          <Route path="/lock-screen" component={LockScreen} />
+          <Route path="/loading" component={Loading} />
+          <Route exact path="/">
+            <Redirect to={path} />
+          </Route>
+        </Switch>
+      )}
     </>
   );
 };

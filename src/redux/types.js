@@ -1,3 +1,4 @@
-export const LOADING = "LOADING";
-export const AUTHOR = "AUTHOR";
+export const LOADINGOFF = "LOADINGOFF";
+export const LOADINGON = "LOADINGON";
+export const USERDATA = "USERDATA";
 export const ROLE = "ROLE";
