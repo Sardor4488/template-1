@@ -602,7 +602,7 @@ const Home = (props) => {
 
         <div className="container">
           <Slider {...settingSlider}>
-            <div className="pe-3">
+            <div className="px-3">
               <div className="card card-comments-mainPage ">
                 <div className="p-3 px-4">
                   <div className="d-flex align-items-center py-3 ">
@@ -624,7 +624,7 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
-            <div className="pe-3">
+            <div className="px-3">
               <div className="card card-comments-mainPage ">
                 <div className="p-3 px-4">
                   <div className="d-flex align-items-center py-3 ">
@@ -646,7 +646,7 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
-            <div className="pe-3">
+            <div className="px-3">
               <div className="card card-comments-mainPage ">
                 <div className="p-3 px-4">
                   <div className="d-flex align-items-center py-3 ">
@@ -668,7 +668,7 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
-            <div className="pe-3">
+            <div className="px-3">
               <div className="card card-comments-mainPage ">
                 <div className="p-3 px-4">
                   <div className="d-flex align-items-center py-3 ">
