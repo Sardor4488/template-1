@@ -8,7 +8,7 @@ const Footer = () => {
       {/* Footer Top */}
       <div className="footer-top">
         <div className="container-fluid">
-          <div className="row">
+          <div className="row m-0 p-0">
             <div className="col-lg-3 col-md-6">
               {/* Footer Widget */}
               <div className="footer-widget footer-about">

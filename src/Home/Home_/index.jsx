@@ -145,7 +145,7 @@ const Home = (props) => {
                   O'zingizga eng saralangan ustozni shu yerdan toping{" "}
                 </span>
               </div>
-              <div className="row mt-4 justify-content-center">
+              <div className="row m-0  mt-4 justify-content-center">
                 <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
@@ -377,8 +377,8 @@ const Home = (props) => {
               Sign up with mentoring
             </p>
           </div>
-          <div className="row">
-            <div className="col-12 col-md-6 col-lg-4">
+          <div className="row m-0 p-0">
+            <div className="col-12 col-md-6 mb-3 col-lg-4">
               <div className="feature-box text-center">
                 <div className="feature-header">
                   <div className="feature-icon">
@@ -397,7 +397,7 @@ const Home = (props) => {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4">
+            <div className="col-12 col-md-6 mb-3 col-lg-4">
               <div className="feature-box text-center">
                 <div className="feature-header">
                   <div className="feature-icon">
@@ -416,7 +416,7 @@ const Home = (props) => {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4">
+            <div className="col-12 col-md-6 mb-3 col-lg-4">
               <div className="feature-box text-center">
                 <div className="feature-header">
                   <div className="feature-icon">
@@ -450,7 +450,7 @@ const Home = (props) => {
               bosing. Darslar individual tarzda o'tiladi.
             </p>
           </div>
-          <div className="row">
+          <div className="row m-0 p-0">
             <div className="col-xl-6 col-12  card-mentors-lg   ">
               {/* Mentor Widget */}
               <div className="card card-size">
@@ -706,7 +706,7 @@ const Home = (props) => {
             </p>
           </div>
           {/* /Section Header */}
-          <div className="row blog-grid-row">
+          <div className="row m-0 p-0 blog-grid-row">
             {dataBlog &&
               dataBlog.map((v, i) => (
                 <div className="col-md-6 col-lg-3 col-sm-12" key={i}>
