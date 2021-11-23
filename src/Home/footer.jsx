@@ -1,118 +1,160 @@
-import React from 'react';
-import AppLogo from "../constant/Logo.png"
-import { Link } from 'react-router-dom';
+import React from "react";
+import AppLogo from "../constant/Logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-	
-	return (
-		<footer className="footer">
-        {/* Footer Top */}
-        <div className="footer-top">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-lg-3 col-md-6">
-                {/* Footer Widget */}
-                <div className="footer-widget footer-about">
-                  <div className="footer-logo">
-                    <img src={AppLogo} alt="logo" />
-                  </div>
-                  <div className="footer-about-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <div className="social-icon">
-                      <ul>
-                        <li>
-                          <a href="#" target="_blank"><i aria-hidden="true" className="fab fa-facebook-f" /> </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank"><i className="fab fa-twitter" /> </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank"><i className="fab fa-linkedin-in" /></a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank"><i className="fab fa-instagram" /></a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank"><i className="fab fa-dribbble" /> </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+  return (
+    <footer className="footer">
+      {/* Footer Top */}
+      <div className="footer-top">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-3 col-md-6">
+              {/* Footer Widget */}
+              <div className="footer-widget footer-about">
+                <div className="footer-logo">
+                  <img src={AppLogo} alt="logo" />
                 </div>
-                {/* /Footer Widget */}
-              </div>
-              <div className="col-lg-3 col-md-6">
-                {/* Footer Widget */}
-                <div className="footer-widget footer-menu">
-                  <h2 className="footer-title">For Mentee</h2>
-                  <ul>
-                    <li><Link to="/app/Mentee/search">Search Mentors</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/app/Mentee/booking">Booking</Link></li>
-                    <li><Link to="/app/Mentee/dashboard-mentee">Mentee Dashboard</Link></li>
+                <div className="footer-about-content">
+                  <ul className="m-0 p-0 mb-3">
+                    <li>
+                      <span className="font-weight-bold">Rasmiy nom:</span>{" "}
+                      "WEBCLASS ONLINE MAKTABI" NTM
+                    </li>
+                    <li>
+                      <span className="font-weight-bold">STIR:</span> 307509775
+                    </li>
+                    <li>
+                      <span className="font-weight-bold">MFO</span> 01163
+                    </li>
+                    <li>
+                      <span className="font-weight-bold"> Bank h/r:</span> 2021
+                      2000 9052 4569 5001 "Hamkorbank" ATB Yunusobod filial
+                    </li>
                   </ul>
+                  <div className="social-icon">
+                    <ul>
+                      <li>
+                        <a href="#" target="_blank">
+                          <i aria-hidden="true" className="fab fa-facebook-f" />{" "}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">
+                          <i className="fab fa-twitter" />{" "}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">
+                          <i className="fab fa-linkedin-in" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">
+                          <i className="fab fa-instagram" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" target="_blank">
+                          <i className="fab fa-dribbble" />{" "}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                {/* /Footer Widget */}
               </div>
-              <div className="col-lg-3 col-md-6">
-                {/* Footer Widget */}
-                <div className="footer-widget footer-menu">
-                  <h2 className="footer-title">For Mentors</h2>
-                  <ul>
-                    <li><Link to="/app/Mentor/appointments">Appointments</Link></li>
-                    <li><Link to="/app/Mentor/chat">Chat</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/app/Mentor/dashboard">Mentor Dashboard</Link></li>
-                  </ul>
-                </div>
-                {/* /Footer Widget */}
+              {/* /Footer Widget */}
+            </div>
+            <div className="col-lg-3 col-md-6">
+              {/* Footer Widget */}
+              <div className="footer-widget footer-menu">
+                <h2 className="footer-title">Menyu</h2>
+                <ul>
+                  <li>
+                    <Link to="/app/home">Asosiy</Link>
+                  </li>
+                  <li>
+                    <Link to="/app/about">Biz haqimizda</Link>
+                  </li>
+                  <li>
+                    <Link to="/app/blog">Blog</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Fikirlar</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Jamoa</Link>
+                  </li>
+                </ul>
               </div>
-              <div className="col-lg-3 col-md-6">
-                {/* Footer Widget */}
-                <div className="footer-widget footer-contact">
-                  <h2 className="footer-title">Contact Us</h2>
-                  <div className="footer-contact-info">
-                    <div className="footer-address">
-                      <span><i className="fas fa-map-marker-alt" /></span>
-                      <p> 3556  Beech Street, San Francisco,<br /> California, CA 94108 </p>
-                    </div>
+              {/* /Footer Widget */}
+            </div>
+            <div className="col-lg-3 col-md-6">
+              {/* Footer Widget */}
+              <div className="footer-widget footer-menu">
+                <h2 className="footer-title">Eng so'nggi yangiliklar</h2>
+                <ul>
+                  <li>
+                    <Link to="/">Bizga investitsiya kiriting…...</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Daryo.uz maqolasi: Audio kursm...</Link>
+                  </li>
+                  <li>
+                    <Link to="/">Xabar.uz maqolasi: Ikki yosh f...</Link>
+                  </li>
+                </ul>
+              </div>
+              {/* /Footer Widget */}
+            </div>
+            <div className="col-lg-3 col-md-6">
+              {/* Footer Widget */}
+              <div className="footer-widget footer-contact">
+                <h2 className="footer-title">Aloqa</h2>
+                <div className="footer-contact-info">
+                  <div className="footer-address">
+                    <span>
+                      <i className="fas fa-map-marker-alt" />
+                    </span>
                     <p>
-                      <i className="fas fa-phone-alt" />
-                      +1 315 369 5943
-                    </p>
-                    <p className="mb-0">
-                      <i className="fas fa-envelope" />
-                      mentoring@example.com
+                      Toshkent shahri, Yunusobod tumani, <br /> 19-mavze, 17-uy
                     </p>
                   </div>
+                  <p>
+                    <i className="fas fa-phone-alt" />
+                    +998973003011
+                  </p>
+                  <p className="mb-0">
+                    <i className="fas fa-envelope" />
+                    info@myteacher.uz
+                  </p>
                 </div>
-                {/* /Footer Widget */}
               </div>
+              {/* /Footer Widget */}
             </div>
           </div>
         </div>
-        {/* /Footer Top */}
-        {/* Footer Bottom */}
-        <div className="footer-bottom">
-          <div className="container-fluid">
-            {/* Copyright */}
-            <div className="copyright">
-              <div className="row">
-                <div className="col-12 text-center">
-                  <div className="copyright-text">
-                    <p className="mb-0">© 2020 Mentoring. All rights reserved.</p>
-                  </div>
+      </div>
+      {/* /Footer Top */}
+      {/* Footer Bottom */}
+      <div className="footer-bottom">
+        <div className="container-fluid">
+          {/* Copyright */}
+          <div className="copyright">
+            <div className="row">
+              <div className="col-12 text-center">
+                <div className="copyright-text">
+                  <p className="mb-0">© 2021 MyTeacher</p>
                 </div>
               </div>
             </div>
-            {/* /Copyright */}
           </div>
+          {/* /Copyright */}
         </div>
-        {/* /Footer Bottom */}
-      </footer>
-	);
+      </div>
+      {/* /Footer Bottom */}
+    </footer>
+  );
 };
 
 export default Footer;

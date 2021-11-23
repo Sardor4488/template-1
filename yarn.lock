@@ -11241,6 +11241,11 @@
     "react-fast-compare" "^3.1.1"
     "react-side-effect" "^2.1.0"
 
+"react-icons@^4.3.1":
+  "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
+  "version" "4.3.1"
+
 "react-input-mask@^2.0.4":
   "integrity" "sha512-1hwzMr/aO9tXfiroiVCx5EtKohKwLk/NT8QlJXHQ4N+yJJFyUuMT+zfTpLBwX/lK3PkuMlievIffncpMZ3HGRQ=="
   "resolved" "https://registry.npmjs.org/react-input-mask/-/react-input-mask-2.0.4.tgz"

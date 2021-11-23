@@ -4,6 +4,7 @@ import OwlCarousel from "react-owl-carousel";
 import { Link, withRouter } from "react-router-dom";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import { GoBook } from "react-icons/go";
 import {
   Submit,
   ICON_1,
@@ -15,19 +16,18 @@ import {
   BLOG_03,
   BLOG_04,
   USER_1,
-} from "../../constant/imagepath_home"; 
-import userimg from "../assets/img/user/user.jpg"
+} from "../../constant/imagepath_home";
+import userimg from "../assets/img/user/user.jpg";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
+import { dataBlog, dataTeam } from "../../Data";
 
 const Home = (props) => {
-  
-  const [more , setMore] = useState(false);
+  const [more, setMore] = useState(false);
 
   const moreInfo = () => {
     setMore(!more);
-  } 
-
+  };
 
   const { history } = props;
   const searchmentee = () => {
@@ -45,7 +45,6 @@ const Home = (props) => {
     centerMode: true,
   };
 
-
   const settingSlider = {
     dots: true,
     infinite: false,
@@ -59,26 +58,76 @@ const Home = (props) => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-    
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const settingSliderTeam = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div>
@@ -95,9 +144,9 @@ const Home = (props) => {
                 <span className="text-white mb-3">
                   O'zingizga eng saralangan ustozni shu yerdan toping{" "}
                 </span>
-              </div> 
-              <div className="row mt-4">
-                <div className="col-12 col-md-4 pe-5 mt-3">
+              </div>
+              <div className="row mt-4 justify-content-center">
+                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -132,7 +181,7 @@ const Home = (props) => {
                     </div>{" "}
                   </Link>
                 </div>
-                <div className="col-12 col-md-4 pe-5 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -174,7 +223,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-4 pe-5 mt-3">
+                <div className="col-12 col-md-6 col-lg-4 px-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -224,7 +273,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 pe-5 mt-3 ">
+                <div className="col-12 col-md-6 px-4 mt-3 ">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog ">
@@ -271,7 +320,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 pe-5 mt-3 ">
+                <div className="col-12 col-md-6 px-4 mt-3 ">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center gumonitars ">
@@ -321,8 +370,8 @@ const Home = (props) => {
       <section className="section how-it-works">
         <div className="container">
           <div className="section-header text-center">
-            <span>Mentoring Flow</span>
-            <h2>How does it works ?</h2>
+            <span>Saralangan o'qituvchilar platformasi</span>
+            <h2>Bu qanday ishlaydi?</h2>
             <p className="sub-title">
               Are you looking to join online institutions? Now it's very simple,
               Sign up with mentoring
@@ -339,12 +388,12 @@ const Home = (props) => {
                     </i>
                   </div>
                   <div className="feature-cont">
-                    <div className="feature-text">Sign up</div>
+                    <div className="feature-text">Ro'yxatdan o'tamiz</div>
                   </div>
                 </div>
                 <p className="mb-0">
-                  Are you looking to join online Learning? Now it's very simple,
-                  Now Sign up
+                  Shaxsiy kabinet ochish uchun shunchaki ro'yxatdan o'ting - bu
+                  judayam oson.
                 </p>
               </div>
             </div>
@@ -358,12 +407,12 @@ const Home = (props) => {
                     </i>
                   </div>
                   <div className="feature-cont">
-                    <div className="feature-text">Collaborate</div>
+                    <div className="feature-text">Sinab ko'ramiz</div>
                   </div>
                 </div>
                 <p className="mb-0">
-                  Collaborate on your own timing, by scheduling with mentor
-                  booking
+                  O'zingiz ma'qul deb topgan o'qituvchi bilan sinov darsida
+                  qatnashib ko'ring.
                 </p>
               </div>
             </div>
@@ -377,12 +426,12 @@ const Home = (props) => {
                     </i>
                   </div>
                   <div className="feature-cont">
-                    <div className="feature-text">Improve &amp; Get Back</div>
+                    <div className="feature-text">Maqsad sari olg'a</div>
                   </div>
                 </div>
                 <p className="mb-0">
-                  you can gather different skill set, and you can become mentor
-                  too
+                  Shaxsiy onlayn o'qituvchingiz bilan maqsadlaringizga <br />{" "}
+                  oson erishing!
                 </p>
               </div>
             </div>
@@ -401,8 +450,8 @@ const Home = (props) => {
               bosing. Darslar individual tarzda o'tiladi.
             </p>
           </div>
-           <div className="row">
-            <div className="col-md-6 col-12 card-mentors-lg   ">
+          <div className="row">
+            <div className="col-xl-6 col-12  card-mentors-lg   ">
               {/* Mentor Widget */}
               <div className="card card-size">
                 <div className="card-body">
@@ -416,17 +465,6 @@ const Home = (props) => {
                             alt="User Image"
                           />
                         </Link>
-                      </div>
-                      <div className="user-info-cont ">
-                        <h4 className="usr-name mb-3">
-                          <Link to="/app/Mentee/mentor-profile">
-                            Ruby Perrin
-                          </Link>
-                        </h4>
-                        <p className="mentor-type mb-1">Matematika</p>
-                        <p className="mb-1">
-                          <span>550 000</span> UZS
-                        </p>
                         <div className="rating ">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
@@ -437,68 +475,101 @@ const Home = (props) => {
                             (17)
                           </span>
                         </div>
-                        <div className="mentor-details"></div>
                       </div>
                     </div>
                     <div className="user-info-right">
-                      <div className="user-infos">
-                        <ul>
-                          <li>
-                            <i className="fas fa-comment pt-3" />{" "}
-                            <span>17</span> ta fikr
+                      <div className="user-infos mb-0">
+                        <ul className="m-0 p-0">
+                          <li className="usr-name">
+                            <Link to="/app/Mentee/mentor-profile">
+                              Ruby Perrin
+                            </Link>
+                          </li>
+                          <li className="text-secondary">
+                            <i className="fas fa-book text-black "></i>{" "}
+                            Matematika
                           </li>
                           <li>
-                            <i className="fas fa-user-graduate " />{" "}
-                            <span className="text-primary">25</span> ta o'quvchi
+                            <i className="fas fa-wallet text-black"></i> 550 000
+                            UZS
                           </li>
                           <li>
-                            <i className="fas fa-heart pt-2" /> <span>55</span>{" "}
-                            % sodiqlik
-                            <i className="far fa-question-circle ps-1 "></i>
+                            <div className="rating">
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star" />
+                              <span className="d-inline-block average-rating">
+                                (17)
+                              </span>
+                            </div>
                           </li>
                         </ul>
                       </div>
-                      <div className="mentor-booking">
-                        <Link
-                          className="apt-btn p-1 w-75 m-auto"
-                          to="/app/Mentee/booking"
-                        >
-                          Band qilish
-                        </Link>
+                      <div className="user-infos">
+                        <ul>
+                          <li>
+                            <i className="fas fa-comment text-black" />{" "}
+                            <span>17</span> ta fikr
+                          </li>
+                          <li>
+                            <i className="fas fa-user-graduate text-black" />{" "}
+                            <span className="text-primary">25</span> ta o'quvchi
+                          </li>
+                          <li>
+                            <i className="fas fa-heart text-black" />{" "}
+                            <span>55</span> % sodiqlik
+                            <i className="far fa-question-circle ps-1 text-black"></i>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
-                <div>
-                <div className={`pt-2  ${more ? "about_text_size_long" : "about_text_size_short"}`}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    sapiente quasi?{" "}
-                   
-                  </div>
-                  <div className={more ? "about_message" : "d-none"}>
-                    <div className="row w-100 m-0"> 
-                    <div className="col-6 d-flex align-items-center p-0">
-                        <Avatar/>
-                        <p className="user_message_name mb-0  ms-3">Sardor Safarov</p>
+                  <div>
+                    <div
+                      className={`pt-2  ${
+                        more ? "about_text_size_long" : "about_text_size_short"
+                      }`}
+                    >
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Soluta fugiat quae expedita error tempora qui et
+                      repellendus Soluta fugiat quae expedita error tempora qui
+                      et repellendus Soluta fugiat quae expedita error tempora
+                      qui et repellendus Soluta fugiat quae expedita error
+                      tempora qui et repellendus Soluta fugiat quae expedita
+                      error tempora qui et repellendus Soluta fugiat quae
+                      expedita error tempora qui et repellendus sapiente quasi?{" "}
                     </div>
-                    <div className="col-6 text-end p-0">
-                      <p className="m-0">01.10.2021</p>
-                    </div>
-                     </div>
-                     <div className="d-block w-100 mt-3">
-                          <p className="m-0 user_message_text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque nobis qui voluptates autem quos libero quod a voluptas id vero.
+                    <div className={more ? "about_message" : "d-none"}>
+                      <div className="row w-100 m-0">
+                        <div className="col-6 d-flex align-items-center p-0">
+                          <Avatar />
+                          <p className="user_message_name mb-0  ms-3">
+                            Sardor Safarov
                           </p>
-                     </div>
+                        </div>
+                        <div className="col-6 text-end p-0">
+                          <p className="m-0">01.10.2021</p>
+                        </div>
+                      </div>
+                      <div className="d-block w-100 mt-3">
+                        <p className="m-0 user_message_text">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Doloremque nobis qui voluptates autem quos
+                          libero quod a voluptas id vero.
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-primary m-0" onClick={moreInfo}>
+                      {more ? "Yopish" : "Batafsil"}
+                    </p>
                   </div>
-                  <p className="text-primary m-0" onClick={moreInfo}>{more ? "Yopish" : "Batafsil"}</p>
-                </div>
-               
+                  <div className="mentor-booking w-100 d-flex justify-content-end">
+                    <Link className="apt-btn p-1 " to="/app/Mentee/booking">
+                      Band qilish
+                    </Link>
+                  </div>
                 </div>
               </div>
 
@@ -513,7 +584,7 @@ const Home = (props) => {
             </a>
           </div>
         </div>
-       </section>
+      </section>
       {/* Path section start */}
       <section className="section path-section">
         <div className="section-header text-center">
@@ -521,86 +592,106 @@ const Home = (props) => {
             <span>Choose the</span>
             <h2>O'quvchilarimiz tomonidan bildirilgan fikrlar</h2>
             <p className="sub-title">
-              Online o'rganish bugungi kunda keng ommalashayotgan bo'lsada, ko'pchilikning unga ishonmayotganini ko'ramiz.
-              Quyida esa bizning o'quvchilar online o'rgangan holda qanday natijalarga erishayotganlari haqida o'qishingiz mumkin.
+              Online o'rganish bugungi kunda keng ommalashayotgan bo'lsada,
+              ko'pchilikning unga ishonmayotganini ko'ramiz. Quyida esa bizning
+              o'quvchilar online o'rgangan holda qanday natijalarga
+              erishayotganlari haqida o'qishingiz mumkin.
             </p>
-           </div>
+          </div>
         </div>
-         
-     <div className="container">
-     <Slider {...settingSlider}>
-          <div className="pe-3">
-           <div className="card card-comments-mainPage ">
-             <div className="p-3 px-4">
-               <div className="d-flex align-items-center py-3 ">
-                   <div className="avatar me-2">
-                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
-                   </div>
-                  <div>
-                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
-                  <p className="mb-0">Qashqadaryo</p>
-                  </div>
-               </div>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
-                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
-             </div>
-           </div>
-          </div>
-          <div className="pe-3">
-           <div className="card card-comments-mainPage ">
-             <div className="p-3 px-4">
-               <div className="d-flex align-items-center py-3 ">
-                   <div className="avatar me-2">
-                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
-                   </div>
-                  <div>
-                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
-                  <p className="mb-0">Qashqadaryo</p>
-                  </div>
-               </div>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
-                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
-             </div>
-           </div>
-          </div>
-          <div className="pe-3">
-           <div className="card card-comments-mainPage ">
-             <div className="p-3 px-4">
-               <div className="d-flex align-items-center py-3 ">
-                   <div className="avatar me-2">
-                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
-                   </div>
-                  <div>
-                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
-                  <p className="mb-0">Qashqadaryo</p>
-                  </div>
-               </div>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
-                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
-             </div>
-           </div>
-          </div>
-          <div className="pe-3">
-           <div className="card card-comments-mainPage ">
-             <div className="p-3 px-4">
-               <div className="d-flex align-items-center py-3 ">
-                   <div className="avatar me-2">
-                          <img className="avatar-img rounded-circle" alt="User Image" src={USER_1} />
-                   </div>
-                  <div>
-                  <h5 className="mb-0 text-primary">Temirov Sardor</h5>
-                  <p className="mb-0">Qashqadaryo</p>
-                  </div>
-               </div>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt perferendis
-                fugiat quo est eveniet beatae dignissimos aliquid obcaecati similique molestiae.
-             </div>
-           </div>
-          </div>
-          
-        </Slider>
-     </div>
 
+        <div className="container">
+          <Slider {...settingSlider}>
+            <div className="pe-3">
+              <div className="card card-comments-mainPage ">
+                <div className="p-3 px-4">
+                  <div className="d-flex align-items-center py-3 ">
+                    <div className="avatar me-2">
+                      <img
+                        className="avatar-img rounded-circle"
+                        alt="User Image"
+                        src={USER_1}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                      <p className="mb-0">Qashqadaryo</p>
+                    </div>
+                  </div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt perferendis fugiat quo est eveniet beatae dignissimos
+                  aliquid obcaecati similique molestiae.
+                </div>
+              </div>
+            </div>
+            <div className="pe-3">
+              <div className="card card-comments-mainPage ">
+                <div className="p-3 px-4">
+                  <div className="d-flex align-items-center py-3 ">
+                    <div className="avatar me-2">
+                      <img
+                        className="avatar-img rounded-circle"
+                        alt="User Image"
+                        src={USER_1}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                      <p className="mb-0">Qashqadaryo</p>
+                    </div>
+                  </div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt perferendis fugiat quo est eveniet beatae dignissimos
+                  aliquid obcaecati similique molestiae.
+                </div>
+              </div>
+            </div>
+            <div className="pe-3">
+              <div className="card card-comments-mainPage ">
+                <div className="p-3 px-4">
+                  <div className="d-flex align-items-center py-3 ">
+                    <div className="avatar me-2">
+                      <img
+                        className="avatar-img rounded-circle"
+                        alt="User Image"
+                        src={USER_1}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                      <p className="mb-0">Qashqadaryo</p>
+                    </div>
+                  </div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt perferendis fugiat quo est eveniet beatae dignissimos
+                  aliquid obcaecati similique molestiae.
+                </div>
+              </div>
+            </div>
+            <div className="pe-3">
+              <div className="card card-comments-mainPage ">
+                <div className="p-3 px-4">
+                  <div className="d-flex align-items-center py-3 ">
+                    <div className="avatar me-2">
+                      <img
+                        className="avatar-img rounded-circle"
+                        alt="User Image"
+                        src={USER_1}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="mb-0 text-primary">Temirov Sardor</h5>
+                      <p className="mb-0">Qashqadaryo</p>
+                    </div>
+                  </div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt perferendis fugiat quo est eveniet beatae dignissimos
+                  aliquid obcaecati similique molestiae.
+                </div>
+              </div>
+            </div>
+          </Slider>
+        </div>
       </section>
       {/* Path section end */}
       {/* Blog Section */}
@@ -608,8 +699,7 @@ const Home = (props) => {
         <div className="container">
           {/* Section Header */}
           <div className="section-header text-center">
-            <span>Lorem ipsum dolor</span>
-            <h2>The Blogs &amp; News</h2>
+            <h2>Nega aynan MyTeacher?</h2>
             <p className="sub-title">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -617,142 +707,34 @@ const Home = (props) => {
           </div>
           {/* /Section Header */}
           <div className="row blog-grid-row">
-            <div className="col-md-6 col-lg-3 col-sm-12">
-              {/* Blog Post */}
-              <div className="blog grid-blog">
-                <div className="blog-image">
-                  <Link to="/app/Blog/blog-details">
-                    <img className="img-fluid" src={BLOG_01} alt="Post Image" />
-                  </Link>
+            {dataBlog &&
+              dataBlog.map((v, i) => (
+                <div className="col-md-6 col-lg-3 col-sm-12" key={i}>
+                  {/* Blog Post */}
+                  <div className="blog grid-blog">
+                    <div className="blog-image">
+                      <Link to="/app/Blog/blog-details">
+                        <img
+                          className="img-fluid"
+                          src={BLOG_01}
+                          alt="Post Image"
+                        />
+                      </Link>
+                    </div>
+                    <div className="blog-content">
+                      <h3 className="blog-title">
+                        <p className="mb-0">{v.title}</p>
+                      </h3>
+                      <p className="mb-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Officiis, odio. Odit aliquam omnis eveniet
+                        aperiam!
+                      </p>
+                    </div>
+                  </div>
+                  {/* /Blog Post */}
                 </div>
-                <div className="blog-content">
-                  <ul className="entry-meta meta-item">
-                    <li>
-                      <div className="post-author">
-                        <Link to="/app/Blog/blog-details">
-                          <span>Tyrone Roberts</span>
-                        </Link>
-                      </div>
-                    </li>
-                    <li>
-                      <i className="far fa-clock" /> 4 Dec 2019
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <Link to="/app/Blog/blog-details">
-                      What is Lorem Ipsum? Lorem Ipsum is simply
-                    </Link>
-                  </h3>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur em adipiscing elit,
-                    sed do eiusmod tempor.
-                  </p>
-                </div>
-              </div>
-              {/* /Blog Post */}
-            </div>
-            <div className="col-md-6 col-lg-3 col-sm-12">
-              {/* Blog Post */}
-              <div className="blog grid-blog">
-                <div className="blog-image">
-                  <Link to="/app/Blog/blog-details">
-                    <img className="img-fluid" src={BLOG_02} alt="Post Image" />
-                  </Link>
-                </div>
-                <div className="blog-content">
-                  <ul className="entry-meta meta-item">
-                    <li>
-                      <div className="post-author">
-                        <Link to="/app/Blog/blog-details">
-                          <span>Brittany Garcia</span>
-                        </Link>
-                      </div>
-                    </li>
-                    <li>
-                      <i className="far fa-clock" /> 3 Dec 2019
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <Link to="/app/Blog/blog-details">
-                      Contrary to popular belief, Lorem Ipsum is
-                    </Link>
-                  </h3>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur em adipiscing elit,
-                    sed do eiusmod tempor.
-                  </p>
-                </div>
-              </div>
-              {/* /Blog Post */}
-            </div>
-            <div className="col-md-6 col-lg-3 col-sm-12">
-              {/* Blog Post */}
-              <div className="blog grid-blog">
-                <div className="blog-image">
-                  <Link to="/app/Blog/blog-details">
-                    <img className="img-fluid" src={BLOG_03} alt="Post Image" />
-                  </Link>
-                </div>
-                <div className="blog-content">
-                  <ul className="entry-meta meta-item">
-                    <li>
-                      <div className="post-author">
-                        <Link to="/app/Blog/blog-details">
-                          <span>Allen Davis</span>
-                        </Link>
-                      </div>
-                    </li>
-                    <li>
-                      <i className="far fa-clock" /> 3 Dec 2019
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <Link to="/app/Blog/blog-details">
-                      The standard chunk of Lorem Ipsum used
-                    </Link>
-                  </h3>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur em adipiscing elit,
-                    sed do eiusmod tempor.
-                  </p>
-                </div>
-              </div>
-              {/* /Blog Post */}
-            </div>
-            <div className="col-md-6 col-lg-3 col-sm-12">
-              {/* Blog Post */}
-              <div className="blog grid-blog">
-                <div className="blog-image">
-                  <Link to="/app/Blog/blog-details">
-                    <img className="img-fluid" src={BLOG_04} alt="Post Image" />
-                  </Link>
-                </div>
-                <div className="blog-content">
-                  <ul className="entry-meta meta-item">
-                    <li>
-                      <div className="post-author">
-                        <Link to="/app/Blog/blog-details">
-                          <span>William Lawrence</span>
-                        </Link>
-                      </div>
-                    </li>
-                    <li>
-                      <i className="far fa-clock" /> 2 Dec 2019
-                    </li>
-                  </ul>
-                  <h3 className="blog-title">
-                    <Link to="/app/Blog/blog-details">
-                      The standard Lorem Ipsum passage, used
-                    </Link>
-                  </h3>
-                  <p className="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur em adipiscing elit,
-                    sed do eiusmod tempor.
-                  </p>
-                </div>
-              </div>
-              {/* /Blog Post */}
-            </div>
+              ))}
           </div>
           <div className="view-all text-center">
             <Link to="/app/Blog/blog-list" className="btn btn-primary">
@@ -762,6 +744,51 @@ const Home = (props) => {
         </div>
       </section>
       {/* /Blog Section */}
+      {/* Team */}
+      <section className="section section-team">
+        <div className="container">
+          {/* Section Header */}
+          <div className="section-header text-center">
+            <h2>Bizning Professional Jamoa!</h2>
+            <p className="sub-title">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          {/* /Section Header */}
+          <Slider {...settingSliderTeam}>
+            {dataTeam &&
+              dataTeam.map((v, i) => (
+                <div className="px-2" key={i}>
+                  {/* Blog Post */}
+                  <div className="blog grid-blog">
+                    <div className="blog-image">
+                      <img
+                        className="img-0fluid rounded-circle"
+                        src={
+                          "https://www.myteacher.uz/images/team/1622616581.jpg"
+                        }
+                        alt="Post Image"
+                      />
+                    </div>
+                    <div className="blog-content">
+                      <h3 className="blog-title">
+                        <p className="mb-0">{v.title}</p>
+                      </h3>
+                      <p className="mb-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Officiis, odio. Odit aliquam omnis eveniet
+                        aperiam!
+                      </p>
+                    </div>
+                  </div>
+                  {/* /Blog Post */}
+                </div>
+              ))}
+          </Slider>
+        </div>
+      </section>
+      {/* /Team */}
       {/* Statistics Section */}
       <section className="section statistics-section">
         <div className="container">
