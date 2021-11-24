@@ -140,17 +140,17 @@ const Home = (props) => {
                     wrapper="div"
                     steps={[
                       "Ingiliz",
-                      1000,
+                      2000,
                       "Rus",
-                      1000,
+                      2000,
                       "Nemis",
-                      1000,
+                      2000,
                       "Koreys",
-                      1000,
+                      2000,
                       "Yapon",
-                      1000,
+                      2000,
                       "Xitoy",
-                      1000,
+                      2000,
                     ]}
                   />
                   <div className="inner__text"> tili kurslari.</div>
