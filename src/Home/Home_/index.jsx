@@ -134,11 +134,20 @@ const Home = (props) => {
               <div className="mb-5">
                 <h2 className="text-white">
                   {" "}
-                  Online til va dasturlash kurslari
+                  <div className="text__animate">
+                    <div className="animate__text">
+                      <p>Ingliz Tili</p>
+                      <p>Rus Tili</p>
+                      <p>Koreys Tili</p>
+                      <p>Nemis Tili</p>
+                      <p>Xitoy Tili</p>
+                      <p>Yapon Tili</p>
+                    </div>
+                  </div>
                 </h2>
 
                 <span className="text-white mb-3">
-                  O'zingizga eng saralangan ustozni shu yerdan toping{" "}
+                  Eng saralangan va sinalgan ustozni shu yerdan toping{" "}
                 </span>
               </div>
               <div className="row m-0  mt-4 justify-content-center">
