@@ -369,8 +369,9 @@ const Home = (props) => {
             <span>Saralangan o'qituvchilar platformasi</span>
             <h2>Bu qanday ishlaydi?</h2>
             <p className="sub-title">
-              Are you looking to join online institutions? Now it's very simple,
-              Sign up with mentoring
+              Bu platforma onlayn ustoz topishni sizga maksimum qulay va sodda
+              qilib beradi. Marhamat, o'zingiz sinab ko'ring va biz bilan oson
+              o'rganing.
             </p>
           </div>
           <div className="row m-0 p-0">
@@ -407,8 +408,8 @@ const Home = (props) => {
                   </div>
                 </div>
                 <p className="mb-0">
-                  O'zingiz ma'qul deb topgan o'qituvchi bilan sinov darsida
-                  qatnashib ko'ring.
+                  O'zingizga qulay vaqtga sinov darsi belgilang va qatnashib
+                  ko'ring.
                 </p>
               </div>
             </div>
@@ -426,8 +427,7 @@ const Home = (props) => {
                   </div>
                 </div>
                 <p className="mb-0">
-                  Shaxsiy onlayn o'qituvchingiz bilan maqsadlaringizga <br />{" "}
-                  oson erishing!
+                  Shaxsiy o'qituvchingiz bilan maqsadlaringizga oson erishing!
                 </p>
               </div>
             </div>
