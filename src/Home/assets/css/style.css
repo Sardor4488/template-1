@@ -8271,7 +8271,8 @@ PhoneInput {
   font-size: 15px !important;
 }
 .size-link-main {
-  font-size: 15px !important;
+  font-size: 12px !important;
+  line-height: 12px;
 }
 .search-input {
   outline: none;
@@ -8364,59 +8365,16 @@ PhoneInput {
   display: none !important;
   visibility: hidden !important;
 }
-
-.text__animate {
-  height: 35px;
-  overflow: hidden;
+.animate__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.animate__text p {
-  color: #fff;
-  height: 100%;
+.animate__text div {
   font-size: 30px;
-  line-height: 35px;
-  overflow: hidden;
-  margin: 0;
-  letter-spacing: 1px;
-  font-weight: var(--font-semi-bold);
+  color: #fff;
 }
 
-.animate__text p:nth-child(1) {
-  animation: animate-text 20s infinite;
-}
-
-@keyframes animate-text {
-  0% {
-    margin-top: 0px;
-  }
-  10% {
-    margin-top: -35px;
-  }
-  20% {
-    margin-top: -70px;
-  }
-  30% {
-    margin-top: -105px;
-  }
-  40% {
-    margin-top: -140px;
-  }
-  50% {
-    margin-top: -175px;
-  }
-  60% {
-    margin-top: -140px;
-  }
-  70% {
-    margin-top: -105px;
-  }
-  80% {
-    margin-top: -70px;
-  }
-  90% {
-    margin-top: -35px;
-  }
-  100% {
-    margin-top: 0px;
-  }
+.animate__text div:nth-child(2) {
+  margin-left: 5px;
 }

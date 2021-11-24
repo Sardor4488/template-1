@@ -6,6 +6,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import icon1 from "../assets/icons/homeIcon.svg";
 import icon2 from "../assets/icons/homeIcon2.svg";
+import Typical from "react-typical";
 import {
   ICON_1,
   ICON_2,
@@ -132,19 +133,28 @@ const Home = (props) => {
           <div className="banner-wrapper m-auto text-center">
             <div className="banner-header">
               <div className="mb-5">
-                <h2 className="text-white">
-                  {" "}
-                  <div className="text__animate">
-                    <div className="animate__text">
-                      <p>Ingliz Tili</p>
-                      <p>Rus Tili</p>
-                      <p>Koreys Tili</p>
-                      <p>Nemis Tili</p>
-                      <p>Xitoy Tili</p>
-                      <p>Yapon Tili</p>
-                    </div>
-                  </div>
-                </h2>
+                <div className="animate__text">
+                  <div className="inner__text">Online</div>
+                  <Typical
+                    loop={Infinity}
+                    wrapper="div"
+                    steps={[
+                      "Ingiliz",
+                      1000,
+                      "Rus",
+                      1000,
+                      "Nemis",
+                      1000,
+                      "Koreys",
+                      1000,
+                      "Yapon",
+                      1000,
+                      "Xitoy",
+                      1000,
+                    ]}
+                  />
+                  <div className="inner__text"> tili kurslari.</div>
+                </div>
 
                 <span className="text-white mb-3">
                   Eng saralangan va sinalgan ustozni shu yerdan toping{" "}
@@ -178,8 +188,8 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-primary">
-                            12 ta o'qituvchi
+                          <p className="mb-0 science-link-hover size-link-main text-secondary">
+                            12 nafar o'qituvchi
                           </p>
                         </div>
                       </div>
@@ -219,7 +229,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Aniq fanlar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-primary">
+                          <p className="mb-0 science-link-hover size-link-main text-secondary">
                             <span>32</span> nafar o'qituvchi
                           </p>
                         </div>
@@ -269,7 +279,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tabiy fanlar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-primary">
+                          <p className="mb-0 science-link-hover size-link-main text-secondary">
                             <span>65</span> nafar o'qituvchi
                           </p>
                         </div>
@@ -316,7 +326,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             IT texnologiyalari
                           </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">
+                          <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
                             <span>11 </span> nafar o'qituvchi
                           </p>
                         </div>
@@ -358,8 +368,8 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Gumonitar fanlar
                           </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-primary">
-                            41 ta o'qituvchi
+                          <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
+                            41 nafar o'qituvchi
                           </p>
                         </div>
                       </div>
