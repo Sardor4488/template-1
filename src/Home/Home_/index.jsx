@@ -4,20 +4,16 @@ import OwlCarousel from "react-owl-carousel";
 import { Link, withRouter } from "react-router-dom";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import { GoBook } from "react-icons/go";
+import icon1 from "../assets/icons/homeIcon.svg";
+import icon2 from "../assets/icons/homeIcon2.svg";
 import {
-  Submit,
   ICON_1,
   ICON_2,
   ICON_3,
   USER,
   BLOG_01,
-  BLOG_02,
-  BLOG_03,
-  BLOG_04,
   USER_1,
 } from "../../constant/imagepath_home";
-import userimg from "../assets/img/user/user.jpg";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
 import { dataBlog, dataTeam } from "../../Data";
@@ -403,7 +399,7 @@ const Home = (props) => {
                   <div className="feature-icon">
                     <span className="circle" />
                     <i>
-                      <img src={ICON_2} alt="" />
+                      <img className="w-50 h-50" src={icon2} alt="" />
                     </i>
                   </div>
                   <div className="feature-cont">
@@ -422,7 +418,7 @@ const Home = (props) => {
                   <div className="feature-icon">
                     <span className="circle" />
                     <i>
-                      <img src={ICON_3} alt="" />
+                      <img className="w-50 h-50" src={icon1} alt="home" />
                     </i>
                   </div>
                   <div className="feature-cont">
