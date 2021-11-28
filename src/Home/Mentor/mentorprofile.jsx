@@ -80,28 +80,31 @@ const MentorProfile = () => {
               {/* Mentor Widget */}
               <div className="card">
                 <div className="card-body">
-                  <div className="mentor-widget">
-                    <div className="user-info-left align-items-center">
-                      <div className="mentor-img d-flex flex-wrap justify-content-center">
-                        <div className="pro-avatar">JD</div>
-                        <div className="rating text-center">
+
+                <div className="row w-100 d-flex align-items-center justify-content-between">
+                      <div className="col-12 col-sm-8 my-2">
+                      <div className=" d-flex align-items-center">
+                        <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
+                          <div className="pro-avatar">ST</div>
+                          <div className="rating text-center">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star" />
                         </div>
-                        <div className="mentor-details m-0">
-                          <p className="user-location m-0">
-                            <i className="fas fa-map-marker-alt" /> Tamil Nadu,
-                            India
-                          </p>
+                          <div className="mentor-details m-0">
+                            <p className="user-location m-0">
+                              <i className="fas fa-map-marker-alt" /> Tamil
+                              Nadu, India
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="user-info-cont">
-                        <h4 className="usr-name">Еуьшкщм Doe</h4>
-                        <p className="mentor-type">English Literature (M.A)</p>
-                        <div className="mentor-action">
+                        <div className="user-info-cont">
+                          <h4 className="">Sardor Temirov</h4>
+                          <p className="mentor-type mb-0">
+                            English Literature (M.A)
+                          </p>  <div className="mentor-action">
                           <p className="mentor-type social-title">
                             blabla@gmail.com
                           </p>
@@ -115,20 +118,21 @@ const MentorProfile = () => {
                             <i className="fas fa-calendar-alt" />
                           </a>
                         </div>
+                        </div>
+                      
                       </div>
-                    </div>
-                    <div className="user-info-right d-flex align-items-end flex-wrap">
-                      <div className="hireme-btn text-center">
-                        <span className="hire-rate">50 000 USZ / soat</span>
-                        <Link
-                          className="blue-btn-radius   p-2"
-                          to="/app/teacher/profile-settings"
-                        >
-                          Tahrirlash
-                        </Link>
                       </div>
+                    
+                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
+                    <span className="hire-rate text-center">50 000 USZ / soat</span>
+                    <Link
+                            className="blue-btn-radius"
+                            to="/app/mentee/profile-settings"
+                          >
+                            Tahrirlash
+                          </Link>
                     </div>
-                  </div>
+                    </div>   
                 </div>
               </div>
               {/* /Mentor Widget */}

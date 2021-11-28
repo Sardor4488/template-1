@@ -8216,7 +8216,12 @@ PhoneInput {
   .profile-sidebar-md-none {
     display: none !important;
   }
+
 }
+
+
+
+ 
 .bg-white {
   background-color: #ffffff !important;
 }
@@ -8344,8 +8349,13 @@ PhoneInput {
   margin-left: 5px;
 }
 @media screen and (max-width: 571px) {
+<<<<<<< HEAD
   .animate__text div {
     font-size: 25px;
+=======
+  .respons-button{
+    text-align: center !important;
+>>>>>>> 3d16e9d8891895f57c9514b58ef8c89946421e27
   }
   .mentor-widget {
     flex-wrap: wrap;
@@ -8434,4 +8444,7 @@ PhoneInput {
 }
 .form-outline-danger:active {
   box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25) !important;
+}
+.respons-button{
+  text-align: end;
 }
