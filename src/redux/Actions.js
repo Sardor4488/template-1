@@ -12,4 +12,8 @@ const UserData = (data) => {
   const action = { type: t.USERDATA, payload: data };
   dispatch(action);
 };
-export { LoadingOff, LoadingOn, UserData };
+const ClearData = () => {
+  const action = { type: t.CLEARDATA };
+  dispatch(action);
+};
+export { LoadingOff, LoadingOn, UserData, ClearData };

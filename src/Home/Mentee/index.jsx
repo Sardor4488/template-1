@@ -62,6 +62,7 @@ const Menteeroute = ({ match }) => {
           path={`${match.url}/change-password`}
           component={Changepassword}
         />
+        <Redirect exact={true} from="*" to="/404" />
       </Switch>
     </>
   );

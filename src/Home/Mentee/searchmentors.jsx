@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   USER,
   USER_1,
@@ -8,8 +8,14 @@ import {
 } from "../../constant/imagepath_home";
 import StickyBox from "react-sticky-box";
 import { Link, withRouter } from "react-router-dom";
+import { Avatar } from "antd";
 
 const Search = () => {
+  const [more, setMore] = useState(false);
+
+  const moreInfo = () => {
+    setMore(!more);
+  };
   return (
     <div>
       {/* Breadcrumb */}
@@ -39,7 +45,7 @@ const Search = () => {
       <div className="content">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 col-lg-4 col-xl-3">
+            <div className="col-lg-3 col-xl-3">
               {/* Search Filter */}
               <StickyBox offsetTop={20} offsetBottom={20}>
                 <div className="card search-filter">
@@ -114,10 +120,10 @@ const Search = () => {
               </StickyBox>
               {/* /Search Filter */}
             </div>
-            <div className="  col-12 col-lg-8 col-xl-9 card-mentors-lg   ">
+            <div className="col-lg-9 col-xl-9 card-mentors-lg   ">
               {/* Mentor Widget */}
               <div className="card card-size">
-                <div className="card-body ">
+                <div className="card-body">
                   <div className="mentor-widget">
                     <div className="user-info-left">
                       <div className="mentor-img">
@@ -128,18 +134,7 @@ const Search = () => {
                             alt="User Image"
                           />
                         </Link>
-                      </div>
-                      <div className="user-info-cont ">
-                        <h4 className="usr-name mb-3">
-                          <Link to="/app/Mentee/mentor-profile">
-                            Ruby Perrin
-                          </Link>
-                        </h4>
-                        <p className="mentor-type mb-1">Matematika</p>
-                        <p className="mb-1">
-                          <span>550 000</span> UZS
-                        </p>
-                        <div className="rating">
+                        <div className="rating ">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
@@ -149,151 +144,106 @@ const Search = () => {
                             (17)
                           </span>
                         </div>
-                        <div className="mentor-details"></div>
                       </div>
                     </div>
                     <div className="user-info-right">
-                      <div className="user-infos">
-                        <ul>
-                          <li>
-                            <i className="fas fa-comment pt-3" />{" "}
-                            <span>17</span> ta fikr
+                      <div className="user-infos mb-0">
+                        <ul className="m-0 p-0">
+                          <li className="usr-name">
+                            <Link to="/app/Mentee/mentor-profile">
+                              Ruby Perrin
+                            </Link>
+                          </li>
+                          <li className="text-secondary">
+                            <i className="fas fa-book text-black "></i>{" "}
+                            Matematika
                           </li>
                           <li>
-                            <i className="fas fa-user-graduate " />{" "}
-                            <span className="text-primary">25</span> ta o'quvchi
+                            <i className="fas fa-wallet text-black"></i> 550 000
+                            UZS
                           </li>
                           <li>
-                            <i className="fas fa-heart pt-2" /> <span>55</span>{" "}
-                            % sodiqlik
-                            <i className="far fa-question-circle ps-1 "></i>
+                            <div className="rating">
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star" />
+                              <span className="d-inline-block average-rating">
+                                (17)
+                              </span>
+                            </div>
                           </li>
                         </ul>
                       </div>
-                      <div className="mentor-booking">
-                        <Link
-                          className="apt-btn p-1 w-75 m-auto"
-                          to="/app/Mentee/booking"
-                        >
-                          Band qilish
-                        </Link>
+                      <div className="user-infos">
+                        <ul>
+                          <li>
+                            <i className="fas fa-comment text-black" />{" "}
+                            <span>17</span> ta fikr
+                          </li>
+                          <li>
+                            <i className="fas fa-user-graduate text-black" />{" "}
+                            <span className="text-primary">25</span> ta o'quvchi
+                          </li>
+                          <li>
+                            <i className="fas fa-heart text-black" />{" "}
+                            <span>55</span> % sodiqlik
+                            <i className="far fa-question-circle ps-1 text-black"></i>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
-                  <div className="pt-2">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Soluta fugiat quae expedita error tempora qui et repellendus
-                    sapiente quasi?{" "}
-                    <span className="text-primary">Batafsil</span>{" "}
+                  <div>
+                    <div
+                      className={`pt-2  ${
+                        more ? "about_text_size_long" : "about_text_size_short"
+                      }`}
+                    >
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Soluta fugiat quae expedita error tempora qui et
+                      repellendus Soluta fugiat quae expedita error tempora qui
+                      et repellendus Soluta fugiat quae expedita error tempora
+                      qui et repellendus Soluta fugiat quae expedita error
+                      tempora qui et repellendus Soluta fugiat quae expedita
+                      error tempora qui et repellendus Soluta fugiat quae
+                      expedita error tempora qui et repellendus sapiente quasi?{" "}
+                    </div>
+                    <div className={more ? "about_message" : "d-none"}>
+                      <div className="row w-100 m-0">
+                        <div className="col-6 d-flex align-items-center p-0">
+                          <Avatar />
+                          <p className="user_message_name mb-0  ms-3">
+                            Sardor Safarov
+                          </p>
+                        </div>
+                        <div className="col-6 text-end p-0">
+                          <p className="m-0">01.10.2021</p>
+                        </div>
+                      </div>
+                      <div className="d-block w-100 mt-3">
+                        <p className="m-0 user_message_text">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Doloremque nobis qui voluptates autem quos
+                          libero quod a voluptas id vero.
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-primary m-0" onClick={moreInfo}>
+                      {more ? "Yopish" : "Batafsil"}
+                    </p>
                   </div>
-                  <div className="col-12 pt-2"></div>
+                  <div className="mentor-booking w-100 d-flex justify-content-end">
+                    <Link className="apt-btn p-1 " to="/app/Mentee/booking">
+                      Band qilish
+                    </Link>
+                  </div>
                 </div>
               </div>
 
               {/* /Mentor Widget */}
               {/* Mentor Widget */}
-            </div>
-
-            {/* Mentor-md-show */}
-            <div className="col-12 card-mentors-md d-none col-md-6">
-              <div className="card w-100 px-3 pb-2">
-                <div className="row mt-5">
-                  <div className="col-6 col-lg-4">
-                    <Link to="/app/Mentee/mentor-profile">
-                      <img
-                        src={USER}
-                        className="img-fluid img-mentee "
-                        alt="User Image"
-                      />
-                    </Link>
-                    <div className="rating text-center mt-1  ">
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star" />
-                      <span className="d-inline-block average-rating">
-                        (17)
-                      </span>
-                    </div>
-                  </div>
-                  <div className="col-6 col-lg-4 pe-0 line-height">
-                    <h4 className="usr-name">
-                      <Link to="/app/Mentee/mentor-profile">
-                        Temirov Perrin
-                      </Link>
-                    </h4>
-                    <p className="mentor-type mb-0">Digital Marketer </p>
-                    <p className=" mb-0 line-height">
-                      {" "}
-                      <i className="far fa-money-bill-alt " />{" "}
-                      <span>550 000</span> UZS{" "}
-                      <i
-                        className="fas fa-info-circle"
-                        data-toggle="tooltip"
-                        title="Lorem Ipsum"
-                      />
-                    </p>
-                    <span className=" line-height ">
-                      <i className="fas fa-user-graduate  " />{" "}
-                      <span className="text-primary">25</span> ta o'quvchi
-                    </span>{" "}
-                    <br />
-                    <span>
-                      {" "}
-                      <i className="fas fa-heart pt-2" /> <span>55</span> %
-                      sodiqlik
-                      <i className="far fa-question-circle ps-1 "></i>
-                    </span>
-                    <p className="mb-2">
-                      Dars tili: <span>O'zbek, rus</span>
-                    </p>
-                    <button className="btn btn-primary band-qilish">
-                      Band qilish
-                    </button>
-                    <div className="rating d-none">
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star filled" />
-                      <i className="fas fa-star" />
-                      <span className="d-inline-block average-rating">
-                        (17)
-                      </span>
-                    </div>
-                    <div></div>
-                  </div>
-                  <div className="col-12 col-lg-4 container-mentee-mini-information">
-                    {" "}
-                    <ul className="ps-0 line-height d-none">
-                      <li className="d-flex align-items-end d-none">
-                        <i className="far fa-comment pb-1 pe-1" />{" "}
-                        <span>17 </span> ta fikr
-                      </li>
-                      <li className="md-d-none">
-                        <i className="fas fa-user-graduate py-3" />{" "}
-                        <span className="text-primary">25</span> ta o'quvchi
-                      </li>
-                      <li className="mb-1">
-                        <i className="fas fa-heart" /> <span>55</span> %
-                        O'quvchi sodiqligi{" "}
-                      </li>
-                    </ul>
-                    <ul className="ps-0 Md-Display-Flex ">
-                      <li>
-                        <button className="btn btn-primary band-qilish d-none">
-                          Band qilish
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-12">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Odio natus ducimus velit veniam quis modi nostrum quisquam!
-                    <Link to="">Batafsil</Link>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

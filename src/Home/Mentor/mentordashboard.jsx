@@ -49,7 +49,7 @@ const Dashboard = () => {
             </div>
             <div className="col-md-7 col-lg-8 col-xl-9">
               <div className="row">
-                <div className="col-md-12 col-lg-3 dash-board-list blue">
+                <div className="col-md-12 col-12 col-sm-6 col-lg-3 dash-board-list blue">
                   <div className="dash-widget">
                     <div className="circle-bar">
                       <div className="icon-col">
@@ -62,7 +62,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-3 dash-board-list yellow">
+                <div className="col-md-12 col-12 col-sm-6 col-lg-3 dash-board-list yellow">
                   <div className="dash-widget pe-0">
                     <div className="circle-bar">
                       <div className="icon-col">
@@ -75,7 +75,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-3 dash-board-list pink">
+                <div className="col-md-12 col-12 col-sm-6 col-lg-3 dash-board-list pink">
                   <div className="dash-widget">
                     <div className="circle-bar">
                       <div className="icon-col">
@@ -88,7 +88,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-3 dash-board-list yellow">
+                <div className="col-md-12 col-12 col-sm-6 col-lg-3 dash-board-list yellow">
                   <div className="dash-widget">
                     <div className="circle-bar">
                       <div className="icon-col">

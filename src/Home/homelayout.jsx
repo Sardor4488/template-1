@@ -1,12 +1,7 @@
-/**
- * App Routes
- */
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
-
+import { Route, withRouter, Redirect } from "react-router-dom";
 // router service
 import routerService from "./router_service";
-
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
 // boostrap
@@ -22,7 +17,7 @@ import "./assets/js/jquery.min.js";
 import "./assets/js/popper.min.js";
 import "./assets/js/bootstrap.min.js";
 import "./assets/js/script.js";
-import SidebarBottom from "./Mentee/SidebarBottom";
+import StatusBar from "./components/StatusBar";
 
 class DefaultLayout extends Component {
   render() {
@@ -42,12 +37,13 @@ class DefaultLayout extends Component {
         location.pathname.includes("voice-call") ||
         location.pathname.includes("video-call") ||
         location.pathname.includes("map-list") ||
+        // location.pathname.includes("*") ||
         location.pathname.includes("map-grid") ? (
           ""
         ) : (
           <Footer />
         )}
-        <SidebarBottom />
+        <StatusBar />
       </div>
     );
   }

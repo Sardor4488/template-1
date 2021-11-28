@@ -9,7 +9,7 @@ const Sidebar = (props) => {
   const data = useSelector((state) => state.Reducer.userdata);
   return (
     <>
-      <div className="profile-sidebar">
+      <div className="profile-sidebar profile-sidebar-md-none">
         <div className="user-widget">
           <div className="pro-avatar">JD</div>
           <div className="rating">
@@ -73,7 +73,7 @@ const Sidebar = (props) => {
                 </span>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/app/mentor/schedule-timings"
                 className={
@@ -86,7 +86,7 @@ const Sidebar = (props) => {
                   <i className="fas fa-chevron-right" />
                 </span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/app/mentor/chat">
                 <i className="fas fa-comments" />

@@ -161,7 +161,7 @@ const Home = (props) => {
                 </span>
               </div>
               <div className="row m-0  mt-4 justify-content-center">
-                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -196,7 +196,7 @@ const Home = (props) => {
                     </div>{" "}
                   </Link>
                 </div>
-                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -238,7 +238,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -288,7 +288,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 px-0  px-sm-4 mt-3 ">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog ">
@@ -335,7 +335,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-md-6 px-0  px-sm-4 mt-3 ">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center gumonitars ">
@@ -724,7 +724,7 @@ const Home = (props) => {
           <div className="row m-0 p-0 blog-grid-row">
             {dataBlog &&
               dataBlog.map((v, i) => (
-                <div className="col-md-6 col-lg-3 col-sm-12" key={i}>
+                <div className="col-md-6 col-lg-4 col-xl-3" key={i}>
                   {/* Blog Post */}
                   <div className="blog grid-blog">
                     <div className="blog-image">
