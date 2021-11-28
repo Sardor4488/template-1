@@ -8215,7 +8215,12 @@ PhoneInput {
   .profile-sidebar-md-none {
     display: none !important;
   }
+
 }
+
+
+
+ 
 .bg-white {
   background-color: #ffffff !important;
 }
@@ -8327,6 +8332,9 @@ PhoneInput {
 }
 
 @media screen and (max-width: 571px) {
+  .respons-button{
+    text-align: center !important;
+  }
   .mentor-widget {
     flex-wrap: wrap;
   }
@@ -8377,4 +8385,7 @@ PhoneInput {
 
 .animate__text div:nth-child(2) {
   margin-left: 5px;
+}
+.respons-button{
+  text-align: end;
 }
