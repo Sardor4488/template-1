@@ -4,9 +4,9 @@ import Main from "./App";
 import axios from "axios";
 import { Provider } from "react-redux";
 import Store from "./redux/store";
-axios.defaults.baseURL = "http://teach-api.uz/teach-api/public/api/";
-axios.defaults.headers.common["Authorization"] =
-  "Bearer " + localStorage.getItem("token");
+const token = localStorage.getItem("token");
+axios.defaults.baseURL = "  ";
+axios.defaults.headers.common["Authorization"] = token && "Bearer " + token;
 ReactDOM.render(
   <Provider store={Store}>
     <Main />

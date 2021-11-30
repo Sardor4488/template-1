@@ -2732,6 +2732,7 @@ html.menu-opened body {
   display: -ms-flexbox;
   display: flex;
   max-width: 200px;
+  margin-right: 10px;
 }
 .user-info-right {
   flex: 1;
@@ -2742,7 +2743,6 @@ html.menu-opened body {
 .mentor-img {
   -ms-flex: 0 0 145px;
   flex: 0 0 145px;
-  margin-right: 20px;
   width: 145px;
 }
 .mentor-img img {
@@ -7154,8 +7154,8 @@ div.dataTables_wrapper div.dataTables_filter input {
     display: flex !important;
   }
   .img-mentee {
-    min-width: 135px !important;
-    min-height: 135px !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
   }
 
   .main-nav {
@@ -8036,6 +8036,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: 80px;
   }
   .blog {
+    height: 100% !important;
     padding: 1.25rem;
   }
   .blog-title {
@@ -8215,12 +8216,8 @@ PhoneInput {
   .profile-sidebar-md-none {
     display: none !important;
   }
-
 }
 
-
-
- 
 .bg-white {
   background-color: #ffffff !important;
 }
@@ -8330,9 +8327,25 @@ PhoneInput {
 .mentor-widget .user-infos:last-child {
   margin-top: 32px;
 }
+.animate__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animate__text div {
+  font-size: 30px;
+  color: #fff;
+}
+.animate__text div:nth-child(2) {
+  color: #1e88e5;
+  font-weight: bold;
+}
 
+.animate__text div:nth-child(2) {
+  margin-left: 5px;
+}
 @media screen and (max-width: 571px) {
-  .respons-button{
+  .respons-button {
     text-align: center !important;
   }
   .mentor-widget {
@@ -8373,32 +8386,56 @@ PhoneInput {
   display: none !important;
   visibility: hidden !important;
 }
-.animate__text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.animate__text div {
-  font-size: 30px;
-  color: #fff;
+
+@media screen and (max-width: 400px) {
+  .animate__text div {
+    font-size: 25px;
+  }
+  .mentor-widget {
+    justify-content: space-between;
+  }
+  .mentor-widget .user-info-left {
+    width: 47%;
+    margin-right: 2px;
+  }
+  .mentor-widget .user-info-right {
+    width: 52%;
+  }
+  .mentor-widget .user-info-right {
+    padding-left: 10px;
+  }
+  .mentor-widget .user-info-right .user-infos ul li i {
+    min-width: 20px;
+  }
+  .mentor-widget .user-info-left .mentor-img a img {
+    max-width: 83% !important;
+  }
+  .mentor-widget .user-info-left .mentor-img {
+    flex: unset;
+  }
+  .popular-courses .card .card-body {
+    padding: 10px;
+  }
 }
 
-.animate__text div:nth-child(2) {
-  margin-left: 5px;
+.payIcon {
+  width: 120px;
+  height: 40px;
 }
-.respons-button{
+.payIcon:last-child {
+  width: 110px;
+  height: 30px;
+}
+
+.form-outline-danger {
+  box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25) !important;
+}
+.form-outline-danger:focus {
+  box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25) !important;
+}
+.form-outline-danger:active {
+  box-shadow: 0 0 2px 2px rgba(255, 0, 0, 0.25) !important;
+}
+.respons-button {
   text-align: end;
-}
-.more{
-  cursor: pointer;
-}
-.textArea{
-  outline: hidden !important;
-  border-radius: 5px;
-  border: 1 px solid #aaa;
-}
-.transletor-answer{
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  min-height: 254px;
 }

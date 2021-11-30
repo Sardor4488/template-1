@@ -4,6 +4,7 @@ import Mentor from "./Mentor";
 import Mentee from "./Mentee";
 import Pages from "./Pages";
 import Blog from "./Blog";
+import Page404 from "./components/Page404/page404";
 
 export default [
   {

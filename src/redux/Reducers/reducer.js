@@ -3,7 +3,6 @@ import * as t from "../types";
 const initialState = {
   loading: true,
   userdata: "",
-  role: "",
 };
 
 const Reducer = (state = initialState, action) => {
@@ -13,10 +12,10 @@ const Reducer = (state = initialState, action) => {
     case t.LOADINGON:
       return { ...state, loading: true };
     case t.USERDATA:
-      console.log("userData");
       return { ...state, userdata: action.payload, loading: false };
-    case t.ROLE:
-      return { ...state, role: action.payload };
+    case t.CLEARDATA:
+      return { ...state, userdata: "" };
+
     default:
       return state;
   }

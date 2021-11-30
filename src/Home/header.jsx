@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
-
+import { ClearData } from "../redux/Actions";
 const Header = (props) => {
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
@@ -30,6 +30,7 @@ const Header = (props) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    ClearData();
   };
 
   const token = localStorage.getItem("token");

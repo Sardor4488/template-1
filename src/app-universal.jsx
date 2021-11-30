@@ -5,7 +5,6 @@ import HomeLayout from "./Home/homelayout.jsx";
 import Login from "./Home/Authentication/login";
 import Register from "./Home/Authentication/register";
 import Forgotpassword from "./Home/Authentication/forgotpassword";
-
 //Admin Layout
 import AdminLayout from "./Admin/initialpage/Sidebar/DefaultLayout";
 import AdminLogin from "./Admin/MainPage/Pages/Authentication/login";
@@ -20,14 +19,16 @@ import * as t from "./redux/types";
 import Loading from "./Home/components/Loading/Loading.js";
 import { useSelector } from "react-redux";
 import { LoadingOff, LoadingOn } from "./redux/Actions.js";
-// import { UserAuth } from "./Api/index.js";
+import { UserAuth } from "./Api/index.js";
+import Page404 from "./Home/components/Page404/page404.js";
 const AppUniversal = (props) => {
   const { location, history } = props;
-  const [path, setPath] = useState("/app/home");
+  const [path, setPath] = useState("");
 
   useEffect(() => {
     LoadingOff();
-    // UserAuth(setPath);
+    console.log(localStorage.getItem("token"));
+    UserAuth(setPath);
     if (
       location.pathname.includes("login") ||
       location.pathname.includes("register") ||
@@ -68,6 +69,7 @@ const AppUniversal = (props) => {
           <Route exact path="/">
             <Redirect to={path} />
           </Route>
+          <Route exact path="/404" component={Page404} />
         </Switch>
       )}
     </>

@@ -3,7 +3,16 @@ import { USER } from "../../constant/imagepath_home";
 import { Link } from "react-router-dom";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { useSelector } from "react-redux";
-const MentorProfile = () => {
+import { USER_2 } from "../../constant/imagepath_home";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import click from "../assets/payicon/click.png";
+import payme from "../assets/payicon/payme.png";
+// you will need the css that comes with bootstrap@3. if you are using
+// a tool like webpack, you can do the following:
+import "bootstrap/dist/css/bootstrap.css";
+// you will also need the css that comes with bootstrap-daterangepicker
+import "bootstrap-daterangepicker/daterangepicker.css";
+const MentorBooking = () => {
   const [state, setState] = useState({
     isvoicecallmodal: false,
     isvideocallmodal: false,
@@ -12,7 +21,10 @@ const MentorProfile = () => {
     addnewtimeslot: [],
     edittimeslot: ["placeholder", "placeholder"],
   });
-
+  const onChange = (date) => {
+    // Day.js object
+    console.log(date);
+  };
   const voicecallmodalClose = () => {
     setState({ isvoicecallmodal: false });
   };
@@ -80,31 +92,28 @@ const MentorProfile = () => {
               {/* Mentor Widget */}
               <div className="card">
                 <div className="card-body">
-
-                <div className="row w-100 d-flex align-items-center justify-content-between">
-                      <div className="col-12 col-sm-8 my-2">
-                      <div className=" d-flex align-items-center">
-                        <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
-                          <div className="pro-avatar">ST</div>
-                          <div className="rating text-center">
+                  <div className="mentor-widget">
+                    <div className="user-info-left align-items-center">
+                      <div className="mentor-img d-flex flex-wrap justify-content-center">
+                        <div className="pro-avatar">JD</div>
+                        <div className="rating text-center">
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star filled" />
                           <i className="fas fa-star" />
                         </div>
-                          <div className="mentor-details m-0">
-                            <p className="user-location m-0">
-                              <i className="fas fa-map-marker-alt" /> Tamil
-                              Nadu, India
-                            </p>
-                          </div>
+                        <div className="mentor-details m-0">
+                          <p className="user-location m-0">
+                            <i className="fas fa-map-marker-alt" /> Tamil Nadu,
+                            India
+                          </p>
                         </div>
-                        <div className="user-info-cont">
-                          <h4 className="">Sardor Temirov</h4>
-                          <p className="mentor-type mb-0">
-                            English Literature (M.A)
-                          </p>  <div className="mentor-action">
+                      </div>
+                      <div className="user-info-cont">
+                        <h4 className="usr-name">Еуьшкщм Doe</h4>
+                        <p className="mentor-type">English Literature (M.A)</p>
+                        <div className="mentor-action">
                           <p className="mentor-type social-title">
                             blabla@gmail.com
                           </p>
@@ -118,25 +127,254 @@ const MentorProfile = () => {
                             <i className="fas fa-calendar-alt" />
                           </a>
                         </div>
-                        </div>
-                      
                       </div>
-                      </div>
-                    
-                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
-                    <span className="hire-rate text-center">50 000 USZ / soat</span>
-                    <Link
-                            className="blue-btn-radius"
-                            to="/app/mentee/profile-settings"
-                          >
-                            Tahrirlash
-                          </Link>
                     </div>
-                    </div>   
+                    <div className="user-info-right d-flex align-items-end flex-wrap">
+                      <div className="hireme-btn text-center">
+                        <span className="hire-rate">50 000 USZ / soat</span>
+                        <Link
+                          className="blue-btn-radius   p-2"
+                          to="/app/teacher/profile-settings"
+                        >
+                          Tahrirlash
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               {/* /Mentor Widget */}
               {/* Mentor Details Tab */}
+              <div>
+                <div className="row">
+                  <div className="col-12 col-sm-4 col-md-6">
+                    <h4 className="mb-1">11 November 2019</h4>
+                    <p className="text-muted">Monday</p>
+                  </div>
+                  <div className="col-12 col-sm-8 col-md-6 text-sm-right">
+                    <div className="bookingrange btn btn-white btn-sm mb-3">
+                      <i className="far fa-calendar-alt mr-2" />
+                      <DateRangePicker
+                        initialSettings={{
+                          endDate: new Date("2020-08-11T12:30:00.000Z"),
+                          ranges: {
+                            "Last 30 Days": [
+                              new Date("2020-07-12T04:57:17.076Z"),
+                              new Date("2020-08-10T04:57:17.076Z"),
+                            ],
+                            "Last 7 Days": [
+                              new Date("2020-08-04T04:57:17.076Z"),
+                              new Date("2020-08-10T04:57:17.076Z"),
+                            ],
+                            "Last Month": [
+                              new Date("2020-06-30T18:30:00.000Z"),
+                              new Date("2020-07-31T18:29:59.999Z"),
+                            ],
+                            "This Month": [
+                              new Date("2020-07-31T18:30:00.000Z"),
+                              new Date("2020-08-31T18:29:59.999Z"),
+                            ],
+                            Today: [
+                              new Date("2020-08-10T04:57:17.076Z"),
+                              new Date("2020-08-10T04:57:17.076Z"),
+                            ],
+                            Yesterday: [
+                              new Date("2020-08-09T04:57:17.076Z"),
+                              new Date("2020-08-09T04:57:17.076Z"),
+                            ],
+                          },
+                          startDate: new Date("2020-08-10T04:30:00.000Z"),
+                          timePicker: false,
+                        }}
+                      >
+                        <input
+                          type="text"
+                          style={{ borderColor: "transparent" }}
+                        />
+                      </DateRangePicker>
+                      <i className="fas fa-chevron-down ml-2" />
+                    </div>
+                  </div>
+                </div>
+                {/* Schedule Widget */}
+                <div className="card booking-schedule schedule-widget">
+                  {/* Schedule Header */}
+                  <div className="schedule-header">
+                    <div className="row">
+                      <div className="col-md-12">
+                        {/* Day Slot */}
+                        <div className="day-slot">
+                          <ul>
+                            <li className="left-arrow">
+                              <a href="">
+                                <i className="fa fa-chevron-left" />
+                              </a>
+                            </li>
+                            <li>
+                              <span>Mon</span>
+                              <span className="slot-date">
+                                11 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Tue</span>
+                              <span className="slot-date">
+                                12 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Wed</span>
+                              <span className="slot-date">
+                                13 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Thu</span>
+                              <span className="slot-date">
+                                14 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Fri</span>
+                              <span className="slot-date">
+                                15 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Sat</span>
+                              <span className="slot-date">
+                                16 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li>
+                              <span>Sun</span>
+                              <span className="slot-date">
+                                17 Nov <small className="slot-year">2019</small>
+                              </span>
+                            </li>
+                            <li className="right-arrow">
+                              <a href="">
+                                <i className="fa fa-chevron-right" />
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* /Day Slot */}
+                      </div>
+                    </div>
+                  </div>
+                  {/* /Schedule Header */}
+                  {/* Schedule Content */}
+                  <div className="schedule-cont">
+                    <div className="row">
+                      <div className="col-md-12">
+                        {/* Time Slot */}
+                        <div className="time-slot">
+                          <ul className="clearfix">
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing selected" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a className="timing" href="#">
+                                <span>9:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>10:00</span> <span>AM</span>
+                              </a>
+                              <a className="timing" href="#">
+                                <span>11:00</span> <span>AM</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* /Time Slot */}
+                      </div>
+                    </div>
+                  </div>
+                  {/* /Schedule Content */}
+                </div>
+                {/* /Schedule Widget */}
+                {/* Submit Section */}
+                <div className="submit-section proceed-btn text-right">
+                  <div className="row">
+                    <div className="col-12 col-sm-6 d-flex align-items-center">
+                      <img className="payIcon me-3" src={click} alt="click" />
+                      <img className="payIcon" src={payme} alt="payme" />
+                    </div>
+                    <div className="col-12 col-sm-6 d-flex align-items-center justify-content-end">
+                      <Link
+                        to="/app/Mentee/checkout"
+                        className="btn btn-primary submit-btn"
+                      >
+                        To'lovga o'tish
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="card">
                 <div className="card-body custom-border-card pb-0">
                   {/* About Details */}
@@ -161,262 +399,7 @@ const MentorProfile = () => {
                   {/* /About Details */}
                 </div>
               </div>
-              <div className="card" id="sectionTime">
-                <div className="card-body custom-border-card">
-                  <h4 className="card-title"> Dars vaqtlari</h4>
-                  <div className="profile-box">
-                    <div className="row">
-                      <div className="col-lg-7 w-100">
-                        <div className="form-group">
-                          <label className="date-information-label">
-                            {" "}
-                            Dars o'tish uchun bo'sh vaqtlaringizni shu yerdan
-                            belgilashingiz mumkin
-                          </label>
-                          <select className="select form-control w-25">
-                            <option>1 Soat</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="schedule-widget mb-0">
-                          {/* Schedule Header */}
-                          <div className="schedule-header">
-                            {/* Schedule Nav */}
-                            <div className="schedule-nav">
-                              <ul className="nav nav-tabs nav-justified">
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_sunday"
-                                  >
-                                    Yakshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link active"
-                                    data-toggle="tab"
-                                    href="#slot_monday"
-                                  >
-                                    Dushanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_tuesday"
-                                  >
-                                    Seshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_wednesday"
-                                  >
-                                    Chorshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_thursday"
-                                  >
-                                    Payshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_friday"
-                                  >
-                                    Juma
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_saturday"
-                                  >
-                                    Shanba
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            {/* /Schedule Nav */}
-                          </div>
-                          {/* /Schedule Header */}
-                          {/* Schedule Content */}
-                          <div className="tab-content schedule-cont">
-                            {/* Sunday Slot */}
-                            <div id="slot_sunday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">
-                                Vaqt kiritilmagan
-                              </p>
-                            </div>
-                            {/* /Sunday Slot */}
-                            {/* Monday Slot */}
-                            <div
-                              id="slot_monday"
-                              className="tab-pane fade show active"
-                            >
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() =>
-                                    setState({ iseditModal: true })
-                                  }
-                                  data-toggle="modal"
-                                  href="#"
-                                >
-                                  <i className="fa fa-edit mr-1" />
-                                  Tahrirlash
-                                </a>
-                              </h4>
-                              {/* Slot List */}
-                              <div className="user-times">
-                                <div className="user-slot-list">
-                                  8:00 pm - 11:30 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  11:30 pm - 1:30 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  3:00 pm - 5:00 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  6:00 pm - 11:00 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                              </div>
-                              {/* /Slot List */}
-                            </div>
-                            {/* /Monday Slot */}
-                            {/* Tuesday Slot */}
-                            <div id="slot_tuesday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Add Slot
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Tuesday Slot */}
-                            {/* Wednesday Slot */}
-                            <div id="slot_wednesday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Wednesday Slot */}
-                            {/* Thursday Slot */}
-                            <div id="slot_thursday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Thursday Slot */}
-                            {/* Friday Slot */}
-                            <div id="slot_friday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Friday Slot */}
-                            {/* Saturday Slot */}
-                            <div id="slot_saturday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vat
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Vaqt qo'shish</p>
-                            </div>
-                            {/* /Saturday Slot */}
-                          </div>
-                          {/* /Schedule Content */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div className="card" id="infonmation-mentor">
                 <div className="card-body custom-border-card pb-0">
                   {/* Qualification Details */}
@@ -498,7 +481,7 @@ const MentorProfile = () => {
                         <li>
                           <div className="experience-content">
                             <div className="timeline-content">
-                              <span>Doimiy yashash manzili</span>
+                              <span>Doiiy yashash manzili</span>
                               <div className="row-result">
                                 National highway road
                               </div>
@@ -511,7 +494,7 @@ const MentorProfile = () => {
                   {/* /Location Details */}
                 </div>
               </div>
-            
+
               <div>
                 {/* Breadcrumb */}
 
@@ -994,4 +977,4 @@ const MentorProfile = () => {
   );
 };
 
-export default MentorProfile;
+export default MentorBooking;

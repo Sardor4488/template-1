@@ -34,8 +34,7 @@ const Login = (props) => {
       .then((res) => {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("role", res.data.user.role);
-        console.log(res.data.user.role);
-        console.log(res);
+        console.log(res.data.access_token);
         history.push(`app/${res.data.user.role}/dashboard`);
         UserData(res.data.user);
         LoadingOff();
