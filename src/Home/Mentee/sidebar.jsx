@@ -91,25 +91,14 @@ const Sidebar = (props) => {
                 </span>
               </Link>
             </li> */}
+           
             <li>
               <Link
-                to="/app/mentee/favourites"
-                className={pathname.includes("favourites") ? "active" : ""}
-              >
-                <i className="fas fa-user-tie" />
-                O'qituvchi tanlash{" "}
-                <span>
-                  <i className="fas fa-chevron-right" />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/app/mentee/favourites"
-                className={pathname.includes("favourites") ? "active" : ""}
+                to="/app/mentee/share-friends"
+                className={pathname.includes("share-friends") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
-                Do'stimni taklif qilish{" "}
+                Do'stlarim
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
@@ -153,9 +142,9 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/profil-settings-mentee"
+                to="/app/mentee/profile-settings"
                 className={
-                  pathname.includes("profil-settings-mentee") ? "active" : ""
+                  pathname.includes("profile-settings") ? "active" : ""
                 }
               >
                 <i className="fas fa-user-cog" />

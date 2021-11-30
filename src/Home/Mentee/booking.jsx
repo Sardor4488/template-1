@@ -8,7 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 // you will also need the css that comes with bootstrap-daterangepicker
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { Link } from 'react-router-dom';
-
+import Sidebar from "./sidebar"
+import {USER,USER_3} from '../../constant/imagepath_home';
+import StickyBox from "react-sticky-box";
 class Booking extends Component {
   onChange = (date) => {
     // Day.js object
@@ -259,10 +261,293 @@ class Booking extends Component {
                 {/* /Schedule Widget */}
                 {/* Submit Section */}
                 <div className="submit-section proceed-btn text-right">
-                  <Link to="/app/Mentee/checkout" className="btn btn-primary submit-btn">Proceed to Pay</Link>
+                  <Link to="/app/Mentee/checkout" className="btn btn-primary submit-btn">Ariza yuborish</Link>
                 </div>
                 {/* /Submit Section */}
+                <div className="card">
+                <div className="card-body custom-border-card pb-0">
+                  {/* About Details */}
+                  <div className="widget about-widget custom-about mb-0">
+                    <h4 className="widget-title">O'qituvchi haqida ma'lumot</h4>
+                    <hr />
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book. It has survived not only five
+                      centuries, but also the leap into electronic typesetting,
+                      remaining essentially unchanged.
+                    </p>
+                    <p>
+                      Contrary to popular belief, Lorem Ipsum is not simply
+                      random text. It has roots in a piece of classical Latin
+                      literature from 45 BC, making it over 2000 years old.
+                    </p>
+                  </div>
+                  {/* /About Details */}
+                </div>
               </div>
+
+              <div className="card" id="infonmation-mentor">
+                <div className="card-body custom-border-card pb-0">
+                  {/* Qualification Details */}
+                  <div className="widget experience-widget mb-0">
+                    <h4 className="widget-title">Ma'lumoti va malakasi</h4>
+                    <hr />
+                    <div className="experience-box">
+                      <ul className="experience-list profile-custom-list">
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Qayerni tugatgan (o'qiyapti)</span>
+                              <div className="row-result">
+                                Coimbatore University
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Mutaxassisligi</span>
+                              <div className="row-result">Mathematics</div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Sertifikatlari</span>
+                              <div className="row-result">
+                                IELTS, Topik va h.k
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Qaysi tilda dars o'tadi</span>
+                              <div className="row-result">
+                                Rus, ingiliz, o'zbek
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Pedagogik tajribasi</span>
+                              <div className="row-result">
+                                <span>1</span> yil
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/* /Qualification Details */}
+                </div>
+              </div>
+              <div className="card" id="location">
+                <div className="card-body pb-1 custom-border-card">
+                  {/* Location Details */}
+                  <div className="widget awards-widget m-0">
+                    <h4 className="widget-title">Manzil</h4>
+                    <hr />
+                    <div className="experience-box">
+                      <ul className="experience-list profile-custom-list">
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Hozir qayerda yashaydi</span>
+                              <div className="row-result">Toshkent.sh</div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Doiiy yashash manzili</span>
+                              <div className="row-result">
+                                National highway road
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/* /Location Details */}
+                </div>
+              </div>
+               </div>
+               <div id="mentor_review" className="content">
+          <div className="container-fluid">
+            <div className="row">
+               <div className="col-md-12 col-lg-12 col-xl-12">
+                 <h3 className=" mb-3"> <span>Sardor Temirov</span> o'quvchilari tomonidan bildirilgan fikrlar</h3>
+                <div className="doc-review review-listing">
+                  {/* Review Listing */}
+                  <ul className="comments-list">
+                    {/* Comment List */}
+                    <li>
+                      <div className="comment">
+                        <img className="avatar rounded-circle" alt="User Image" src={USER} />
+                        <div className="comment-body">
+                          <div className="meta-data">
+                            <span className="comment-author">Richard Wilson</span>
+                            <span className="comment-date">Reviewed 2 Days ago</span>
+                            <div className="review-count rating">
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
+                          <p className="recommended"><i className="far fa-thumbs-up" /> I recommend the consectetur</p>
+                          <p className="comment-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation.
+                            Curabitur non nulla sit amet nisl tempus
+                          </p>
+                          <div className="comment-reply">
+                            <a className="comment-btn" href="#">
+                              <i className="fas fa-reply" /> Reply
+                            </a>
+                            <p className="recommend-btn">
+                              <span>Recommend?</span>
+                              <a href="#" className="like-btn">
+                                <i className="far fa-thumbs-up" /> Yes
+                              </a>
+                              <a href="#" className="dislike-btn">
+                                <i className="far fa-thumbs-down" /> No
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      {/* Comment Reply */}
+                      <ul className="comments-reply">
+                        {/* Comment Reply List */}
+                        <li>
+                          <div className="comment">
+                            <img className="avatar rounded-circle" alt="User Image" src={USER} />
+                            <div className="comment-body">
+                              <div className="meta-data">
+                                <span className="comment-author">Dr. Darren Elder</span>
+                                <span className="comment-date">Reviewed 3 Days ago</span>
+                              </div>
+                              <p className="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam.
+                                Curabitur non nulla sit amet nisl tempus
+                              </p>
+                              <div className="comment-reply">
+                                <a className="comment-btn" href="#">
+                                  <i className="fas fa-reply" /> Reply
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        {/* /Comment Reply List */}
+                      </ul>
+                      {/* /Comment Reply */}
+                    </li>
+                    {/* /Comment List */}
+                    {/* Comment List */}
+                    <li>
+                      <div className="comment">
+                        <img className="avatar rounded-circle" alt="User Image" src={USER} />
+                        <div className="comment-body">
+                          <div className="meta-data">
+                            <span className="comment-author">Travis Trimble</span>
+                            <span className="comment-date">Reviewed 4 Days ago</span>
+                            <div className="review-count rating">
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                            </div>
+                          </div>
+                          <p className="comment-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation.
+                            Curabitur non nulla sit amet nisl tempus
+                          </p>
+                          <div className="comment-reply">
+                            <a className="comment-btn" href="#">
+                              <i className="fas fa-reply" /> Reply
+                            </a>
+                            <p className="recommend-btn">
+                              <span>Recommend?</span>
+                              <a href="#" className="like-btn">
+                                <i className="far fa-thumbs-up" /> Yes
+                              </a>
+                              <a href="#" className="dislike-btn">
+                                <i className="far fa-thumbs-down" /> No
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    {/* /Comment List */}
+                    {/* Comment List */}
+                    <li>
+                      <div className="comment">
+                        <img className="avatar rounded-circle" alt="User Image" src={USER_3} />
+                        <div className="comment-body">
+                          <div className="meta-data">
+                            <span className="comment-author">Carl Kelly</span>
+                            <span className="comment-date">Reviewed 5 Days ago</span>
+                            <div className="review-count rating">
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                              <i className="fas fa-star filled" />
+                            </div>
+                          </div>
+                          <p className="comment-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation.
+                            Curabitur non nulla sit amet nisl tempus
+                          </p>
+                          <div className="comment-reply">
+                            <a className="comment-btn" href="#">
+                              <i className="fas fa-reply" /> Reply
+                            </a>
+                            <p className="recommend-btn">
+                              <span>Recommend?</span>
+                              <a href="#" className="like-btn">
+                                <i className="far fa-thumbs-up" /> Yes
+                              </a>
+                              <a href="#" className="dislike-btn">
+                                <i className="far fa-thumbs-down" /> No
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    {/* /Comment List */}
+                  </ul>
+                  {/* /Comment List */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>		
             </div>
           </div>
         </div>		

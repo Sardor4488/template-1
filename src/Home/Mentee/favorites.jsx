@@ -77,7 +77,7 @@ class Favorites extends Component {
                           href="#bottom-justified-tab2"
                           data-toggle="tab"
                         >
-                          Mavzular
+                          Darslar
                         </a>
                       </li>
                       <li className="nav-item">

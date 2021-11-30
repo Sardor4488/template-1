@@ -1,4 +1,4 @@
-/*
+/* 
 Author       : Dreamguys
 Template Name: Mentoring - Bootstrap Template
 Version      : 1.0
@@ -11,7 +11,7 @@ Version      : 1.0
 2. Table
 3. Bootstrap Classes
 4. Avatar
-5. Select2
+5. Select2 
 6. Nav Tabs
 7. Modal
 8. Components
@@ -55,7 +55,7 @@ Version      : 1.0
 
 /*-----------------
 	1. General
------------------------*/
+----------------------- */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900");
 @font-face {
@@ -8388,4 +8388,17 @@ PhoneInput {
 }
 .respons-button{
   text-align: end;
+}
+.more{
+  cursor: pointer;
+}
+.textArea{
+  outline: hidden !important;
+  border-radius: 5px;
+  border: 1 px solid #aaa;
+}
+.transletor-answer{
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  min-height: 254px;
 }

@@ -33,11 +33,11 @@ class MenteeProfile extends Component {
                       <a href="/app/index">My teacher</a>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      O'qituvchi profili
+                      O'quvchi profili
                     </li>
                   </ol>
                 </nav>
-                <h2 className="breadcrumb-title">O'qituvchi profili</h2>
+                <h2 className="breadcrumb-title"> O'quvchi profili</h2>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ class MenteeProfile extends Component {
                   <div className="card-body custom-border-card pb-0">
                     {/* About Details */}
                     <div className="widget about-widget custom-about mb-0">
-                      <h4 className="widget-title">About Me</h4>
+                      <h4 className="widget-title">Men haqimda</h4>
                       <hr />
                       <p>
                         Lorem Ipsum is simply dummy text of the printing and
@@ -113,22 +113,22 @@ class MenteeProfile extends Component {
                   <div className="card-body custom-border-card pb-0">
                     {/* Personal Details */}
                     <div className="widget education-widget mb-0">
-                      <h4 className="widget-title">Personal Details</h4>
+                      <h4 className="widget-title"> Shaxsiy ma'lumotlar</h4>
                       <hr />
                       <div className="experience-box">
                         <ul className="experience-list profile-custom-list">
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Gender</span>
-                                <div className="row-result">Male</div>
+                                <span>Kasbingiz</span>
+                                <div className="row-result">O'quvchi</div>
                               </div>
                             </div>
                           </li>
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Date of Birth</span>
+                                <span>Tug'ilgan kuni</span>
                                 <div className="row-result">01 - 02 - 2000</div>
                               </div>
                             </div>
@@ -136,9 +136,9 @@ class MenteeProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Where did you hear about us?</span>
+                                <span>Telefon raqam</span>
                                 <div className="row-result">
-                                  Through web search
+                                  +998 91 234 56 78
                                 </div>
                               </div>
                             </div>
@@ -153,16 +153,16 @@ class MenteeProfile extends Component {
                   <div className="card-body custom-border-card pb-0">
                     {/* Qualification Details */}
                     <div className="widget experience-widget mb-0">
-                      <h4 className="widget-title">Qualification</h4>
+                      <h4 className="widget-title">O'rganishdan maqsad</h4>
                       <hr />
                       <div className="experience-box">
                         <ul className="experience-list profile-custom-list">
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Undergraduate College</span>
+                                <span>Hozirgi bilm daraja</span>
                                 <div className="row-result">
-                                  Coimbatore University
+                                 Boshlang'ich
                                 </div>
                               </div>
                             </div>
@@ -170,7 +170,7 @@ class MenteeProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Undergraduate Major</span>
+                                <span>O'rganilayotgan fan</span>
                                 <div className="row-result">Mathematics</div>
                               </div>
                             </div>
@@ -178,9 +178,9 @@ class MenteeProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Graduate College</span>
+                                <span>Maqsad qilingan daraja</span>
                                 <div className="row-result">
-                                  Coimbatore University
+                                  Yuqori
                                 </div>
                               </div>
                             </div>
@@ -188,8 +188,8 @@ class MenteeProfile extends Component {
                           <li>
                             <div className="experience-content">
                               <div className="timeline-content">
-                                <span>Type of Degree</span>
-                                <div className="row-result">B.Sc (Maths)</div>
+                                <span>Ajratilgan vaqt</span>
+                                <div className="row-result">5-oy</div>
                               </div>
                             </div>
                           </li>
@@ -265,7 +265,9 @@ class MenteeProfile extends Component {
                     {/* /Location Details */}
                   </div>
                 </div>
-                <table className="table table-hover table-center mb-0">
+              <div className="py-3">
+                <h3>O'qituvchim</h3>
+              <table className="table table-hover table-center mb-0">
                   <thead>
                     <tr>
                       <th>O'qituvchi ismi</th>
@@ -279,7 +281,7 @@ class MenteeProfile extends Component {
                       <td>
                         <h2 className="table-avatar">
                           <Link
-                            to="/app/Mentee/mentor-profile"
+                            to="/app/Mentee/booking"
                             className="avatar avatar-sm mr-2"
                           >
                             <img
@@ -288,7 +290,7 @@ class MenteeProfile extends Component {
                               alt="User Image"
                             />
                           </Link>
-                          <Link to="/app/Mentee/mentor-profile">
+                          <Link to="/app/Mentee/booking">
                             Tyrone Roberts
                             <span>tyroneroberts@adobe.com</span>
                           </Link>
@@ -309,6 +311,7 @@ class MenteeProfile extends Component {
                     </tr>
                   </tbody>
                 </table>{" "}
+              </div>
                 {/* /Mentor Details Tab */}
               </div>
             </div>

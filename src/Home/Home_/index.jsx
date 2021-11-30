@@ -573,10 +573,12 @@ const Home = (props) => {
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Doloremque nobis qui voluptates autem quos
                           libero quod a voluptas id vero.
+                           <br />
+                          <span className=""><Link to="/app/Mentee/booking" className="more">Barcha fikrlar</Link></span>
                         </p>
                       </div>
                     </div>
-                    <p className="text-primary m-0" onClick={moreInfo}>
+                    <p className="text-primary more m-0" onClick={moreInfo}>
                       {more ? "Yopish" : "Batafsil"}
                     </p>
                   </div>

@@ -45,83 +45,44 @@ const Share = () => {
             </div>
             <div className="col-12 col-md-7 col-lg-8 col-xl-9">
               <div className="card">
-                {/* <div className="card-header">
-                        <h4 className="card-title">Bottom line justified</h4>
-                      </div> */}
-                <div className="card-body">
-                  <ul className="nav nav-tabs nav-tabs-bottom nav-justified">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="#bottom-justified-tab1"
-                        data-toggle="tab"
-                      >
-                        Do'stlarni taklif qilish
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="#bottom-justified-tab2"
-                        data-toggle="tab"
-                      >
-                        Do'stlarim
-                      </a>
-                    </li>
-                  </ul>
-                  <div className="tab-content">
-                    <div
-                      className="tab-pane show active"
-                      id="bottom-justified-tab1"
-                    >
-                      <div>
-                        <h3>Ham pul ishlang, ham bilim ulashing!</h3>
-                        <p>
-                          MyTeacher platformasiga andriod mobil ilova orqali siz
-                          o'z yaqinlaringizni taklif qilgan holda, qo'shimcha
-                          daromad olishingiz (siz to'plagan pul kartangizga
-                          o'tqazib beriladi), yoki yig'gan pullaringizni
-                          Myteacherda darslar sotib olish uchun ishlatishingiz
-                          mumkin. Xo'sh, bu qanday ishlaydi? <br /> <br />
-                          <span className="py-4">
-                            1. Siz yaqin kishingizdan MyTeacher ilovasni yuklab
-                            olishlarini so'raysiz; <br />
-                            2. Ushbu bo'limda do'stingizning myteacherda
-                            ro'yxatdan o'tgan telefon raqamini kirgizasiz;{" "}
-                            <br />
-                            3. TAKLIF QILISH tugmasini bosasiz. <br />
-                            <br />{" "}
-                          </span>
-                          Shundan so'ng do'stingiz, o'z telefonidagi MyTeacher
-                          ilovasi orqali kelgan taklifnomani qabul qiladi va
-                          sizning hisobingizga 1000 so'm yoziladi. Siz o'z
-                          ishlab topgan pullaringizni 50ming so'mga yetganda
-                          kartangizga yechib olishingiz, uni jamg'arishingiz,
-                          yoki bo'lmasa MyTeacherdan darslar sotib olish uchun
-                          ishlatishingiz mumkin bo'ladi.
-                        </p>
-                      </div>
-                      <FormGroup className="d-flex justify-content-center align-items-center">
-                        <PhoneInput
-                          international
-                          defaultCountry="UZ"
-                          value={phoneNumber}
-                          onChange={setPhoneNumber}
-                        />
-
-                        <button
-                          type="submit"
-                          className="btn ms-2 share-friend-button btn-primary"
-                        >
-                          Yuborish
-                        </button>
-                      </FormGroup>
-                    </div>
-                    <div className="tab-pane" id="bottom-justified-tab2">
-                      Tab content 2
-                    </div>
-                  </div>
-                </div>
+                  <h4>Do'stlarim</h4>
+                  <table className="table table-hover table-center mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>Ism</th>
+                                    <th>Dars kuni</th>
+                                    <th className="text-center">Dars vaqti</th>
+                                    <th className="text-center">Harakat</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <h2 className="table-avatar">
+                                        <Link to="/app/mentee/mentee-profile">
+                                          Matematika
+                                          <span>Arfmetik amallar</span>
+                                        </Link>
+                                      </h2>
+                                    </td>
+                                    <td>08 April 2020</td>
+                                    <td className="text-center">
+                                      <span className="pending">
+                                        9:00 AM - 10:00 AM
+                                      </span>
+                                    </td>
+                                    <td className="text-center">
+                                      <Link
+                                        to="/app/mentee/mentee-profile"
+                                        className="btn btn-sm bg-info-light"
+                                      >
+                                        <i className="far fa-eye" /> View
+                                      </Link>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+              
               </div>
             </div>
           </div>

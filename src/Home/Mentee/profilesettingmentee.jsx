@@ -110,21 +110,27 @@ class ProfileSettingMentee extends Component {
                             <input type="text" defaultValue="+998 91 123 45 67" className="form-control" />
                           </div>
                         </div>
+                        <div className="col-12 col-md-6">
+                          <div className="form-group">
+                            <label>Biz haqimizda qayerdan eshitdingiz</label>
+                            <input type="text"   className="form-control" />
+                          </div>
+                        </div>
                         <div className="col-12">
                           <div className="form-group">
-                            <label>Manzil</label>
-                            <input type="text" className="form-control" defaultValue="806 Twin Willow Lane" />
+                            <label>O'zim haqimda qisqacha ma'lumot</label>
+                            <textarea type="text" className="form-control" defaultValue="806 Twin Willow Lane" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>Shahar</label>
+                            <label>Hozir qayerda yashaysiz</label>
                             <input type="text" className="form-control" defaultValue="Old Forge" />
                           </div>
                         </div>
                         <div className="col-12 col-md-6">
                           <div className="form-group">
-                            <label>State</label>
+                            <label>Doimiy yashash manzilingiz</label>
                             <input type="text" className="form-control" defaultValue="Newyork" />
                           </div>
                         </div>
