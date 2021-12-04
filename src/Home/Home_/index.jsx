@@ -730,13 +730,12 @@ const Home = (props) => {
                   {/* Blog Post */}
                   <div className="blog grid-blog">
                     <div className="blog-image">
-                      <Link to="/app/Blog/blog-details">
+                       
                         <img
                           className="img-fluid"
                           src={BLOG_01}
                           alt="Post Image"
-                        />
-                      </Link>
+                        /> 
                     </div>
                     <div className="blog-content">
                       <h3 className="blog-title">
@@ -754,8 +753,8 @@ const Home = (props) => {
               ))}
           </div>
           <div className="view-all text-center">
-            <Link to="/app/Blog/blog-list" className="btn btn-primary">
-              View All
+            <Link to="/register" className="btn btn-primary">
+              Ro'yxatdan o'tish
             </Link>
           </div>
         </div>

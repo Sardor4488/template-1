@@ -47,45 +47,36 @@ class StudentProfile extends Component {
                 {/* Mentor Widget */}
                 <div className="card">
                   <div className="card-body">
-                    <div className="mentor-widget">
-                      <div className="user-info-left align-items-center">
-                        <div className="mentor-img d-flex flex-wrap justify-content-center">
-                          <div className="pro-avatar">JD</div>
-                          <div className="rating text-center">
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star filled" />
-                            <i className="fas fa-star" />
-                          </div>
+                  <div className="row w-100 d-flex align-items-center justify-content-between">
+                      <div className="col-12 col-sm-8 my-2">
+                      <div className=" d-flex align-items-center">
+                        <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
+                          <div className="pro-avatar">ST</div>
+                         
                           <div className="mentor-details m-0">
-                            <p className="user-location m-0"><i className="fas fa-map-marker-alt" /> Tamil Nadu, India</p>
+                          <i className="fas fa-map-marker-alt" /> Tamil
+                              Nadu, India
                           </div>
                         </div>
                         <div className="user-info-cont">
-                          <h4 className="usr-name">Еуьшкщм Doe</h4>
-                          <p className="mentor-type">English Literature (M.A)</p>
-                          <div className="mentor-action">
-                            <p className="mentor-type social-title">Contact Me</p>
-                            <a href="" className="btn-blue">
-                              <i className="fas fa-comments" />
-                            </a>
-                            <Link to="/app/Mentor/chat" className="btn-blue">
-                              <i className="fas fa-envelope" />
-                            </Link>
-                            <a href="" className="btn-blue" onClick={()=>this.setState({isvoicecallmodal : true})} data-toggle="modal" data-target="#voice_call">
-                              <i className="fas fa-phone-alt" />
-                            </a>
-                          </div>
+                          <h4 className="">Sardor Temirov</h4>
+                          <p className="mentor-type mb-0">
+                            English Literature (M.A)
+                          </p>  <div className="mentor-action">
+                          <p className="mentor-type social-title">
+                            blabla@gmail.com
+                          </p>
+                         
                         </div>
+                        </div>
+                      
                       </div>
-                      {/* <div className="user-info-right d-flex align-items-end flex-wrap">
-                        <div className="hireme-btn text-center">
-                          <span className="hire-rate">$500 / Hour</span>
-                          <Link className="blue-btn-radius" to="/app/Mentee/booking">Hire Me</Link>
-                        </div>
-                      </div> */}
+                      </div>
+                    
+                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
+                   <a href="#" className="blue-btn-radius">Bog'lanish </a>
                     </div>
+                    </div>   
                   </div>
                 </div>
                 {/* /Mentor Widget */}
@@ -94,7 +85,7 @@ class StudentProfile extends Component {
                   <div className="card-body custom-border-card pb-0">
                     {/* About Details */}
                     <div className="widget about-widget custom-about mb-0">
-                      <h4 className="widget-title">About Me</h4>
+                      <h4 className="widget-title">Qisqacha ma'lumot</h4>
                       <hr />
                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                       <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
