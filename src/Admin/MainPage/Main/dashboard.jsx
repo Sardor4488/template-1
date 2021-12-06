@@ -422,7 +422,7 @@ class AdminDashboard extends Component {
                           <td>
                             <h2 className="table-avatar">
                               <Link
-                                to="/admin/profile"
+                                to="/admin/mentor-profile"
                                 className="avatar avatar-sm mr-2"
                               >
                                 <img
@@ -431,7 +431,7 @@ class AdminDashboard extends Component {
                                   alt="User Image"
                                 />
                               </Link>
-                              <Link to="/admin/profile">James Amen</Link>
+                              <Link to="/admin/mentor-profile">James Amen</Link>
                             </h2>
                           </td>
                           <td>Maths</td>
@@ -569,7 +569,7 @@ class AdminDashboard extends Component {
                           <td>
                             <h2 className="table-avatar">
                               <Link
-                                to="/admin/profile"
+                                to="/admin/leadProfile"
                                 className="avatar avatar-sm mr-2"
                               >
                                 <img
@@ -578,7 +578,7 @@ class AdminDashboard extends Component {
                                   alt="User Image"
                                 />
                               </Link>
-                              <Link to="/admin/profile">Jonathan Doe </Link>
+                              <Link to="/admin/leadProfile">Temirov Doe </Link>
                             </h2>
                           </td>
                           <td>8286329170</td>
@@ -710,7 +710,7 @@ class AdminDashboard extends Component {
                           <td>
                             <h2 className="table-avatar">
                               <Link
-                                to="/admin/profile"
+                                to="/admin/mentor-profile"
                                 className="avatar avatar-sm mr-2"
                               >
                                 <img
@@ -719,14 +719,14 @@ class AdminDashboard extends Component {
                                   alt="User Image"
                                 />
                               </Link>
-                              <Link to="/admin/profile">James Amen</Link>
+                              <Link to="/admin/mentor-profile">James Amen</Link>
                             </h2>
                           </td>
                           <td>Maths</td>
                           <td>
                             <h2 className="table-avatar">
                               <Link
-                                to="/admin/profile"
+                                to="/admin/leadProfile"
                                 className="avatar avatar-sm mr-2"
                               >
                                 <img
@@ -735,7 +735,7 @@ class AdminDashboard extends Component {
                                   alt="User Image"
                                 />
                               </Link>
-                              <Link to="/admin/profile">Jonathan Doe </Link>
+                              <Link to="/admin/leadProfile">Temirov Sardor </Link>
                             </h2>
                           </td>
                           <td>

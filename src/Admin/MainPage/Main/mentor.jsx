@@ -35,8 +35,8 @@ class Clients extends Component {
         dataIndex: 'name',
         render: (text, record) => (            
             <h2 className="table-avatar">
-                <Link to="/admin/profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={record.image} alt="User Image" /></Link>
-                <Link to="/admin/profile">{text}</Link>
+                <Link to="/admin/mentor-profile" className="avatar avatar-sm mr-2"><img className="avatar-img rounded-circle" src={record.image} alt="User Image" /></Link>
+                <Link to="/admin/mentor-profile">{text}</Link>
             </h2>
           ), 
           sorter: (a, b) => a.name.length - b.name.length,

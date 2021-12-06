@@ -28,6 +28,7 @@ import DataTable from "../MainPage/UIinterface/Tables/data-table";
 import Error404 from "../MainPage/Pages/ErrorPage/error404";
 import Error500 from "../MainPage/Pages/ErrorPage/error500";
 import LeadProfile from "../MainPage/Pages/leadProfile";
+import MentorProfile from "../MainPage/Pages/mentorProfil";
 
 export default [
   {
@@ -141,5 +142,9 @@ export default [
   {
     path: "error-500",
     component: Error500,
+  },
+  {
+    path: "mentor-profile",
+    component: MentorProfile,
   },
 ];

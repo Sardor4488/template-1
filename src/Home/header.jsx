@@ -71,316 +71,17 @@ const Header = (props) => {
             </div>
             <ul className="main-nav">
               <li className={pathname.includes("home") ? "active" : ""}>
-                <Link to="/app/home">Home</Link>
+                <Link to="/app/home">Asosiy</Link>
               </li>
-              <li
-                className={
-                  pathname.includes("/mentor/dashboard") ||
-                  pathname.includes("mentor/bookings") ||
-                  pathname.includes("schedule-timings") ||
-                  pathname.includes("/mentor/chat") ||
-                  pathname.includes("invoice") ||
-                  pathname.includes("reviews") ||
-                  pathname.includes("/mentor/blog") ||
-                  pathname.includes("/mentor/profile-settings") ||
-                  pathname.includes("mentor-register") ||
-                  pathname.includes("profile-mentee") ||
-                  pathname.includes("mentee-list") ||
-                  pathname.includes("add-blog") ||
-                  pathname.includes("edit-blog")
-                    ? "has-submenu active"
-                    : "has-submenu"
-                }
-              >
-                <a href="">
-                  O'qituvchi <i className="fas fa-chevron-down" />
-                </a>
-                <ul className="submenu">
-                  <li
-                    className={
-                      pathname.includes("/mentor/dashboard") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/dashboard">O'qituvchi Dashboard</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("mentor/bookings") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/bookings">Bookings</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("schedule-timings") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/schedule-timings">
-                      Schedule Timing
-                    </Link>
-                  </li>
-                  <li
-                    className={pathname.includes("mentee-list") ? "active" : ""}
-                  >
-                    <Link to="/app/mentor/mentee-list">Mentee List</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("mentor-profile") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/mentor-profile">Mentee Profile</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("/mentor/blog") ||
-                      pathname.includes("add-blog") ||
-                      pathname.includes("edit-blog")
-                        ? "has-submenu active"
-                        : "has-submenu"
-                    }
-                  >
-                    <Link to="/app/mentor/blog">Blog</Link>
-                    <ul className="submenu">
-                      <li
-                        className={
-                          pathname.includes("/mentor/blog") ? "active" : ""
-                        }
-                      >
-                        <Link to="/app/mentor/blog">Blog</Link>
-                      </li>
-                      <li>
-                        <Link to="/app/Blog/blog-details">Blog View</Link>
-                      </li>
-                      <li
-                        className={
-                          pathname.includes("add-blog") ? "active" : ""
-                        }
-                      >
-                        <Link to="/app/mentor/add-blog">Add Blog</Link>
-                      </li>
-                      <li
-                        className={
-                          pathname.includes("edit-blog") ? "active" : ""
-                        }
-                      >
-                        <Link to="/app/mentor/edit-blog">Edit Blog</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("/mentor/chat") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/chat">Chat</Link>
-                  </li>
-                  <li className={pathname.includes("invoice") ? "active" : ""}>
-                    <Link to="/app/mentor/invoices">Invoices</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("/mentor/profile-settings")
-                        ? "active"
-                        : ""
-                    }
-                  >
-                    <Link to="/app/mentor/profile-settings">
-                      Profile Settings
-                    </Link>
-                  </li>
-                  <li className={pathname.includes("reviews") ? "active" : ""}>
-                    <Link to="/app/mentor/reviews">Reviews</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("mentor-register") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentor/mentor-register">
-                      mentor Register
-                    </Link>
-                  </li>
-                </ul>
+
+        
+              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+                <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
               </li>
-              <li
-                className={
-                  pathname.includes("mentor-profile") ||
-                  pathname.includes("checkout") ||
-                  pathname.includes("booking-success") ||
-                  pathname.includes("map-grid") ||
-                  pathname.includes("map-list") ||
-                  pathname.includes("search") ||
-                  pathname.includes("bookings-mentee") ||
-                  pathname.includes("dashboard-mentee") ||
-                  pathname.includes("favourites") ||
-                  pathname.includes("Mentee/chat-mentee") ||
-                  pathname.includes("profile-settings-mentee") ||
-                  pathname.includes("change-password")
-                    ? "has-submenu active"
-                    : "has-submenu"
-                }
-              >
-                <a href="">
-                  O'quvchi <i className="fas fa-chevron-down" />
-                </a>
-                <ul className="submenu">
-                  <li
-                    className={
-                      pathname.includes("map-grid") ||
-                      pathname.includes("map-list")
-                        ? "has-submenu active"
-                        : "has-submenu"
-                    }
-                  >
-                    <a href="#">mentors</a>
-                    <ul className="submenu">
-                      <li
-                        className={
-                          pathname.includes("map-grid") ? "active" : ""
-                        }
-                      >
-                        <Link to="/app/mentee/map-grid">Map Grid</Link>
-                      </li>
-                      <li
-                        className={
-                          pathname.includes("map-list") ? "active" : ""
-                        }
-                      >
-                        <Link to="/app/mentee/map-list">Map List</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className={pathname.includes("search") ? "active" : ""}>
-                    <Link to="/app/mentee/search">Search mentor</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("mentor-profile") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/mentee-profile">
-                      O'qituvchi Profile
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("bookings-mentee") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/bookings-mentee">Bookings</Link>
-                  </li>
-                  <li className={pathname.includes("checkout") ? "active" : ""}>
-                    <Link to="/app/mentee/checkout">Checkout</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("booking-success") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/booking-success">
-                      Booking Success
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("dashboard-mentee") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/dashboard">Oquvchi Dashboard</Link>
-                  </li>
-                  <li
-                    className={pathname.includes("favourites") ? "active" : ""}
-                  >
-                    <Link to="/app/mentee/favourites">Favourites</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("mentee/chat-mentee") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/chat-mentee">Chat</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("profile-settings") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/profile-settings">
-                      Profile Settings
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("change-password") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/mentee/change-password">
-                      Change Password
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                className={
-                  pathname.includes("voice-call") ||
-                  pathname.includes("video-call") ||
-                  pathname.includes("components") ||
-                  pathname.includes("blank-page")
-                    ? "has-submenu active"
-                    : "has-submenu"
-                }
-              >
-                <a href="">
-                  Pages <i className="fas fa-chevron-down" />
-                </a>
-                <ul className="submenu">
-                  <li
-                    className={pathname.includes("voice-call") ? "active" : ""}
-                  >
-                    <Link to="/app/Pages/voice-call">Voice Call</Link>
-                  </li>
-                  <li
-                    className={pathname.includes("video-call") ? "active" : ""}
-                  >
-                    <Link to="/app/Pages/video-call">Video Call</Link>
-                  </li>
-                  <li>
-                    <Link to="/app/mentee/search">Search mentors</Link>
-                  </li>
-                  <li
-                    className={pathname.includes("components") ? "active" : ""}
-                  >
-                    <Link to="/app/Pages/components">Components</Link>
-                  </li>
-                  <li className="has-submenu">
-                    <a href="">Invoices</a>
-                    <ul className="submenu">
-                      <li>
-                        <Link to="/app/mentor/invoices">Invoices</Link>
-                      </li>
-                      <li>
-                        <Link to="/app/mentor/invoice-view">Invoice View</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li
-                    className={pathname.includes("blank-page") ? "active" : ""}
-                  >
-                    <Link to="/app/Pages/blank-page">Starter Page</Link>
-                  </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/register">Register</Link>
-                  </li>
-                  <li>
-                    <Link to="/forgot-password">Forgot Password</Link>
-                  </li>
-                </ul>
-              </li>
-              <li
+              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+                <Link to="/app/mentor/reviews-all">Fikrlar</Link>
+              </li> 
+                   <li
                 className={
                   pathname.includes("blog-list") ||
                   pathname.includes("blog-grid") ||
@@ -403,7 +104,7 @@ const Header = (props) => {
                   >
                     <Link to="/app/Blog/blog-grid">Blog Grid</Link>
                   </li>
-                   <li
+                  <li
                     className={
                       pathname.includes("blog-details") ? "active" : ""
                     }
@@ -412,27 +113,10 @@ const Header = (props) => {
                   </li>
                 </ul>
               </li>
-              <li
-                    className={pathname.includes("blog-grid") ? "active" : ""}
-                  >
-                    <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
-                  </li> 
-                  <li
-                    className={pathname.includes("blog-grid") ? "active" : ""}
-                  >
-                    <Link to="/app/mentor/reviews-all">Fikrlar</Link>
-                  </li> 
-              <li>
-                <a href="/admin/index" target="_blank">
-                  Admin
-                </a>
-              </li>
-               <li className="login-link">
+              <li className="login-link">
                 <Link to="/login">Login / Signup</Link>
               </li>
-               
-                </ul>
-          
+            </ul>
           </div>
           {userdata ? (
             <ul className="nav header-navbar-rht">

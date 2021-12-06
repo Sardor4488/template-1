@@ -41,7 +41,7 @@ class Profile extends Component {
                     </a>
                   </div>
                   <div className="col ml-md-n2 profile-user-info">
-                    <h4 className="user-name mb-0">Allen Davis</h4>
+                    <h4 className="user-name text-start text-black mb-0">Allen Davis</h4>
                     <h6 className="text-muted">allendavis@admin.com</h6>
                     <div className="pb-3"><i className="fa fa-map-marker" /> Florida, United States</div>
                     <div className="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
@@ -53,11 +53,13 @@ class Profile extends Component {
               <div className="profile-menu">
                 <ul className="nav nav-tabs nav-tabs-solid">
                   <li className="nav-item">
-                    <a className="nav-link active" data-toggle="tab" href="#per_details_tab">About</a>
+                    <a className="nav-link active" data-toggle="tab" href="#per_details_tab">Qisqacha ma'lumot</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" data-toggle="tab" href="#password_tab">Password</a>
+                    <a className="nav-link" data-toggle="tab" href="#password_tab">Parol</a>
                   </li>
+                 
+                
                 </ul>
               </div>	
               <div className="tab-content profile-tab-cont">
@@ -129,7 +131,7 @@ class Profile extends Component {
                     </div>
                   </div>
                 </div>
-                {/* /Change Password Tab */}
+              
               </div>
             </div>
           </div>
