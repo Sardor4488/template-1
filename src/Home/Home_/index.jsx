@@ -8,9 +8,7 @@ import icon1 from "../assets/icons/homeIcon.svg";
 import icon2 from "../assets/icons/homeIcon2.svg";
 import Typical from "react-typical";
 import {
-  ICON_1,
-  ICON_2,
-  ICON_3,
+  ICON_1, 
   USER,
   BLOG_01,
   USER_1,

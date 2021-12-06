@@ -403,7 +403,7 @@ const Header = (props) => {
                   >
                     <Link to="/app/Blog/blog-grid">Blog Grid</Link>
                   </li>
-                  <li
+                   <li
                     className={
                       pathname.includes("blog-details") ? "active" : ""
                     }
@@ -417,10 +417,16 @@ const Header = (props) => {
                   Admin
                 </a>
               </li>
-              <li className="login-link">
+               <li className="login-link">
                 <Link to="/login">Login / Signup</Link>
               </li>
-            </ul>
+                <li
+                    className={pathname.includes("blog-grid") ? "active" : ""}
+                  >
+                    <Link to="/app/mentor/reviews-all">fikrlar</Link>
+                  </li> 
+                </ul>
+          
           </div>
           {userdata ? (
             <ul className="nav header-navbar-rht">
