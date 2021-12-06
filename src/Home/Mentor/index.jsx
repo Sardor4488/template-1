@@ -60,9 +60,10 @@ const Mentorroute = ({ match }) => {
           path={`${match.url}/studentProfile`}
           component={StudentProfile}
         />
-        <Redirect exact={true} from="*" to="/404" />
-        <Route path={`${match.url}/reviews-all`} component={ReviewsAll} />
+          <Route path={`${match.url}/reviews-all`} component={ReviewsAll} />
         <Route path={`${match.url}/about-my-teacher`} component={About} />
+        <Redirect exact={true} from="*" to="/404" />
+      
 
       </Switch>
     </>

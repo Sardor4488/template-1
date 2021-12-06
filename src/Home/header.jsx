@@ -412,6 +412,16 @@ const Header = (props) => {
                   </li>
                 </ul>
               </li>
+              <li
+                    className={pathname.includes("blog-grid") ? "active" : ""}
+                  >
+                    <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
+                  </li> 
+                  <li
+                    className={pathname.includes("blog-grid") ? "active" : ""}
+                  >
+                    <Link to="/app/mentor/reviews-all">Fikrlar</Link>
+                  </li> 
               <li>
                 <a href="/admin/index" target="_blank">
                   Admin
@@ -420,11 +430,7 @@ const Header = (props) => {
                <li className="login-link">
                 <Link to="/login">Login / Signup</Link>
               </li>
-                <li
-                    className={pathname.includes("blog-grid") ? "active" : ""}
-                  >
-                    <Link to="/app/mentor/reviews-all">fikrlar</Link>
-                  </li> 
+               
                 </ul>
           
           </div>
