@@ -4,7 +4,7 @@ import { Route, withRouter, Redirect } from "react-router-dom";
 import routerService from "./router_service";
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
-// boostrap
+// bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./assets/css/bootstrap.min.css";

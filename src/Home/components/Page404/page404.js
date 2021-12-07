@@ -4,7 +4,7 @@ import "./page404.css";
 const Page404 = () => {
   return (
     <section className="page_404">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row m-0 p-0 ">
           <div className="col-sm-12 text-center ">
             <div className="four_zero_four_bg">

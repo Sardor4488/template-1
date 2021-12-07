@@ -1,20 +1,14 @@
 import React, { Component, useState } from "react";
-// import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { AppLogo } from "../../constant/imagepath_home";
 import PhoneInput from "react-phone-number-input";
-import Loading from "../components/Loading/Loading";
 import axios from "axios";
-import * as t from "../../redux/types";
-import { dispatch } from "../../redux/store";
-import { useSelector } from "react-redux";
+
 import { LoadingOff, LoadingOn, UserData } from "../../redux/Actions";
 const Login = (props) => {
   const { history } = props;
   const [inputType, setInputType] = useState("password");
-  const [loginNumber, setLoginNumber] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const loading = useSelector((state) => state.Reducer.loading);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const changeInputPassword = () => {
     if (inputType == "password") {
       setInputType("text");
@@ -25,8 +19,8 @@ const Login = (props) => {
   const loginMyteacher = (e) => {
     e.preventDefault();
     let data = {
-      phone_number: loginNumber,
-      password: loginPassword,
+      email,
+      password,
     };
     LoadingOn();
     axios
@@ -43,8 +37,10 @@ const Login = (props) => {
         console.log(err);
         LoadingOff();
       });
+    console.log(data);
   };
 
+  localStorage.clear();
   return (
     <>
       <div className="bg-pattern-style">
@@ -61,15 +57,12 @@ const Login = (props) => {
                 </div>
                 <form onSubmit={loginMyteacher}>
                   <div className="form-group">
-                    <label className="form-control-label">
-                      Telefon raqamingiz
-                    </label>
-                    <PhoneInput
-                      international
-                      // countryCallingCodeEditable={false}
-                      defaultCountry="UZ"
-                      value={loginNumber}
-                      onChange={setLoginNumber}
+                    <label className="form-control-label">E-mail</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      value={email || ""}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="form-group">
@@ -78,9 +71,8 @@ const Login = (props) => {
                       <input
                         type={inputType}
                         className="form-control pass-input"
-                        onChange={(e) => setLoginPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                       />
-
                       <span
                         className={` ${
                           inputType == "password"

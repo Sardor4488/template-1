@@ -49,6 +49,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-apexcharts": "^1.3.9",
+    "react-avatar-image-cropper": "^1.3.7",
     "react-bootstrap": "^1.3.0",
     "react-bootstrap-daterangepicker": "^7.0.0",
     "react-dom": "^16.13.1",

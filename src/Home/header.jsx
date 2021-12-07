@@ -4,7 +4,10 @@ import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
 import { ClearData } from "../redux/Actions";
+import axios from "axios";
 const Header = (props) => {
+  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("token");
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
       if ($(this).parent().hasClass("has-submenu")) {
@@ -27,14 +30,23 @@ const Header = (props) => {
       $("main-wrapper").removeClass("slide-nav");
     });
   }, []);
+
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    ClearData();
+    axios
+      .post("logout", token)
+      .then((res) => {
+        if (res.data.success) {
+          ClearData();
+          localStorage.clear();
+        } else {
+          alert("Texnik hatolik yuz berdi.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
   const userdata = useSelector((state) => state?.Reducer.userdata);
   console.log(userdata);
   const { location } = props;

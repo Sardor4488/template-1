@@ -11,18 +11,32 @@ import PhoneInput from "react-phone-number-input";
 const ProfileSettingMentee = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
 
-  const [firstName, setFirstName] = useState(userdata?.first_name);
-  const [lastName, setLastName] = useState(userdata?.last_name);
-  const [phoneNumber, setPhoneNumber] = useState(userdata?.phone_number);
+  const [first_name, setFirstName] = useState(userdata?.first_name);
+  const [last_name, setLastName] = useState(userdata?.last_name);
+  const [phone_number, setPhoneNumber] = useState(userdata?.phone_number);
   const [email, setEmail] = useState(userdata?.email);
   const [telegram, setTelegram] = useState(userdata?.telegram_accaunt);
-  const [birthDate, sertBirthDate] = useState(userdata?.birth_date);
+  const [birth_date, setBirthDate] = useState(userdata?.birth_date);
   const [region, setRegion] = useState(userdata?.region);
   const [country, setCountry] = useState(userdata?.country);
   const [image, setImage] = useState(userdata?.image);
-  const [job, setJob] = useState(userdata?.job);
-  const [level, setLevel] = useState(userdata?.currentLevel);
+  const [job, setJob] = useState(userdata?.job ? userdata?.job : "Talaba");
+  const [experience, setExperience] = useState(
+    userdata?.currentLevel ? userdata?.currentLevel : "Boshlang'ich"
+  );
   const [target, setTarget] = useState(userdata?.target);
+  // ERROR data
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [telegramError, setTelegramError] = useState(false);
+  const [birthDateError, setBirthDateError] = useState(false);
+  const [regionError, setRegionError] = useState(false);
+  const [countryError, setCountryError] = useState(false);
+  const [jobError, setJobError] = useState(false);
+  const [experienceError, setExperienceError] = useState(false);
+  const [targetError, setTargetError] = useState(false);
   const handleImgChange = (e) => {
     const selected = e.target.files[0];
     const AllowedTypes = ["image/png", "image/jpg", "image/jpeg"];
@@ -38,21 +52,80 @@ const ProfileSettingMentee = () => {
   };
   const updateprofile = (e) => {
     e.preventDefault();
-    let data = {
-      first_name: firstName,
-      last_name: lastName,
-      phone_number: phoneNumber,
-      email,
-      telegram,
-      birth_date: birthDate,
-      region,
-      country,
-      image,
-      job,
-      level,
-      target,
-    };
-    console.log(data);
+    if (first_name == "" || first_name == undefined || first_name == null) {
+      setFirstNameError(true);
+    } else {
+      setFirstNameError(false);
+    }
+    if (last_name == "" || last_name == undefined || last_name == null) {
+      setLastNameError(true);
+    } else {
+      setLastNameError(false);
+    }
+    if (
+      phone_number == "" ||
+      phone_number == undefined ||
+      phone_number == null
+    ) {
+      setPhoneNumberError(true);
+    } else {
+      setPhoneNumberError(false);
+    }
+    if (email == "" || email == undefined || email == null) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+    if (telegram == "" || telegram == undefined || telegram == null) {
+      setTelegramError(true);
+    } else {
+      setTelegramError(false);
+    }
+    if (birth_date == "" || birth_date == undefined || birth_date == null) {
+      setBirthDateError(true);
+    } else {
+      setBirthDateError(false);
+    }
+    if (region == "" || region == undefined || region == null) {
+      setRegionError(true);
+    } else {
+      setRegionError(false);
+    }
+    if (country == "" || country == undefined || country == null) {
+      setCountryError(true);
+    } else {
+      setCountryError(false);
+    }
+    if (job == "" || job == undefined || job == null) {
+      setJobError(true);
+    } else {
+      setJobError(false);
+    }
+    if (experience == "" || experience == undefined || experience == null) {
+      setExperienceError(true);
+    } else {
+      setExperienceError(false);
+    }
+    if (target == "" || target == undefined || target == null) {
+      setTargetError(true);
+    } else {
+      setTargetError(false);
+      let data = {
+        first_name,
+        last_name,
+        phone_number,
+        email,
+        telegram_number: telegram,
+        birth_date,
+        region,
+        country,
+        image,
+        job,
+        experience,
+        target,
+      };
+      console.log(data);
+    }
     // UpdateStudent(data, userdata?.id);
   };
   return (
@@ -133,9 +206,14 @@ const ProfileSettingMentee = () => {
                           <input
                             type="text"
                             className="form-control text-capitalize"
-                            defaultValue={firstName}
+                            defaultValue={first_name}
                             onChange={(e) => setFirstName(e.target.value)}
                           />
+                          {firstNameError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -144,9 +222,14 @@ const ProfileSettingMentee = () => {
                           <input
                             type="text"
                             className="form-control text-capitalize"
-                            defaultValue={lastName}
+                            defaultValue={last_name}
                             onChange={(e) => setLastName(e.target.value)}
                           />
+                          {lastNameError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -154,27 +237,18 @@ const ProfileSettingMentee = () => {
                           <label>Tug'ilgan kun, oy, yil</label>
                           <input
                             type="date"
-                            defaultValue={birthDate}
-                            onChange={(e) => sertBirthDate(e.target.value)}
+                            defaultValue={birth_date}
+                            onChange={(e) => setBirthDate(e.target.value)}
                             className="form-control datetimepicker"
                           />
+                          {birthDateError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
-                      {/* <div className="col-12 col-md-6">
-                          <div className="form-group">
-                            <label>Blood Group</label>
-                            <select className="form-control select">
-                              <option>A-</option>
-                              <option>A+</option>
-                              <option>B-</option>
-                              <option>B+</option>
-                              <option>AB-</option>
-                              <option>AB+</option>
-                              <option>O-</option>
-                              <option>O+</option>
-                            </select>
-                          </div>
-                        </div> */}
+
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>E-mail</label>
@@ -184,6 +258,11 @@ const ProfileSettingMentee = () => {
                             defaultValue={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />
+                          {emailError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -192,9 +271,14 @@ const ProfileSettingMentee = () => {
                           <PhoneInput
                             international
                             defaultCountry="UZ"
-                            value={phoneNumber}
+                            value={phone_number}
                             onChange={setPhoneNumber}
                           />
+                          {phoneNumberError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -206,6 +290,11 @@ const ProfileSettingMentee = () => {
                             defaultValue={telegram}
                             onChange={(e) => setTelegram(e.target.value)}
                           />
+                          {telegramError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -217,6 +306,11 @@ const ProfileSettingMentee = () => {
                             defaultValue={region}
                             onChange={(e) => setRegion(e.target.value)}
                           />
+                          {regionError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -228,6 +322,11 @@ const ProfileSettingMentee = () => {
                             defaultValue={country}
                             onChange={(e) => setCountry(e.target.value)}
                           />
+                          {countryError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -238,28 +337,38 @@ const ProfileSettingMentee = () => {
                             defaultValue={job}
                             onChange={(e) => setJob(e.target.value)}
                           >
-                            <option value="Tadbirkor">Tadbirkor</option>
                             <option value="Talaba">Talaba</option>
+                            <option value="Tadbirkor">Tadbirkor</option>
                             <option value="O'quvchi">O'quvchi</option>
                             <option value="Davlat ishchisi">
                               Davlat ishchisi (Shifokor, Harbiy va h.k)
                             </option>
-                            <option value="Tadbirkor">Boshqa</option>
+                            <option value="Boshqa">Boshqa</option>
                           </select>
+                          {jobError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Hozirgi bilim darajangiz</label>
                           <select
-                            defaultValue={level}
+                            defaultValue={experience}
                             className="form-control select"
-                            onChange={(e) => setLevel(e.target.value)}
+                            onChange={(e) => setExperience(e.target.value)}
                           >
                             <option value="Boshlang'ich">Boshlang'ich</option>
                             <option value="O'rta">O'rta</option>
                             <option value="Yuqori">Yuqori</option>
                           </select>
+                          {experienceError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12">
@@ -273,8 +382,12 @@ const ProfileSettingMentee = () => {
                             className="form-control textarea"
                             cols="30"
                             rows="10"
-                            required
                           ></textarea>
+                          {targetError && (
+                            <p className="text-danger mt-2">
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                     </div>

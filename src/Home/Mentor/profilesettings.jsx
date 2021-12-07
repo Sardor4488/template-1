@@ -1,143 +1,214 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { USER } from "../../constant/imagepath_home";
 import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import { useSelector } from "react-redux";
+import { getCourses } from "../../Api/getApi";
+import { UpdateTeacher } from "../../Api";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import AvatarImageCropper from "react-avatar-image-cropper";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
-  const [lessonLanguage, setLessonLanguage] = useState([]);
-  const [image, setImage] = useState(userdata?.image);
-  const [firstName, setFirstName] = useState(userdata?.first_name);
-  const [lastName, setLastName] = useState(userdata?.last_name);
-  const [birthDate, setBrithData] = useState(userdata?.brith_data);
-  const [subject, setSubject] = useState(userdata?.subject);
+  const [imgmodal, setImgModal] = useState(false);
+  const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.email);
-  const [phoneNumber, setPhoneNumber] = useState(userdata?.phone_number);
-  const [telegram, setTelegram] = useState(userdata?.telegram_accaunt);
-  const [error, setError] = useState(false);
-  const [resume, setResume] = useState(userdata?.resume);
-  const [resumeName, setResumeName] = useState(userdata?.resume);
-  const [aboutTeacher, setAboutTeacher] = useState(userdata?.about_teacher);
-  const [region, setRegion] = useState(userdata?.region);
-  const [country, setCountry] = useState(userdata?.country);
-  const [experience, setExperience] = useState(
-    userdata?.skills ? userdata?.skills : "1-3"
+  const [first_name, setFirstName] = useState(userdata?.first_name);
+  const [last_name, setLastName] = useState(userdata?.last_name);
+  const [phone_number, setPhoneNumber] = useState(userdata?.phone_number);
+  const [telegram_number, setTelegramNumber] = useState(
+    userdata?.telegram_number
   );
-  const [lessonPrice, setLessonPrice] = useState(userdata?.lesson_price);
-
-  const handleImgChange = (e) => {
-    const selected = e.target.files[0];
-    const AllowedTypes = ["image/png", "image/jpeg", "image/jpg"];
-    if (selected && AllowedTypes.includes(selected.type)) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(selected);
-      console.log("selected");
-    } else {
-      console.log("not found");
-    }
+  const [course_id, setCourseId] = useState();
+  const [price, setPrice] = useState(10000);
+  const [description, setDescription] = useState(userdata?.descripton);
+  const [experience, setExperience] = useState(
+    userdata?.experience ? userdata?.experience : "1-3"
+  );
+  const [birth_date, setBirthDate] = useState(userdata?.birth_date);
+  const [language, setLanguage] = useState(
+    userdata.languages ? userdata.languages : []
+  );
+  const [country, setCountry] = useState(userdata?.country);
+  const [region, setRegion] = useState(userdata?.region);
+  const [image, setImage] = useState(userdata?.image);
+  const [resume, setResume] = useState(userdata?.resume);
+  const [offert_price, setOffertprice] = useState(0);
+  const [emailError, setEmailError] = useState(false);
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [telegramNumberError, setTelegramNumberError] = useState(false);
+  const [courseIdError, setCourseIdError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [experienceError, setExperienceError] = useState(false);
+  const [birthDataError, setBirthDataError] = useState(false);
+  const [languagesError, setLanguagesError] = useState(false);
+  const [countryError, setCountryError] = useState(false);
+  const [regionError, setRegionError] = useState(false);
+  const [resumeError, setResumeError] = useState(false);
+  const apply = (file) => {
+    console.log(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      console.log(reader.result);
+    };
+    reader.readAsDataURL(file);
+    console.log(reader.result);
   };
-  const handleLanguageChange = (p) => {
-    const language = [...lessonLanguage];
-    const filterData = language.filter((v) => v !== p);
-    setLessonLanguage(filterData);
+  const handleLanguageDelete = (p) => {
+    const languages = [...language];
+    const filterData = languages.filter((v) => v !== p);
+    setLanguage(filterData);
   };
   const handleLanguageAdd = (e) => {
-    const language = [...lessonLanguage];
-    language.filter((v) => v == e.target.value).length == 0 &&
-      language.push(e.target.value);
-    setLessonLanguage(language);
+    const languages = [...language];
+    languages.filter((v) => v == e.target.value).length == 0 &&
+      languages.push(e.target.value);
+    setLanguage(languages);
   };
-  const handleResumeChange = (e) => {
-    let file = e.target.files[0];
-    if (file) {
-      console.log(file);
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setResume(reader.result);
-        setResumeName(file?.name);
-      };
-    } else {
-      console.log("not-found");
-    }
-  };
+  // const handleResumeChange = (e) => {
+  //   setResume(e.target.files[0]);
+  // };
 
   const updateTeacher = (e) => {
     e.preventDefault();
-    if (
-      firstName == "" ||
-      firstName == undefined ||
-      firstName == null ||
-      lastName == "" ||
-      lastName == undefined ||
-      lastName == null ||
-      birthDate == "" ||
-      birthDate == undefined ||
-      birthDate == null ||
-      subject == "" ||
-      subject == undefined ||
-      subject == null ||
-      email == "" ||
-      email == undefined ||
-      email == null ||
-      phoneNumber == "" ||
-      phoneNumber == undefined ||
-      phoneNumber == null ||
-      telegram == "" ||
-      telegram == undefined ||
-      telegram == null ||
-      resume == "" ||
-      resume == undefined ||
-      resume == null ||
-      aboutTeacher == "" ||
-      aboutTeacher == undefined ||
-      aboutTeacher == null ||
-      region == "" ||
-      region == undefined ||
-      region == null ||
-      country == "" ||
-      country == undefined ||
-      country == null ||
-      experience == "" ||
-      experience == undefined ||
-      experience == null ||
-      lessonPrice == "" ||
-      lessonPrice == undefined ||
-      lessonPrice == null ||
-      lessonLanguage == [] ||
-      lessonLanguage == undefined ||
-      lessonLanguage == null
-    ) {
-      alert("Iltimos malumotlarni to'liq kiriting!");
+    if (email == "" || email == undefined || email == null) {
+      setEmailError(true);
     } else {
+      setEmailError(false);
+    }
+    if (first_name == "" || first_name == undefined || first_name == null) {
+      setFirstNameError(true);
+    } else {
+      setFirstNameError(false);
+    }
+    if (last_name == "" || last_name == undefined || last_name == null) {
+      setLastNameError(true);
+    } else {
+      setLastNameError(false);
+    }
+    if (
+      phone_number == "" ||
+      phone_number == undefined ||
+      phone_number == null
+    ) {
+      setPhoneNumberError(true);
+    } else {
+      setPhoneNumberError(false);
+    }
+    if (
+      telegram_number == "" ||
+      telegram_number == undefined ||
+      telegram_number == null
+    ) {
+      setTelegramNumberError(true);
+    } else {
+      setTelegramNumberError(false);
+    }
+    if (course_id == "" || course_id == undefined || course_id == null) {
+      setCourseIdError(true);
+    } else {
+      setCourseIdError(false);
+    }
+    if (price == "" || price == undefined || price == null) {
+      setPriceError(true);
+    } else {
+      setPriceError(false);
+    }
+    if (description == "" || description == undefined || description == null) {
+      setDescriptionError(true);
+    } else {
+      setDescriptionError(false);
+    }
+    if (experience == "" || experience == undefined || experience == null) {
+      setExperienceError(true);
+    } else {
+      setExperienceError(false);
+    }
+    if (birth_date == "" || birth_date == undefined || birth_date == null) {
+      setBirthDataError(true);
+    } else {
+      setBirthDataError(false);
+    }
+    if (language == "" || language == undefined || language == null) {
+      setLanguagesError(true);
+    } else {
+      setLanguagesError(false);
+    }
+    if (country == "" || country == undefined || country == null) {
+      setCountryError(true);
+    } else {
+      setCountryError(false);
+    }
+    if (region == "" || region == undefined || region == null) {
+      setRegionError(true);
+    } else {
+      setRegionError(false);
+    }
+    if (resume == "" || resume == undefined || resume == null) {
+      setResumeError(true);
+    } else {
+      setFirstNameError(false);
+      setLastNameError(false);
+      setPhoneNumberError(false);
+      setTelegramNumberError(false);
+      setCourseIdError(false);
+      setPriceError(false);
+      setDescriptionError(false);
+      setExperienceError(false);
+      setBirthDataError(false);
+      setLanguagesError(false);
+      setCountryError(false);
+      setRegionError(false);
+      setResumeError(false);
       let data = {
-        image: image,
-        first_name: firstName,
-        last_name: lastName,
-        birth_date: birthDate,
-        subject: subject,
-        email: email,
-        phone_number: phoneNumber,
-        telegram: telegram,
-        resume: resume,
-        aboutTeacher: aboutTeacher,
-        experience: experience,
-        region: region,
-        country: country,
-        lesson_price: lessonPrice,
-        lessonLanguage: lessonLanguage,
+        email,
+        first_name,
+        last_name,
+        phone_number,
+        telegram_number,
+        image,
+        course_id,
+        price,
+        description,
+        experience,
+        language,
+        country,
+        region,
+        resume,
+        birth_date,
+        offert_price,
       };
-      console.log(data);
+
+      UpdateTeacher(data);
+      // console.log(data);
     }
   };
+  useEffect(() => {
+    async function fetchCourses() {
+      const res = await getCourses();
+      setCoursesData(res);
+    }
+    fetchCourses();
+  }, []);
 
+  const offerta = () => {
+    if (offert_price == 0) {
+      setOffertprice(1);
+    } else if (offert_price == 1) {
+      setOffertprice(0);
+    }
+  };
   return (
     <div>
+      <AvatarImageCropper
+        setImgModal={setImgModal}
+        apply={apply}
+        isBack={true}
+      />
       {/* Breadcrumb */}
       <div className="breadcrumb-bar">
         <div className="container-fluid">
@@ -178,34 +249,21 @@ const ProfileSettings = () => {
                   {/* Profile Settings Form */}
                   <form onSubmit={updateTeacher}>
                     <div className="row form-row">
-                      <div className="col-12">
-                        {error ? (
-                          <h1>Iltimos malumotlarni to'liq kiriting </h1>
-                        ) : (
-                          ""
-                        )}
-                      </div>
                       <div className="col-12 col-md-12">
                         <div className="form-group">
                           <div className="change-avatar">
                             <div className="profile-img">
                               <img
-                                src={image ? image : USER}
+                                src={userdata.image ? userdata.image : USER}
                                 alt="User Image"
                               />
                             </div>
                             <div className="upload-img">
                               <div className="change-photo-btn">
-                                <span>
+                                <label className="m-0" htmlFor="imgcrop">
                                   <i className="fa fa-upload" />
                                   Rasm yuklash
-                                </span>
-                                <input
-                                  type="file"
-                                  onChange={(e) => handleImgChange(e)}
-                                  accept="image/*"
-                                  className="upload"
-                                />
+                                </label>
                               </div>
                               <small className="form-text text-muted">
                                 Format:JPG, GIF yoki PNG. Maximum: 2MB
@@ -219,11 +277,16 @@ const ProfileSettings = () => {
                           <label>Ism</label>
                           <input
                             type="text"
-                            defaultValue={firstName}
+                            defaultValue={first_name}
                             onChange={(e) => setFirstName(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {firstNameError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -231,11 +294,16 @@ const ProfileSettings = () => {
                           <label>Familya</label>
                           <input
                             type="text"
-                            defaultValue={lastName}
+                            defaultValue={last_name}
                             onChange={(e) => setLastName(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {lastNameError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -243,28 +311,38 @@ const ProfileSettings = () => {
                           <label>Tug'ilgan yilingiz</label>
                           <input
                             type="date"
-                            defaultValue={birthDate}
-                            onChange={(e) => setBrithData(e.target.value)}
+                            defaultValue={birth_date}
+                            onChange={(e) => setBirthDate(e.target.value)}
                             className="form-control "
-                            required
                           />
+                          {birthDataError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Fan nomi</label>
                           <select
-                            onChange={(e) => setSubject(e.target.value)}
-                            defaultValue={subject}
                             className="form-control select"
-                            required
+                            onChange={(e) => setCourseId(e.target.value)}
                           >
-                            <option value="Ingiliz tili">Ingiliz tili</option>
-                            <option value="Rus tili">Rus tili</option>
-                            <option value="Koreys tili">Koreys tili</option>
-                            <option value="Matematika">Matematika</option>
-                            <option value="Fizika">Fizika</option>
+                            {coursesData &&
+                              coursesData.map((v, i) => (
+                                <option key={v.id} value={v.id}>
+                                  {v.name}
+                                </option>
+                              ))}
                           </select>
+                          {courseIdError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -275,8 +353,13 @@ const ProfileSettings = () => {
                             defaultValue={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {emailError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -286,10 +369,16 @@ const ProfileSettings = () => {
                             international
                             // countryCallingCodeEditable={false}
                             defaultCountry="UZ"
-                            value={phoneNumber}
+                            value={phone_number}
                             className=""
                             onChange={setPhoneNumber}
                           />
+                          {phoneNumberError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -299,27 +388,40 @@ const ProfileSettings = () => {
                           </label>
                           <input
                             type="text"
-                            defaultValue={telegram}
-                            onChange={(e) => setTelegram(e.target.value)}
+                            defaultValue={telegram_number}
+                            onChange={(e) => setTelegramNumber(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {telegramNumberError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
-                          <label>Resyume yuklash</label>
-                          <label htmlFor="resumeInput" className="form-control">
-                            {resumeName && resumeName}
-                          </label>
-                          <input
-                            type="file"
-                            id="resumeInput"
-                            onChange={(e) => handleResumeChange(e)}
-                            className="hidden d-none form-control"
-                          />
+                          <label>Tajriba</label>
+                          <select
+                            type="text"
+                            defaultValue={experience}
+                            onChange={(e) => setExperience(e.target.value)}
+                            className="form-control select"
+                          >
+                            <option value="1-3">1-3 yil</option>
+                            <option value="3-5">3-5 yil</option>
+                            <option value="5">5 yildan ortiq</option>
+                          </select>
+                          {experienceError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                         </div>
                       </div>
+
                       <div className="col-12">
                         <div className="form-group">
                           <label>
@@ -329,7 +431,6 @@ const ProfileSettings = () => {
                           <select
                             className="form-control select"
                             onChange={(e) => handleLanguageAdd(e)}
-                            required
                           >
                             <option value="O'zbek">O'zbekcha</option>
                             <option value="Ingiliz">Ingilizcha</option>
@@ -338,19 +439,25 @@ const ProfileSettings = () => {
                             <option value="Nemis">Nemischa</option>
                             <option value="Turk">Turkcha</option>
                           </select>
+                          {languagesError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
                           <div className="row pt-3 px-2 m-0">
                             {" "}
-                            {lessonLanguage &&
-                              lessonLanguage.map((v, i) => (
+                            {language &&
+                              language.map((v, i) => (
                                 <div
                                   className="col-6 col-sm-4 col-lg-2 d-flex justify-content-center align-items-center p-0"
-                                  key={v}
+                                  key={i}
                                 >
                                   <div className=" d-flex align-items-center justify-content-between p-1">
                                     <div className="me-2">{v}cha</div>{" "}
                                     <div>
                                       <i
-                                        onClick={() => handleLanguageChange(v)}
+                                        onClick={() => handleLanguageDelete(v)}
                                         className="fas fa-times"
                                       ></i>
                                     </div>
@@ -368,13 +475,71 @@ const ProfileSettings = () => {
                             <Link to="#">Narxlar bo'yicha kelishuv</Link> bilan
                             tanishgan holda o'zizga mos narx kiriting)
                           </label>
-                          <input
-                            type="number"
-                            defaultValue={lessonPrice}
-                            onChange={(e) => setLessonPrice(e.target.value)}
-                            className="form-control"
-                            required
-                          />
+
+                          <select
+                            className="form-control select"
+                            defaultValue={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                          >
+                            <option value="10000">10000 so'm</option>
+                            <option value="15000">15000 so'm</option>
+                            <option value="20000">20000 so'm</option>
+                            <option value="25000">25000 so'm</option>
+                            <option value="30000">30000 so'm</option>
+                            <option value="35000">35000 so'm</option>
+                            <option value="40000">40000 so'm</option>
+                            <option value="45000">45000 so'm</option>
+                            <option value="50000">50000 so'm</option>
+                            <option value="55000">55000 so'm</option>
+                            <option value="60000">60000 so'm</option>
+                            <option value="65000">65000 so'm</option>
+                            <option value="70000">70000 so'm</option>
+                            <option value="75000">75000 so'm</option>
+                            <option value="80000">80000 so'm</option>
+                            <option value="85000">85000 so'm</option>
+                            <option value="90000">90000 so'm</option>
+                            <option value="95000">95000 so'm</option>
+                            <option value="100000">100000 so'm</option>
+                            <option value="105000">105000 so'm</option>
+                            <option value="110000">110000 so'm</option>
+                            <option value="115000">115000 so'm</option>
+                            <option value="120000">120000 so'm</option>
+                            <option value="125000">125000 so'm</option>
+                            <option value="130000">130000 so'm</option>
+                            <option value="135000">135000 so'm</option>
+                            <option value="140000">140000 so'm</option>
+                            <option value="145000">145000 so'm</option>
+                            <option value="150000">150000 so'm</option>
+                          </select>
+                          {priceError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="col-12 col-md-6">
+                        <div className="form-group">
+                          <label>Resyume yuklash</label>
+                          <div className="change-photo-btn">
+                            <span>
+                              <i className="fa fa-upload"></i> Resume yuklash
+                            </span>
+                            <input
+                              type="file"
+                              id="resumeInput"
+                              accept="application/*"
+                              onChange={(e) => setResume(e.target.files[0])}
+                              className="upload"
+                            />
+                          </div>
+                          {resumeError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!{" "}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12">
@@ -388,13 +553,19 @@ const ProfileSettings = () => {
                             type="text"
                             minLength="30"
                             maxLength="200"
-                            value={aboutTeacher}
-                            onChange={(e) => setAboutTeacher(e.target.value)}
+                            value={description || ""}
+                            onChange={(e) => setDescription(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {descriptionError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!{" "}
+                            </p>
+                          )}
                         </div>
                       </div>
+
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Qayerdansiz</label>
@@ -403,8 +574,13 @@ const ProfileSettings = () => {
                             className="form-control"
                             defaultValue={region}
                             onChange={(e) => setRegion(e.target.value)}
-                            required
                           />
+                          {regionError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!{" "}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
@@ -415,31 +591,44 @@ const ProfileSettings = () => {
                             defaultValue={country}
                             onChange={(e) => setCountry(e.target.value)}
                             className="form-control"
-                            required
                           />
+                          {countryError && (
+                            <p className="text-danger mt-2">
+                              {" "}
+                              Bu joyni to'ldirish shart!{" "}
+                            </p>
+                          )}
                         </div>
                       </div>
-                      <div className="col-12 col-md-6">
+                      <div className="col-12">
                         <div className="form-group">
-                          <label>Tajriba</label>
-                          <select
-                            type="text"
-                            defaultValue={experience}
-                            onChange={(e) => setExperience(e.target.value)}
-                            className="form-control select"
-                            required
-                          >
-                            <option value="1-3">1-3 yil</option>
-                            <option value="3-5">3-5 yil</option>
-                            <option value="5">5 yildan ortiq</option>
-                          </select>
+                          <div className="custom-control custom-control-xs custom-checkbox">
+                            <input
+                              type="checkbox"
+                              className="custom-control-input"
+                              name="agreeCheckboxUser"
+                              id="agree_checkbox_user"
+                              onClick={offerta}
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="agree_checkbox_user"
+                            >
+                              Ommaviy oferta{" "}
+                              <Link to="/oferta">shartlariga</Link>
+                              <span> roziman</span>
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
+
                     <div className="submit-section">
                       <button
                         type="submit"
-                        className="btn btn-primary submit-btn"
+                        className={`btn btn-primary submit-btn ${
+                          offert_price == 0 ? "disabled" : ""
+                        }`}
                       >
                         Saqlash
                       </button>

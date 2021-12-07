@@ -21,13 +21,13 @@ import { useSelector } from "react-redux";
 import { LoadingOff, LoadingOn } from "./redux/Actions.js";
 import { UserAuth } from "./Api/index.js";
 import Page404 from "./Home/components/Page404/page404.js";
+import CalendarOf from "./Home/components/CalendarOf";
 const AppUniversal = (props) => {
   const { location, history } = props;
   const [path, setPath] = useState("");
 
   useEffect(() => {
     LoadingOff();
-    console.log(localStorage.getItem("token"));
     UserAuth(setPath);
     if (
       location.pathname.includes("login") ||
@@ -66,6 +66,7 @@ const AppUniversal = (props) => {
           />
           <Route path="/lock-screen" component={LockScreen} />
           <Route path="/loading" component={Loading} />
+          <Route path="/calendar" component={CalendarOf} />
           <Route exact path="/">
             <Redirect to={path} />
           </Route>
