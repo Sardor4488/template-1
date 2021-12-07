@@ -122,7 +122,7 @@ const Dashboard = () => {
                               <td>
                                 <h2 className="table-avatar">
                                   <Link
-                                    to="/app/Mentee/mentor-profile"
+                                    to="/app/Mentor/studentProfile"
                                     className="avatar avatar-sm mr-2"
                                   >
                                     <img
@@ -131,7 +131,7 @@ const Dashboard = () => {
                                       alt="User Image"
                                     />
                                   </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
+                                  <Link to="/app/Mentor/studentProfile">
                                     Tyrone Roberts
                                     <span>tyroneroberts@adobe.com</span>
                                   </Link>
@@ -139,11 +139,11 @@ const Dashboard = () => {
                               </td>
                               <td>08 April 2020</td>
                               <td className="text-center">
-                                <span className="pending">PENDING</span>
+                                <span className="pending">KUTILYAPTI</span>
                               </td>
                               <td className="text-center">
                                 <Link
-                                  to="/app/Mentee/mentor-profile"
+                                  to="/app/Mentor/studentProfile"
                                   className="btn btn-sm bg-info-light"
                                 >
                                   <i className="far fa-eye" /> View
@@ -186,7 +186,7 @@ const Dashboard = () => {
                               <td>
                                 <h2 className="table-avatar">
                                   <Link
-                                    to="/app/Mentee/mentor-profile"
+                                    to="/app/Mentor/studentProfile"
                                     className="avatar avatar-sm mr-2"
                                   >
                                     <img
@@ -195,7 +195,7 @@ const Dashboard = () => {
                                       alt="User Image"
                                     />
                                   </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
+                                  <Link to="/app/Mentor/studentProfile">
                                     Allen Davis{" "}
                                     <span>allendavis@adobe.com</span>
                                   </Link>
@@ -218,7 +218,7 @@ const Dashboard = () => {
                               <td>
                                 <h2 className="table-avatar">
                                   <Link
-                                    to="/app/Mentee/mentor-profile"
+                                    to="/app/Mentor/studentProfile"
                                     className="avatar avatar-sm mr-2"
                                   >
                                     <img
@@ -227,7 +227,7 @@ const Dashboard = () => {
                                       alt="User Image"
                                     />
                                   </Link>
-                                  <Link to="/app/Mentee/mentor-profile">
+                                  <Link to="/app/Mentor/studentProfile">
                                     Patricia Manzi{" "}
                                     <span>patriciamanzi@adobe.com</span>
                                   </Link>
@@ -239,7 +239,7 @@ const Dashboard = () => {
                               </td>
                               <td className="text-center">
                                 <Link
-                                  to="/app/Mentee/mentor-profile"
+                                  to="/app/Mentor/studentProfile"
                                   className="btn btn-sm bg-info-light"
                                 >
                                   <i className="far fa-eye" /> View
@@ -267,7 +267,7 @@ const Dashboard = () => {
                               </td>
                               <td>08 April 2020</td>
                               <td className="text-center">
-                                <span className="accept">ACCEPTED</span>
+                                <span className="accept">Bajarildi</span>
                               </td>
                               <td className="text-center">
                                 <Link
@@ -331,7 +331,7 @@ const Dashboard = () => {
                               </td>
                               <td>08 April 2020</td>
                               <td className="text-center">
-                                <span className="reject">REJECTED</span>
+                                <span className="reject">Bajarilmadi</span>
                               </td>
                               <td className="text-center">
                                 <Link

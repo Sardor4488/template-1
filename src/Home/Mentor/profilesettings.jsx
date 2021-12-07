@@ -53,10 +53,9 @@ const ProfileSettings = () => {
     console.log(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      console.log(reader.result);
+      setImage(reader.result);
     };
     reader.readAsDataURL(file);
-    console.log(reader.result);
   };
   const handleLanguageDelete = (p) => {
     const languages = [...language];
@@ -202,13 +201,36 @@ const ProfileSettings = () => {
       setOffertprice(0);
     }
   };
+  const handleImg = () => {
+    setImgModal(true);
+  };
+  useEffect(() => {
+    return () => {
+      setImgModal(false);
+    };
+  }, [image]);
+  console.log(image);
   return (
     <div>
-      <AvatarImageCropper
-        setImgModal={setImgModal}
-        apply={apply}
-        isBack={true}
-      />
+      {imgmodal && (
+        <div className={`modalimg d-flex `} onClick={() => setImgModal(false)}>
+          <div
+            style={{
+              width: "250px",
+              height: "250px",
+              margin: "auto",
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <AvatarImageCropper
+              setImgModal={setImgModal}
+              apply={apply}
+              isBack={true}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Breadcrumb */}
       <div className="breadcrumb-bar">
         <div className="container-fluid">
@@ -254,16 +276,19 @@ const ProfileSettings = () => {
                           <div className="change-avatar">
                             <div className="profile-img">
                               <img
-                                src={userdata.image ? userdata.image : USER}
+                                src={image ? image : USER}
                                 alt="User Image"
                               />
                             </div>
                             <div className="upload-img">
-                              <div className="change-photo-btn">
-                                <label className="m-0" htmlFor="imgcrop">
+                              <div
+                                className="change-photo-btn"
+                                onClick={handleImg}
+                              >
+                                <span className="m-0">
                                   <i className="fa fa-upload" />
                                   Rasm yuklash
-                                </label>
+                                </span>
                               </div>
                               <small className="form-text text-muted">
                                 Format:JPG, GIF yoki PNG. Maximum: 2MB

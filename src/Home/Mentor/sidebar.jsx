@@ -51,7 +51,7 @@ const Sidebar = (props) => {
               <Link
                 to="/app/mentor/bookings"
                 className={
-                  pathname.includes("teacher/bookings") ? "active" : ""
+                  pathname.includes("mentor/bookings") ? "active" : ""
                 }
               >
                 <i className="fas fa-clock" />

@@ -8,9 +8,7 @@ import icon1 from "../assets/icons/homeIcon.svg";
 import icon2 from "../assets/icons/homeIcon2.svg";
 import Typical from "react-typical";
 import {
-  ICON_1,
-  ICON_2,
-  ICON_3,
+  ICON_1, 
   USER,
   BLOG_01,
   USER_1,
@@ -573,10 +571,12 @@ const Home = (props) => {
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Doloremque nobis qui voluptates autem quos
                           libero quod a voluptas id vero.
+                           <br />
+                          <span className=""><Link to="/app/Mentee/booking" className="more">Barcha fikrlar</Link></span>
                         </p>
                       </div>
                     </div>
-                    <p className="text-primary m-0" onClick={moreInfo}>
+                    <p className="text-primary more m-0" onClick={moreInfo}>
                       {more ? "Yopish" : "Batafsil"}
                     </p>
                   </div>
@@ -728,13 +728,12 @@ const Home = (props) => {
                   {/* Blog Post */}
                   <div className="blog grid-blog">
                     <div className="blog-image">
-                      <Link to="/app/Blog/blog-details">
+                       
                         <img
                           className="img-fluid"
                           src={BLOG_01}
                           alt="Post Image"
-                        />
-                      </Link>
+                        /> 
                     </div>
                     <div className="blog-content">
                       <h3 className="blog-title">
@@ -752,8 +751,8 @@ const Home = (props) => {
               ))}
           </div>
           <div className="view-all text-center">
-            <Link to="/app/Blog/blog-list" className="btn btn-primary">
-              View All
+            <Link to="/register" className="btn btn-primary">
+              Ro'yxatdan o'tish
             </Link>
           </div>
         </div>

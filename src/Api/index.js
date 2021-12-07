@@ -7,11 +7,11 @@ const UserAuth = (setPath) => {
   console.log(token);
   if (token !== null) {
     LoadingOn();
-    const bodyParameters = {};
     axios
-      .post(url, bodyParameters)
+      .post(url, {})
       .then((res) => {
-        console.log(res.data.student);
+        console.log(res.data);
+        // localStorage.setItem("role", res.data.user.role);
         // UserData(res.data);
         // setPath(`/app/${role}/dashboard`);
         LoadingOff();

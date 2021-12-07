@@ -4,7 +4,7 @@ import { AVATAR_08, AVATAR_12 } from "../../imagepath";
 import { Link } from "react-router-dom";
 import Ratings from "../Main/rating";
 
-class LeadProfile extends Component {
+class MentorProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,9 +61,7 @@ class LeadProfile extends Component {
                 <li className="nav-item">
                   <a className="nav-link" data-toggle="tab" href="#comment_tab">"Comment" qoldirish</a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" data-toggle="tab" href="#add_teacher_tab">O'qituvchi biriktirish</a>
-                </li>
+              
               </ul>
             </div>	
             <div className="tab-content profile-tab-cont">
@@ -158,63 +156,7 @@ class LeadProfile extends Component {
                 </div>
               </div>
               {/* /Change Password Tab */}
-              <div id="add_teacher_tab" className="tab-pane fade">
-                <div className="card">
-                  <div className="card-body">
-                     <div className="row">
-                      <div className="col-12   admin-card overflow-auto ">
-                      <div className="search_panel w-100 d-flex justify-content-center mb-3 align-items-center">
-                          <input
-                            type="text"
-                            className="form-control w-100 admin-mentor-search"
-                            placeholder="Qidiruv"
-                          />
-                         
-                          <button className="btn btn-primary ml-1">
-                          <i class="fas fa-search"></i>
-                          </button>
-                          
-                      </div>
-
-                      <table className="table table-hover table-center mb-0">
-                      <thead>
-                        <tr>
-                          <th>Ism Familiyasi</th>
-                          <th>Fanlari</th>
-                          <th>Darajasi</th>
-                          <th>Narxi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <h2 className="table-avatar">
-                                <Link
-                                  to="/admin/mentor-profile"
-                                  className="avatar avatar-sm mr-2"
-                                >
-                                  <img
-                                    className="avatar-img rounded-circle"
-                                    src={AVATAR_08}
-                                    alt="User Image"
-                                  />
-                                </Link>
-                                <Link to="/admin/mentor-profile">James Amen</Link>
-                            </h2>
-                          </td>
-                          <td>Maths</td>
-                          <td>
-                            <Ratings rating={5} />
-                          </td>
-                          <td>$3200.00</td>
-                        </tr>
-                      </tbody>
-                      </table>
-                      </div> 
-                    </div>
-                  </div>
-                </div>
-              </div>
+          
             </div>
           </div>
         </div>
@@ -299,4 +241,4 @@ class LeadProfile extends Component {
   }
 }
 
-export default LeadProfile;
+export default MentorProfile;

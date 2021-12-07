@@ -161,101 +161,6 @@ const MentorProfile = () => {
                   {/* /About Details */}
                 </div>
               </div>
-
-              <div className="card" id="infonmation-mentor">
-                <div className="card-body custom-border-card pb-0">
-                  {/* Qualification Details */}
-                  <div className="widget experience-widget mb-0">
-                    <h4 className="widget-title">Ma'lumoti va malakasi</h4>
-                    <hr />
-                    <div className="experience-box">
-                      <ul className="experience-list profile-custom-list">
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Qayerni tugatgan (o'qiyapti)</span>
-                              <div className="row-result">
-                                Coimbatore University
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Mutaxassisligi</span>
-                              <div className="row-result">Mathematics</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Sertifikatlari</span>
-                              <div className="row-result">
-                                IELTS, Topik va h.k
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Qaysi tilda dars o'tadi</span>
-                              <div className="row-result">
-                                Rus, ingiliz, o'zbek
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Pedagogik tajribasi</span>
-                              <div className="row-result">
-                                <span>1</span> yil
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* /Qualification Details */}
-                </div>
-              </div>
-              <div className="card" id="location">
-                <div className="card-body pb-1 custom-border-card">
-                  {/* Location Details */}
-                  <div className="widget awards-widget m-0">
-                    <h4 className="widget-title">Manzil</h4>
-                    <hr />
-                    <div className="experience-box">
-                      <ul className="experience-list profile-custom-list">
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Hozir qayerda yashaydi</span>
-                              <div className="row-result">Toshkent.sh</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Doiiy yashash manzili</span>
-                              <div className="row-result">
-                                National highway road
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* /Location Details */}
-                </div>
-              </div>
               <div className="card" id="sectionTime">
                 <div className="card-body custom-border-card">
                   <h4 className="card-title"> Dars vaqtlari</h4>
@@ -512,6 +417,101 @@ const MentorProfile = () => {
                   </div>
                 </div>
               </div>
+              <div className="card" id="infonmation-mentor">
+                <div className="card-body custom-border-card pb-0">
+                  {/* Qualification Details */}
+                  <div className="widget experience-widget mb-0">
+                    <h4 className="widget-title">Ma'lumoti va malakasi</h4>
+                    <hr />
+                    <div className="experience-box">
+                      <ul className="experience-list profile-custom-list">
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Qayerni tugatgan (o'qiyapti)</span>
+                              <div className="row-result">
+                                Coimbatore University
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Mutaxassisligi</span>
+                              <div className="row-result">Mathematics</div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Sertifikatlari</span>
+                              <div className="row-result">
+                                IELTS, Topik va h.k
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Qaysi tilda dars o'tadi</span>
+                              <div className="row-result">
+                                Rus, ingiliz, o'zbek
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Pedagogik tajribasi</span>
+                              <div className="row-result">
+                                <span>1</span> yil
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/* /Qualification Details */}
+                </div>
+              </div>
+              <div className="card" id="location">
+                <div className="card-body pb-1 custom-border-card">
+                  {/* Location Details */}
+                  <div className="widget awards-widget m-0">
+                    <h4 className="widget-title">Manzil</h4>
+                    <hr />
+                    <div className="experience-box">
+                      <ul className="experience-list profile-custom-list">
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Hozir qayerda yashaydi</span>
+                              <div className="row-result">Toshkent.sh</div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Doimiy yashash manzili</span>
+                              <div className="row-result">
+                                National highway road
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  {/* /Location Details */}
+                </div>
+              </div>
+            
               <div>
                 {/* Breadcrumb */}
 
