@@ -137,21 +137,21 @@ const Home = (props) => {
                     loop={Infinity}
                     wrapper="div"
                     steps={[
-                      "Ingiliz",
+                      "Ingiliz tili ",
                       2000,
-                      "Rus",
+                      "Rus tili ",
                       2000,
-                      "Nemis",
+                      "Nemis tili ",
                       2000,
-                      "Koreys",
+                      "Koreys tili ",
                       2000,
-                      "Yapon",
+                      "Yapon tili ",
                       2000,
-                      "Xitoy",
+                      "Xitoy tili ",
                       2000,
                     ]}
                   />
-                  <div className="inner__text"> tili kurslari.</div>
+                  <div className="inner__text">kurslari</div>
                 </div>
 
                 <span className="text-white mb-3">
@@ -159,7 +159,7 @@ const Home = (props) => {
                 </span>
               </div>
               <div className="row m-0  mt-4 justify-content-center">
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -194,7 +194,7 @@ const Home = (props) => {
                     </div>{" "}
                   </Link>
                 </div>
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center">
@@ -286,14 +286,14 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog ">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
-                          <svg
+                            <svg
                             width="35"
                             height="35"
                             viewBox="0 0 56 56"
@@ -333,7 +333,7 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
                     <div className="d-flex w-100 science-link bg-white align-items-center gumonitars ">

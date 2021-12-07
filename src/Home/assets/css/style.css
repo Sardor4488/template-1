@@ -2169,22 +2169,23 @@ html.menu-opened body {
 .section-search {
   background: #f8f8f8;
   min-height: 450px;
-  background-image: url(../img/banner.jpg);
+  background-image: url(../img/home.jpg);
   background-size: cover !important;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
   background-blend-mode: Darken;
   padding: 110px 0;
+  background-position: left !important;
 }
-.section-search:before {
+. :before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 0.56);
+  background-color: rgba(0, 0, 0, 0.22);
 }
 .section-header {
   margin-bottom: 30px;
@@ -8078,6 +8079,11 @@ div.dataTables_wrapper div.dataTables_filter input {
   .btn {
     font-size: 0.875rem;
   }
+/* .science-link-hover{
+  font-size: 10px !important;
+} */
+
+
 }
 
 @media only screen and (max-width: 479px) {
