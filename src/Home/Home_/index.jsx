@@ -137,17 +137,17 @@ const Home = (props) => {
                     loop={Infinity}
                     wrapper="div"
                     steps={[
-                      "Ingiliz tili ",
+                      "Ingiliz tili",
                       2000,
-                      "Rus tili ",
+                      "Rus tili",
                       2000,
-                      "Nemis tili ",
+                      "Nemis tili",
                       2000,
-                      "Koreys tili ",
+                      "Koreys tili",
                       2000,
-                      "Yapon tili ",
+                      "Yapon tili",
                       2000,
-                      "Xitoy tili ",
+                      "Xitoy tili",
                       2000,
                     ]}
                   />
@@ -159,11 +159,11 @@ const Home = (props) => {
                 </span>
               </div>
               <div className="row m-0  mt-4 justify-content-center">
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3 pr-2">
                   {" "}
-                  <Link to="Mentee/search">
-                    <div className="d-flex w-100 science-link main-page-button-col-6 bg-white align-items-center">
-                      <div className="m-2 w-100 d-flex align-items-center">
+                  <Link to="Mentee/search" className="me-1">
+                    <div className="d-flex   science-link main-page-button-col-6 bg-white align-items-center ">
+                      <div className="m-2  d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
                           <svg
@@ -187,7 +187,7 @@ const Home = (props) => {
                             Tillar
                           </h4>
                           <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
-                            12 nafar o'qituvchi
+                            12 nafar ustoz
                           </p>
                         </div>
                       </div>
@@ -197,7 +197,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center main-page-button-col-6">
+                    <div className="d-flex w-100 science-link  align-items-center bg-white">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -228,7 +228,7 @@ const Home = (props) => {
                             Aniq fanlar
                           </h4>
                           <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
-                            <span>32</span> nafar o'qituvchi
+                            <span>32</span> nafar ustoz
                           </p>
                         </div>
                       </div>
@@ -236,11 +236,11 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4  mt-md-3 ">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center  main-page-button-col-6">
-                      <div className="m-2 w-100 d-flex align-items-center">
+                    <div className="d-flex   science-link bg-white align-items-center  main-page-button-col-12">
+                      <div className="m-2   d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
                           <svg
@@ -277,8 +277,8 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tabiy fanlar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-start text-sm-start text-secondary">
-                            <span>65</span> nafar o'qituvchi
+                          <p className="mb-0 science-link-hover size-link-main text-start text-sm-start text-secondary number-teachers-main-page">
+                            <span>65</span> nafar ustoz
                           </p>
                         </div>
                       </div>
@@ -286,11 +286,11 @@ const Home = (props) => {
                   </Link>
                 </div>
 
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
+                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 it-texnologic pr-2 mt-md-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
-                      <div className="m-2 w-100 d-flex align-items-center">
+                    <div className="d-flex   science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
+                      <div className="m-2   d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
                             <svg
@@ -322,10 +322,10 @@ const Home = (props) => {
                           {/* <TranslateIcon/> */}
 
                           <h4 className="mb-0 science-link-hover text-start w-100">
-                            IT texnologiyalari
+                            IT texnologiya 
                           </h4>
                           <p className="mb-0 text-start text-sm-start science-link-hover size-link-main text-secondary">
-                            <span>11 </span> nafar o'qituvchi
+                            <span>11 </span> nafar ustoz
                           </p>
                         </div>
                       </div>
@@ -336,7 +336,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center gumonitars ">
+                    <div className="d-flex   science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -360,20 +360,26 @@ const Home = (props) => {
                             />
                           </svg>
                         </div>{" "}
-                        <div className="ms-2">
+                        <div className="ms-2 ">
                           {/* <TranslateIcon/> */}
 
                           <h4 className="mb-0 science-link-hover text-start w-100">
-                            Gumanitar fanlar
+                            Ijtimoiy fanlar
                           </h4>
                           <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
-                            41 nafar o'qituvchi
+                            41 nafar ustoz
                           </p>
                         </div>
                       </div>
                     </div>{" "}
                   </Link>
                 </div>
+
+
+
+        
+
+
               </div>
             </div>
           </div>

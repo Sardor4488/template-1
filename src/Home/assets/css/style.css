@@ -7868,17 +7868,23 @@ div.dataTables_wrapper div.dataTables_filter input {
     font-size: 14px;
   }
 }
-
+ 
 @media only screen and (max-width: 575.98px) {
+.banner-wrapper {
+margin: 60px 0 !important;
+}
+  .number-teachers-main-page{
+    font-size: 8px !important;
+  }
   .main-page-icon-button{
     width: 23px !important;
     height: 23px !important;
   }
   .main-page-button-col-6{
-    width: 160px !important;
-  }
+     min-width: 115px !important;
+   }
   .science-link-hover{
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
   body {
     font-size: 0.8125rem;
@@ -8092,10 +8098,21 @@ div.dataTables_wrapper div.dataTables_filter input {
   .btn {
     font-size: 0.875rem;
   }
- 
+   .banner-header{
+    margin-top: 3 0px !important;
+  }
+  .it-texnologic{
+    margin-top: 1rem !important;
+  }
+  .logotipSize {
+    width: 100px !important;
+    height: 30px !important;
+   }
 
 }
-
+.bg-white{
+  transition: 0.4s;
+}
 @media only screen and (max-width: 479px) {
   .section-search {
     min-height: 410px;
@@ -8206,11 +8223,7 @@ li {
   list-style: none;
 }
 
-@media only screen and (max-width: 575px) {
-  .logotipSize {
-    width: 130px;
-  }
-}
+ 
 PhoneInput {
   outline: none;
 }
