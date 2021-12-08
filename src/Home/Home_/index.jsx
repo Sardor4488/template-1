@@ -126,7 +126,7 @@ const Home = (props) => {
   };
   return (
     <div>
-      <section className="section section-search">
+      <section className="section section-search ">
         <div className="container">
           <div className="banner-wrapper m-auto text-center">
             <div className="banner-header">
@@ -162,7 +162,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to="Mentee/search">
-                    <div className="d-flex w-100 science-link bg-white align-items-center">
+                    <div className="d-flex w-100 science-link main-page-button-col-6 bg-white align-items-center">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -171,7 +171,7 @@ const Home = (props) => {
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon ms-3"
+                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -186,7 +186,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tillar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-secondary">
+                          <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
                             12 nafar o'qituvchi
                           </p>
                         </div>
@@ -197,7 +197,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center">
+                    <div className="d-flex w-100 science-link bg-white align-items-center main-page-button-col-6">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -206,7 +206,7 @@ const Home = (props) => {
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon ms-3"
+                            className="svg-icon main-page-icon-button  ms-0 ms-sm-3"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -227,7 +227,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Aniq fanlar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-secondary">
+                          <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
                             <span>32</span> nafar o'qituvchi
                           </p>
                         </div>
@@ -239,7 +239,7 @@ const Home = (props) => {
                 <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center">
+                    <div className="d-flex w-100 science-link bg-white align-items-center  main-page-button-col-6">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -248,7 +248,7 @@ const Home = (props) => {
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon ms-3"
+                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -277,7 +277,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             Tabiy fanlar
                           </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-secondary">
+                          <p className="mb-0 science-link-hover size-link-main text-start text-sm-start text-secondary">
                             <span>65</span> nafar o'qituvchi
                           </p>
                         </div>
@@ -289,7 +289,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
                   {" "}
                   <Link to={"/"}>
-                    <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog ">
+                    <div className="d-flex w-100 science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
                       <div className="m-2 w-100 d-flex align-items-center">
                         <div className="svg_content">
                           {" "}
@@ -298,7 +298,7 @@ const Home = (props) => {
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon ms-3"
+                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -324,7 +324,7 @@ const Home = (props) => {
                           <h4 className="mb-0 science-link-hover text-start w-100">
                             IT texnologiyalari
                           </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
+                          <p className="mb-0 text-start text-sm-start science-link-hover size-link-main text-secondary">
                             <span>11 </span> nafar o'qituvchi
                           </p>
                         </div>
@@ -345,7 +345,7 @@ const Home = (props) => {
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon ms-3"
+                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -364,7 +364,7 @@ const Home = (props) => {
                           {/* <TranslateIcon/> */}
 
                           <h4 className="mb-0 science-link-hover text-start w-100">
-                            Gumonitar fanlar
+                            Gumanitar fanlar
                           </h4>
                           <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
                             41 nafar o'qituvchi

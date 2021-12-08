@@ -1589,10 +1589,9 @@ button.bg-danger:hover {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #fff;
+  background-color: transparent;
   border: 0;
-  border-bottom: 1px solid #e3e8eb;
-  display: -webkit-box;
+   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -1722,8 +1721,8 @@ button.bg-danger:hover {
   background-color: #fff;
 }
 .header-navbar-rht li a.header-login {
-  background-color: rgba(30, 136, 229, 0.2);
-  color: #1e88e5;
+  background-color:#1E88E5;
+  color: #ffffff !important;
   border-radius: 4px;
   padding: 10px 15px !important;
   text-align: center;
@@ -1829,6 +1828,7 @@ button.bg-danger:hover {
   margin-bottom: 2px;
 }
 .header-navbar-rht .logged-item .nav-link {
+  
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -2168,7 +2168,10 @@ html.menu-opened body {
 
 .section-search {
   background: #f8f8f8;
-  min-height: 450px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(../img/home.jpg);
   background-size: cover !important;
   background-repeat: no-repeat;
@@ -2178,7 +2181,7 @@ html.menu-opened body {
   padding: 110px 0;
   background-position: left !important;
 }
-. :before {
+.section-search:before {
   content: "";
   position: absolute;
   left: 0;
@@ -6726,7 +6729,7 @@ html.menu-opened body {
 }
 .header {
   height: 70px;
-  background-color: #fff;
+  background-color:transparent !important;
 }
 .btn {
   letter-spacing: 0.02em;
@@ -7867,6 +7870,16 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 @media only screen and (max-width: 575.98px) {
+  .main-page-icon-button{
+    width: 23px !important;
+    height: 23px !important;
+  }
+  .main-page-button-col-6{
+    width: 160px !important;
+  }
+  .science-link-hover{
+    font-size: 12px !important;
+  }
   body {
     font-size: 0.8125rem;
   }
@@ -8079,10 +8092,7 @@ div.dataTables_wrapper div.dataTables_filter input {
   .btn {
     font-size: 0.875rem;
   }
-/* .science-link-hover{
-  font-size: 10px !important;
-} */
-
+ 
 
 }
 

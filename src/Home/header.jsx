@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { withRouter, Link , useHistory} from "react-router-dom";
 import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
@@ -39,10 +39,24 @@ const Header = (props) => {
   console.log(userdata);
   const { location } = props;
   let pathname = location.pathname;
+  const [scrollPosition, setScrollPosition] = useState(0);
+const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+};
 
+useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+const headerSettings = useHistory().location.pathname;
+console.log();
   return (
-    <header className="header">
-      <div className="header-fixed">
+    <header className={` ${headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}>
+      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white": ""}`}>
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
             <a id="mobile_btn" href="">
@@ -114,7 +128,7 @@ const Header = (props) => {
                 </ul>
               </li>
               <li className="login-link">
-                <Link to="/login">Login / Signup</Link>
+                <Link to="/login">Kirish / Kirish</Link>
               </li>
             </ul>
           </div>
@@ -175,13 +189,13 @@ const Header = (props) => {
           ) : (
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
+                <Link className="nav-link " to="/login">
+                  Kirish
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link header-login" to="/register">
-                  Register
+                <Link className="nav-link header-login " to="/register">
+                  Ro'yxatdan o'tish
                 </Link>
               </li>
             </ul>
