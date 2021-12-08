@@ -492,7 +492,7 @@ const ProfileSettings = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-12">
+                      <div className="col-12  ">
                         <div className="form-group">
                           <label>
                             Bir soat darsingiz uchun necha pul olmoqchisiz
@@ -567,6 +567,7 @@ const ProfileSettings = () => {
                           )}
                         </div>
                       </div>
+                  
                       <div className="col-12">
                         <div className="form-group">
                           <label className="w-75">
