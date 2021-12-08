@@ -4,6 +4,7 @@ import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
 import { ClearData } from "../redux/Actions";
+import logoWhite from "./assets/img/logo-white.svg"
 const Header = (props) => {
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
@@ -60,7 +61,7 @@ console.log();
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
             <a id="mobile_btn" href="">
-              <span className="bar-icon">
+              <span className={`bar-icon ${scrollPosition > 50 ? "text-white": " text-primary"} `}>
                 <span />
                 <span />
                 <span />
@@ -68,7 +69,7 @@ console.log();
             </a>
             <Link to="/app/home" className="navbar-brand logo">
               <img
-                src={AppLogo}
+                src={scrollPosition > 50 ? AppLogo : logoWhite }
                 className="img-fluid ms-4 logotipSize"
                 alt="Logo"
               />
@@ -189,13 +190,13 @@ console.log();
           ) : (
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
-                <Link className="nav-link " to="/login">
+                <Link className={`nav-link ${scrollPosition > 50 ? "text-primary": " text-white"} `} to="/login">
                   Kirish
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link header-login " to="/register">
-                  Ro'yxatdan o'tish
+                <span>  A'zo bo'lish</span>
                 </Link>
               </li>
             </ul>

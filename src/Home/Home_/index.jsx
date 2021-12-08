@@ -7,12 +7,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import icon1 from "../assets/icons/homeIcon.svg";
 import icon2 from "../assets/icons/homeIcon2.svg";
 import Typical from "react-typical";
-import {
-  ICON_1, 
-  USER,
-  BLOG_01,
-  USER_1,
-} from "../../constant/imagepath_home";
+import { ICON_1, USER, BLOG_01, USER_1 } from "../../constant/imagepath_home";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
 import { dataBlog, dataTeam } from "../../Data";
@@ -158,55 +153,48 @@ const Home = (props) => {
                   Eng saralangan va sinalgan ustozni shu yerdan toping{" "}
                 </span>
               </div>
-              <div className="row m-0  mt-4 justify-content-center">
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3 pr-2">
-                  {" "}
-                  <Link to="Mentee/search" className="me-1">
-                    <div className="d-flex   science-link main-page-button-col-6 bg-white align-items-center ">
-                      <div className="m-2  d-flex align-items-center">
-                        <div className="svg_content">
-                          {" "}
-                          <svg
-                            width="35"
-                            height="35"
-                            viewBox="0 0 56 56"
-                            fill="none"
-                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M30.03 35.1633L24.1033 29.3067L24.1733 29.2367C28.2333 24.71 31.1267 19.5067 32.83 14H39.6667V9.33334H23.3333V4.66667H18.6667V9.33334H2.33333V13.9767H28.3967C26.8333 18.48 24.36 22.75 21 26.4833C18.83 24.08 17.0333 21.4433 15.61 18.6667H10.9433C12.6467 22.47 14.98 26.0633 17.8967 29.3067L6.02 41.02L9.33333 44.3333L21 32.6667L28.2567 39.9233L30.03 35.1633ZM43.1667 23.3333H38.5L28 51.3333H32.6667L35.28 44.3333H46.3633L49 51.3333H53.6667L43.1667 23.3333ZM37.0533 39.6667L40.8333 29.5633L44.6133 39.6667H37.0533Z"
-                              fill="#1e88e5"
-                            />
-                          </svg>
-                        </div>{" "}
-                        <div className="ms-2">
-                          {/* <TranslateIcon/> */}
 
-                          <h4 className="mb-0 science-link-hover text-start w-100">
-                            Tillar
-                          </h4>
-                          <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
-                            12 nafar ustoz
-                          </p>
+              <div className="row justify-content-center home_row">
+                
+                <div className="col-6 col-sm-4 col-md-4 col-lg-4 mb-3 d-flex justify-content-end align-items-center">
+                  <div className="home_content">
+                    <div className="home_content_item">
+                      <Link to="Mentee/search" className="me-1">
+                        <div className="home_content_child">
+                          <div className="home_svg_content">
+                            <svg
+                              viewBox="0 0 56 56"
+                              fill="none"
+                              className="home_svg"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M30.03 35.1633L24.1033 29.3067L24.1733 29.2367C28.2333 24.71 31.1267 19.5067 32.83 14H39.6667V9.33334H23.3333V4.66667H18.6667V9.33334H2.33333V13.9767H28.3967C26.8333 18.48 24.36 22.75 21 26.4833C18.83 24.08 17.0333 21.4433 15.61 18.6667H10.9433C12.6467 22.47 14.98 26.0633 17.8967 29.3067L6.02 41.02L9.33333 44.3333L21 32.6667L28.2567 39.9233L30.03 35.1633ZM43.1667 23.3333H38.5L28 51.3333H32.6667L35.28 44.3333H46.3633L49 51.3333H53.6667L43.1667 23.3333ZM37.0533 39.6667L40.8333 29.5633L44.6133 39.6667H37.0533Z"
+                                fill="#1e88e5"
+                              />
+                            </svg>
+                          </div>
+                          <div className="home_text_content">
+                            <p className="home_item_title">Tillar</p>
+                            <p className="home_item_text"> 12 nafar ustoz</p>
+                          </div>
                         </div>
-                      </div>
-                    </div>{" "}
-                  </Link>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
-                  {" "}
-                  <Link to={"/"}>
-                    <div className="d-flex w-100 science-link  align-items-center bg-white">
-                      <div className="m-2 w-100 d-flex align-items-center">
-                        <div className="svg_content">
-                          {" "}
+                <div className="col-6 col-sm-4 col-md-4 col-lg-3 mb-3 d-flex justify-content-center align-items-center">
+                  <div className="home_content">
+                    <div className="home_content_item">
+                      <Link to="Mentee/search" className="me-1">
+                        <div className="home_content_child">
+                          <div className="home_svg_content">
                           <svg
                             width="35"
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon main-page-icon-button  ms-0 ms-sm-3"
+                            className="home_svg"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -220,35 +208,28 @@ const Home = (props) => {
                               stroke="#1e88e5"
                             />
                           </svg>
-                        </div>{" "}
-                        <div className="ms-2">
-                          {/* <TranslateIcon/> */}
-
-                          <h4 className="mb-0 science-link-hover text-start w-100">
-                            Aniq fanlar
-                          </h4>
-                          <p className="mb-0 science-link-hover text-start text-sm-start size-link-main text-secondary">
-                            <span>32</span> nafar ustoz
-                          </p>
+                          </div>
+                          <div className="home_text_content">
+                            <p className="home_item_title">Aniq fanlar</p>
+                            <p className="home_item_text"> 32 nafar ustoz</p>
+                          </div>
                         </div>
-                      </div>
-                    </div>{" "}
-                  </Link>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="col-12 col-sm-6 col-lg-4 px-0  px-sm-4  mt-md-3 ">
-                  {" "}
-                  <Link to={"/"}>
-                    <div className="d-flex   science-link bg-white align-items-center  main-page-button-col-12">
-                      <div className="m-2   d-flex align-items-center">
-                        <div className="svg_content">
-                          {" "}
+                <div className="col-6 col-sm-4 col-md-4 col-lg-4 mb-3 d-flex justify-content-start align-items-center">
+                  <div className="home_content">
+                    <div className="home_content_item">
+                      <Link to="Mentee/search" className="me-1">
+                        <div className="home_content_child">
+                          <div className="home_svg_content">
                           <svg
                             width="35"
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
+                            className="home_svg"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -270,35 +251,28 @@ const Home = (props) => {
                               strokeWidth="0.5"
                             />
                           </svg>
-                        </div>{" "}
-                        <div className="ms-2">
-                          {/* <TranslateIcon/> */}
-
-                          <h4 className="mb-0 science-link-hover text-start w-100">
-                            Tabiy fanlar
-                          </h4>
-                          <p className="mb-0 science-link-hover size-link-main text-start text-sm-start text-secondary number-teachers-main-page">
-                            <span>65</span> nafar ustoz
-                          </p>
+                          </div>
+                          <div className="home_text_content">
+                            <p className="home_item_title">Tabiiy fanlar</p>
+                            <p className="home_item_text"> 65 nafar ustoz</p>
+                          </div>
                         </div>
-                      </div>
-                    </div>{" "}
-                  </Link>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 it-texnologic pr-2 mt-md-3">
-                  {" "}
-                  <Link to={"/"}>
-                    <div className="d-flex   science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
-                      <div className="m-2   d-flex align-items-center">
-                        <div className="svg_content">
-                          {" "}
-                            <svg
+                <div className="col-6 col-sm-5 col-lg-5 d-flex mb-3 mb-sm-0 justify-content-end align-items-center">
+                  <div className="home_content">
+                    <div className="home_content_item">
+                      <Link to="Mentee/search" className="me-1">
+                        <div className="home_content_child">
+                          <div className="home_svg_content">
+                          <svg
                             width="35"
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
+                            className="home_svg"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -317,35 +291,28 @@ const Home = (props) => {
                               strokeWidth="3"
                             />
                           </svg>
-                        </div>{" "}
-                        <div className="ms-2">
-                          {/* <TranslateIcon/> */}
-
-                          <h4 className="mb-0 science-link-hover text-start w-100">
-                            IT texnologiya 
-                          </h4>
-                          <p className="mb-0 text-start text-sm-start science-link-hover size-link-main text-secondary">
-                            <span>11 </span> nafar ustoz
-                          </p>
+                          </div>
+                          <div className="home_text_content">
+                            <p className="home_item_title">IT texnalogiya</p>
+                            <p className="home_item_text"> 11 nafar ustoz</p>
+                          </div>
                         </div>
-                      </div>
-                    </div>{" "}
-                  </Link>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="col-6 col-sm-6 col-lg-4 px-0  px-sm-4 mt-3">
-                  {" "}
-                  <Link to={"/"}>
-                    <div className="d-flex   science-link bg-white align-items-center it-texnolog  main-page-button-col-6">
-                      <div className="m-2 w-100 d-flex align-items-center">
-                        <div className="svg_content">
-                          {" "}
+                <div className="col-6 col-sm-5 col-lg-5 d-flex justify-content-start align-items-center">
+                  <div className="home_content">
+                    <div className="home_content_item">
+                      <Link to="Mentee/search" className="me-1">
+                        <div className="home_content_child">
+                          <div className="home_svg_content">
                           <svg
                             width="35"
                             height="35"
                             viewBox="0 0 56 56"
                             fill="none"
-                            className="svg-icon main-page-icon-button ms-0 ms-sm-3"
+                            className="home_svg"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
@@ -359,28 +326,18 @@ const Home = (props) => {
                               stroke="#1e88e5"
                             />
                           </svg>
-                        </div>{" "}
-                        <div className="ms-2 ">
-                          {/* <TranslateIcon/> */}
-
-                          <h4 className="mb-0 science-link-hover text-start w-100">
-                            Ijtimoiy fanlar
-                          </h4>
-                          <p className="mb-0 text-start science-link-hover size-link-main text-secondary">
-                            41 nafar ustoz
-                          </p>
+                          </div>
+                          <div className="home_text_content">
+                            <p className="home_item_title">Ijtimoiy fanlar</p>
+                            <p className="home_item_text"> 41 nafar ustoz</p>
+                          </div>
                         </div>
-                      </div>
-                    </div>{" "}
-                  </Link>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-
-
-
-        
-
-
               </div>
+          
             </div>
           </div>
         </div>
@@ -577,8 +534,12 @@ const Home = (props) => {
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Doloremque nobis qui voluptates autem quos
                           libero quod a voluptas id vero.
-                           <br />
-                          <span className=""><Link to="/app/Mentee/booking" className="more">Barcha fikrlar</Link></span>
+                          <br />
+                          <span className="">
+                            <Link to="/app/Mentee/booking" className="more">
+                              Barcha fikrlar
+                            </Link>
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -734,12 +695,11 @@ const Home = (props) => {
                   {/* Blog Post */}
                   <div className="blog grid-blog">
                     <div className="blog-image">
-                       
-                        <img
-                          className="img-fluid"
-                          src={BLOG_01}
-                          alt="Post Image"
-                        /> 
+                      <img
+                        className="img-fluid"
+                        src={BLOG_01}
+                        alt="Post Image"
+                      />
                     </div>
                     <div className="blog-content">
                       <h3 className="blog-title">
