@@ -2220,7 +2220,7 @@ html.menu-opened body {
   position: relative;
 }
 .banner-wrapper .banner-header {
-  margin-bottom: 30px;
+  margin: 40px 0;
 }
 .banner-wrapper .banner-header h1 {
   margin-bottom: 15px;
