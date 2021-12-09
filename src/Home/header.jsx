@@ -62,6 +62,7 @@ useEffect(() => {
 }, []);
 const headerSettings = useHistory().location.pathname;
 console.log();
+
   return (
     <header className={` ${headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}>
       <div className="has_menu_close" id="has_menu_close"></div>

@@ -8623,3 +8623,29 @@ PhoneInput {
 .has_menu_close.active {
   visibility: visible;
 }
+
+
+.accordion_menu {
+  width: 100%;
+}
+
+.accordion_menu .accordion_btn {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.accordion_menu .accordion_body {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.accordion_menu .accordion_active {
+  max-height: 1000px !important;
+}
