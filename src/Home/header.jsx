@@ -65,7 +65,7 @@ console.log();
   return (
     <header className={` ${headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}>
       <div className="has_menu_close" id="has_menu_close"></div>
-      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white": ""}`}>
+      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white shadow": ""}`}>
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
             <a id="mobile_btn" href="">
@@ -75,6 +75,7 @@ console.log();
                 <span />
               </span>
             </a>
+
             <Link to="/app/home" className="navbar-brand logo">
               <img
                 src={ AppLogo  }
@@ -112,8 +113,7 @@ console.log();
                     : "has-submenu"
                 }
               >
-
-                <a href=""  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>
+                 <a href=""  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>
                   Blog <i className="fas fa-chevron-down" />
                 </a>
                 <ul className="submenu">
@@ -121,8 +121,7 @@ console.log();
                     className={pathname.includes("blog-list") ? "active" : ""}
                   >
                     <Link to="/app/Blog/blog-list">Blog List</Link>
-                  </li>
-
+                  </li> 
                   <li
                     className={pathname.includes("blog-grid") ? "active" : ""}
                   >
