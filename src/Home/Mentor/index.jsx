@@ -23,7 +23,7 @@ import MentorProfile from "./mentorprofile";
 import StudentProfile from "./studentProfile";
 import MentorBooking from "./MentorBooking";
 import ReviewsAll from "./reviews all";
-import About from "../About/about";
+import About from "../About";
 
 const Mentorroute = ({ match }) => {
   const role = localStorage.getItem("role");
@@ -60,11 +60,8 @@ const Mentorroute = ({ match }) => {
           path={`${match.url}/studentProfile`}
           component={StudentProfile}
         />
-          <Route path={`${match.url}/reviews-all`} component={ReviewsAll} />
-        <Route path={`${match.url}/about-my-teacher`} component={About} />
+        <Route path={`${match.url}/reviews-all`} component={ReviewsAll} />
         <Redirect exact={true} from="*" to="/404" />
-      
-
       </Switch>
     </>
   );

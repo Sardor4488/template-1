@@ -87,7 +87,7 @@ const Header = (props) => {
               </li>
 
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
-                <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
+                <Link to="/app/about">Biz haqimizda</Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link to="/app/mentor/reviews-all">Fikrlar</Link>

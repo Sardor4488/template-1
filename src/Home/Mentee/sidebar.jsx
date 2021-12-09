@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-
+// import { logout } from "../../Api/logout";
 const Sidebar = (props) => {
   const data = useSelector((state) => state.Reducer.userdata);
   const { location } = props;
@@ -91,7 +91,7 @@ const Sidebar = (props) => {
                 </span>
               </Link>
             </li> */}
-           
+
             <li>
               <Link
                 to="/app/mentee/share-friends"
@@ -155,7 +155,7 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to="/app/index">
+              <Link to={"#"}>
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import HomeLayout from "./Home/homelayout.jsx";
@@ -11,19 +11,14 @@ import AdminLogin from "./Admin/MainPage/Pages/Authentication/login";
 import AdminRegister from "./Admin/MainPage/Pages/Authentication/register";
 import AdminForgotpassword from "./Admin/MainPage/Pages/Authentication/forgotpassword";
 import LockScreen from "./Admin/MainPage/Pages/Authentication/lockscreen";
-import Dashboard from "./Home/Mentor/mentordashboard";
-import MenteeDashboard from "./Home/Mentee/menteedashboard";
-import axios from "axios";
-import { dispatch } from "./redux/store.js";
-import * as t from "./redux/types";
 import Loading from "./Home/components/Loading/Loading.js";
 import { useSelector } from "react-redux";
 import { LoadingOff, LoadingOn } from "./redux/Actions.js";
 import { UserAuth } from "./Api/index.js";
+import About from "./Home/About/index.jsx";
 import Page404 from "./Home/components/Page404/page404.js";
-import CalendarOf from "./Home/components/CalendarOf";
 const AppUniversal = (props) => {
-  const { location, history } = props;
+  const { location } = props;
   const [path, setPath] = useState("");
 
   useEffect(() => {
@@ -58,6 +53,7 @@ const AppUniversal = (props) => {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/forgot-password" component={Forgotpassword} />
+      
           <Route path="/admin_login" component={AdminLogin} />
           <Route path="/admin_register" component={AdminRegister} />
           <Route
@@ -65,8 +61,6 @@ const AppUniversal = (props) => {
             component={AdminForgotpassword}
           />
           <Route path="/lock-screen" component={LockScreen} />
-          <Route path="/loading" component={Loading} />
-          <Route path="/calendar" component={CalendarOf} />
           <Route exact path="/">
             <Redirect to={path} />
           </Route>

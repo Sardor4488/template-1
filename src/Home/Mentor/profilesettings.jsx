@@ -55,8 +55,11 @@ const ProfileSettings = () => {
     reader.onloadend = () => {
       setImage(reader.result);
     };
+    let src = window.URL.createObjectURL(file);
+    console.log(src);
     reader.readAsDataURL(file);
   };
+  var base64Icon = "data:image/png;base64,result";
   const handleLanguageDelete = (p) => {
     const languages = [...language];
     const filterData = languages.filter((v) => v !== p);
@@ -209,7 +212,6 @@ const ProfileSettings = () => {
       setImgModal(false);
     };
   }, [image]);
-  console.log(image);
   return (
     <div>
       {imgmodal && (
@@ -220,7 +222,7 @@ const ProfileSettings = () => {
               height: "250px",
               margin: "auto",
             }}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <AvatarImageCropper
               setImgModal={setImgModal}
@@ -567,7 +569,7 @@ const ProfileSettings = () => {
                           )}
                         </div>
                       </div>
-                  
+
                       <div className="col-12">
                         <div className="form-group">
                           <label className="w-75">
