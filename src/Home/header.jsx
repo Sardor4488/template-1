@@ -77,7 +77,7 @@ console.log();
             </a>
             <Link to="/app/home" className="navbar-brand logo">
               <img
-                src={scrollPosition > 50 ? AppLogo : logoWhite }
+                src={ AppLogo  }
                 className="img-fluid ms-4 logotipSize"
                 alt="Logo"
               />
