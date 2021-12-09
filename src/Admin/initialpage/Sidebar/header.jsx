@@ -3,9 +3,8 @@
  */
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import {headerlogo,Logo_small,USER,USER_1,USER_2,USER_4,AVATAR_12, Logo_White,AVATAR_06, US_FLAG, DE_FLAG, ES_FLAG, FR_FLAG} from '../../imagepath'
-
-class Header extends Component {
+import {headerlogo,Logo_small,USER,USER_1,USER_2,USER_4,AVATAR_12, Logo_White,AVATAR_06, AdminLogo, US_FLAG, DE_FLAG, ES_FLAG, FR_FLAG} from '../../imagepath'
+ class Header extends Component {
 
    render() {
     const {  location } = this.props
@@ -16,7 +15,7 @@ class Header extends Component {
         {/* Logo */}
         <div className="header-left">
           <a href="#" className="logo">
-            <img src={Logo_White}alt="Logo" />
+            <img src={AdminLogo}alt="Logo" />
           </a>
           <a href="#" className="logo logo-small">
             <img src={Logo_small} alt="Logo" width={30} height={30} />

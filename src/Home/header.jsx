@@ -94,14 +94,15 @@ console.log();
             </div>
             <ul className="main-nav">
               <li className={pathname.includes("home") ? "active" : ""}>
-                <Link to="/app/home">Asosiy</Link>
+                <Link to="/app/home"  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>Asosiy</Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
-                <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
+                <Link to="/app/mentor/about-my-teacher" className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>Biz haqimizda</Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
-                <Link to="/app/mentor/reviews-all">Fikrlar</Link>
+                <Link to="/app/mentor/reviews-all"  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>Fikrlar</Link>
               </li> 
+
                    <li
                 className={
                   pathname.includes("blog-list") ||
@@ -111,7 +112,8 @@ console.log();
                     : "has-submenu"
                 }
               >
-                <a href="">
+
+                <a href=""  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>
                   Blog <i className="fas fa-chevron-down" />
                 </a>
                 <ul className="submenu">
@@ -120,6 +122,7 @@ console.log();
                   >
                     <Link to="/app/Blog/blog-list">Blog List</Link>
                   </li>
+
                   <li
                     className={pathname.includes("blog-grid") ? "active" : ""}
                   >
@@ -156,7 +159,7 @@ console.log();
                       alt="Darren Elder"
                     />
                   </span>
-                </a>
+                </a> 
                 <div className="dropdown-menu dropdown-menu-right">
                   <div className="user-header">
                     <div className="avatar avatar-sm">
