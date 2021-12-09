@@ -12,7 +12,7 @@ const Header = (props) => {
         e.preventDefault();
       }
       if (!$(this).hasClass("submenu")) {
-        $("ul", $(this).parents("ul:first")).slideUp(350);
+        $("ul", $(this).parents("ul:first")).slideUp(380);
         $("a", $(this).parents("ul:first")).removeClass("submenu");
         $(this).next("ul").slideDown(350);
         $(this).addClass("submenu");
@@ -26,6 +26,13 @@ const Header = (props) => {
       $("html").removeClass("menu-opened");
       $(".sidebar-overlay").removeClass("opened");
       $("main-wrapper").removeClass("slide-nav");
+      $("#has_menu_close").removeClass("active");
+    });
+    $(document).on("click", "#has_menu_close", function () {
+      $("html").removeClass("menu-opened");
+      $(".sidebar-overlay").removeClass("opened");
+      $("main-wrapper").removeClass("slide-nav");
+      $("#has_menu_close").removeClass("active");
     });
   }, []);
   const logout = () => {
@@ -57,6 +64,7 @@ const headerSettings = useHistory().location.pathname;
 console.log();
   return (
     <header className={` ${headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}>
+      <div className="has_menu_close" id="has_menu_close"></div>
       <div className={`header-fixed ${scrollPosition > 50 ? "bg-white": ""}`}>
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
@@ -88,8 +96,6 @@ console.log();
               <li className={pathname.includes("home") ? "active" : ""}>
                 <Link to="/app/home">Asosiy</Link>
               </li>
-
-        
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link to="/app/mentor/about-my-teacher">Biz haqimizda</Link>
               </li>

@@ -1591,7 +1591,7 @@ button.bg-danger:hover {
   align-items: center;
   background-color: transparent;
   border: 0;
-   display: -webkit-box;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -1721,7 +1721,7 @@ button.bg-danger:hover {
   background-color: #fff;
 }
 .header-navbar-rht li a.header-login {
-  background-color:#1E88E5;
+  background-color: #1e88e5;
   color: #ffffff !important;
   border-radius: 4px;
   padding: 10px 15px !important;
@@ -1828,7 +1828,6 @@ button.bg-danger:hover {
   margin-bottom: 2px;
 }
 .header-navbar-rht .logged-item .nav-link {
-  
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -6729,7 +6728,7 @@ html.menu-opened body {
 }
 .header {
   height: 70px;
-  background-color:transparent !important;
+  background-color: transparent !important;
 }
 .btn {
   letter-spacing: 0.02em;
@@ -7870,26 +7869,26 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 @media only screen and (min-width: 575.98px) {
-.whith75{
-  width: 75% !important;
-}
+  .whith75 {
+    width: 75% !important;
+  }
 }
 
 @media only screen and (max-width: 575.98px) {
-.banner-wrapper {
-margin: 60px 0 !important;
-}
-  .number-teachers-main-page{
+  .banner-wrapper {
+    margin: 60px 0 !important;
+  }
+  .number-teachers-main-page {
     font-size: 8px !important;
   }
-  .main-page-icon-button{
+  .main-page-icon-button {
     width: 23px !important;
     height: 23px !important;
   }
-  .main-page-button-col-6{
-     min-width: 115px !important;
-   }
-  .science-link-hover{
+  .main-page-button-col-6 {
+    min-width: 115px !important;
+  }
+  .science-link-hover {
     font-size: 10px !important;
   }
   body {
@@ -7955,9 +7954,6 @@ margin: 60px 0 !important;
     width: 100%;
     text-align: right;
     margin-right: 0;
-  }
-  .navbar-brand.logo img {
-    height: 40px;
   }
   .search-box form {
     display: block;
@@ -8104,25 +8100,24 @@ margin: 60px 0 !important;
   .btn {
     font-size: 0.875rem;
   }
-   .banner-header{
+  .banner-header {
     margin-top: 3 0px !important;
   }
-  .it-texnologic{
+  .it-texnologic {
     margin-top: 1rem !important;
   }
   .logotipSize {
     /* width: 100px !important;
     height: 30px !important; */
-    object-fit: cover;
-   }
-
+    object-fit: contain;
+  }
 }
 .logotipSize {
   /* width: 100px !important;
   height: 30px !important; */
   object-fit: cover;
- }
-.bg-white{
+}
+.bg-white {
   transition: 0.4s;
 }
 @media only screen and (max-width: 479px) {
@@ -8235,7 +8230,6 @@ li {
   list-style: none;
 }
 
- 
 PhoneInput {
   outline: none;
 }
@@ -8249,7 +8243,6 @@ PhoneInput {
     width: 70% !important;
   }
 }
-
 
 .bg-white {
   background-color: #ffffff !important;
@@ -8474,38 +8467,45 @@ PhoneInput {
 }
 
 .home_content {
-  display: flex; 
+  display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   width: 165.684px;
 }
 
-
 .home_content .home_content_item {
- width: 100%;
+  width: 100%;
   background-color: #fff;
   border-radius: 10px;
   max-height: 50px;
   transition: 0.5s;
 }
-.home_content .home_content_item .home_content_child{
- display: flex;
- align-items: center;
- height: 50px;
- padding: 0px 7px;
+.home_content .home_content_item .home_content_child {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0px 10px;
 }
 .home_content .home_content_item .home_content_child .home_text_content {
   text-align: left;
   margin-left: 3px;
 }
 
-.home_content .home_content_item .home_content_child .home_svg_content .home_svg {
+.home_content
+  .home_content_item
+  .home_content_child
+  .home_svg_content
+  .home_svg {
   width: 27px;
   height: 27px;
 }
 
-.home_content .home_content_item .home_content_child .home_text_content .home_item_title {
+.home_content
+  .home_content_item
+  .home_content_child
+  .home_text_content
+  .home_item_title {
   font-size: 16px;
   line-height: 17px;
   margin: 0px;
@@ -8513,39 +8513,54 @@ PhoneInput {
   font-weight: 500;
   transition: 0.5s;
   margin-bottom: 2px;
-
 }
-.home_content .home_content_item .home_content_child .home_text_content .home_item_text {
+.home_content
+  .home_content_item
+  .home_content_child
+  .home_text_content
+  .home_item_text {
   font-size: 12px;
   line-height: 12px;
   margin: 0px;
   color: #6c757d;
   transition: 0.5s;
-
 }
 
 .home_content .home_content_item:hover {
   background-color: #009efb;
 }
 
-.home_content .home_content_item:hover  .home_content_child .home_text_content .home_item_title {
+.home_content
+  .home_content_item:hover
+  .home_content_child
+  .home_text_content
+  .home_item_title {
   color: #fff !important;
 }
-.home_content .home_content_item:hover  .home_content_child .home_text_content .home_item_text {
+.home_content
+  .home_content_item:hover
+  .home_content_child
+  .home_text_content
+  .home_item_text {
   color: #fff !important;
 }
-.home_content .home_content_item:hover  .home_content_child .home_svg_content svg path {
+.home_content
+  .home_content_item:hover
+  .home_content_child
+  .home_svg_content
+  svg
+  path {
   transition: 0.5s;
 }
-.home_content .home_content_item:hover  .home_content_child .home_svg_content svg path {
-    fill: #fff !important;
-    stroke: #fff !important;
+.home_content
+  .home_content_item:hover
+  .home_content_child
+  .home_svg_content
+  svg
+  path {
+  fill: #fff !important;
+  stroke: #fff !important;
 }
-
-
-
-
-
 
 @media only screen and (max-width: 768px) {
   .home_content {
@@ -8558,10 +8573,18 @@ PhoneInput {
   .profile-sidebar-md-none {
     display: none !important;
   }
-  .home_content .home_content_item .home_content_child .home_text_content .home_item_title {
+  .home_content
+    .home_content_item
+    .home_content_child
+    .home_text_content
+    .home_item_title {
     font-size: 14px;
   }
-  .home_content .home_content_item .home_content_child .home_text_content .home_item_text {
+  .home_content
+    .home_content_item
+    .home_content_child
+    .home_text_content
+    .home_item_text {
     font-size: 10px;
   }
 }
@@ -8570,10 +8593,33 @@ PhoneInput {
   .home_row .col-6 {
     justify-content: center !important;
   }
-  .home_content .home_content_item .home_content_child .home_text_content .home_item_title {
+  .home_content
+    .home_content_item
+    .home_content_child
+    .home_text_content
+    .home_item_title {
     font-size: 12px;
   }
-  .home_content .home_content_item .home_content_child .home_text_content .home_item_text {
+  .home_content
+    .home_content_item
+    .home_content_child
+    .home_text_content
+    .home_item_text {
     font-size: 8px;
   }
+}
+
+.has_menu_close {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transition: 0.3s;
+  visibility: hidden;
+}
+.has_menu_close.active {
+  visibility: visible;
 }

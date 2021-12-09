@@ -97,9 +97,11 @@ Version      : 1.0
 	$(document).on('click', '#mobile_btn', function() {
 		$('main-wrapper').toggleClass('slide-nav');
 		$('.sidebar-overlay').toggleClass('opened');
+		$('#has_menu_close').addClass('active');
 		$('html').addClass('menu-opened');
 		return false;
 	});
+
 	
 	$(document).on('click', '.sidebar-overlay', function() {
 		$('html').removeClass('menu-opened');

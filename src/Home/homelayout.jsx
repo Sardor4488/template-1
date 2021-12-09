@@ -19,9 +19,9 @@ import "./assets/js/bootstrap.min.js";
 import "./assets/js/script.js";
 import StatusBar from "./components/StatusBar";
 
-class DefaultLayout extends Component {
-  render() {
-    const { location, match } = this.props;
+const DefaultLayout = (props) => {
+  const token = localStorage.getItem("token");
+    const { location, match } = props;
     return (
       <div className="main-wrapper">
         <Header />
@@ -43,10 +43,12 @@ class DefaultLayout extends Component {
         ) : (
           <Footer />
         )}
-        <StatusBar />
+        {
+          location.pathname.includes("/app/home") || token == null ? "" : <StatusBar /> 
+        }
+        
       </div>
     );
-  }
 }
 export default withRouter(DefaultLayout);
 
