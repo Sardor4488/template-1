@@ -1,8 +1,5 @@
 // export default imagepaths
-
-export {default as headerlogo} from './assets/img/logo.png';
-export {default as Logo_small} from './assets/img/logo-small.png';
-export {default as Logo_White} from './assets/img/logo-white.png';
+ 
 export {default as USER} from './assets/img/user/user.jpg';
 export {default as USER_1} from './assets/img/user/user1.jpg';
 export {default as USER_2} from './assets/img/user/user2.jpg';

@@ -13,7 +13,7 @@ const About = () => {
       <div className="container py-5">
         <div className="accordion_menu">
           <div className="accordion_btn" onClick={() => openAccordion(1)}>
-            <span>Item 1</span>
+            <span>Biz haqimizda</span>
             {accordion == 1 ? (
               <i className="fas fa-minus"></i>
             ) : (

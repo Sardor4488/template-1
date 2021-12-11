@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import {headerlogo,Logo_small,USER,USER_1,USER_2,USER_4,AVATAR_12, Logo_White,AVATAR_06, AdminLogo, US_FLAG, DE_FLAG, ES_FLAG, FR_FLAG} from '../../imagepath'
+import { USER,USER_1,USER_2,USER_4,AVATAR_12, AVATAR_06, AdminLogo, US_FLAG, DE_FLAG, ES_FLAG, FR_FLAG} from '../../imagepath'
  class Header extends Component {
 
    render() {
@@ -18,7 +18,7 @@ import {headerlogo,Logo_small,USER,USER_1,USER_2,USER_4,AVATAR_12, Logo_White,AV
             <img src={AdminLogo}alt="Logo" />
           </a>
           <a href="#" className="logo logo-small">
-            <img src={Logo_small} alt="Logo" width={30} height={30} />
+            <img src={AdminLogo} alt="Logo" width={30} height={30} />
           </a>
         </div>
         {/* /Logo */}

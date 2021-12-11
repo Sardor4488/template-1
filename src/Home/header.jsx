@@ -64,7 +64,11 @@ const Header = (props) => {
       }`}
     >
       <div className="has_menu_close" id="has_menu_close"></div>
-      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white" : ""}`}>
+      <div
+        className={`header-fixed ${
+          scrollPosition > 50 ? "bg-white shadow" : ""
+        }`}
+      >
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
             <a id="mobile_btn" href="">
@@ -78,9 +82,10 @@ const Header = (props) => {
                 <span />
               </span>
             </a>
+
             <Link to="/app/home" className="navbar-brand logo">
               <img
-                src={scrollPosition > 50 ? AppLogo : logoWhite}
+                src={AppLogo}
                 className="img-fluid ms-4 logotipSize"
                 alt="Logo"
               />
@@ -96,7 +101,7 @@ const Header = (props) => {
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname.includes("home") ? "active" : ""}>
+              <li className={pathname.includes("/app/home") ? "active" : ""}>
                 <Link
                   to="/app/home"
                   className={`${
@@ -150,7 +155,6 @@ const Header = (props) => {
                   >
                     <Link to="/app/Blog/blog-list">Blog List</Link>
                   </li>
-
                   <li
                     className={pathname.includes("blog-grid") ? "active" : ""}
                   >
