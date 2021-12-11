@@ -63,7 +63,7 @@ const Header = (props) => {
     >
       <div className="has_menu_close " id="has_menu_close"></div>
       <div
-        className={`header-fixed ${ scrollPosition > 50 ? "bg-white shadow" : ""} ${pathname.includes("/app/about") ? "bg-white text-dark shadow" : ""}`}
+        className={`header-fixed ${ scrollPosition > 50 ? "bg-white shadow" : ""}  `}
       >
         <nav className={`navbar navbar-expand-lg header-nav ${pathname.includes("/app/home") ? "  bg-transparent " : ""}`}>
           <div className="navbar-header">
@@ -164,7 +164,10 @@ const Header = (props) => {
                 </ul>
               </li>
               <li className="login-link">
-                <Link to="/login">Kirish / Kirish</Link>
+                <Link to="/login">Kirish </Link>
+              </li>
+              <li className="login-link">
+                <Link to="/register">A'zo bo'lish</Link>
               </li>
             </ul>
           </div>
@@ -226,7 +229,7 @@ const Header = (props) => {
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${
+                  className={`nav-link${pathname.includes("/app/home") ? "  text-white " : " text-primary  "} ${
                     scrollPosition > 50 ? "text-primary" : " text-white"
                   } `}
                   to="/login"
