@@ -95,7 +95,7 @@ console.log();
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname.includes("home") ? "active" : ""}>
+              <li className={pathname.includes("home") ? "active" : ""   }>
                 <Link to="/app/home"  className={`${scrollPosition > 50 ? "text-dark": " text-white"}`}>Asosiy</Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
