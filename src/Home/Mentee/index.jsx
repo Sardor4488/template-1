@@ -25,56 +25,45 @@ const Menteeroute = ({ match }) => {
   const role = localStorage.getItem("role");
   return (
     <>
-      {role == "mentee" ? (
-        <Switch>
-          <Redirect
-            exact
-            from={`${match.url}/`}
-            to={`${match.url}/mentor-profile`}
-          />
-          <Route
-            path={`${match.url}/mentee-profile`}
-            component={MenteeProfile}
-          />
-          <Route path={`${match.url}/map-list`} component={Maplist} />
-          <Route path={`${match.url}/search`} component={Searchmentors} />
-          <Route
-            path={`${match.url}/bookings-mentee`}
-            component={BookingsMentee}
-          />
-          <Route path={`${match.url}/dashboard`} component={MenteeDashboard} />
-          <Route path={`${match.url}/booking`} component={Booking} />
-          <Route path={`${match.url}/checkout`} component={Checkout} />
-          <Route
-            path={`${match.url}/booking-success`}
-            component={BookingSuccess}
-          />
-          <Route path={`${match.url}/chat-mentee`} component={Chatmentee} />
-          <Route path={`${match.url}/share-friends`} component={Share} />
-          <Route path={`${match.url}/invoices`} component={Invoice} />
-          <Route path={`${match.url}/invoice-view`} component={Invoiceview} />
-          <Route
-            path={`${match.url}/profile-settings`}
-            component={ProfileSettingMentee}
-          />
-          <Route path={`${match.url}/favourites`} component={Favorites} />
-          {/* <Route
+      <Switch>
+        <Redirect
+          exact
+          from={`${match.url}/`}
+          to={`${match.url}/mentor-profile`}
+        />
+        <Route path={`${match.url}/mentee-profile`} component={MenteeProfile} />
+        <Route path={`${match.url}/map-list`} component={Maplist} />
+        <Route path={`${match.url}/search`} component={Searchmentors} />
+        <Route
+          path={`${match.url}/bookings-mentee`}
+          component={BookingsMentee}
+        />
+        <Route path={`${match.url}/dashboard`} component={MenteeDashboard} />
+        <Route path={`${match.url}/booking`} component={Booking} />
+        <Route path={`${match.url}/checkout`} component={Checkout} />
+        <Route
+          path={`${match.url}/booking-success`}
+          component={BookingSuccess}
+        />
+        <Route path={`${match.url}/chat-mentee`} component={Chatmentee} />
+        <Route path={`${match.url}/share-friends`} component={Share} />
+        <Route path={`${match.url}/invoices`} component={Invoice} />
+        <Route path={`${match.url}/invoice-view`} component={Invoiceview} />
+        <Route
+          path={`${match.url}/profile-settings`}
+          component={ProfileSettingMentee}
+        />
+        <Route path={`${match.url}/favourites`} component={Favorites} />
+        {/* <Route
       path={`${match.url}/profile-settings-mentee`}
       component={Profilesettingmentee}
     /> */}
-          <Route
-            path={`${match.url}/change-password`}
-            component={Changepassword}
-          />
-          <Redirect exact={true} from="*" to="/404" />
-        </Switch>
-      ) : (
-        <Switch>
-          <Route>
-            <Redirect to="/404" />
-          </Route>
-        </Switch>
-      )}
+        <Route
+          path={`${match.url}/change-password`}
+          component={Changepassword}
+        />
+        <Redirect exact={true} from="*" to="/404" />
+      </Switch>
     </>
   );
 };
