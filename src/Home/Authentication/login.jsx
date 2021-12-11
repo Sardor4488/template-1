@@ -1,11 +1,8 @@
-import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
-import PhoneInput from "react-phone-number-input";
-import axios from "axios";
-
-import { LoadingOff, LoadingOn, UserData } from "../../redux/Actions";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { login } from "../../Api/login";
 const Login = (props) => {
-  const { history } = props;
+  const history = useHistory();
   const [inputType, setInputType] = useState("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,22 +19,7 @@ const Login = (props) => {
       email,
       password,
     };
-    LoadingOn();
-    axios
-      .post("login", data)
-      .then((res) => {
-        localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("role", res.data.user.role);
-        console.log(res.data.access_token);
-        history.push(`app/${res.data.user.role}/dashboard`);
-        UserData(res.data.user);
-        LoadingOff();
-      })
-      .catch((err) => {
-        console.log(err);
-        LoadingOff();
-      });
-    console.log(data);
+    login(data, history);
   };
 
   localStorage.clear();

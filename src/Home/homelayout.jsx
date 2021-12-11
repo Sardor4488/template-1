@@ -19,35 +19,39 @@ import "./assets/js/bootstrap.min.js";
 import "./assets/js/script.js";
 import StatusBar from "./components/StatusBar";
 
-class DefaultLayout extends Component {
-  render() {
-    const { location, match } = this.props;
-    return (
-      <div className="main-wrapper">
-        <Header />
-        {routerService &&
-          routerService.map((route, key) => (
-            <Route
-              key={key}
-              path={`${match.url}/${route.path}`}
-              component={route.component}
-            />
-          ))}
-        {location.pathname.includes("chat") ||
-        location.pathname.includes("voice-call") ||
-        location.pathname.includes("video-call") ||
-        location.pathname.includes("map-list") ||
-        // location.pathname.includes("*") ||
-        location.pathname.includes("map-grid") ? (
-          ""
-        ) : (
-          <Footer />
-        )}
+const DefaultLayout = (props) => {
+  const token = localStorage.getItem("access_token");
+  const { location, match } = props;
+  return (
+    <div className="main-wrapper">
+      <Header />
+   
+      {routerService &&
+        routerService.map((route, key) => (
+          <Route
+            key={key}
+            path={`${match.url}/${route.path}`}
+            component={route.component}
+          />
+        ))}
+      {location.pathname.includes("chat") ||
+      location.pathname.includes("voice-call") ||
+      location.pathname.includes("video-call") ||
+      location.pathname.includes("map-list") ||
+      // location.pathname.includes("*") ||
+      location.pathname.includes("map-grid") ? (
+        ""
+      ) : (
+        <Footer />
+      )}
+      {location.pathname.includes("/app/home") || token == null ? (
+        ""
+      ) : (
         <StatusBar />
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 export default withRouter(DefaultLayout);
 
 // export default withRouter(connect(null)(DefaultLayout));

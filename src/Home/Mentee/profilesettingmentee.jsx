@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Helmet } from "react-helmet";
 
 import { USER } from "../../constant/imagepath_home";
@@ -7,10 +7,11 @@ import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { UpdateStudent } from "../../Api";
+import AvatarImageCropper from "react-avatar-image-cropper";
 import PhoneInput from "react-phone-number-input";
 const ProfileSettingMentee = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
-
+  const [imgmodal, setImgModal] = useState(false);
   const [first_name, setFirstName] = useState(userdata?.first_name);
   const [last_name, setLastName] = useState(userdata?.last_name);
   const [phone_number, setPhoneNumber] = useState(userdata?.phone_number);
@@ -37,19 +38,6 @@ const ProfileSettingMentee = () => {
   const [jobError, setJobError] = useState(false);
   const [experienceError, setExperienceError] = useState(false);
   const [targetError, setTargetError] = useState(false);
-  const handleImgChange = (e) => {
-    const selected = e.target.files[0];
-    const AllowedTypes = ["image/png", "image/jpg", "image/jpeg"];
-    if (selected && AllowedTypes.includes(selected.type)) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(selected);
-    } else {
-      console.log("file not");
-    }
-  };
   const updateprofile = (e) => {
     e.preventDefault();
     if (first_name == "" || first_name == undefined || first_name == null) {
@@ -128,8 +116,44 @@ const ProfileSettingMentee = () => {
     }
     // UpdateStudent(data, userdata?.id);
   };
+  const apply = (file) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    let src = window.URL.createObjectURL(file);
+    reader.readAsDataURL(file);
+  };
+  const handleImg = () => {
+    setImgModal(true);
+  };
+  useEffect(() => {
+    return () => {
+      setImgModal(false);
+    };
+  }, [image]);
   return (
     <div>
+      {imgmodal && (
+        <div className={`modalimg`} onClick={() => setImgModal(false)}>
+          <div
+            style={{
+              width: "250px",
+              height: "250px",
+              margin: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <AvatarImageCropper
+              text={"Rasm yuklash"}
+              setImgModal={setImgModal}
+              apply={apply}
+              isBack={true}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Breadcrumb */}
       <div className="breadcrumb-bar">
         <div className="container-fluid">
@@ -180,17 +204,14 @@ const ProfileSettingMentee = () => {
                               />
                             </div>
                             <div className="upload-img">
-                              <div className="change-photo-btn">
+                              <div
+                                className="change-photo-btn"
+                                onClick={handleImg}
+                              >
                                 <span>
                                   <i className="fa fa-upload" />
                                   Rasm yuklash
                                 </span>
-                                <input
-                                  type="file"
-                                  onChange={(e) => handleImgChange(e)}
-                                  accept="image/*"
-                                  className="upload"
-                                />
                               </div>
                               <small className="form-text text-muted">
                                 Format: JPG, GIF yoki PNG. Hajmi 2MB dan

@@ -5,6 +5,7 @@ import Mentee from "./Mentee";
 import Pages from "./Pages";
 import Blog from "./Blog";
 import About from "./About";
+import ReviewsGeneral from "./rewiseall/rewise";
 
 export default [
   {
@@ -30,5 +31,9 @@ export default [
   {
     path: "about",
     component: About,
+  },
+  {
+    path: "reviwes-all",
+    component: ReviewsGeneral,
   },
 ];

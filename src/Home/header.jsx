@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { withRouter, Link, useHistory, useLocation } from "react-router-dom";
 import { USER } from "../constant/imagepath_home";
 import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
-import { ClearData } from "../redux/Actions";
-import axios from "axios";
+import { logout } from "../Api/logout";
+import logoWhite from "./assets/img/logo-white.svg";
 const Header = (props) => {
   const role = localStorage.getItem("role");
-  const token = localStorage.getItem("token");
+
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
       if ($(this).parent().hasClass("has-submenu")) {
         e.preventDefault();
       }
       if (!$(this).hasClass("submenu")) {
-        $("ul", $(this).parents("ul:first")).slideUp(350);
+        $("ul", $(this).parents("ul:first")).slideUp(380);
         $("a", $(this).parents("ul:first")).removeClass("submenu");
         $(this).next("ul").slideDown(350);
         $(this).addClass("submenu");
@@ -28,37 +28,51 @@ const Header = (props) => {
       $("html").removeClass("menu-opened");
       $(".sidebar-overlay").removeClass("opened");
       $("main-wrapper").removeClass("slide-nav");
+      $("#has_menu_close").removeClass("active");
+    });
+    $(document).on("click", "#has_menu_close", function () {
+      $("html").removeClass("menu-opened");
+      $(".sidebar-overlay").removeClass("opened");
+      $("main-wrapper").removeClass("slide-nav");
+      $("#has_menu_close").removeClass("active");
     });
   }, []);
 
-  const logout = () => {
-    axios
-      .post("logout", token)
-      .then((res) => {
-        if (res.data.success) {
-          ClearData();
-          localStorage.clear();
-        } else {
-          alert("Texnik hatolik yuz berdi.");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Texnik hatolik yuz berdi.");
-      });
+  const userdata = useSelector((state) => state?.Reducer.userdata);
+  const location = useLocation();
+  const history = useHistory();
+  let pathname = location.pathname;
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
   };
 
-  const userdata = useSelector((state) => state?.Reducer.userdata);
-  const { location } = props;
-  let pathname = location.pathname;
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const headerSettings = useHistory().location.pathname;
+  console.log();
   return (
-    <header className="header">
-      <div className="header-fixed">
+    <header
+      className={` ${
+        headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"
+      }`}
+    >
+      <div className="has_menu_close" id="has_menu_close"></div>
+      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white" : ""}`}>
         <nav className="navbar navbar-expand-lg header-nav">
           <div className="navbar-header">
             <a id="mobile_btn" href="">
-              <span className="bar-icon">
+              <span
+                className={`bar-icon ${
+                  scrollPosition > 50 ? "text-white" : " text-primary"
+                } `}
+              >
                 <span />
                 <span />
                 <span />
@@ -66,7 +80,7 @@ const Header = (props) => {
             </a>
             <Link to="/app/home" className="navbar-brand logo">
               <img
-                src={AppLogo}
+                src={scrollPosition > 50 ? AppLogo : logoWhite}
                 className="img-fluid ms-4 logotipSize"
                 alt="Logo"
               />
@@ -83,15 +97,36 @@ const Header = (props) => {
             </div>
             <ul className="main-nav">
               <li className={pathname.includes("home") ? "active" : ""}>
-                <Link to="/app/home">Asosiy</Link>
+                <Link
+                  to="/app/home"
+                  className={`${
+                    scrollPosition > 50 ? "text-dark" : " text-white"
+                  }`}
+                >
+                  Asosiy
+                </Link>
+              </li>
+              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+                <Link
+                  to="/app/about"
+                  className={`${
+                    scrollPosition > 50 ? "text-dark" : " text-white"
+                  }`}
+                >
+                  Biz haqimizda
+                </Link>
+              </li>
+              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+                <Link
+                  to="/app/reviwes-all"
+                  className={`${
+                    scrollPosition > 50 ? "text-dark" : " text-white"
+                  }`}
+                >
+                  Fikrlar
+                </Link>
               </li>
 
-              <li className={pathname.includes("blog-grid") ? "active" : ""}>
-                <Link to="/app/about">Biz haqimizda</Link>
-              </li>
-              <li className={pathname.includes("blog-grid") ? "active" : ""}>
-                <Link to="/app/mentor/reviews-all">Fikrlar</Link>
-              </li>
               <li
                 className={
                   pathname.includes("blog-list") ||
@@ -101,7 +136,12 @@ const Header = (props) => {
                     : "has-submenu"
                 }
               >
-                <a href="">
+                <a
+                  href=""
+                  className={`${
+                    scrollPosition > 50 ? "text-dark" : " text-white"
+                  }`}
+                >
                   Blog <i className="fas fa-chevron-down" />
                 </a>
                 <ul className="submenu">
@@ -110,6 +150,7 @@ const Header = (props) => {
                   >
                     <Link to="/app/Blog/blog-list">Blog List</Link>
                   </li>
+
                   <li
                     className={pathname.includes("blog-grid") ? "active" : ""}
                   >
@@ -125,7 +166,7 @@ const Header = (props) => {
                 </ul>
               </li>
               <li className="login-link">
-                <Link to="/login">Login / Signup</Link>
+                <Link to="/login">Kirish / Kirish</Link>
               </li>
             </ul>
           </div>
@@ -158,9 +199,9 @@ const Header = (props) => {
                     </div>
                     <div className="user-text">
                       <h6>
-                        {userdata?.first_name} {userdata?.last_name}
+                        {userdata?.user?.first_name} {userdata?.user?.last_name}
                       </h6>
-                      <p className="text-muted mb-0">{userdata?.role}</p>
+                      <p className="text-muted mb-0">{userdata?.user?.role}</p>
                     </div>
                   </div>
                   <Link className="dropdown-item" to={`/app/${role}/dashboard`}>
@@ -172,13 +213,13 @@ const Header = (props) => {
                   >
                     Profile Settings
                   </Link>
-                  <Link
+                  <div
                     className="dropdown-item"
-                    to="/app/home"
-                    onClick={logout}
+                    to="#"
+                    onClick={() => logout(history)}
                   >
                     Logout
-                  </Link>
+                  </div>
                 </div>
               </li>
               {/* /User Menu */}
@@ -186,13 +227,18 @@ const Header = (props) => {
           ) : (
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
+                <Link
+                  className={`nav-link ${
+                    scrollPosition > 50 ? "text-primary" : " text-white"
+                  } `}
+                  to="/login"
+                >
+                  Kirish
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link header-login" to="/register">
-                  Register
+                <Link className="nav-link header-login " to="/register">
+                  <span> A'zo bo'lish</span>
                 </Link>
               </li>
             </ul>

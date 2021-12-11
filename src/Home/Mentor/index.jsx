@@ -22,47 +22,62 @@ import Appointments from "./appointments";
 import MentorProfile from "./mentorprofile";
 import StudentProfile from "./studentProfile";
 import MentorBooking from "./MentorBooking";
-import ReviewsAll from "./reviews all";
-import About from "../About";
 
 const Mentorroute = ({ match }) => {
   const role = localStorage.getItem("role");
+  console.log(role);
   return (
     <>
-      <Switch>
-        <Redirect exact from={`${match.url}/`} to={`${match.url}/dashboard`} />
-        <Route path={`${match.url}/dashboard`} component={MentorDashboard} />
-        <Route path={`${match.url}/bookings`} component={Bookings} />
-        <Route
-          path={`${match.url}/schedule-timings`}
-          component={ScheduleTiming}
-        />
-        <Route path={`${match.url}/mentee-list`} component={MenteeList} />
-        <Route path={`${match.url}/blog`} component={Blog} />
-        <Route path={`${match.url}/add-blog`} component={AddBlog} />
-        <Route path={`${match.url}/edit-blog`} component={EditBlog} />
-        <Route path={`${match.url}/chat`} component={Chat} />
-        <Route path={`${match.url}/invoices`} component={Invoice} />
-        <Route path={`${match.url}/invoice-view`} component={InvoiceView} />
-        <Route
-          path={`${match.url}/profile-settings`}
-          component={Profilesettings}
-        />
-        <Route path={`${match.url}/reviews`} component={Reviews} />
-        <Route
-          path={`${match.url}/mentor-register`}
-          component={MentorRegister}
-        />
-        <Route path={`${match.url}/appointments`} component={Appointments} />
-        <Route path={`${match.url}/mentor-profile`} component={MentorProfile} />
-        <Route path={`${match.url}/booking`} component={MentorBooking} />
-        <Route
-          path={`${match.url}/studentProfile`}
-          component={StudentProfile}
-        />
-        <Route path={`${match.url}/reviews-all`} component={ReviewsAll} />
-        <Redirect exact={true} from="*" to="/404" />
-      </Switch>
+      {role == "mentor" ? (
+        <Switch>
+          <Redirect
+            exact
+            from={`${match.url}/`}
+            to={`${match.url}/dashboard`}
+          />
+          <Route path={`${match.url}/dashboard`} component={MentorDashboard} />
+          <Route path={`${match.url}/bookings`} component={Bookings} />
+          <Route
+            path={`${match.url}/schedule-timings`}
+            component={ScheduleTiming}
+          />
+          <Route path={`${match.url}/mentee-list`} component={MenteeList} />
+          <Route path={`${match.url}/blog`} component={Blog} />
+          <Route path={`${match.url}/add-blog`} component={AddBlog} />
+          <Route path={`${match.url}/edit-blog`} component={EditBlog} />
+          <Route path={`${match.url}/chat`} component={Chat} />
+          <Route path={`${match.url}/invoices`} component={Invoice} />
+          <Route path={`${match.url}/invoice-view`} component={InvoiceView} />
+          <Route
+            path={`${match.url}/profile-settings`}
+            component={Profilesettings}
+          />
+          <Route path={`${match.url}/reviews`} component={Reviews} />
+          <Route
+            path={`${match.url}/mentor-register`}
+            component={MentorRegister}
+          />
+          <Route path={`${match.url}/appointments`} component={Appointments} />
+          <Route
+            path={`${match.url}/mentor-profile`}
+            component={MentorProfile}
+          />
+          <Route path={`${match.url}/booking`} component={MentorBooking} />
+          <Route
+            path={`${match.url}/studentProfile`}
+            component={StudentProfile}
+          />
+          <Route>
+            <Redirect to="/404" />
+          </Route>
+        </Switch>
+      ) : (
+        <Switch>
+          <Route>
+            <Redirect to="/404" />
+          </Route>
+        </Switch>
+      )}
     </>
   );
 };

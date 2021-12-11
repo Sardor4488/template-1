@@ -1,19 +1,18 @@
 import axios from "axios";
 import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("access_token");
 const role = localStorage.getItem("role");
-const url = role == "mentee" ? "student/get-student" : "teacher/teacher-me/2";
-const UserAuth = (setPath) => {
-  console.log(token);
+const id = localStorage.getItem("user_id");
+const url = role == "mentee" ? "student/get-student" : "teacher/teacher-me";
+console.log(token);
+const UserAuth = (setPath, history) => {
   if (token !== null) {
     LoadingOn();
     axios
-      .post(url, {})
+      .post(url + "/" + id, {})
       .then((res) => {
-        console.log(res.data);
-        // localStorage.setItem("role", res.data.user.role);
-        // UserData(res.data);
-        // setPath(`/app/${role}/dashboard`);
+        UserData(res.data);
+        setPath(`/app/${role}/dashboard`);
         LoadingOff();
       })
       .catch((err) => {
@@ -23,52 +22,24 @@ const UserAuth = (setPath) => {
         console.log(err.response.status);
         // console.log(err.response.headers);
         if (err.response.status == 401) {
-          // localStorage.clear();
-          // alert("Xavfsizlik yuzasidan login paro'lingizni qaytadan kiriting.");
           setPath("/login");
+          history.push("/login");
+        } else if (err.response.status == 403) {
+          history.push("/app/home");
+          setPath(`/register`);
+          localStorage.clear();
         } else if (err.response.status == 500) {
-          // alert("Serverda muammo bor.");
-          // localStorage.clear();
+          setPath(`/app/home`);
+          history.push("/app/home");
+          localStorage.clear();
         } else {
-          // localStorage.clear();
           setPath(`/app/home`);
         }
       });
   } else if (token == "" || token == null || token == undefined) {
     setPath("app/home");
-    // localStorage.clear();
     LoadingOff();
   }
 };
 
-const UpdateStudent = (data, id) => {
-  console.log(data);
-  axios
-    .put("student/update-student/" + id, data)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // UserData(res.data);
-};
-
-const UpdateTeacher = (data, id) => {
-  const config = {
-    headers: {
-      "Content-type": "multipart/form-data",
-      Authorization: "Bearer" + token,
-    },
-  };
-  axios
-    .post("teacher/update-teacher/2?_method=PUT", data, config)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // UserData(res.data);
-};
-export { UserAuth, UpdateStudent, UpdateTeacher };
+export { UserAuth };

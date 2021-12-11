@@ -12,7 +12,7 @@ const Reducer = (state = initialState, action) => {
     case t.LOADINGON:
       return { ...state, loading: true };
     case t.USERDATA:
-      return { ...state, userdata: action.payload, loading: false };
+      return { ...state, userdata: action.payload };
     case t.CLEARDATA:
       return { ...state, userdata: "" };
 

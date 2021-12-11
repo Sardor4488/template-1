@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-// import {registerMyTeacher} from "../../Api/index";
-import Loading from "../components/Loading/Loading";
+import { Link } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
-import axios from "axios";
-import * as t from "../../redux/types";
-import { dispatch } from "../../redux/store";
-import { UserData, LoadingOn, LoadingOff } from "../../redux/Actions";
+import { register } from "../../Api/register";
 
 const Register = (props) => {
   const { history } = props;
-  const [loading, setLoading] = useState(false);
   const [registerPhoneNumber, setRegisterPhonePnumber] = useState("");
   const [url, setUrl] = useState("create-student");
-  const [error, setError] = useState(false);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -22,23 +15,6 @@ const Register = (props) => {
     password_confirmation: "",
     offert: 0,
   });
-
-  console.log(registerPhoneNumber?.length);
-
-  // const RegisterStudent = (e) => {
-  //   e.preventDefault();
-  //   let data = {
-  //     first_name: register.firstname,
-  //     last_name: register.lastname,
-  //     email: register.email,
-  //     phone_number: registerPhoneNumber,
-  //     password: register.password,
-  //     password_confirmation: register.password_confirmation,
-  //     offert: register.offert,
-  //   };
-  //     registerMyTeacher(url, data);
-  // };
-  console.log(url);
   const offerta = () => {
     if (data.offert === 0) {
       setData({ ...data, offert: 1 });
@@ -47,6 +23,7 @@ const Register = (props) => {
     }
   };
   const registerMyTeacher = (e) => {
+    e.preventDefault();
     let regdata = {
       first_name: data.firstname,
       last_name: data.lastname,
@@ -56,39 +33,7 @@ const Register = (props) => {
       password_confirmation: data.password_confirmation,
       offert: data.offert,
     };
-    console.log(data);
-    e.preventDefault();
-    if (
-      regdata.password.length < 8 &&
-      regdata.password_confirmation.length < 8
-    ) {
-      alert("Parolingiz uzunligi 8 ta belgidan kam bo'lmasligi lozim.");
-    } else if (regdata.password !== data.password_confirmation) {
-      alert("Parrollaringiz bir biriga mos kelmayabdi");
-    } else if (regdata.phone_number?.length > 13) {
-      console.log(regdata.phone_number.length);
-      alert("Telefon raqamingiz 13 ta belgidan oshib ketdi.");
-    } else {
-      LoadingOn();
-      axios
-        .post(url, regdata)
-        .then((res) => {
-          localStorage.setItem("token", res.data.access_token);
-          localStorage.setItem("role", res.data.user_data.role);
-          console.log(res);
-          UserData(res.data.user_data);
-          history.push(`app/${res.data.user_data.role}/dashboard`);
-          LoadingOff();
-        })
-        .catch((err) => {
-          // console.log(response.status);
-          // console.log(response.message);
-          // console.log(response.headers);
-          console.log(err);
-          localStorage.clear();
-          LoadingOff();
-        });
-    }
+    register(regdata, history, url);
   };
 
   return (

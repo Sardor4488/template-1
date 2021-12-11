@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { useSelector } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
-// import { logout } from "../../Api/logout";
+import { withRouter, Link, useHistory } from "react-router-dom";
+import { logout } from "../../Api/logout";
 const Sidebar = (props) => {
-  const data = useSelector((state) => state.Reducer.userdata);
+  const history = useHistory();
+  const userdata = useSelector((state) => state.Reducer.userdata);
   const { location } = props;
   let pathname = location.pathname;
   return (
@@ -20,7 +21,7 @@ const Sidebar = (props) => {
           </div> */}
           <div className="user-info-cont">
             <h4 className="usr-name">
-              {data?.first_name} {data?.last_name}
+              {userdata?.user?.first_name} {userdata?.user?.last_name}
             </h4>
             <p className="mentor-type"> Fan nomi</p>
           </div>
@@ -155,13 +156,13 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to={"#"}>
+              <div onClick={() => logout(history)}>
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
-              </Link>
+              </div>
             </li>
           </ul>
         </div>

@@ -6,34 +6,35 @@ import { Link } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import { useSelector } from "react-redux";
 import { getCourses } from "../../Api/getApi";
-import { UpdateTeacher } from "../../Api";
+import { UpdateTeacher } from "../../Api/updateApi";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import AvatarImageCropper from "react-avatar-image-cropper";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
   const [coursesData, setCoursesData] = useState([]);
-  const [email, setEmail] = useState(userdata?.email);
-  const [first_name, setFirstName] = useState(userdata?.first_name);
-  const [last_name, setLastName] = useState(userdata?.last_name);
-  const [phone_number, setPhoneNumber] = useState(userdata?.phone_number);
+  const [email, setEmail] = useState(userdata?.user?.email);
+  const [first_name, setFirstName] = useState(userdata?.user?.first_name);
+  const [last_name, setLastName] = useState(userdata?.user?.last_name);
+  const [phone_number, setPhoneNumber] = useState(userdata?.user?.phone_number);
   const [telegram_number, setTelegramNumber] = useState(
-    userdata?.telegram_number
+    userdata?.user?.telegram_number
   );
   const [course_id, setCourseId] = useState();
   const [price, setPrice] = useState(10000);
-  const [description, setDescription] = useState(userdata?.descripton);
+  const [description, setDescription] = useState(userdata?.user?.descripton);
   const [experience, setExperience] = useState(
-    userdata?.experience ? userdata?.experience : "1-3"
+    userdata?.user?.experience ? userdata?.user?.experience : "1-3"
   );
-  const [birth_date, setBirthDate] = useState(userdata?.birth_date);
+  const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
   const [language, setLanguage] = useState(
     userdata.languages ? userdata.languages : []
   );
-  const [country, setCountry] = useState(userdata?.country);
-  const [region, setRegion] = useState(userdata?.region);
-  const [image, setImage] = useState(userdata?.image);
-  const [resume, setResume] = useState(userdata?.resume);
+  const [country, setCountry] = useState(userdata?.user?.country);
+  const [region, setRegion] = useState(userdata?.user?.region);
+  const [image, setImage] = useState(userdata?.user?.image);
+  const [imagePreview, setImagePreview] = useState("");
+  const [resume, setResume] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
   const [emailError, setEmailError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);
@@ -44,22 +45,26 @@ const ProfileSettings = () => {
   const [priceError, setPriceError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
   const [experienceError, setExperienceError] = useState(false);
-  const [birthDataError, setBirthDataError] = useState(false);
+  const [birthDateError, setBirthDateError] = useState(false);
   const [languagesError, setLanguagesError] = useState(false);
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
+
+  // const base64ToFile = async (src) => {
+  //   const blob = await fetch(src).then((res) => res.blob());
+  //   console.log(blob);
+  //   console.log('ishladi')
+  // };
   const apply = (file) => {
-    console.log(file);
+    setImage(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result);
+      setImagePreview(reader.result);
+      // base64ToFile(reader.result);
     };
-    let src = window.URL.createObjectURL(file);
-    console.log(src);
     reader.readAsDataURL(file);
   };
-  var base64Icon = "data:image/png;base64,result";
   const handleLanguageDelete = (p) => {
     const languages = [...language];
     const filterData = languages.filter((v) => v !== p);
@@ -71,11 +76,73 @@ const ProfileSettings = () => {
       languages.push(e.target.value);
     setLanguage(languages);
   };
-  // const handleResumeChange = (e) => {
-  //   setResume(e.target.files[0]);
-  // };
-
   const updateTeacher = (e) => {
+    //  const array = [
+    //    email,
+    //    first_name,
+    //    last_name,
+    //    phone_number,
+    //    telegram_number,
+    //    course_id,
+    //    price,
+    //    description,
+    //    experience,
+    //    birth_date,
+    //    language,
+    //    country,
+    //    region,
+    //    resume,
+    //  ];
+    //  const arrayError = [
+    //    setEmailError,
+    //    setFirstNameError,
+    //    setLastNameError,
+    //    setPhoneNumberError,
+    //    setTelegramNumberError,
+    //    setCourseIdError,
+    //    setPriceError,
+    //    setDescriptionError,
+    //    setExperienceError,
+    //    setBirthDateError,
+    //    setLanguageError,
+    //    setCountryError,
+    //    setRegionError,
+    //    setResumeError,
+    //  ];
+    //  for (let i = 0; i < array.length; i++) {
+    //    if (array[i] == null || array[i] == undefined || array[i] == "") {
+    //      arrayError[i](true);
+    //      setAllTrue(false);
+    //    } else if (
+    //      array[i] !== null ||
+    //      array[i] !== undefined ||
+    //      array[i] !== ""
+    //    ) {
+    //      arrayError[i](false);
+    //      setAllTrue(true);
+    //    }
+    //  }
+    //  if (allTrue) {
+    //    let data = {
+    //      email,
+    //      first_name,
+    //      last_name,
+    //      phone_number,
+    //      telegram_number,
+    //      image,
+    //      course_id,
+    //      price,
+    //      description,
+    //      experience,
+    //      language,
+    //      country,
+    //      region,
+    //      resume,
+    //      birth_date,
+    //      offert_price,
+    //    };
+    //    UpdateTeacher(data);
+    //  }
     e.preventDefault();
     if (email == "" || email == undefined || email == null) {
       setEmailError(true);
@@ -131,9 +198,9 @@ const ProfileSettings = () => {
       setExperienceError(false);
     }
     if (birth_date == "" || birth_date == undefined || birth_date == null) {
-      setBirthDataError(true);
+      setBirthDateError(true);
     } else {
-      setBirthDataError(false);
+      setBirthDateError(false);
     }
     if (language == "" || language == undefined || language == null) {
       setLanguagesError(true);
@@ -161,7 +228,7 @@ const ProfileSettings = () => {
       setPriceError(false);
       setDescriptionError(false);
       setExperienceError(false);
-      setBirthDataError(false);
+      setBirthDateError(false);
       setLanguagesError(false);
       setCountryError(false);
       setRegionError(false);
@@ -186,7 +253,7 @@ const ProfileSettings = () => {
       };
 
       UpdateTeacher(data);
-      // console.log(data);
+      console.log(data);
     }
   };
   useEffect(() => {
@@ -211,11 +278,12 @@ const ProfileSettings = () => {
     return () => {
       setImgModal(false);
     };
-  }, [image]);
+  }, [image, userdata]);
+  console.log(userdata);
   return (
     <div>
       {imgmodal && (
-        <div className={`modalimg d-flex `} onClick={() => setImgModal(false)}>
+        <div className={`modalimg`} onClick={() => setImgModal(false)}>
           <div
             style={{
               width: "250px",
@@ -225,6 +293,7 @@ const ProfileSettings = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <AvatarImageCropper
+              text={"Rasm yuklash"}
               setImgModal={setImgModal}
               apply={apply}
               isBack={true}
@@ -278,7 +347,11 @@ const ProfileSettings = () => {
                           <div className="change-avatar">
                             <div className="profile-img">
                               <img
-                                src={image ? image : USER}
+                                src={
+                                  image == String
+                                    ? image
+                                    : (imagePreview && imagePreview) || USER
+                                }
                                 alt="User Image"
                               />
                             </div>
@@ -342,7 +415,7 @@ const ProfileSettings = () => {
                             onChange={(e) => setBirthDate(e.target.value)}
                             className="form-control "
                           />
-                          {birthDataError && (
+                          {birthDateError && (
                             <p className="text-danger mt-2">
                               {" "}
                               Bu joyni to'ldirish shart!

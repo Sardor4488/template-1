@@ -14,8 +14,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const authData = useSelector((state) => state.Reducer.author);
-  console.log(authData);
+  const userdata = useSelector((state) => state.Reducer.userdata);
+  console.log(userdata);
   return (
     <div>
       <div className="breadcrumb-bar">
@@ -57,7 +57,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="dash-widget-info">
-                      <h3>23</h3>
+                      <h3>{userdata?.mystudent_count}</h3>
                       <h6>O'quvchi </h6>
                     </div>
                   </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 
 import HomeLayout from "./Home/homelayout.jsx";
 import Login from "./Home/Authentication/login";
@@ -15,15 +15,15 @@ import Loading from "./Home/components/Loading/Loading.js";
 import { useSelector } from "react-redux";
 import { LoadingOff, LoadingOn } from "./redux/Actions.js";
 import { UserAuth } from "./Api/index.js";
-import About from "./Home/About/index.jsx";
 import Page404 from "./Home/components/Page404/page404.js";
 const AppUniversal = (props) => {
   const { location } = props;
+  const history = useHistory();
   const [path, setPath] = useState("");
 
   useEffect(() => {
     LoadingOff();
-    UserAuth(setPath);
+    UserAuth(setPath, history);
     if (
       location.pathname.includes("login") ||
       location.pathname.includes("register") ||
@@ -53,7 +53,7 @@ const AppUniversal = (props) => {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/forgot-password" component={Forgotpassword} />
-      
+
           <Route path="/admin_login" component={AdminLogin} />
           <Route path="/admin_register" component={AdminRegister} />
           <Route
@@ -64,7 +64,10 @@ const AppUniversal = (props) => {
           <Route exact path="/">
             <Redirect to={path} />
           </Route>
-          <Route exact path="/404" component={Page404} />
+          <Route path={"/404"} component={Page404} />
+          <Route>
+            <Redirect to={"/404"} />
+          </Route>
         </Switch>
       )}
     </>

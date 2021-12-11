@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
-
+import { withRouter, useHistory, Link } from "react-router-dom";
+import { logout } from "../../Api/logout";
 const Sidebar = (props) => {
+  const history = useHistory();
   const { location } = props;
   let pathname = location.pathname;
-  const data = useSelector((state) => state.Reducer.userdata);
+  const userdata = useSelector((state) => state.Reducer.userdata);
   return (
     <>
       <div className="profile-sidebar profile-sidebar-md-none">
@@ -21,7 +21,7 @@ const Sidebar = (props) => {
           </div>
           <div className="user-info-cont">
             <h4 className="usr-name">
-              {data?.first_name} {data?.last_name}
+              {userdata?.user?.first_name} {userdata?.user?.last_name}
             </h4>
             <p className="mentor-type">English (M.A)</p>
           </div>
@@ -50,9 +50,7 @@ const Sidebar = (props) => {
             <li>
               <Link
                 to="/app/mentor/bookings"
-                className={
-                  pathname.includes("mentor/bookings") ? "active" : ""
-                }
+                className={pathname.includes("mentor/bookings") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
                 Sinov darslarim{" "}
@@ -148,13 +146,13 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <Link to="/app/home">
+              <div onClick={() => logout(history)}>
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
-              </Link>
+              </div>
             </li>
           </ul>
         </div>
