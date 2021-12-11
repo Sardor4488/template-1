@@ -1,13 +1,31 @@
 import React from "react";
-import { USER } from "../../constant/imagepath_home";
+import { USER, USER_3 } from "../../constant/imagepath_home";
 const ReviewsGeneral = () => {
   return (
     <section>
+      <div class="breadcrumb-bar">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+              <nav aria-label="breadcrumb" class="page-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/app/index">My Teacher</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Fikrlar
+                  </li>
+                </ol>
+              </nav>
+              <h2 class="breadcrumb-title">Fikrlar</h2>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="content">
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
-            <div className="col-md-5 col-lg-4 col-xl-3"></div>
-            <div className="col-md-7 col-lg-8 col-xl-9">
+            <div className="col-md-12">
               <div className="doc-review review-listing">
                 {/* Review Listing */}
                 <ul className="comments-list">

@@ -14,7 +14,7 @@ import LockScreen from "./Admin/MainPage/Pages/Authentication/lockscreen";
 import Loading from "./Home/components/Loading/Loading.js";
 import { useSelector } from "react-redux";
 import { LoadingOff, LoadingOn } from "./redux/Actions.js";
-import { UserAuth } from "./Api/index.js";
+// import { UserAuth } from "./Api/index.js";
 import Page404 from "./Home/components/Page404/page404.js";
 const AppUniversal = (props) => {
   const { location } = props;
@@ -23,7 +23,7 @@ const AppUniversal = (props) => {
 
   useEffect(() => {
     LoadingOff();
-    UserAuth(setPath, history);
+    // UserAuth(setPath, history);
     if (
       location.pathname.includes("login") ||
       location.pathname.includes("register") ||
