@@ -3,21 +3,21 @@ import { USER, USER_3 } from "../../constant/imagepath_home";
 const ReviewsGeneral = () => {
   return (
     <section>
-      <div class="breadcrumb-bar">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-md-12 col-12">
-              <nav aria-label="breadcrumb" class="page-breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
+      <div className="breadcrumb-bar">
+        <div className="container-fluid">
+          <div className="row align-items-center">
+            <div className="col-md-12 col-12">
+              <nav aria-label="breadcrumb" className="page-breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
                     <a href="/app/index">My Teacher</a>
                   </li>
-                  <li class="breadcrumb-item active" aria-current="page">
+                  <li className="breadcrumb-item active" aria-current="page">
                     Fikrlar
                   </li>
                 </ol>
               </nav>
-              <h2 class="breadcrumb-title">Fikrlar</h2>
+              <h2 className="breadcrumb-title">Fikrlar</h2>
             </div>
           </div>
         </div>

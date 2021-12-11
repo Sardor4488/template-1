@@ -59,23 +59,19 @@ const Header = (props) => {
   console.log();
   return (
     <header
-      className={` ${
-        headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"
-      }`}
+      className={` ${ headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}
     >
-      <div className="has_menu_close" id="has_menu_close"></div>
+      <div className="has_menu_close " id="has_menu_close"></div>
       <div
-        className={`header-fixed ${
-          scrollPosition > 50 ? "bg-white shadow" : ""
-        }`}
+        className={`header-fixed ${ scrollPosition > 50 ? "bg-white shadow" : ""} ${pathname.includes("/app/about") ? "bg-white text-dark shadow" : ""}`}
       >
-        <nav className="navbar navbar-expand-lg header-nav">
+        <nav className={`navbar navbar-expand-lg header-nav ${pathname.includes("/app/home") ? "  bg-transparent " : ""}`}>
           <div className="navbar-header">
             <a id="mobile_btn" href="">
               <span
                 className={`bar-icon ${
                   scrollPosition > 50 ? "text-white" : " text-primary"
-                } `}
+                }`}
               >
                 <span />
                 <span />
@@ -101,20 +97,18 @@ const Header = (props) => {
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname.includes("/app/home") ? "active" : ""}>
+              <li className={pathname.includes("/app/home") ? "active" : "" }>
                 <Link
                   to="/app/home"
-                  className={`${
-                    scrollPosition > 50 ? "text-dark" : " text-white"
-                  }`}
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : " text-dark"}  ${scrollPosition > 50 ? "text-dark" : " text-white"  }`}
                 >
                   Asosiy
                 </Link>
               </li>
-              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+              <li className={`pathname.includes("/app/about") ? "active" : ""   `}>
                 <Link
                   to="/app/about"
-                  className={`${
+                  className={` ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -124,7 +118,7 @@ const Header = (props) => {
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
                   to="/app/reviwes-all"
-                  className={`${
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -143,7 +137,7 @@ const Header = (props) => {
               >
                 <a
                   href=""
-                  className={`${
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
