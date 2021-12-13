@@ -8705,5 +8705,8 @@ PhoneInput {
     }
   }
 @media only screen and (max-width: 769px) {
- 
+ .section-search{
+   padding-bottom: 90px !important;
+   
+ }
 }
