@@ -146,17 +146,17 @@ const Home = (props) => {
                     wrapper="div"
                     steps={[
                       "Ingiliz tili",
-                      2000,
+                      3000,
                       "Rus tili",
-                      2000,
+                      3000,
                       "Nemis tili",
-                      2000,
+                      3000,
                       "Koreys tili",
-                      2000,
+                      3000,
                       "Yapon tili",
-                      2000,
+                      3000,
                       "Xitoy tili",
-                      2000,
+                      3000,
                     ]}
                   />
                   <div className="inner__text">kurslari</div>
@@ -196,7 +196,6 @@ const Home = (props) => {
                       </Link>
                     </div>
                   </div>
-                
                 </div>
                 <div className="col-6 col-sm-4 col-md-4 col-lg-3 mb-3 d-flex justify-content-center align-items-center">
                   <div className="home_content">
@@ -366,7 +365,17 @@ const Home = (props) => {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
          
+=======
+          <div
+            className={`text-center w-100 container-animation ${
+              scrollPosition > 50 ? "d-none" : ""
+            } `}
+          >
+            <i className="fas fa-long-arrow-alt-down text-primary "></i>
+          </div>
+>>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
         </div>
       </section>
       {/* /Home Banner */}
@@ -819,12 +828,15 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+<<<<<<< HEAD
           <div className={` d-none container-up ${ scrollPosition > 50 ? "d-flex" : ""}`}>
          <a href="section-search">
          <i class="fas fa-long-arrow-alt-up h1 text-primary "></i>
          </a>
             
            </div>                
+=======
+>>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
     </div>
   );
 };

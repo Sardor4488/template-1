@@ -12,21 +12,25 @@ import PhoneInput from "react-phone-number-input";
 const ProfileSettingMentee = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
-  const [first_name, setFirstName] = useState(userdata?.first_name);
-  const [last_name, setLastName] = useState(userdata?.last_name);
-  const [phone_number, setPhoneNumber] = useState(userdata?.phone_number);
-  const [email, setEmail] = useState(userdata?.email);
-  const [telegram, setTelegram] = useState(userdata?.telegram_accaunt);
-  const [birth_date, setBirthDate] = useState(userdata?.birth_date);
-  const [region, setRegion] = useState(userdata?.region);
-  const [country, setCountry] = useState(userdata?.country);
-  const [image, setImage] = useState(userdata?.image);
-  const [job, setJob] = useState(userdata?.job ? userdata?.job : "Talaba");
-  const [experience, setExperience] = useState(
-    userdata?.currentLevel ? userdata?.currentLevel : "Boshlang'ich"
+  const [first_name, setFirstName] = useState(userdata?.user?.first_name);
+  const [last_name, setLastName] = useState(userdata?.user?.last_name);
+  const [phone_number, setPhoneNumber] = useState(userdata?.user?.phone_number);
+  const [email, setEmail] = useState(userdata?.user?.email);
+  const [telegram, setTelegram] = useState(userdata?.user?.telegram_accaunt);
+  const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
+  const [region, setRegion] = useState(userdata?.user?.region);
+  const [country, setCountry] = useState(userdata?.user?.country);
+  const [image, setImage] = useState(userdata?.user?.image);
+  const [imagePreview, setImagePreview] = useState("");
+  const [job, setJob] = useState(
+    userdata?.user?.job ? userdata?.user?.job : "Talaba"
   );
-  const [target, setTarget] = useState(userdata?.target);
+  const [experience, setExperience] = useState(
+    userdata?.user?.currentLevel ? userdata?.user?.currentLevel : "Boshlang'ich"
+  );
+  const [target, setTarget] = useState(userdata?.user?.target);
   // ERROR data
+  const id = localStorage.getItem("user_id");
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [phoneNumberError, setPhoneNumberError] = useState(false);
@@ -114,14 +118,16 @@ const ProfileSettingMentee = () => {
       };
       console.log(data);
     }
-    // UpdateStudent(data, userdata?.id);
+    // UpdateStudent(data, id);
   };
+
   const apply = (file) => {
+    setImage(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result);
+      setImagePreview(reader.result);
+      // base64ToFile(reader.result);
     };
-    let src = window.URL.createObjectURL(file);
     reader.readAsDataURL(file);
   };
   const handleImg = () => {
@@ -199,7 +205,13 @@ const ProfileSettingMentee = () => {
                           <div className="change-avatar">
                             <div className="profile-img">
                               <img
-                                src={image ? image : USER}
+                                src={
+                                  imagePreview
+                                    ? imagePreview
+                                    : image
+                                    ? `https://teach-api.uz/teach-api/public/storage/${image}`
+                                    : USER
+                                }
                                 alt="User Image"
                               />
                             </div>

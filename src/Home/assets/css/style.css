@@ -6747,6 +6747,13 @@ html.menu-opened body {
   align-items: center;
   margin: 0 auto 15px;
 }
+.pro-avatar-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+}
 .form-control-label {
   color: #262626;
 }
@@ -7814,6 +7821,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: 80px;
     height: 80px;
   }
+  .pro-avatar-image {
+    width: 80px;
+    height: 80px;
+  }
   .chat-window .chat-scroll .user-name,
   .pro-content .title {
     font-size: 15px;
@@ -8659,7 +8670,6 @@ PhoneInput {
   visibility: visible;
 }
 
-
 .accordion_menu {
   width: 100%;
 }
@@ -8684,9 +8694,11 @@ PhoneInput {
 .accordion_menu .accordion_active {
   max-height: 1000px !important;
 }
-.container-animation{
+
+.container-animation {
   position: relative;
 }
+<<<<<<< HEAD
  .fa-long-arrow-alt-down {
  font-size: 35px;
  animation-name: down;
@@ -8717,10 +8729,25 @@ PhoneInput {
     100%{
       top:10px;
     }
+=======
+.fa-long-arrow-alt-down {
+  font-size: 45px;
+  animation-name: down;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  position: absolute;
+}
+@keyframes down {
+  0% {
+    top: -25px;
   }
+  100% {
+    top: 10px;
+>>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
+  }
+}
 @media only screen and (max-width: 769px) {
- .section-search{
-   padding-bottom: 90px !important;
-   
- }
+  .section-search {
+    padding-bottom: 90px !important;
+  }
 }

@@ -11,7 +11,19 @@ const Sidebar = (props) => {
     <>
       <div className="profile-sidebar profile-sidebar-md-none">
         <div className="user-widget">
-          <div className="pro-avatar">JD</div>
+          {userdata?.user?.image ? (
+            <img
+              className="pro-avatar-image"
+              src={`https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`}
+              alt="user_image"
+            />
+          ) : (
+            <div className="pro-avatar">
+              {userdata?.user?.first_name.slice(0, 1)}
+              {userdata?.user?.last_name.slice(0, 1)}
+            </div>
+          )}
+
           <div className="rating">
             <i className="fas fa-star filled" />
             <i className="fas fa-star filled" />
@@ -146,13 +158,13 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <div onClick={() => logout(history)}>
+              <Link to="#" onClick={() => logout(history)}>
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
-              </div>
+              </Link>
             </li>
           </ul>
         </div>

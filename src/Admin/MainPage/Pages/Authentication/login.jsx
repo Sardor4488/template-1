@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Logo_White } from "../../../imagepath";
-import { withRouter } from "react-router-dom";
+giimport { withRouter } from "react-router-dom";
 
 const Login = (props) => {
   return (

@@ -156,13 +156,13 @@ const Sidebar = (props) => {
               </Link>
             </li>
             <li>
-              <div onClick={() => logout(history)}>
+              <Link to="#" onClick={() => logout(history)}>
                 <i className="fas fa-sign-out-alt" />
                 Chiqish{" "}
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>
-              </div>
+              </Link>
             </li>
           </ul>
         </div>

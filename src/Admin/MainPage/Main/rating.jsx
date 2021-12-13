@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactStars from "react-rating-stars-component";
-import  {  useEffect } from 'react';
 
 
 const Ratings = (props) => {
