@@ -8688,12 +8688,26 @@ PhoneInput {
   position: relative;
 }
  .fa-long-arrow-alt-down {
- font-size: 45px;
+ font-size: 35px;
  animation-name: down;
  animation-duration: 2s;
  animation-iteration-count: infinite;
  position: absolute;
  
+
+  }
+  .container-up{
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    z-index: 2000;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    object-fit: cover;
 
   }
   @keyframes down {
