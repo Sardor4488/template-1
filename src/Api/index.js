@@ -12,6 +12,7 @@ const UserAuth = (setPath, history) => {
       .post(url + "/" + id, {})
       .then((res) => {
         UserData(res.data);
+        console.log(res);
         setPath(`/app/${role}/dashboard`);
         LoadingOff();
       })

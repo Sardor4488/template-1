@@ -6747,6 +6747,13 @@ html.menu-opened body {
   align-items: center;
   margin: 0 auto 15px;
 }
+.pro-avatar-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+}
 .form-control-label {
   color: #262626;
 }
@@ -7811,6 +7818,10 @@ div.dataTables_wrapper div.dataTables_filter input {
   }
   .pro-avatar {
     font-size: 24px;
+    width: 80px;
+    height: 80px;
+  }
+  .pro-avatar-image {
     width: 80px;
     height: 80px;
   }

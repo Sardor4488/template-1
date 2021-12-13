@@ -7,8 +7,7 @@ const login = (data, history) => {
     .post("login", data)
     .then((res) => {
       UserData(res.data);
-      console.log(res);
-      localStorage.setItem("access_token", res.data.access_token);
+      localStorage.setItem("access_token", res.data.token);
       localStorage.setItem("role", res.data.user.role);
       localStorage.setItem("user_id", res.data.user.id);
       history.push(`app/${res.data.user.role}/dashboard`);

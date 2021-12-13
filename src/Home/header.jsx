@@ -182,7 +182,11 @@ const Header = (props) => {
                   <span className="user-img">
                     <img
                       className="rounded-circle"
-                      src={USER}
+                      src={
+                        userdata.user.image
+                          ? `https://teach-api.uz/teach-api/public/storage/${userdata.user.image}`
+                          : USER
+                      }
                       width={31}
                       alt="Darren Elder"
                     />
