@@ -818,12 +818,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
-          <div className={` d-none container-up ${ scrollPosition > 50 ? "d-flex" : ""}`}>
-         <a href="section-search">
-         <i class="fas fa-long-arrow-alt-up h1 text-primary "></i>
-         </a>
-            
-           </div>                
+                        
     </div>
   );
 };
