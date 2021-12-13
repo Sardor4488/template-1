@@ -8698,7 +8698,6 @@ PhoneInput {
 .container-animation {
   position: relative;
 }
-<<<<<<< HEAD
  .fa-long-arrow-alt-down {
  font-size: 35px;
  animation-name: down;
@@ -8722,32 +8721,5 @@ PhoneInput {
     object-fit: cover;
 
   }
-  @keyframes down {
-    0%{
-      top: -25px;
-    }
-    100%{
-      top:10px;
-    }
-=======
-.fa-long-arrow-alt-down {
-  font-size: 45px;
-  animation-name: down;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  position: absolute;
-}
-@keyframes down {
-  0% {
-    top: -25px;
-  }
-  100% {
-    top: 10px;
->>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
-  }
-}
-@media only screen and (max-width: 769px) {
-  .section-search {
-    padding-bottom: 90px !important;
-  }
-}
+ 
+ 

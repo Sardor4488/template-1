@@ -365,17 +365,7 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
          
-=======
-          <div
-            className={`text-center w-100 container-animation ${
-              scrollPosition > 50 ? "d-none" : ""
-            } `}
-          >
-            <i className="fas fa-long-arrow-alt-down text-primary "></i>
-          </div>
->>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
         </div>
       </section>
       {/* /Home Banner */}
@@ -828,15 +818,12 @@ const Home = (props) => {
           </div>
         </div>
       </section>
-<<<<<<< HEAD
           <div className={` d-none container-up ${ scrollPosition > 50 ? "d-flex" : ""}`}>
          <a href="section-search">
          <i class="fas fa-long-arrow-alt-up h1 text-primary "></i>
          </a>
             
            </div>                
-=======
->>>>>>> 6dafce7055298e0d2a98df5b1b782cab1ecbfff7
     </div>
   );
 };
