@@ -134,7 +134,7 @@ const Home = (props) => {
   console.log(categories);
   return (
     <div>
-      <section className="section section-search ">
+      <section id="section-search" className="section section-search ">
         <div className="container">
           <div className="banner-wrapper m-auto text-center">
             <div className="banner-header">
@@ -365,13 +365,7 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-          <div
-            className={`text-center w-100 container-animation ${
-              scrollPosition > 50 ? "d-none" : ""
-            } `}
-          >
-            <i className="fas fa-long-arrow-alt-down text-primary "></i>
-          </div>
+         
         </div>
       </section>
       {/* /Home Banner */}
@@ -824,6 +818,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+                        
     </div>
   );
 };
