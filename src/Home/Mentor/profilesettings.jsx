@@ -11,7 +11,7 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import AvatarImageCropper from "react-avatar-image-cropper";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
-  const [update, setUpdate] = useState(false);
+  // const [update, setUpdate] = useState(false);
   const [imgmodal, setImgModal] = useState(false);
   const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.user?.email);
@@ -232,27 +232,29 @@ const ProfileSettings = () => {
       setCountryError(false);
       setRegionError(false);
       setResumeError(false);
-      let data = {
-        email,
-        first_name,
-        last_name,
-        phone_number,
-        telegram_number,
-        image,
-        course_id,
-        price,
-        description,
-        experience,
-        language,
-        country,
-        region,
-        resume,
-        birth_date,
-        offert_price,
-      };
 
-      UpdateTeacher(data, id);
-      console.log(data);
+      const fd = new FormData();
+
+      fd.append("email", email);
+      fd.append("first_name", first_name);
+      fd.append("last_name", last_name);
+      fd.append("phone_number", phone_number);
+      fd.append("telegram_number", telegram_number);
+      fd.append("course_id", course_id);
+      fd.append("price", price);
+      fd.append("description", description);
+      fd.append("image", image);
+      fd.append("experience",  experience);
+      fd.append("language", language);
+      fd.append("country",  country);
+      fd.append("region", region);
+      fd.append("resume", resume);
+      fd.append("birth_date", birth_date);
+      fd.append("offert_price", offert_price);
+   
+
+      UpdateTeacher(fd, id);
+      console.log(fd);
     }
   };
   useEffect(() => {

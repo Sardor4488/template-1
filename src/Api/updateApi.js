@@ -16,24 +16,7 @@ const UpdateStudent = (data, id) => {
 };
 
 const UpdateTeacher = (data, id) => {
-  const fd = new FormData();
   if (data) {
-    fd.append("email", data.email);
-    fd.append("first_name", data.first_name);
-    fd.append("last_name", data.last_name);
-    fd.append("phone_number", data.phone_number);
-    fd.append("telegram_number", data.telegram_number);
-    fd.append("course_id", data.course_id);
-    fd.append("price", data.price);
-    fd.append("description", data.description);
-    fd.append("image", data.image);
-    fd.append("experience", data.experience);
-    fd.append("language", data.language);
-    fd.append("country", data.country);
-    fd.append("region", data.region);
-    fd.append("resume", data.resume);
-    fd.append("birth_date", data.birth_date);
-    fd.append("offert_price", data.offert_price);
     const config = {
       headers: {
         Authorization: "Bearer" + " " + token,
@@ -42,7 +25,7 @@ const UpdateTeacher = (data, id) => {
     };
     console.log(data);
     axios
-      .post(`teacher/update-teacher/${id}?_method=PUT`, fd, config)
+      .post(`teacher/update-teacher/${id}?_method=PUT`, data, config)
       .then((res) => {
         console.log(res);
       })

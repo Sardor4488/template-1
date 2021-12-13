@@ -5,6 +5,7 @@ const role = localStorage.getItem("role");
 const id = localStorage.getItem("user_id");
 const url = role == "mentee" ? "student/get-student" : "teacher/teacher-me";
 console.log(token);
+
 const UserAuth = (setPath, history) => {
   if (token !== null) {
     LoadingOn();
@@ -19,9 +20,7 @@ const UserAuth = (setPath, history) => {
       .catch((err) => {
         LoadingOff();
         console.log(err);
-        // console.log(err.response.data);
         console.log(err.response.status);
-        // console.log(err.response.headers);
         if (err.response.status == 401) {
           setPath("/login");
           history.push("/login");

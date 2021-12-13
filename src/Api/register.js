@@ -7,7 +7,6 @@ const register = (data, history, url) => {
   } else if (data.password !== data.password_confirmation) {
     alert("Parrollaringiz bir biriga mos kelmayabdi");
   } else if (data.phone_number?.length > 13) {
-    console.log(data.phone_number.length);
     alert("Telefon raqamingiz 13 ta belgidan oshib ketdi.");
   } else {
     LoadingOn();
