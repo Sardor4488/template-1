@@ -42,4 +42,4 @@ const UserAuth = (setPath, history) => {
   }
 };
 
-// export { UserAuth };
+export { UserAuth };

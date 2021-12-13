@@ -15,6 +15,18 @@ import { getHomeCategory } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const [more, setMore] = useState(false);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
@@ -134,17 +146,17 @@ const Home = (props) => {
                     wrapper="div"
                     steps={[
                       "Ingiliz tili",
-                      2000,
+                      3000,
                       "Rus tili",
-                      2000,
+                      3000,
                       "Nemis tili",
-                      2000,
+                      3000,
                       "Koreys tili",
-                      2000,
+                      3000,
                       "Yapon tili",
-                      2000,
+                      3000,
                       "Xitoy tili",
-                      2000,
+                      3000,
                     ]}
                   />
                   <div className="inner__text">kurslari</div>
@@ -352,6 +364,13 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className={`text-center w-100 container-animation ${
+              scrollPosition > 50 ? "d-none" : ""
+            } `}
+          >
+            <i className="fas fa-long-arrow-alt-down text-primary "></i>
           </div>
         </div>
       </section>
