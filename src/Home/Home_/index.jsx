@@ -15,6 +15,18 @@ import { getHomeCategory } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const [more, setMore] = useState(false);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
@@ -354,7 +366,7 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-          <div className="text-center w-100 container-animation">
+          <div className={ `text-center w-100 container-animation ${ scrollPosition > 50 ? "d-none" : ""} ` }>
                   <i class="fas fa-long-arrow-alt-down text-primary "></i>
           </div>
         </div>
@@ -809,6 +821,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+      
     </div>
   );
 };
