@@ -11,6 +11,7 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import AvatarImageCropper from "react-avatar-image-cropper";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
+  // const [update, setUpdate] = useState(false);
   const [imgmodal, setImgModal] = useState(false);
   const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.user?.email);
@@ -46,7 +47,7 @@ const ProfileSettings = () => {
   const [descriptionError, setDescriptionError] = useState(false);
   const [experienceError, setExperienceError] = useState(false);
   const [birthDateError, setBirthDateError] = useState(false);
-  const [languagesError, setLanguagesError] = useState(false);
+  const [languageError, setLanguageError] = useState(false);
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
@@ -56,6 +57,7 @@ const ProfileSettings = () => {
   //   console.log(blob);
   //   console.log('ishladi')
   // };
+  const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
     const reader = new FileReader();
@@ -77,72 +79,69 @@ const ProfileSettings = () => {
     setLanguage(languages);
   };
   const updateTeacher = (e) => {
-    //  const array = [
-    //    email,
-    //    first_name,
-    //    last_name,
-    //    phone_number,
-    //    telegram_number,
-    //    course_id,
-    //    price,
-    //    description,
-    //    experience,
-    //    birth_date,
-    //    language,
-    //    country,
-    //    region,
-    //    resume,
-    //  ];
-    //  const arrayError = [
-    //    setEmailError,
-    //    setFirstNameError,
-    //    setLastNameError,
-    //    setPhoneNumberError,
-    //    setTelegramNumberError,
-    //    setCourseIdError,
-    //    setPriceError,
-    //    setDescriptionError,
-    //    setExperienceError,
-    //    setBirthDateError,
-    //    setLanguageError,
-    //    setCountryError,
-    //    setRegionError,
-    //    setResumeError,
-    //  ];
-    //  for (let i = 0; i < array.length; i++) {
-    //    if (array[i] == null || array[i] == undefined || array[i] == "") {
-    //      arrayError[i](true);
-    //      setAllTrue(false);
-    //    } else if (
-    //      array[i] !== null ||
-    //      array[i] !== undefined ||
-    //      array[i] !== ""
-    //    ) {
-    //      arrayError[i](false);
-    //      setAllTrue(true);
-    //    }
-    //  }
-    //  if (allTrue) {
-    //    let data = {
-    //      email,
-    //      first_name,
-    //      last_name,
-    //      phone_number,
-    //      telegram_number,
-    //      image,
-    //      course_id,
-    //      price,
-    //      description,
-    //      experience,
-    //      language,
-    //      country,
-    //      region,
-    //      resume,
-    //      birth_date,
-    //      offert_price,
-    //    };
-    //    UpdateTeacher(data);
-    //  }
+    // const array = [
+    //   email,
+    //   first_name,
+    //   last_name,
+    //   phone_number,
+    //   telegram_number,
+    //   course_id,
+    //   price,
+    //   description,
+    //   experience,
+    //   birth_date,
+    //   language,
+    //   country,
+    //   region,
+    //   resume,
+    // ];
+    // const arrayError = [
+    //   setEmailError,
+    //   setFirstNameError,
+    //   setLastNameError,
+    //   setPhoneNumberError,
+    //   setTelegramNumberError,
+    //   setCourseIdError,
+    //   setPriceError,
+    //   setDescriptionError,
+    //   setExperienceError,
+    //   setBirthDateError,
+    //   setLanguageError,
+    //   setCountryError,
+    //   setRegionError,
+    //   setResumeError,
+    // ];
+    // for (let i = 0; i < array.length; i++) {
+    //   if (array[i] == null || array[i] == undefined || array[i] == "") {
+    //     arrayError[i](true);
+    //     setUpdate(false);
+    //   }
+    //   if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
+    //     arrayError[i](false);
+    //     setUpdate(true);
+    //   }
+    // }
+    // if (update) {
+    //   let data = {
+    //     email,
+    //     first_name,
+    //     last_name,
+    //     phone_number,
+    //     telegram_number,
+    //     image,
+    //     course_id,
+    //     price,
+    //     description,
+    //     experience,
+    //     language,
+    //     country,
+    //     region,
+    //     resume,
+    //     birth_date,
+    //     offert_price,
+    //   };
+    //   UpdateTeacher(data, id);
+    // }
     e.preventDefault();
     if (email == "" || email == undefined || email == null) {
       setEmailError(true);
@@ -203,9 +202,9 @@ const ProfileSettings = () => {
       setBirthDateError(false);
     }
     if (language == "" || language == undefined || language == null) {
-      setLanguagesError(true);
+      setLanguageError(true);
     } else {
-      setLanguagesError(false);
+      setLanguageError(false);
     }
     if (country == "" || country == undefined || country == null) {
       setCountryError(true);
@@ -229,31 +228,33 @@ const ProfileSettings = () => {
       setDescriptionError(false);
       setExperienceError(false);
       setBirthDateError(false);
-      setLanguagesError(false);
+      setLanguageError(false);
       setCountryError(false);
       setRegionError(false);
       setResumeError(false);
-      let data = {
-        email,
-        first_name,
-        last_name,
-        phone_number,
-        telegram_number,
-        image,
-        course_id,
-        price,
-        description,
-        experience,
-        language,
-        country,
-        region,
-        resume,
-        birth_date,
-        offert_price,
-      };
 
-      UpdateTeacher(data);
-      console.log(data);
+      const fd = new FormData();
+
+      fd.append("email", email);
+      fd.append("first_name", first_name);
+      fd.append("last_name", last_name);
+      fd.append("phone_number", phone_number);
+      fd.append("telegram_number", telegram_number);
+      fd.append("course_id", course_id);
+      fd.append("price", price);
+      fd.append("description", description);
+      fd.append("image", image);
+      fd.append("experience",  experience);
+      fd.append("language", language);
+      fd.append("country",  country);
+      fd.append("region", region);
+      fd.append("resume", resume);
+      fd.append("birth_date", birth_date);
+      fd.append("offert_price", offert_price);
+   
+
+      UpdateTeacher(fd, id);
+      console.log(fd);
     }
   };
   useEffect(() => {
@@ -348,9 +349,11 @@ const ProfileSettings = () => {
                             <div className="profile-img">
                               <img
                                 src={
-                                  image == String
-                                    ? image
-                                    : (imagePreview && imagePreview) || USER
+                                  imagePreview
+                                    ? imagePreview
+                                    : image
+                                    ? `https://teach-api.uz/teach-api/public/storage/${image}`
+                                    : USER
                                 }
                                 alt="User Image"
                               />
@@ -467,7 +470,6 @@ const ProfileSettings = () => {
                           <label>Telefon raqam</label>
                           <PhoneInput
                             international
-                            // countryCallingCodeEditable={false}
                             defaultCountry="UZ"
                             value={phone_number}
                             className=""
@@ -539,7 +541,7 @@ const ProfileSettings = () => {
                             <option value="Nemis">Nemischa</option>
                             <option value="Turk">Turkcha</option>
                           </select>
-                          {languagesError && (
+                          {languageError && (
                             <p className="text-danger mt-2">
                               {" "}
                               Bu joyni to'ldirish shart!

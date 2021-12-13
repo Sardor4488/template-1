@@ -12,12 +12,12 @@ const logout = (history) => {
         localStorage.clear();
         alert("Success");
       } else {
-        alert("Texnik hatolik yuz berdi.");
+        alert("Texnik xatolik yuz berdi.");
       }
     })
     .catch((err) => {
       console.log(err);
-      alert("Error");
+      alert("Error", err);
     });
 };
 

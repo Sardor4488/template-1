@@ -1589,7 +1589,7 @@ button.bg-danger:hover {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: transparent;
+  background-color: #fff;
   border: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6747,6 +6747,13 @@ html.menu-opened body {
   align-items: center;
   margin: 0 auto 15px;
 }
+.pro-avatar-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+}
 .form-control-label {
   color: #262626;
 }
@@ -7814,6 +7821,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: 80px;
     height: 80px;
   }
+  .pro-avatar-image {
+    width: 80px;
+    height: 80px;
+  }
   .chat-window .chat-scroll .user-name,
   .pro-content .title {
     font-size: 15px;
@@ -8683,4 +8694,9 @@ PhoneInput {
 }
 .accordion_menu .accordion_active {
   max-height: 1000px !important;
+<<<<<<< HEAD
 }
+=======
+}
+ 
+>>>>>>> sardor
