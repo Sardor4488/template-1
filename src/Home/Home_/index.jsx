@@ -184,6 +184,7 @@ const Home = (props) => {
                       </Link>
                     </div>
                   </div>
+                
                 </div>
                 <div className="col-6 col-sm-4 col-md-4 col-lg-3 mb-3 d-flex justify-content-center align-items-center">
                   <div className="home_content">
@@ -352,6 +353,9 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="text-center w-100 container-animation">
+                  <i class="fas fa-long-arrow-alt-down text-primary "></i>
           </div>
         </div>
       </section>
