@@ -16,7 +16,13 @@ import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
   const [more, setMore] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([
+    { name: "Tillar" },
+    { name: "Aniq fanlar" },
+    { name: "Tabiiy fanlar" },
+    { name: "IT texnalogiya" },
+    { name: "Ijtimoiy fanlar" },
+  ]);
   const moreInfo = () => {
     setMore(!more);
   };
@@ -107,9 +113,9 @@ const Home = (props) => {
   };
   useEffect(() => {
     async function getCategory() {
-      const res = await getHomeCategory();
-      setCategories(res.categories);
-      LoadingOff();
+      // const res = await getHomeCategory();
+      // setCategories(res.categories);
+      // LoadingOff();
     }
     getCategory();
   }, []);
@@ -441,7 +447,7 @@ const Home = (props) => {
                   <div className="mentor-widget">
                     <div className="user-info-left">
                       <div className="mentor-img">
-                        <Link to="/app/Mentee/mentor-profile">
+                        <Link to="/app/Mentor/booking">
                           <img
                             src={USER}
                             className="img-fluid img-mentee "
@@ -464,9 +470,7 @@ const Home = (props) => {
                       <div className="user-infos mb-0">
                         <ul className="m-0 p-0">
                           <li className="usr-name">
-                            <Link to="/app/Mentee/mentor-profile">
-                              Ruby Perrin
-                            </Link>
+                            <Link to="/app/Mentor/booking">Ruby Perrin</Link>
                           </li>
                           <li className="text-secondary">
                             <i className="fas fa-book text-black "></i>{" "}
@@ -555,7 +559,7 @@ const Home = (props) => {
                     </p>
                   </div>
                   <div className="mentor-booking w-100 d-flex justify-content-end">
-                    <Link className="apt-btn p-1 " to="/app/Mentee/booking">
+                    <Link className="apt-btn p-1 " to="/app/Mentor/booking">
                       Band qilish
                     </Link>
                   </div>

@@ -59,28 +59,29 @@ const Header = (props) => {
   console.log();
   return (
     <header
-      className={` ${
-        headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"
-      }`}
+      className={` ${ headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}
     >
-      <div className="has_menu_close" id="has_menu_close"></div>
-      <div className={`header-fixed ${scrollPosition > 50 ? "bg-white" : ""}`}>
-        <nav className="navbar navbar-expand-lg header-nav">
+      <div className="has_menu_close " id="has_menu_close"></div>
+      <div
+        className={`header-fixed ${ scrollPosition > 50 ? "bg-white shadow" : ""}  `}
+      >
+        <nav className={`navbar navbar-expand-lg header-nav ${pathname.includes("/app/home") ? "  bg-transparent " : ""}`}>
           <div className="navbar-header">
             <a id="mobile_btn" href="">
               <span
                 className={`bar-icon ${
                   scrollPosition > 50 ? "text-white" : " text-primary"
-                } `}
+                }`}
               >
                 <span />
                 <span />
                 <span />
               </span>
             </a>
+
             <Link to="/app/home" className="navbar-brand logo">
               <img
-                src={scrollPosition > 50 ? AppLogo : logoWhite}
+                src={AppLogo}
                 className="img-fluid ms-4 logotipSize"
                 alt="Logo"
               />
@@ -96,20 +97,18 @@ const Header = (props) => {
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname.includes("home") ? "active" : ""}>
+              <li className={pathname.includes("/app/home") ? "active" : "" }>
                 <Link
                   to="/app/home"
-                  className={`${
-                    scrollPosition > 50 ? "text-dark" : " text-white"
-                  }`}
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : " text-dark"}  ${scrollPosition > 50 ? "text-dark" : " text-white"  }`}
                 >
                   Asosiy
                 </Link>
               </li>
-              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+              <li className={`pathname.includes("/app/about") ? "active" : ""   `}>
                 <Link
                   to="/app/about"
-                  className={`${
+                  className={` ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -119,7 +118,7 @@ const Header = (props) => {
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
                   to="/app/reviwes-all"
-                  className={`${
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -138,7 +137,7 @@ const Header = (props) => {
               >
                 <a
                   href=""
-                  className={`${
+                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -150,7 +149,6 @@ const Header = (props) => {
                   >
                     <Link to="/app/Blog/blog-list">Blog List</Link>
                   </li>
-
                   <li
                     className={pathname.includes("blog-grid") ? "active" : ""}
                   >
@@ -166,7 +164,10 @@ const Header = (props) => {
                 </ul>
               </li>
               <li className="login-link">
-                <Link to="/login">Kirish / Kirish</Link>
+                <Link to="/login">Kirish </Link>
+              </li>
+              <li className="login-link">
+                <Link to="/register">A'zo bo'lish</Link>
               </li>
             </ul>
           </div>
@@ -232,7 +233,7 @@ const Header = (props) => {
             <ul className="nav header-navbar-rht">
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${
+                  className={`nav-link${pathname.includes("/app/home") ? "  text-white " : " text-primary  "} ${
                     scrollPosition > 50 ? "text-primary" : " text-white"
                   } `}
                   to="/login"

@@ -10,10 +10,30 @@ const About = () => {
   };
   return (
     <div className="about">
-      <div className="container py-5">
-        <div className="accordion_menu">
+       <div className="breadcrumb-bar">
+        <div className="container-fluid">
+          <div className="row align-items-center">
+            <div className="col-md-12 col-12">
+              <nav aria-label="breadcrumb" className="page-breadcrumb">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="/app/index">My Teacher</a>
+                  </li>
+                  <li className="breadcrumb-item active" aria-current="page">
+                  My Teacher haqida
+                  </li>
+                </ol>
+              </nav>
+              <h2 className="breadcrumb-title">My Teacher haqida</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container  py-5">
+      <div className="border-bottom px-4">
+      <div className="accordion_menu ">
           <div className="accordion_btn" onClick={() => openAccordion(1)}>
-            <span>Item 1</span>
+            <span>Biz haqimizda</span>
             {accordion == 1 ? (
               <i className="fas fa-minus"></i>
             ) : (
@@ -51,6 +71,7 @@ const About = () => {
             consequatur perspiciatis minus accusantium maiores expedita.
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
