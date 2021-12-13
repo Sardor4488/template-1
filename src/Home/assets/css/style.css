@@ -8705,7 +8705,5 @@ PhoneInput {
     }
   }
 @media only screen and (max-width: 769px) {
-.container-animation{
-  height: 100px;
-}
+ 
 }
