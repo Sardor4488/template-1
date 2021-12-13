@@ -11,6 +11,7 @@ const login = (data, history) => {
       localStorage.setItem("role", res.data.user.role);
       localStorage.setItem("user_id", res.data.user.id);
       history.push(`app/${res.data.user.role}/dashboard`);
+      console.log(res)
       LoadingOff();
     })
     .catch((err) => {
