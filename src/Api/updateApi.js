@@ -2,21 +2,25 @@ import axios from "axios";
 import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
 const token = localStorage.getItem("access_token");
 const UpdateStudent = (data, id) => {
-  const config = {
-    headers: {
-      Authorization: "Bearer" + " " + token,
-      "Content-Type": "multipart/form-data",
-    },
-  };
-  axios
-    .post(`student/update-student/${id}?_method=PUT`, data, config)
-    .then((res) => {
-      console.log(res);
-      UserData(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (data) {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + " " + token,
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    axios
+      .post(`student/update-student/${id}?_method=PUT`, data, config)
+      .then((res) => {
+        console.log(res);
+        UserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    return false;
+  }
 };
 
 const UpdateTeacher = (data, id) => {
