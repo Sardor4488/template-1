@@ -80,59 +80,75 @@ const MentorProfile = () => {
               {/* Mentor Widget */}
               <div className="card">
                 <div className="card-body">
-
-                <div className="row w-100 d-flex align-items-center justify-content-between">
-                      <div className="col-12 col-sm-8 my-2">
+                  <div className="row w-100 d-flex align-items-center justify-content-between">
+                    <div className="col-12 col-sm-8 my-2">
                       <div className=" d-flex align-items-center">
                         <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
-                          <div className="pro-avatar">ST</div>
+                          {userdata?.user?.image ? (
+                            <img
+                              className="pro-avatar-image"
+                              src={`https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`}
+                              alt="user_image"
+                            />
+                          ) : (
+                            <div className="pro-avatar">
+                              {userdata?.user?.first_name.slice(0, 1)}
+                              {userdata?.user?.last_name.slice(0, 1)}
+                            </div>
+                          )}
                           <div className="rating text-center">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                        </div>
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                          </div>
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
-                              <i className="fas fa-map-marker-alt" /> Tamil
-                              Nadu, India
+                              <i className="fas fa-map-marker-alt" />
+                              {userdata?.user?.region} {userdata?.user?.country}
                             </p>
                           </div>
                         </div>
                         <div className="user-info-cont">
-                          <h4 className="">Sardor Temirov</h4>
+                          <h4 className="">
+                            {userdata?.user?.first_name}{" "}
+                            {userdata?.user?.last_name}
+                          </h4>
                           <p className="mentor-type mb-0">
-                            English Literature (M.A)
-                          </p>  <div className="mentor-action">
-                          <p className="mentor-type social-title">
-                            blabla@gmail.com
-                          </p>
-                          <a href="#infonmation-mentor" className="btn-blue">
-                            <i className="fas fa-book-reader" />
-                          </a>
-                          <a href="#location" className="btn-blue">
-                            <i className="fas fa-map-marker-alt" />
-                          </a>
-                          <a href="#sectionTime" className="btn-blue">
-                            <i className="fas fa-calendar-alt" />
-                          </a>
+                            {userdata?.user?.course_name}
+                          </p>{" "}
+                          <div className="mentor-action">
+                            <p className="mentor-type social-title">
+                              {userdata?.user?.email}
+                            </p>
+                            <a href="#infonmation-mentor" className="btn-blue">
+                              <i className="fas fa-book-reader" />
+                            </a>
+                            <a href="#location" className="btn-blue">
+                              <i className="fas fa-map-marker-alt" />
+                            </a>
+                            <a href="#sectionTime" className="btn-blue">
+                              <i className="fas fa-calendar-alt" />
+                            </a>
+                          </div>
                         </div>
-                        </div>
-                      
                       </div>
-                      </div>
-                    
-                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
-                    <span className="hire-rate text-center">50 000 USZ / soat</span>
-                    <Link
-                            className="blue-btn-radius"
-                            to="/app/mentee/profile-settings"
-                          >
-                            Tahrirlash
-                          </Link>
                     </div>
-                    </div>   
+
+                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
+                      <span className="hire-rate text-center">
+                        {userdata?.user?.price ? userdata?.user?.price : 0} USZ
+                        / soat
+                      </span>
+                      <Link
+                        className="blue-btn-radius"
+                        to="/app/mentor/profile-settings"
+                      >
+                        Tahrirlash
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               {/* /Mentor Widget */}
@@ -143,20 +159,7 @@ const MentorProfile = () => {
                   <div className="widget about-widget custom-about mb-0">
                     <h4 className="widget-title">Men haqimda</h4>
                     <hr />
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged.
-                    </p>
-                    <p>
-                      Contrary to popular belief, Lorem Ipsum is not simply
-                      random text. It has roots in a piece of classical Latin
-                      literature from 45 BC, making it over 2000 years old.
-                    </p>
+                    {userdata?.user?.description}
                   </div>
                   {/* /About Details */}
                 </div>
@@ -169,7 +172,6 @@ const MentorProfile = () => {
                       <div className="col-lg-7 w-100">
                         <div className="form-group">
                           <label className="date-information-label">
-                            {" "}
                             Dars o'tish uchun bo'sh vaqtlaringizni shu yerdan
                             belgilashingiz mumkin
                           </label>
@@ -458,7 +460,7 @@ const MentorProfile = () => {
                             <div className="timeline-content">
                               <span>Qaysi tilda dars o'tadi</span>
                               <div className="row-result">
-                                Rus, ingiliz, o'zbek
+                                {userdata?.user?.language}
                               </div>
                             </div>
                           </div>
@@ -468,7 +470,12 @@ const MentorProfile = () => {
                             <div className="timeline-content">
                               <span>Pedagogik tajribasi</span>
                               <div className="row-result">
-                                <span>1</span> yil
+                                <span>
+                                  {userdata?.user?.experience
+                                    ? userdata?.user?.experience
+                                    : 0}
+                                </span>{" "}
+                                yil
                               </div>
                             </div>
                           </div>
@@ -491,7 +498,9 @@ const MentorProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Hozir qayerda yashaydi</span>
-                              <div className="row-result">Toshkent.sh</div>
+                              <div className="row-result">
+                                {userdata?.user?.country}
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -500,7 +509,7 @@ const MentorProfile = () => {
                             <div className="timeline-content">
                               <span>Doimiy yashash manzili</span>
                               <div className="row-result">
-                                National highway road
+                                {userdata?.user?.region}
                               </div>
                             </div>
                           </div>
@@ -511,7 +520,7 @@ const MentorProfile = () => {
                   {/* /Location Details */}
                 </div>
               </div>
-            
+
               <div>
                 {/* Breadcrumb */}
 

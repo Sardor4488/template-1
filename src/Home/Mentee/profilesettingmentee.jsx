@@ -6,7 +6,7 @@ import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { UpdateStudent } from "../../Api";
+import { UpdateStudent } from "../../Api/updateApi";
 import AvatarImageCropper from "react-avatar-image-cropper";
 import PhoneInput from "react-phone-number-input";
 const ProfileSettingMentee = () => {
@@ -102,23 +102,21 @@ const ProfileSettingMentee = () => {
       setTargetError(true);
     } else {
       setTargetError(false);
-      let data = {
-        first_name,
-        last_name,
-        phone_number,
-        email,
-        telegram_number: telegram,
-        birth_date,
-        region,
-        country,
-        image,
-        job,
-        experience,
-        target,
-      };
-      console.log(data);
+      const fd = new FormData();
+      fd.append("first_name", first_name);
+      fd.append("last_name", last_name);
+      fd.append("phone_number", phone_number);
+      fd.append("email", email);
+      fd.append("telegram_number", telegram);
+      fd.append("birth_date", birth_date);
+      fd.append("region", region);
+      fd.append("country", country);
+      fd.append("image", image);
+      fd.append("job", job);
+      fd.append("experience", experience);
+      fd.append("target", target);
+      UpdateStudent(fd, id);
     }
-    // UpdateStudent(data, id);
   };
 
   const apply = (file) => {

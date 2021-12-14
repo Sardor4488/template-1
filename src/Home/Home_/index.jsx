@@ -113,9 +113,9 @@ const Home = (props) => {
   };
   useEffect(() => {
     async function getCategory() {
-      // const res = await getHomeCategory();
-      // setCategories(res.categories);
-      // LoadingOff();
+      const res = await getHomeCategory();
+      setCategories(res.categories);
+      LoadingOff();
     }
     getCategory();
   }, []);
