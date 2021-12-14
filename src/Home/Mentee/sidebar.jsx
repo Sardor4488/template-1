@@ -118,8 +118,8 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/favourites"
-                className={pathname.includes("favourites") ? "active" : ""}
+                to="#"
+                className={pathname.includes("default") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
                 My teacher lug'at{" "}
