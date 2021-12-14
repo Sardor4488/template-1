@@ -621,7 +621,7 @@ const ProfileSettings = () => {
                           )}
                         </div>
                       </div>
-                      <div className="col-6 col-md-3">
+                      <div className="col-3 col-md-3">
                         <div className="form-group">
                           <label>Resyume yuklash</label>
                           <div className="change-photo-btn">
