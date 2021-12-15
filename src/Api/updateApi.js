@@ -3,7 +3,7 @@ import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
 const token = localStorage.getItem("access_token");
 const id = localStorage.getItem("user_id");
 const UpdateStudent = (data, id) => {
-  console.log(data);
+  // console.log(data);
   axios
     .put("student/update-student/" + id, data)
     .then((res) => {
@@ -12,7 +12,7 @@ const UpdateStudent = (data, id) => {
     .catch((err) => {
       console.log(err);
     });
-  // UserData(res.data);
+  UserData(res.data);
 };
 
 const UpdateTeacher = (data, id) => {
@@ -37,4 +37,19 @@ const UpdateTeacher = (data, id) => {
   }
 };
 
-export { UpdateStudent, UpdateTeacher };
+const TeacherFreeTime = (id) => {
+  if (id) {
+    axios
+      .post(`teacher/free_time/${id}`)
+      .then((res) => {
+        console.log(res);
+        console.log("123");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    return false;
+  }
+};
+export { UpdateStudent, UpdateTeacher, TeacherFreeTime };

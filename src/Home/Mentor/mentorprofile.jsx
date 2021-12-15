@@ -1,8 +1,10 @@
 import React, { Component, useState } from "react";
 import { USER } from "../../constant/imagepath_home";
 import { Link } from "react-router-dom";
+import { TeacherFreeTime } from "../../Api/updateApi";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { useSelector } from "react-redux";
+
 const MentorProfile = () => {
   const [state, setState] = useState({
     isvoicecallmodal: false,
@@ -49,6 +51,12 @@ const MentorProfile = () => {
   };
   const { addnewtimeslot, edittimeslot } = state;
   const userdata = useSelector((state) => state.Reducer.userdata);
+
+  useEffect(() => {
+    TeacherFreeTime(id)
+  }, [id])
+
+
   return (
     <div>
       {/* Breadcrumb */}

@@ -3,7 +3,6 @@
  */
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-
 // import MapGrid from "./mapgrid";
 import Maplist from "./maplist";
 import Searchmentors from "./searchmentors";
@@ -22,6 +21,7 @@ import ProfileSettingMentee from "./profilesettingmentee";
 import Share from "./shareWebsite";
 
 const Menteeroute = ({ match }) => {
+  console.log(match.url);
   const role = localStorage.getItem("role");
   return (
     <>

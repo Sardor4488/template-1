@@ -25,7 +25,7 @@ import MentorBooking from "./MentorBooking";
 
 const Mentorroute = ({ match }) => {
   const role = localStorage.getItem("role");
-  console.log(role);
+  // console.log(role);
   return (
     <>
       <Switch>

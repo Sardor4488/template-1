@@ -259,7 +259,6 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {" "}
                               {categories[2]?.name}
                             </p>
                             <p className="home_item_text"> 65 nafar ustoz</p>
@@ -285,7 +284,7 @@ const Home = (props) => {
                             >
                               <path
                                 d="M50.31 37.3323V37.3333C50.31 39.3542 48.6745 41 46.6667 41V42V43H55V45.6667H1V43H9.33333V42V41C7.31895 41 5.66667 39.3477 5.66667 37.3333V14C5.66667 11.9856 7.31895 10.3333 9.33333 10.3333H46.6667C48.6807 10.3333 50.3328 11.9851 50.3333 13.999C50.3333 13.9993 50.3333 13.9997
-        50.3333 14L50.31 37.3323ZM9.33333 13H8.33333V14V37.3333V38.3333H9.33333H46.6667H47.6667V37.3333V14V13H46.6667H9.33333Z"
+                        50.3333 14L50.31 37.3323ZM9.33333 13H8.33333V14V37.3333V38.3333H9.33333H46.6667H47.6667V37.3333V14V13H46.6667H9.33333Z"
                                 fill="#1e88e5"
                                 stroke="#1e88e5"
                                 strokeWidth="2"
@@ -302,7 +301,6 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {" "}
                               {categories[3]?.name}
                             </p>
                             <p className="home_item_text"> 11 nafar ustoz</p>

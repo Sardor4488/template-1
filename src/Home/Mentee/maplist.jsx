@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom';
 
 const data = [{
   id:1,
-	doc_name:"Ruby Perrin",
-	"speciality":"Digital Marketer",
+	doc_name:"Ruby Perrin","speciality":"Digital Marketer",
 	"address":"Florida, USA",
 	"next_available":"Available on Fri, 22 Mar",
 	"amount":"$300 - $1000",
@@ -218,14 +217,14 @@ class MapList extends Component {
                           <span className="d-inline-block average-rating">(17)</span>
                         </div>
                         <div className="mentor-details">
-                          <p className="user-location"><i className="fas fa-map-marker-alt" /> Florida, USA</p>
+                          <p className="user-location"><i className="fas fa-map-marker-alt" />Florida, USA</p>
                         </div>
                       </div>
                     </div>
                     <div className="user-info-right">
                       <div className="user-infos">
                         <ul>
-                          <li><i className="far fa-comment" /> 17 Feedback</li>
+                          <li><i className="far fa-comment" />17 Feedback</li>
                           <li><i className="fas fa-map-marker-alt" /> Florida, USA</li>
                           <li><i className="far fa-money-bill-alt" /> $300 - $1000 <i className="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum" /> </li>
                         </ul>
