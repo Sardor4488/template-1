@@ -14,6 +14,7 @@ const UserAuth = (setPath, history) => {
       .then((res) => {
         UserData(res.data);
         setPath(`/app/${role}/dashboard`);
+        localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
         LoadingOff();
       })
       .catch((err) => {
@@ -24,7 +25,7 @@ const UserAuth = (setPath, history) => {
           setPath("/login");
           history.push("/login");
         } else if (err.response.status == 403) {
-          history.push("/app/home");
+          history.push("/register");
           setPath(`/register`);
           localStorage.clear();
         } else if (err.response.status == 500) {

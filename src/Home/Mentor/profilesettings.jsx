@@ -39,7 +39,7 @@ const ProfileSettings = () => {
   const [region, setRegion] = useState(userdata?.user?.region);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-  const [resume, setResume] = useState();
+  const [resume, setResume] = useState(null);
   const [resumePost, setResumePost] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
 
@@ -57,6 +57,7 @@ const ProfileSettings = () => {
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
+  
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
