@@ -9,7 +9,7 @@ const Sidebar = (props) => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   return (
     <>
-      <div className="profile-sidebar profile-sidebar-md-none">
+      <div className="profile-sidebar  ">
         <div className="user-widget">
           {userdata?.user?.image ? (
             <img

@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import {headerlogo,AVATAR_12} from '../../../imagepath'
+import {AdminLogo,AVATAR_12} from '../../../imagepath'
 import { Link } from 'react-router-dom';
 
 class Lockscreen extends Component {
@@ -15,7 +15,7 @@ class Lockscreen extends Component {
         <div className="container">
           <div className="loginbox">
             <div className="login-left">
-              <img className="img-fluid" src={headerlogo} alt="Logo" />
+              <img className="img-fluid w-75" src={AdminLogo} alt="Logo" />
             </div>
             <div className="login-right">
               <div className="login-right-wrap">
