@@ -357,12 +357,12 @@ const ProfileSettings = () => {
                         />
                       </div>
                       <div className="col-12  ">
+                        <label>
+                          Bir soat darsingiz uchun necha pul olmoqchisiz iltimos
+                          (<Link to="#">Narxlar bo'yicha kelishuv</Link>) bilan
+                          tanishgan holda o'zizga mos narx kiriting
+                        </label>
                         <MySelect
-                          label={`    Bir soat darsingiz uchun necha pul olmoqchisiz
-                            (iltimos{" "}
-                            ${(<Link to="#">Narxlar bo'yicha kelishuv</Link>)}
-                            bilan
-                            tanishgan holda o'zizga mos narx kiriting)`}
                           array={priceData}
                           setValue={setPrice}
                           error={priceError}

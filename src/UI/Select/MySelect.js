@@ -3,7 +3,7 @@ import React from "react";
 const MySelect = ({ label, setValue, array, error, item, itemDelete }) => {
   return (
     <div className="form-group">
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <select
         className="form-control select"
         onChange={(e) => setValue(e.target.value)}
