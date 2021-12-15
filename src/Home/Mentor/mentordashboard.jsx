@@ -70,7 +70,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="dash-widget-info">
-                      <h3>33</h3>
+                      <h3>{userdata?.user?.test_lesson_count}</h3>
                       <h6>Sinov darsi </h6>
                     </div>
                   </div>

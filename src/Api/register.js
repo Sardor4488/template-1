@@ -13,11 +13,11 @@ const register = (data, history, url) => {
     axios
       .post(url, data)
       .then((res) => {
-        history.push(`app/${res.data.user.role}/dashboard`);
-        UserData(res.data);
         localStorage.setItem("access_token", res.data.token);
         localStorage.setItem("role", res.data.user.role);
         localStorage.setItem("user_id", res.data.user.id);
+        UserData(res.data);
+        history.push(`app/${res.data.user.role}/dashboard`);
         console.log(res.data.token);
         console.log(res.data.user.role);
         console.log(res.data.user.id);

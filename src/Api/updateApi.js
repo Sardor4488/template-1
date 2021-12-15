@@ -24,6 +24,7 @@ const UpdateStudent = (data, id) => {
 };
 
 const UpdateTeacher = (data, id) => {
+  LoadingOn();
   if (data) {
     const config = {
       headers: {
@@ -36,9 +37,12 @@ const UpdateTeacher = (data, id) => {
       .post(`teacher/update-teacher/${id}?_method=PUT`, data, config)
       .then((res) => {
         console.log(res);
+        LoadingOff();
       })
       .catch((err) => {
+        alert("Saqlanmadi");
         console.log(err);
+        LoadingOff();
       });
   } else {
     return false;

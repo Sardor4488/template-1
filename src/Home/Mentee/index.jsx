@@ -23,7 +23,6 @@ import Share from "./shareWebsite";
 
 const Menteeroute = ({ match }) => {
   const role = localStorage.getItem("role");
-  console.log(match);
   return (
     <>
       {role == "mentee" ? (
