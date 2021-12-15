@@ -190,6 +190,7 @@ const Register = (props) => {
           </div>
           {/* /Register Content */}
         </div>
+        {/* islom */}
       </div>
     </>
   );
