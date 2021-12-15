@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {Logo_White} from '../../../imagepath'
+import {AdminLogo} from '../../../imagepath'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ class Forgotpassword extends Component {
         <div className="container">
           <div className="loginbox">
             <div className="login-left">
-              <img className="img-fluid" src={Logo_White} alt="Logo" />
+              <img className="img-fluid w-75" src={AdminLogo} alt="Logo" />
             </div>
             <div className="login-right">
               <div className="login-right-wrap">

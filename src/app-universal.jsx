@@ -44,32 +44,23 @@ const AppUniversal = (props) => {
   const loading = useSelector((state) => state.Reducer.loading);
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Switch>
-          <Route path="/app" component={HomeLayout} />
-          <Route path="/admin" component={AdminLayout} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/forgot-password" component={Forgotpassword} />
+      {loading && <Loading />}
+      <Switch>
+        <Route path="/app" component={HomeLayout} />
+        <Route path="/admin" component={AdminLayout} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/forgot-password" component={Forgotpassword} />
 
-          <Route path="/admin_login" component={AdminLogin} />
-          <Route path="/admin_register" component={AdminRegister} />
-          <Route
-            path="/admin_forgot-password"
-            component={AdminForgotpassword}
-          />
-          <Route path="/lock-screen" component={LockScreen} />
-          <Route exact path="/">
-            <Redirect to={path} />
-          </Route>
-          <Route path={"/404"} component={Page404} />
-          <Route>
-            <Redirect to={"/404"} />
-          </Route>
-        </Switch>
-      )}
+        <Route path="/admin_login" component={AdminLogin} />
+        <Route path="/admin_register" component={AdminRegister} />
+        <Route path="/admin_forgot-password" component={AdminForgotpassword} />
+        <Route path="/lock-screen" component={LockScreen} />
+        <Route exact path="/">
+          <Redirect to={path} />
+        </Route>
+        <Route path={"/404"} component={Page404} />
+      </Switch>
     </>
   );
 };

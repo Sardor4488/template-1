@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Logo_White } from "../../../imagepath";
+import { AdminLogo } from "../../../imagepath";
 import { withRouter } from "react-router-dom";
 
 const Login = (props) => {
@@ -10,7 +10,7 @@ const Login = (props) => {
         <div className="container">
           <div className="loginbox">
             <div className="login-left">
-              <img className="img-fluid" src={Logo_White} alt="Logo" />
+              <img className="img-fluid w-50" src={AdminLogo} alt="Logo" />
             </div>
             <div className="login-right">
               <div className="login-right-wrap">

@@ -1,21 +1,30 @@
 import axios from "axios";
 import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
 const token = localStorage.getItem("access_token");
-const id = localStorage.getItem("user_id");
 const UpdateStudent = (data, id) => {
-  // console.log(data);
-  axios
-    .put("student/update-student/" + id, data)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  UserData(res.data);
+  if (data) {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + " " + token,
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    axios
+      .post(`student/update-student/${id}?_method=PUT`, data, config)
+      .then((res) => {
+        console.log(res);
+        UserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    return false;
+  }
 };
 
 const UpdateTeacher = (data, id) => {
+  LoadingOn();
   if (data) {
     const config = {
       headers: {
@@ -28,9 +37,12 @@ const UpdateTeacher = (data, id) => {
       .post(`teacher/update-teacher/${id}?_method=PUT`, data, config)
       .then((res) => {
         console.log(res);
+        LoadingOff();
       })
       .catch((err) => {
+        alert("Saqlanmadi");
         console.log(err);
+        LoadingOff();
       });
   } else {
     return false;

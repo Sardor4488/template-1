@@ -15,6 +15,18 @@ import { getHomeCategory } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const [more, setMore] = useState(false);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
@@ -113,16 +125,16 @@ const Home = (props) => {
   };
   useEffect(() => {
     async function getCategory() {
-      // const res = await getHomeCategory();
-      // setCategories(res.categories);
-      // LoadingOff();
+      const res = await getHomeCategory();
+      setCategories(res.categories);
+      LoadingOff();
     }
     getCategory();
   }, []);
   console.log(categories);
   return (
     <div>
-      <section className="section section-search ">
+      <section id="section-search" className="section section-search ">
         <div className="container">
           <div className="banner-wrapper m-auto text-center">
             <div className="banner-header">
@@ -134,17 +146,17 @@ const Home = (props) => {
                     wrapper="div"
                     steps={[
                       "Ingiliz tili",
-                      2000,
+                      3000,
                       "Rus tili",
-                      2000,
+                      3000,
                       "Nemis tili",
-                      2000,
+                      3000,
                       "Koreys tili",
-                      2000,
+                      3000,
                       "Yapon tili",
-                      2000,
+                      3000,
                       "Xitoy tili",
-                      2000,
+                      3000,
                     ]}
                   />
                   <div className="inner__text">kurslari</div>
@@ -351,6 +363,7 @@ const Home = (props) => {
               </div>
             </div>
           </div>
+         
         </div>
       </section>
       {/* /Home Banner */}
@@ -803,6 +816,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+                        
     </div>
   );
 };

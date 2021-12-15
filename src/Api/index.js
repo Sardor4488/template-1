@@ -13,14 +13,13 @@ const UserAuth = (setPath, history) => {
       .post(url + "/" + id, {})
       .then((res) => {
         UserData(res.data);
-        console.log(res);
         setPath(`/app/${role}/dashboard`);
         LoadingOff();
       })
       .catch((err) => {
         LoadingOff();
         console.log(err);
-        console.log(err.response.status);
+        // console.log(err.response.status);
         if (err.response.status == 401) {
           setPath("/login");
           history.push("/login");

@@ -57,7 +57,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="dash-widget-info">
-                      <h3>{userdata?.mystudent_count}</h3>
+                      <h3>{userdata?.user?.mystudent_count}</h3>
                       <h6>O'quvchi </h6>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                     <div className="dash-widget-info">
-                      <h3>33</h3>
+                      <h3>{userdata?.user?.test_lesson_count}</h3>
                       <h6>Sinov darsi </h6>
                     </div>
                   </div>

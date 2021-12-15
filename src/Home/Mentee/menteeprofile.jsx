@@ -3,6 +3,7 @@ import { USER } from "../../constant/imagepath_home";
 import { Modal, ModalBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { USER_2 } from "../../constant/imagepath_home";
+import { useSelector } from "react-redux";
 
 const MenteeProfile = () => {
   const [state, setState] = useState({
@@ -16,6 +17,7 @@ const MenteeProfile = () => {
   const videocallModalClose = () => {
     setState({ ...state, isvideocallmodal: false });
   };
+  const userdata = useSelector((state) => state.Reducer.userdata);
   return (
     <div>
       {/* Breadcrumb */}
@@ -51,16 +53,30 @@ const MenteeProfile = () => {
                     <div className="col-12 col-sm-8">
                       <div className=" d-flex align-items-center">
                         <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
-                          <div className="pro-avatar">JD</div>
+                          {userdata?.user?.image ? (
+                            <img
+                              className="pro-avatar-image"
+                              src={`https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`}
+                              alt="user_image"
+                            />
+                          ) : (
+                            <div className="pro-avatar">
+                              {userdata?.user?.first_name.slice(0, 1)}
+                              {userdata?.user?.last_name.slice(0, 1)}
+                            </div>
+                          )}
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
-                              <i className="fas fa-map-marker-alt" /> Tamil
-                              Nadu, India
+                              <i className="fas fa-map-marker-alt" />{" "}
+                              {userdata?.user?.region}
                             </p>
                           </div>
                         </div>
                         <div className="user-info-cont">
-                          <h4 className="">Еуьшкщм Doe</h4>
+                          <h4 className="">
+                            {userdata?.user?.first_name}{" "}
+                            {userdata?.user?.last_name}
+                          </h4>
                           <p className="mentor-type">
                             English Literature (M.A)
                           </p>
@@ -87,20 +103,7 @@ const MenteeProfile = () => {
                   <div className="widget about-widget custom-about mb-0">
                     <h4 className="widget-title">Men haqimda</h4>
                     <hr />
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged.
-                    </p>
-                    <p>
-                      Contrary to popular belief, Lorem Ipsum is not simply
-                      random text. It has roots in a piece of classical Latin
-                      literature from 45 BC, making it over 2000 years old.
-                    </p>
+                    {userdata?.user?.description}
                   </div>
                   {/* /About Details */}
                 </div>

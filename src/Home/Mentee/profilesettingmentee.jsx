@@ -6,9 +6,12 @@ import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { UpdateStudent } from "../../Api";
+import { UpdateStudent } from "../../Api/updateApi";
+import { jobData, levelData as experienceData } from "../../Data/index";
 import AvatarImageCropper from "react-avatar-image-cropper";
 import PhoneInput from "react-phone-number-input";
+import MySelect from "../../UI/Select/MySelect";
+import FormGroup from "../../UI/FormGroup/FormGroup";
 const ProfileSettingMentee = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
@@ -16,17 +19,17 @@ const ProfileSettingMentee = () => {
   const [last_name, setLastName] = useState(userdata?.user?.last_name);
   const [phone_number, setPhoneNumber] = useState(userdata?.user?.phone_number);
   const [email, setEmail] = useState(userdata?.user?.email);
-  const [telegram, setTelegram] = useState(userdata?.user?.telegram_accaunt);
+  const [telegram, setTelegram] = useState(userdata?.user?.telegram_number);
   const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
   const [region, setRegion] = useState(userdata?.user?.region);
   const [country, setCountry] = useState(userdata?.user?.country);
-  const [image, setImage] = useState(userdata?.user?.image);
+  const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [job, setJob] = useState(
     userdata?.user?.job ? userdata?.user?.job : "Talaba"
   );
   const [experience, setExperience] = useState(
-    userdata?.user?.currentLevel ? userdata?.user?.currentLevel : "Boshlang'ich"
+    userdata?.user?.experience ? userdata?.user?.experience : "Boshlang'ich"
   );
   const [target, setTarget] = useState(userdata?.user?.target);
   // ERROR data
@@ -44,81 +47,60 @@ const ProfileSettingMentee = () => {
   const [targetError, setTargetError] = useState(false);
   const updateprofile = (e) => {
     e.preventDefault();
-    if (first_name == "" || first_name == undefined || first_name == null) {
-      setFirstNameError(true);
-    } else {
-      setFirstNameError(false);
+
+    const array = [
+      email,
+      first_name,
+      last_name,
+      phone_number,
+      telegram,
+      birth_date,
+      country,
+      region,
+      job,
+      experience,
+      target,
+    ];
+    const arrayError = [
+      setEmailError,
+      setFirstNameError,
+      setLastNameError,
+      setPhoneNumberError,
+      setTelegramError,
+      setBirthDateError,
+      setCountryError,
+      setRegionError,
+      setJobError,
+      setExperienceError,
+      setTargetError,
+    ];
+    let update = false;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
+        update = true;
+        arrayError[i](false);
+      }
+      if (array[i] === null || array[i] === undefined || array[i] === "") {
+        update = false;
+        arrayError[i](true);
+      }
     }
-    if (last_name == "" || last_name == undefined || last_name == null) {
-      setLastNameError(true);
-    } else {
-      setLastNameError(false);
+    if (update) {
+      const fd = new FormData();
+      fd.append("first_name", first_name);
+      fd.append("last_name", last_name);
+      fd.append("phone_number", phone_number);
+      fd.append("email", email);
+      fd.append("telegram_number", telegram);
+      fd.append("birth_date", birth_date);
+      fd.append("region", region);
+      fd.append("country", country);
+      fd.append("image", image);
+      fd.append("job", job);
+      fd.append("experience", experience);
+      fd.append("target", target);
+      UpdateStudent(fd, id);
     }
-    if (
-      phone_number == "" ||
-      phone_number == undefined ||
-      phone_number == null
-    ) {
-      setPhoneNumberError(true);
-    } else {
-      setPhoneNumberError(false);
-    }
-    if (email == "" || email == undefined || email == null) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
-    if (telegram == "" || telegram == undefined || telegram == null) {
-      setTelegramError(true);
-    } else {
-      setTelegramError(false);
-    }
-    if (birth_date == "" || birth_date == undefined || birth_date == null) {
-      setBirthDateError(true);
-    } else {
-      setBirthDateError(false);
-    }
-    if (region == "" || region == undefined || region == null) {
-      setRegionError(true);
-    } else {
-      setRegionError(false);
-    }
-    if (country == "" || country == undefined || country == null) {
-      setCountryError(true);
-    } else {
-      setCountryError(false);
-    }
-    if (job == "" || job == undefined || job == null) {
-      setJobError(true);
-    } else {
-      setJobError(false);
-    }
-    if (experience == "" || experience == undefined || experience == null) {
-      setExperienceError(true);
-    } else {
-      setExperienceError(false);
-    }
-    if (target == "" || target == undefined || target == null) {
-      setTargetError(true);
-    } else {
-      setTargetError(false);
-      let data = {
-        first_name,
-        last_name,
-        phone_number,
-        email,
-        telegram_number: telegram,
-        birth_date,
-        region,
-        country,
-        image,
-        job,
-        experience,
-        target,
-      };
-      console.log(data);
-    }
-    // UpdateStudent(data, id);
   };
 
   const apply = (file) => {
@@ -126,7 +108,6 @@ const ProfileSettingMentee = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImagePreview(reader.result);
-      // base64ToFile(reader.result);
     };
     reader.readAsDataURL(file);
   };
@@ -137,7 +118,7 @@ const ProfileSettingMentee = () => {
     return () => {
       setImgModal(false);
     };
-  }, [image]);
+  }, [image, userdata]);
   return (
     <div>
       {imgmodal && (
@@ -208,8 +189,8 @@ const ProfileSettingMentee = () => {
                                 src={
                                   imagePreview
                                     ? imagePreview
-                                    : image
-                                    ? `https://teach-api.uz/teach-api/public/storage/${image}`
+                                    : userdata?.user?.image
+                                    ? `https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"
@@ -234,69 +215,41 @@ const ProfileSettingMentee = () => {
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Ism</label>
-                          <input
-                            type="text"
-                            className="form-control text-capitalize"
-                            defaultValue={first_name}
-                            onChange={(e) => setFirstName(e.target.value)}
-                          />
-                          {firstNameError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Ism"}
+                          value={first_name}
+                          setValue={setFirstName}
+                          type={"text"}
+                          error={firstNameError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Familya</label>
-                          <input
-                            type="text"
-                            className="form-control text-capitalize"
-                            defaultValue={last_name}
-                            onChange={(e) => setLastName(e.target.value)}
-                          />
-                          {lastNameError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Familiya"}
+                          value={last_name}
+                          setValue={setLastName}
+                          type={"text"}
+                          error={lastNameError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Tug'ilgan kun, oy, yil</label>
-                          <input
-                            type="date"
-                            defaultValue={birth_date}
-                            onChange={(e) => setBirthDate(e.target.value)}
-                            className="form-control datetimepicker"
-                          />
-                          {birthDateError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Tug'ilgan kun, oy, yil"}
+                          value={birth_date}
+                          setValue={setBirthDate}
+                          type={"date"}
+                          error={birthDateError}
+                        />
                       </div>
 
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>E-mail</label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            defaultValue={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
-                          {emailError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"E-mail"}
+                          value={email}
+                          setValue={setEmail}
+                          type={"email"}
+                          error={emailError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
@@ -315,94 +268,47 @@ const ProfileSettingMentee = () => {
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Telegram akkauntingiz yoki raqamingiz</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue={telegram}
-                            onChange={(e) => setTelegram(e.target.value)}
-                          />
-                          {telegramError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Telegram akkauntingiz yoki raqamingiz"}
+                          value={telegram}
+                          setValue={setTelegram}
+                          type={"text"}
+                          error={telegramError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Qayerdansiz</label>
-                          <input
-                            type="text"
-                            className="form-control text-capitalize"
-                            defaultValue={region}
-                            onChange={(e) => setRegion(e.target.value)}
-                          />
-                          {regionError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Qayerdansiz"}
+                          value={region}
+                          setValue={setRegion}
+                          type={"text"}
+                          error={regionError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Hozir qayerdasiz</label>
-                          <input
-                            type="text"
-                            className="form-control text-capitalize"
-                            defaultValue={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                          />
-                          {countryError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Hozir qayerdasiz"}
+                          value={country}
+                          setValue={setCountry}
+                          type={"text"}
+                          error={countryError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Kasbingiz</label>
-                          <select
-                            className="form-control select"
-                            defaultValue={job}
-                            onChange={(e) => setJob(e.target.value)}
-                          >
-                            <option value="Talaba">Talaba</option>
-                            <option value="Tadbirkor">Tadbirkor</option>
-                            <option value="O'quvchi">O'quvchi</option>
-                            <option value="Davlat ishchisi">
-                              Davlat ishchisi (Shifokor, Harbiy va h.k)
-                            </option>
-                            <option value="Boshqa">Boshqa</option>
-                          </select>
-                          {jobError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <MySelect
+                          label={"Kasbingiz"}
+                          setValue={setJob}
+                          array={jobData}
+                          error={jobError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Hozirgi bilim darajangiz</label>
-                          <select
-                            defaultValue={experience}
-                            className="form-control select"
-                            onChange={(e) => setExperience(e.target.value)}
-                          >
-                            <option value="Boshlang'ich">Boshlang'ich</option>
-                            <option value="O'rta">O'rta</option>
-                            <option value="Yuqori">Yuqori</option>
-                          </select>
-                          {experienceError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <MySelect
+                          label={"Hozirgi bilim darajangiz"}
+                          setValue={setExperience}
+                          array={experienceData}
+                          error={experienceError}
+                        />
                       </div>
                       <div className="col-12">
                         <div className="form-group">
