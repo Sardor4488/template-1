@@ -33,7 +33,7 @@ const ProfileSettings = () => {
   );
   const [country, setCountry] = useState(userdata?.user?.country);
   const [region, setRegion] = useState(userdata?.user?.region);
-  const [image, setImage] = useState(userdata?.user?.image);
+  const [image, setImage] = useState();
   const [imagePreview, setImagePreview] = useState("");
   const [resume, setResume] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
@@ -351,8 +351,8 @@ const ProfileSettings = () => {
                                 src={
                                   imagePreview
                                     ? imagePreview
-                                    : image
-                                    ? `https://teach-api.uz/teach-api/public/storage/${image}`
+                                    : userdata?.user?.image
+                                    ? `https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"
