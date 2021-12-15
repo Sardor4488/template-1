@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { headerlogo } from "../../imagepath"
+import { AdminLogo } from "../../imagepath"
 
 class Invoice extends Component {
    render() {
@@ -11,7 +11,7 @@ class Invoice extends Component {
           <div className="invoice-container">
             <div className="row">
               <div className="col-sm-6 m-b-20">
-                <img alt="Logo" className="inv-logo img-fluid" src={headerlogo} />
+                <img alt="Logo" className="inv-logo img-fluid" src={AdminLogo} />
               </div>
               <div className="col-sm-6 m-b-20">
                 <div className="invoice-details">

@@ -194,21 +194,7 @@ const Header = (props) => {
                   </span>
                 </a>
                 <div className="dropdown-menu dropdown-menu-right">
-                  <div className="user-header">
-                    <div className="avatar avatar-sm">
-                      <img
-                        src={USER}
-                        alt="User Image"
-                        className="avatar-img rounded-circle"
-                      />
-                    </div>
-                    <div className="user-text">
-                      <h6>
-                        {userdata?.user?.first_name} {userdata?.user?.last_name}
-                      </h6>
-                      <p className="text-muted mb-0">{userdata?.user?.role}</p>
-                    </div>
-                  </div>
+                 
                   <Link className="dropdown-item" to={`/app/${role}/dashboard`}>
                     Dashboard
                   </Link>

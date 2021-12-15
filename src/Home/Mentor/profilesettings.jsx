@@ -634,7 +634,7 @@ const ProfileSettings = () => {
                               accept="application/*"
                               onChange={(e) => setResume(e.target.files[0])}
                               className="upload"
-                            />
+                             />
                           </div>
                           {resumeError && (
                             <p className="text-danger mt-2">
