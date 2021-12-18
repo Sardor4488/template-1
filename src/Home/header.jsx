@@ -74,6 +74,7 @@ const Header = (props) => {
     };
   }, []);
   const headerSettings = useHistory().location.pathname;
+  console.log(width);
   return (
     <header
       className={` ${ headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}
@@ -116,38 +117,44 @@ const Header = (props) => {
             <ul className="main-nav">
               <li className={pathname.includes("/app/home") ? "active" : "" }>
                 <Link
+                id="menu_close"
                   to="/app/home"
-                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : " text-dark"}  ${scrollPosition > 50 ? "text-dark" : " text-white"  }   `}
+                  className={`${
+                    scrollPosition > 50 && width > 992 ? "text-dark" : " text-white"
+                  }  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : " text-dark"}    `}
                 >
                   Asosiy
                 </Link>
               </li>
               <li className={`pathname.includes("/app/about") ? "active" : ""   `}>
                 <Link
+                id="menu_close"
                   to="/app/about"
-                  className={` ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
-                    scrollPosition > 50 ? "text-dark" : " text-white"
-                  }`}
+                  className={` ${
+                    scrollPosition > 50 && width > 992 ? "text-dark" : " text-white"
+                  } ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"}`}
                 >
                   Biz haqimizda
                 </Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
+                id="menu_close"
                   to="/app/reviwes-all"
-                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
-                    scrollPosition > 50 ? "text-dark" : " text-white"
-                  }`}
+                  className={`${
+                    scrollPosition > 50 && width > 992 ? "text-dark" : " text-white"
+                  }  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} `}
                 >
                   Fikrlar
                 </Link>
               </li>
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
+                id="menu_close"
                   to="/app/Blog/blog-grid"
-                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
-                    scrollPosition > 50 ? "text-dark" : " text-white"
-                  }`}
+                  className={` ${
+                    scrollPosition > 50 && width > 992 ? "text-dark" : " text-white"
+                  }  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} `}
                 >
                   Blog
                 </Link>
