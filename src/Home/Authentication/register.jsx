@@ -2,38 +2,38 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import { register } from "../../Api/register";
+import FormGroup from "../../UI/FormGroup/FormGroup";
 
 const Register = (props) => {
   const { history } = props;
-  const [registerPhoneNumber, setRegisterPhonePnumber] = useState("");
   const [url, setUrl] = useState("create-student");
-  const [data, setData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-    offert: 0,
-  });
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [offert, setOffert] = useState(0);
+
   const offerta = () => {
-    if (data.offert === 0) {
-      setData({ ...data, offert: 1 });
+    if (offert === 0) {
+      setOffert(1);
     } else {
-      setData({ ...data, offert: 0 });
+      setOffert(0);
     }
   };
   const registerMyTeacher = (e) => {
     e.preventDefault();
-    let regdata = {
-      first_name: data.firstname,
-      last_name: data.lastname,
-      email: data.email,
-      phone_number: registerPhoneNumber,
-      password: data.password,
-      password_confirmation: data.password_confirmation,
-      offert: data.offert,
+    let data = {
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      password,
+      password_confirmation,
+      offert,
     };
-    register(regdata, history, url);
+    register(data, history, url);
   };
 
   return (
@@ -87,114 +87,69 @@ const Register = (props) => {
                 <form onSubmit={registerMyTeacher}>
                   <div className="row">
                     <div className="col-lg-6">
-                      <div className="form-group">
-                        <label className="form-control-label">Ismingiz</label>
-                        <input
-                          id="first-name"
-                          type="text"
-                          className="form-control text-capitalize"
-                          name="first_name"
-                          autoFocus
-                          required
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              firstname: e.target.value,
-                            })
-                          }
-                        />
-                      </div>
+                      <FormGroup
+                        label={"Ismingiz"}
+                        type={"text"}
+                        value={first_name}
+                        setValue={setFirstName}
+                        className={"text-capitalize"}
+                      />
                     </div>
                     <div className="col-lg-6">
+                      <FormGroup
+                        label={"Familiyangiz"}
+                        type={"text"}
+                        value={last_name}
+                        setValue={setLastName}
+                        className={"text-capitalize"}
+                      />
+                    </div>
+
+                    <div className="col-12 col-lg-12">
                       <div className="form-group">
                         <label className="form-control-label">
-                          Familiyangiz
+                          Telefon raqamingiz
                         </label>
-                        <input
-                          id="last-name"
-                          type="text"
-                          className="form-control text-capitalize"
-                          name="last_name"
-                          required
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              lastname: e.target.value,
-                            })
-                          }
+                        <PhoneInput
+                          international
+                          // countryCallingCodeEditable={false}
+                          defaultCountry="UZ"
+                          value={phone_number}
+                          onChange={setPhoneNumber}
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-control-label">
-                      Telefon raqamingiz
-                    </label>
-                    <PhoneInput
-                      international
-                      // countryCallingCodeEditable={false}
-                      defaultCountry="UZ"
-                      value={registerPhoneNumber}
-                      onChange={setRegisterPhonePnumber}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-control-label">E-mail</label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="form-control"
-                      required
-                      onChange={(e) =>
-                        setData({
-                          ...data,
-                          email: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="row">
+
+                    <div className="col-12">
+                      <FormGroup
+                        label={"E-mail"}
+                        type={"email"}
+                        value={email}
+                        setValue={setEmail}
+                      />
+                    </div>
+
                     <div className="col-lg-6">
-                      <div className="form-group">
-                        <label className="form-control-label">
-                          Parol o'ylab toping
-                        </label>
-                        <input
-                          id="password"
-                          type="password"
-                          className="form-control"
-                          name="password"
-                          required
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              password: e.target.value,
-                            })
-                          }
-                        />
-                      </div>
+                      <FormGroup
+                        label={"Parol o'ylab toping"}
+                        type={"password"}
+                        value={password}
+                        setValue={setPassword}
+                        className={"text-capitalize"}
+                      />
                     </div>
+
                     <div className="col-lg-6">
-                      <div className="form-group">
-                        <label className="form-control-label">
-                          Parolni takrorlang
-                        </label>
-                        <input
-                          id="password-confirm"
-                          type="password"
-                          className={`form-control`}
-                          name="password_confirmation"
-                          required
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              password_confirmation: e.target.value,
-                            })
-                          }
-                        />
-                      </div>
+                      <FormGroup
+                        label={"Parolni takrorlang"}
+                        type={"password"}
+                        value={password_confirmation}
+                        setValue={setPasswordConfirmation}
+                        className={"text-capitalize"}
+                      />
                     </div>
                   </div>
+
                   <div className="form-group">
                     <div className="custom-control custom-control-xs custom-checkbox">
                       <input
@@ -210,12 +165,12 @@ const Register = (props) => {
                       >
                         Ommaviy oferta <Link to="/oferta">shartlariga</Link>
                         <span> roziman</span>
-                      </label>{" "}
+                      </label>
                     </div>
                   </div>
                   <button
                     className={`btn btn-primary login-btn ${
-                      data.offert == 0 ? "disabled" : ""
+                      offert == 0 ? "disabled" : ""
                     }`}
                     type="submit"
                   >
@@ -235,6 +190,7 @@ const Register = (props) => {
           </div>
           {/* /Register Content */}
         </div>
+        {/* islom */}
       </div>
     </>
   );

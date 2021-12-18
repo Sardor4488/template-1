@@ -17,9 +17,27 @@ import {
 import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { myStudents } from "../../Api/teacherStudentsApi";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
-class MenteeList extends Component {
-  render() {
+const MenteeList = () => {
+  // const userdata = useSelector((state) => state?.Reducer?.userdata);
+  const teacherId = localStorage.getItem("teacher_id")
+  const [data, setData] = useState([])
+  
+  useEffect(() => {
+    async function getStudent() {
+      const res = await myStudents(teacherId);
+      setData(res?.data?.mystudent)
+      console.log(res.data);
+    }
+    getStudent()
+  }, [])
+
+  console.log(data);
+
     return (
       <div>
         <div className="breadcrumb-bar">
@@ -121,6 +139,5 @@ class MenteeList extends Component {
       </div>
     );
   }
-}
 
 export default MenteeList;

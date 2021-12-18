@@ -135,36 +135,37 @@ const StudentProfile = () => {
                 {/* Mentor Widget */}
                 <div className="card">
                   <div className="card-body">
-                  <div className="row w-100 d-flex align-items-center justify-content-between">
+                    <div className="row w-100 d-flex align-items-center justify-content-between">
                       <div className="col-12 col-sm-8 my-2">
-                      <div className=" d-flex align-items-center">
-                        <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
-                          <div className="pro-avatar">ST</div>
-                         
-                          <div className="mentor-details m-0">
-                          <i className="fas fa-map-marker-alt" /> Tamil
+                        <div className=" d-flex align-items-center">
+                          <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
+                            <div className="pro-avatar">ST</div>
+
+                            <div className="mentor-details m-0">
+                              <i className="fas fa-map-marker-alt" /> Tamil
                               Nadu, India
+                            </div>
+                          </div>
+                          <div className="user-info-cont">
+                            <h4 className="">Sardor Temirov</h4>
+                            <p className="mentor-type mb-0">
+                              English Literature (M.A)
+                            </p>{" "}
+                            <div className="mentor-action">
+                              <p className="mentor-type social-title">
+                                blabla@gmail.com
+                              </p>
+                            </div>
                           </div>
                         </div>
-                        <div className="user-info-cont">
-                          <h4 className="">Sardor Temirov</h4>
-                          <p className="mentor-type mb-0">
-                            English Literature (M.A)
-                          </p>  <div className="mentor-action">
-                          <p className="mentor-type social-title">
-                            blabla@gmail.com
-                          </p>
-                         
-                        </div>
-                        </div>
-                      
                       </div>
+
+                      <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
+                        <a href="#" className="blue-btn-radius">
+                          Bog'lanish{" "}
+                        </a>
                       </div>
-                    
-                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
-                   <a href="#" className="blue-btn-radius">Bog'lanish </a>
                     </div>
-                    </div>   
                   </div>
                 </div>
                 {/* /Mentor Widget */}
@@ -175,12 +176,25 @@ const StudentProfile = () => {
                     <div className="widget about-widget custom-about mb-0">
                       <h4 className="widget-title">Qisqacha ma'lumot</h4>
                       <hr />
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                      <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                      </p>
+                      <p>
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC, making it over 2000 years old.
+                      </p>
                     </div>
                     {/* /About Details */}
                   </div>
                 </div>
+
                 <div className="card">
                   <div className="card-body custom-border-card pb-0">
                     {/* Personal Details */}
@@ -209,7 +223,9 @@ const StudentProfile = () => {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Where did you hear about us?</span>
-                                <div className="row-result">Through web search</div>
+                                <div className="row-result">
+                                  Through web search
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -219,9 +235,9 @@ const StudentProfile = () => {
                     {/* /Personal Details */}
                   </div>
                 </div>
-                <div className="card">
+
+                {/* <div className="card">
                   <div className="card-body custom-border-card pb-0">
-                    {/* Qualification Details */}
                     <div className="widget experience-widget mb-0">
                       <h4 className="widget-title">Qualification</h4>
                       <hr />
@@ -231,7 +247,9 @@ const StudentProfile = () => {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Undergraduate College</span>
-                                <div className="row-result">Coimbatore University</div>
+                                <div className="row-result">
+                                  Coimbatore University
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -247,7 +265,9 @@ const StudentProfile = () => {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Graduate College</span>
-                                <div className="row-result">Coimbatore University</div>
+                                <div className="row-result">
+                                  Coimbatore University
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -262,12 +282,11 @@ const StudentProfile = () => {
                         </ul>
                       </div>
                     </div>
-                    {/* /Qualification Details */}
                   </div>
-                </div>
-                <div className="card">
+                </div> */}
+
+                {/* <div className="card">
                   <div className="card-body pb-1 custom-border-card">
-                    {/* Location Details */}
                     <div className="widget awards-widget m-0">
                       <h4 className="widget-title">Location</h4>
                       <hr />
@@ -277,7 +296,9 @@ const StudentProfile = () => {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Address 1</span>
-                                <div className="row-result">No : 5 ABC Avenue</div>
+                                <div className="row-result">
+                                  No : 5 ABC Avenue
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -285,7 +306,9 @@ const StudentProfile = () => {
                             <div className="experience-content">
                               <div className="timeline-content">
                                 <span>Address 2</span>
-                                <div className="row-result">National highway road</div>
+                                <div className="row-result">
+                                  National highway road
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -324,7 +347,129 @@ const StudentProfile = () => {
                         </ul>
                       </div>
                     </div>
-                    {/* /Location Details */}
+                  </div>
+                </div> */}
+
+                <div className="card">
+                  <div className="card-body custom-border-card pb-0">
+                    {/* Form Lesson Date and time */}
+                    <form onSubmit={addLesson}>
+                      <div className="row">
+                        <div className="col-12 col-md-6">
+                          <div className="form-group">
+                            <label> Darslar soni </label>
+                            <div className="form-control d-flex align-items-center">
+                              {count}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-12 col-md-6">
+                          <div className="form-group">
+                            <label> Dars sanasi </label>
+                            <input
+                              defaultValue={date || ""}
+                              onChange={(e) => setDate(e.target.value)}
+                              type="date"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-12 col-md-6">
+                          <div className="form-group">
+                            <label> Start time </label>
+                            <select
+                              value={startTime || ""}
+                              className="form-control select"
+                              onChange={(e) => setStartTime(e.target.value)}
+                            >
+                              <option value="06:00">06:00</option>
+                              <option value="07:00">07:00</option>
+                              <option value="08:00">08:00</option>
+                              <option value="09:00">09:00</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-12 col-md-6">
+                          <div className="form-group">
+                            <label> End time </label>
+                            <select
+                              value={endTime || ""}
+                              className="form-control select"
+                              onChange={(e) => setEndTime(e.target.value)}
+                            >
+                              <option value="06:00">06:00</option>
+                              <option value="07:00">07:00</option>
+                              <option value="08:00">08:00</option>
+                              <option value="09:00">09:00</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-12">
+                          <div className="form-group">
+                            <label>Mavzu</label>
+                            <input
+                              value={subject || ""}
+                              onChange={(e) => setSubject(e.target.value)}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-12 d-flex align-items-center justify-content-center p-3">
+                          <button className="btn btn-primary" type="submit">
+                            Saqlash
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    {/* /Form Lesson Date and time */}
+
+                    {/* Table Date and Time */}
+                    {array?.length > 0 && (
+                      <div className="tab-pane show active" id="mentee-list">
+                        <div className="card card-table">
+                          <div className="card-body">
+                            <div className="table-responsive">
+                              <table className="table table-hover table-center mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Dars sanasi</th>
+                                    <th className="text-center">Dars vaqti</th>
+                                    <th>Mavzu</th>
+                                    <th className="text-center">Harakat</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {array.map((v, i) => (
+                                    <tr key={i}>
+                                      <td>{v.id}</td>
+                                      <td>{v.date}</td>
+                                      <td className="text-center">
+                                        <span className="pending">
+                                          {v.startTime}-{v.endTime}
+                                        </span>
+                                      </td>
+                                      <td>{v.subject}</td>
+                                      <td className="text-center">
+                                        <button
+                                          className="btn btn-sm bg-info-light"
+                                          onClick={() => handleEdit(i)}
+                                        >
+                                          <div className="fas fa-edit"></div>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* /Table Date and Time */}
                   </div>
                 </div>
                 {/* /Mentor Details Tab */}
@@ -332,309 +477,7 @@ const StudentProfile = () => {
               {/* /Mentor Widget */}
               {/* Mentor Details Tab */}
               {/* <ModalPage /> */}
-              <div className="card">
-                <div className="card-body custom-border-card pb-0">
-                  {/* Form Lesson Date and time */}
-                  <form onSubmit={addLesson}>
-                    <div className="row">
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label> Darslar soni </label>
-                          <div className="form-control d-flex align-items-center">
-                            {count}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label> Dars sanasi </label>
-                          <input
-                            defaultValue={date || ""}
-                            onChange={(e) => setDate(e.target.value)}
-                            type="date"
-                            className="form-control"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label> Start time </label>
-                          <select
-                            value={startTime || ""}
-                            className="form-control select"
-                            onChange={(e) => setStartTime(e.target.value)}
-                          >
-                            <option value="06:00">06:00</option>
-                            <option value="07:00">07:00</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label> End time </label>
-                          <select
-                            value={endTime || ""}
-                            className="form-control select"
-                            onChange={(e) => setEndTime(e.target.value)}
-                          >
-                            <option value="06:00">06:00</option>
-                            <option value="07:00">07:00</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label>Mavzu</label>
-                          <input
-                            value={subject || ""}
-                            onChange={(e) => setSubject(e.target.value)}
-                            type="text"
-                            className="form-control"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12 d-flex align-items-center justify-content-center p-3">
-                        <button className="btn btn-primary" type="submit">
-                          Saqlash
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                  {/* /Form Lesson Date and time */}
 
-                  {/* Table Date and Time */}
-                  {array?.length > 0 && (
-                    <div className="tab-pane show active" id="mentee-list">
-                      <div className="card card-table">
-                        <div className="card-body">
-                          <div className="table-responsive">
-                            <table className="table table-hover table-center mb-0">
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Dars sanasi</th>
-                                  <th className="text-center">Dars vaqti</th>
-                                  <th>Mavzu</th>
-                                  <th className="text-center">Harakat</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {array.map((v, i) => (
-                                  <tr key={i}>
-                                    <td>{v.id}</td>
-                                    <td>{v.date}</td>
-                                    <td className="text-center">
-                                      <span className="pending">
-                                        {v.startTime}-{v.endTime}
-                                      </span>
-                                    </td>
-                                    <td>{v.subject}</td>
-                                    <td className="text-center">
-                                      <button
-                                        className="btn btn-sm bg-info-light"
-                                        onClick={() => handleEdit(i)}
-                                      >
-                                        <div className="fas fa-edit"></div>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* /Table Date and Time */}
-                </div>
-              </div>
-
-              <div className="card">
-                <div className="card-body custom-border-card pb-0">
-                  {/* About Details */}
-                  <div className="widget about-widget custom-about mb-0">
-                    <h4 className="widget-title">About Me</h4>
-                    <hr />
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book. It has survived not only five
-                      centuries, but also the leap into electronic typesetting,
-                      remaining essentially unchanged.
-                    </p>
-                    <p>
-                      Contrary to popular belief, Lorem Ipsum is not simply
-                      random text. It has roots in a piece of classical Latin
-                      literature from 45 BC, making it over 2000 years old.
-                    </p>
-                  </div>
-                  {/* /About Details */}
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body custom-border-card pb-0">
-                  {/* Personal Details */}
-                  <div className="widget education-widget mb-0">
-                    <h4 className="widget-title">Personal Details</h4>
-                    <hr />
-                    <div className="experience-box">
-                      <ul className="experience-list profile-custom-list">
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Gender</span>
-                              <div className="row-result">Male</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Date of Birth</span>
-                              <div className="row-result">01 - 02 - 2000</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Where did you hear about us?</span>
-                              <div className="row-result">
-                                Through web search
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* /Personal Details */}
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body custom-border-card pb-0">
-                  {/* Qualification Details */}
-                  <div className="widget experience-widget mb-0">
-                    <h4 className="widget-title">Qualification</h4>
-                    <hr />
-                    <div className="experience-box">
-                      <ul className="experience-list profile-custom-list">
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Undergraduate College</span>
-                              <div className="row-result">
-                                Coimbatore University
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Undergraduate Major</span>
-                              <div className="row-result">Mathematics</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Graduate College</span>
-                              <div className="row-result">
-                                Coimbatore University
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Type of Degree</span>
-                              <div className="row-result">B.Sc (Maths)</div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* /Qualification Details */}
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body pb-1 custom-border-card">
-                  {/* Location Details */}
-                  <div className="widget awards-widget m-0">
-                    <h4 className="widget-title">Location</h4>
-                    <hr />
-                    <div className="experience-box">
-                      <ul className="experience-list profile-custom-list">
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Address 1</span>
-                              <div className="row-result">
-                                No : 5 ABC Avenue
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Address 2</span>
-                              <div className="row-result">
-                                National highway road
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Country</span>
-                              <div className="row-result">India</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>City</span>
-                              <div className="row-result">Coimbatore</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>State</span>
-                              <div className="row-result">Tamil Nadu</div>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="experience-content">
-                            <div className="timeline-content">
-                              <span>Postal Code</span>
-                              <div className="row-result">641001</div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  {/* /Location Details */}
-                </div>
-              </div>
               {/* /Mentor Details Tab */}
             </div>
           </div>

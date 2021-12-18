@@ -1,7 +1,6 @@
 /**
  * Signin Firebase
  */
-
 import React, { Component } from 'react';
 import {AdminLogo,AVATAR_12} from '../../../imagepath'
 import { Link } from 'react-router-dom';

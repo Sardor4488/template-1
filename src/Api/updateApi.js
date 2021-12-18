@@ -24,6 +24,7 @@ const UpdateStudent = (data, id) => {
 };
 
 const UpdateTeacher = (data, id) => {
+  LoadingOn();
   if (data) {
     const config = {
       headers: {
@@ -36,6 +37,25 @@ const UpdateTeacher = (data, id) => {
       .post(`teacher/update-teacher/${id}?_method=PUT`, data, config)
       .then((res) => {
         console.log(res);
+        LoadingOff();
+      })
+      .catch((err) => {
+        alert("Saqlanmadi");
+        console.log(err);
+        LoadingOff();
+      });
+  } else {
+    return false;
+  }
+};
+
+const TeacherFreeTime = (id) => {
+  if (id) {
+    axios
+      .post(`teacher/free_time/${id}`)
+      .then((res) => {
+        console.log(res);
+        console.log("123");
       })
       .catch((err) => {
         console.log(err);
@@ -44,5 +64,4 @@ const UpdateTeacher = (data, id) => {
     return false;
   }
 };
-
-export { UpdateStudent, UpdateTeacher };
+export { UpdateStudent, UpdateTeacher, TeacherFreeTime };

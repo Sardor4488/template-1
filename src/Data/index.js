@@ -90,35 +90,100 @@ export const modalTimeData = [
   "11.00 pm",
 ];
 
-export const Calendar = [
+export const priceData = [
+  { id: 10000, name: 10000 },
+  { id: 15000, name: 15000 },
+  { id: 20000, name: 20000 },
+  { id: 25000, name: 25000 },
+  { id: 30000, name: 30000 },
+  { id: 35000, name: 35000 },
+  { id: 40000, name: 40000 },
+  { id: 45000, name: 45000 },
+  { id: 50000, name: 50000 },
+  { id: 55000, name: 55000 },
+  { id: 60000, name: 60000 },
+  { id: 65000, name: 65000 },
+  { id: 70000, name: 70000 },
+  { id: 75000, name: 75000 },
+  { id: 80000, name: 80000 },
+  { id: 85000, name: 85000 },
+  { id: 90000, name: 90000 },
+  { id: 95000, name: 95000 },
+  { id: 100000, name: 100000 },
+  { id: 105000, name: 105000 },
+  { id: 110000, name: 110000 },
+  { id: 115000, name: 115000 },
+  { id: 120000, name: 120000 },
+  { id: 125000, name: 125000 },
+  { id: 130000, name: 130000 },
+  { id: 135000, name: 135000 },
+  { id: 140000, name: 140000 },
+  { id: 145000, name: 145000 },
+  { id: 150000, name: 150000 },
+];
+
+export const experienceData = [
+  { id: "1-3", name: "1-3 yil" },
+  { id: "3-5", name: "3-5 yil" },
+  { id: "5", name: "5+ yil" },
+];
+
+export const languageData = [
   {
-    dayOfWeek: [
-      {
-        day: 1,
-        weekDays: "Chorshanba",
-        hours: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      },
-      { day: 2, weekDays: "Payshanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 3, weekDays: "Juma", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 4, weekDays: "Shanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 5, weekDays: "Yakshanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 6, weekDays: "Dushanba ", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 7, weekDays: "Seshanba ", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-    ],
+    id: "O'zbek",
+    name: "O'zbekcha",
   },
   {
-    dayOfWeek: [
-      {
-        day: 1,
-        weekDays: "Chorshanba",
-        hours: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      },
-      { day: 2, weekDays: "Payshanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 3, weekDays: "Juma", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 4, weekDays: "Shanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 5, weekDays: "Yakshanba", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 6, weekDays: "Dushanba ", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-      { day: 7, weekDays: "Seshanba ", hours: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
-    ],
+    id: "Ingiliz",
+    name: "Ingilizcha",
+  },
+  {
+    id: "Rus",
+    name: "Ruscha",
+  },
+  {
+    id: "Nemis",
+    name: "Nemischa",
+  },
+  {
+    id: "Turk",
+    name: "Turkcha",
+  },
+  {
+    id: "Koreys",
+    name: "Koreyscha",
+  },
+];
+
+export const jobData = [
+  {
+    id: "Talaba",
+    name: "Talaba",
+  },
+  {
+    id: "Tadbirkor",
+    name: "Tadbirkor",
+  },
+  {
+    id: "Davlat ishchisi",
+    name: "Davlat  Davlat ishchisi (Shifokor, Harbiy va h.k)",
+  },
+  {
+    id: "Boshqa",
+    name: "Boshqa",
+  },
+];
+export const levelData = [
+  {
+    id: "Boshlang'ich",
+    name: "Boshlang'ich",
+  },
+  {
+    id: "O'rta",
+    name: "O'rta",
+  },
+  {
+    id: "Yuqori",
+    name: "Yuqori",
   },
 ];

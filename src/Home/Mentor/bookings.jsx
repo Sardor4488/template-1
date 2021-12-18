@@ -12,8 +12,19 @@ import {
 import Sidebar from "./sidebar";
 import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
+import { testLessons } from "../../Api/testLessons";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Bookings = () => {
+  const userData = useSelector((state) => state.Reducer.userdata);
+
+  useEffect(() => {
+    if (userData) {
+      testLessons(userData.user.teacher_id);
+    }
+  }, [userData]);
+
   return (
     <div>
       <div className="breadcrumb-bar">

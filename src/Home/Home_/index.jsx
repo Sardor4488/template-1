@@ -11,7 +11,7 @@ import { ICON_1, USER, BLOG_01, USER_1 } from "../../constant/imagepath_home";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
 import { dataBlog, dataTeam } from "../../Data";
-import { getHomeCategory } from "../../Api/getApi";
+import { getHomeCategory, getHomeStatistcs } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
@@ -32,6 +32,7 @@ const Home = (props) => {
 
 
   const [more, setMore] = useState(false);
+  const [statistcs, setStatistcs] = useState([]);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
     { name: "Aniq fanlar" },
@@ -129,12 +130,17 @@ const Home = (props) => {
   };
   useEffect(() => {
     async function getCategory() {
-      const res = await getHomeCategory();
-      setCategories(res.categories);
+      const resCategory = await getHomeCategory();
+      const resStatistcs = await getHomeStatistcs();
+      setCategories(resCategory.categories);
+      setStatistcs(resStatistcs);
       LoadingOff();
     }
     getCategory();
   }, []);
+
+  console.log(statistcs);
+
   return (
     <div>
       <section id="section-search" className="section section-search ">
@@ -274,7 +280,6 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {" "}
                               {categories[2]?.name}
                             </p>
                             <p className="home_item_text"> 65 nafar ustoz</p>
@@ -300,7 +305,7 @@ const Home = (props) => {
                             >
                               <path
                                 d="M50.31 37.3323V37.3333C50.31 39.3542 48.6745 41 46.6667 41V42V43H55V45.6667H1V43H9.33333V42V41C7.31895 41 5.66667 39.3477 5.66667 37.3333V14C5.66667 11.9856 7.31895 10.3333 9.33333 10.3333H46.6667C48.6807 10.3333 50.3328 11.9851 50.3333 13.999C50.3333 13.9993 50.3333 13.9997
-        50.3333 14L50.31 37.3323ZM9.33333 13H8.33333V14V37.3333V38.3333H9.33333H46.6667H47.6667V37.3333V14V13H46.6667H9.33333Z"
+                        50.3333 14L50.31 37.3323ZM9.33333 13H8.33333V14V37.3333V38.3333H9.33333H46.6667H47.6667V37.3333V14V13H46.6667H9.33333Z"
                                 fill="#1e88e5"
                                 stroke="#1e88e5"
                                 strokeWidth="2"
@@ -317,7 +322,6 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {" "}
                               {categories[3]?.name}
                             </p>
                             <p className="home_item_text"> 11 nafar ustoz</p>
@@ -368,7 +372,6 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-         
         </div>
       </section>
       {/* /Home Banner */}
@@ -802,26 +805,25 @@ const Home = (props) => {
           <div className="row">
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>500+</span>
-                <h3>Happy Clients</h3>
+                <span>{statistcs.lesson_count}</span>
+                <h3>Darslar soni</h3>
               </div>
             </div>
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>120+</span>
-                <h3>Online Appointments</h3>
+                <span>{statistcs.student_count}</span>
+                <h3>O'quvchilar soni</h3>
               </div>
             </div>
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>100%</span>
-                <h3>Job Satisfaction</h3>
+                <span>{statistcs.teacher_count}</span>
+                <h3>O'qituvchilar soni</h3>
               </div>
             </div>
           </div>
         </div>
       </section>
-                        
     </div>
   );
 };

@@ -7,11 +7,12 @@ import PhoneInput from "react-phone-number-input";
 import { useSelector } from "react-redux";
 import { getCourses } from "../../Api/getApi";
 import { UpdateTeacher } from "../../Api/updateApi";
-import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { experienceData, languageData, priceData } from "../../Data/index";
 import AvatarImageCropper from "react-avatar-image-cropper";
+import FormGroup from "../../UI/FormGroup/FormGroup";
+import MySelect from "../../UI/Select/MySelect";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
-  // const [update, setUpdate] = useState(false);
   const [imgmodal, setImgModal] = useState(false);
   const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.user?.email);
@@ -21,22 +22,27 @@ const ProfileSettings = () => {
   const [telegram_number, setTelegramNumber] = useState(
     userdata?.user?.telegram_number
   );
-  const [course_id, setCourseId] = useState();
+  const [course_id, setCourseId] = useState(
+    userdata?.user?.course_id ? userdata?.user?.course_id : 1
+  );
   const [price, setPrice] = useState(10000);
-  const [description, setDescription] = useState(userdata?.user?.descripton);
+  const [description, setDescription] = useState(userdata?.user?.description);
   const [experience, setExperience] = useState(
     userdata?.user?.experience ? userdata?.user?.experience : "1-3"
   );
   const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
+  const [languages, setLanguages] = useState([]);
   const [language, setLanguage] = useState(
-    userdata.languages ? userdata.languages : []
+    userdata?.user?.language ? userdata?.user?.language : "O'zbek"
   );
   const [country, setCountry] = useState(userdata?.user?.country);
   const [region, setRegion] = useState(userdata?.user?.region);
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-  const [resume, setResume] = useState(userdata?.user?.resume);
+  const [resume, setResume] = useState(null);
+  const [resumePost, setResumePost] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
+
   const [emailError, setEmailError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
@@ -51,190 +57,77 @@ const ProfileSettings = () => {
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
-
-  // const base64ToFile = async (src) => {
-  //   const blob = await fetch(src).then((res) => res.blob());
-  //   console.log(blob);
-  //   console.log('ishladi')
-  // };
+  
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
     const reader = new FileReader();
     reader.onloadend = () => {
       setImagePreview(reader.result);
-      // base64ToFile(reader.result);
     };
     reader.readAsDataURL(file);
   };
   const handleLanguageDelete = (p) => {
-    const languages = [...language];
-    const filterData = languages.filter((v) => v !== p);
-    setLanguage(filterData);
+    const languaged = [...languages];
+    const filterData = languaged.filter((v) => v !== p);
+    setLanguages(filterData);
+    setLanguage(languaged);
   };
   const handleLanguageAdd = (e) => {
-    const languages = [...language];
-    languages.filter((v) => v == e.target.value).length == 0 &&
-      languages.push(e.target.value);
-    setLanguage(languages);
+    const languagea = [...languages];
+    languagea.filter((v) => v == e).length == 0 && languagea.push(e);
+    setLanguages(languagea);
+    setLanguage(languagea);
   };
+  const array = [
+    email,
+    first_name,
+    last_name,
+    phone_number,
+    telegram_number,
+    course_id,
+    price,
+    description,
+    experience,
+    birth_date,
+    language,
+    country,
+    region,
+    resumePost,
+  ];
+  const arrayError = [
+    setEmailError,
+    setFirstNameError,
+    setLastNameError,
+    setPhoneNumberError,
+    setTelegramNumberError,
+    setCourseIdError,
+    setPriceError,
+    setDescriptionError,
+    setExperienceError,
+    setBirthDateError,
+    setLanguageError,
+    setCountryError,
+    setRegionError,
+    setResumeError,
+  ];
   const updateTeacher = (e) => {
-    // const array = [
-    //   email,
-    //   first_name,
-    //   last_name,
-    //   phone_number,
-    //   telegram_number,
-    //   course_id,
-    //   price,
-    //   description,
-    //   experience,
-    //   birth_date,
-    //   language,
-    //   country,
-    //   region,
-    //   resume,
-    // ];
-    // const arrayError = [
-    //   setEmailError,
-    //   setFirstNameError,
-    //   setLastNameError,
-    //   setPhoneNumberError,
-    //   setTelegramNumberError,
-    //   setCourseIdError,
-    //   setPriceError,
-    //   setDescriptionError,
-    //   setExperienceError,
-    //   setBirthDateError,
-    //   setLanguageError,
-    //   setCountryError,
-    //   setRegionError,
-    //   setResumeError,
-    // ];
-    // for (let i = 0; i < array.length; i++) {
-    //   if (array[i] == null || array[i] == undefined || array[i] == "") {
-    //     arrayError[i](true);
-    //     setUpdate(false);
-    //   }
-    //   if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
-    //     arrayError[i](false);
-    //     setUpdate(true);
-    //   }
-    // }
-    // if (update) {
-    //   let data = {
-    //     email,
-    //     first_name,
-    //     last_name,
-    //     phone_number,
-    //     telegram_number,
-    //     image,
-    //     course_id,
-    //     price,
-    //     description,
-    //     experience,
-    //     language,
-    //     country,
-    //     region,
-    //     resume,
-    //     birth_date,
-    //     offert_price,
-    //   };
-    //   UpdateTeacher(data, id);
-    // }
     e.preventDefault();
-    if (email == "" || email == undefined || email == null) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
+    let update = false;
+    console.log("ishladi");
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
+        arrayError[i](false);
+        update = true;
+      }
+      if (array[i] == null || array[i] == undefined || array[i] == "") {
+        arrayError[i](true);
+        update = false;
+      }
     }
-    if (first_name == "" || first_name == undefined || first_name == null) {
-      setFirstNameError(true);
-    } else {
-      setFirstNameError(false);
-    }
-    if (last_name == "" || last_name == undefined || last_name == null) {
-      setLastNameError(true);
-    } else {
-      setLastNameError(false);
-    }
-    if (
-      phone_number == "" ||
-      phone_number == undefined ||
-      phone_number == null
-    ) {
-      setPhoneNumberError(true);
-    } else {
-      setPhoneNumberError(false);
-    }
-    if (
-      telegram_number == "" ||
-      telegram_number == undefined ||
-      telegram_number == null
-    ) {
-      setTelegramNumberError(true);
-    } else {
-      setTelegramNumberError(false);
-    }
-    if (course_id == "" || course_id == undefined || course_id == null) {
-      setCourseIdError(true);
-    } else {
-      setCourseIdError(false);
-    }
-    if (price == "" || price == undefined || price == null) {
-      setPriceError(true);
-    } else {
-      setPriceError(false);
-    }
-    if (description == "" || description == undefined || description == null) {
-      setDescriptionError(true);
-    } else {
-      setDescriptionError(false);
-    }
-    if (experience == "" || experience == undefined || experience == null) {
-      setExperienceError(true);
-    } else {
-      setExperienceError(false);
-    }
-    if (birth_date == "" || birth_date == undefined || birth_date == null) {
-      setBirthDateError(true);
-    } else {
-      setBirthDateError(false);
-    }
-    if (language == "" || language == undefined || language == null) {
-      setLanguageError(true);
-    } else {
-      setLanguageError(false);
-    }
-    if (country == "" || country == undefined || country == null) {
-      setCountryError(true);
-    } else {
-      setCountryError(false);
-    }
-    if (region == "" || region == undefined || region == null) {
-      setRegionError(true);
-    } else {
-      setRegionError(false);
-    }
-    if (resume == "" || resume == undefined || resume == null) {
-      setResumeError(true);
-    } else {
-      setFirstNameError(false);
-      setLastNameError(false);
-      setPhoneNumberError(false);
-      setTelegramNumberError(false);
-      setCourseIdError(false);
-      setPriceError(false);
-      setDescriptionError(false);
-      setExperienceError(false);
-      setBirthDateError(false);
-      setLanguageError(false);
-      setCountryError(false);
-      setRegionError(false);
-      setResumeError(false);
-
+    console.log(array);
+    if (update) {
       const fd = new FormData();
-
       fd.append("email", email);
       fd.append("first_name", first_name);
       fd.append("last_name", last_name);
@@ -244,17 +137,14 @@ const ProfileSettings = () => {
       fd.append("price", price);
       fd.append("description", description);
       fd.append("image", image);
-      fd.append("experience",  experience);
+      fd.append("experience", experience);
       fd.append("language", language);
-      fd.append("country",  country);
+      fd.append("country", country);
       fd.append("region", region);
       fd.append("resume", resume);
       fd.append("birth_date", birth_date);
       fd.append("offert_price", offert_price);
-   
-
       UpdateTeacher(fd, id);
-      console.log(fd);
     }
   };
   useEffect(() => {
@@ -280,7 +170,6 @@ const ProfileSettings = () => {
       setImgModal(false);
     };
   }, [image, userdata]);
-  console.log(userdata);
   return (
     <div>
       {imgmodal && (
@@ -376,94 +265,49 @@ const ProfileSettings = () => {
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Ism</label>
-                          <input
-                            type="text"
-                            defaultValue={first_name}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            className="form-control"
-                          />
-                          {firstNameError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Ism"}
+                          value={first_name}
+                          setValue={setFirstName}
+                          type={"text"}
+                          error={firstNameError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Familya</label>
-                          <input
-                            type="text"
-                            defaultValue={last_name}
-                            onChange={(e) => setLastName(e.target.value)}
-                            className="form-control"
-                          />
-                          {lastNameError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Familiya"}
+                          value={last_name}
+                          setValue={setLastName}
+                          type={"text"}
+                          error={lastNameError}
+                        />
+                      </div>
+
+                      <div className="col-12 col-md-6">
+                        <FormGroup
+                          label={"Tug'ilgan yilingiz"}
+                          value={birth_date}
+                          setValue={setBirthDate}
+                          type={"date"}
+                          error={birthDateError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Tug'ilgan yilingiz</label>
-                          <input
-                            type="date"
-                            defaultValue={birth_date}
-                            onChange={(e) => setBirthDate(e.target.value)}
-                            className="form-control "
-                          />
-                          {birthDateError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <MySelect
+                          label={"Fan nomi"}
+                          setValue={setCourseId}
+                          array={coursesData}
+                          error={courseIdError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Fan nomi</label>
-                          <select
-                            className="form-control select"
-                            onChange={(e) => setCourseId(e.target.value)}
-                          >
-                            {coursesData &&
-                              coursesData.map((v, i) => (
-                                <option key={v.id} value={v.id}>
-                                  {v.name}
-                                </option>
-                              ))}
-                          </select>
-                          {courseIdError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>E-mail </label>
-                          <input
-                            type="email"
-                            defaultValue={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="form-control"
-                          />
-                          {emailError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"E-mail"}
+                          value={email}
+                          setValue={setEmail}
+                          type={"email"}
+                          error={emailError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
@@ -477,149 +321,53 @@ const ProfileSettings = () => {
                           />
                           {phoneNumberError && (
                             <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
+                              Bu joyni to'ldirish shart
                             </p>
                           )}
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>
-                            Telegram akkauntingiz yoki raqamingizni kiriting
-                          </label>
-                          <input
-                            type="text"
-                            defaultValue={telegram_number}
-                            onChange={(e) => setTelegramNumber(e.target.value)}
-                            className="form-control"
-                          />
-                          {telegramNumberError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={
+                            "Telegram akkauntingiz yoki raqamingizni kiriting"
+                          }
+                          value={telegram_number}
+                          setValue={setTelegramNumber}
+                          type={"text"}
+                          error={telegramNumberError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Tajriba</label>
-                          <select
-                            type="text"
-                            defaultValue={experience}
-                            onChange={(e) => setExperience(e.target.value)}
-                            className="form-control select"
-                          >
-                            <option value="1-3">1-3 yil</option>
-                            <option value="3-5">3-5 yil</option>
-                            <option value="5">5 yildan ortiq</option>
-                          </select>
-                          {experienceError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <MySelect
+                          label={"Tajriba"}
+                          setValue={setExperience}
+                          array={experienceData}
+                          error={experienceError}
+                        />
                       </div>
-
                       <div className="col-12">
-                        <div className="form-group">
-                          <label>
-                            Qaysi tillarda dars o'ta olasiz? Bir nechta
-                            tanlashingiz mumkin
-                          </label>
-                          <select
-                            className="form-control select"
-                            onChange={(e) => handleLanguageAdd(e)}
-                          >
-                            <option value="O'zbek">O'zbekcha</option>
-                            <option value="Ingiliz">Ingilizcha</option>
-                            <option value="Rus">Ruscha</option>
-                            <option value="Koreys">Koreyscha</option>
-                            <option value="Nemis">Nemischa</option>
-                            <option value="Turk">Turkcha</option>
-                          </select>
-                          {languageError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                          <div className="row pt-3 px-2 m-0">
-                            {" "}
-                            {language &&
-                              language.map((v, i) => (
-                                <div
-                                  className="col-6 col-sm-4 col-lg-2 d-flex justify-content-center align-items-center p-0"
-                                  key={i}
-                                >
-                                  <div className=" d-flex align-items-center justify-content-between p-1">
-                                    <div className="me-2">{v}cha</div>{" "}
-                                    <div>
-                                      <i
-                                        onClick={() => handleLanguageDelete(v)}
-                                        className="fas fa-times"
-                                      ></i>
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                          </div>
-                        </div>
+                        <MySelect
+                          label={
+                            "Qaysi tillarda dars o'ta olasiz? Bir nechta tanlashingiz mumkin"
+                          }
+                          setValue={handleLanguageAdd}
+                          array={languageData}
+                          error={languageError}
+                          item={languages}
+                          itemDelete={handleLanguageDelete}
+                        />
                       </div>
                       <div className="col-12  ">
-                        <div className="form-group">
-                          <label>
-                            Bir soat darsingiz uchun necha pul olmoqchisiz
-                            (iltimos{" "}
-                            <Link to="#">Narxlar bo'yicha kelishuv</Link> bilan
-                            tanishgan holda o'zizga mos narx kiriting)
-                          </label>
-
-                          <select
-                            className="form-control select"
-                            defaultValue={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                          >
-                            <option value="10000">10000 so'm</option>
-                            <option value="15000">15000 so'm</option>
-                            <option value="20000">20000 so'm</option>
-                            <option value="25000">25000 so'm</option>
-                            <option value="30000">30000 so'm</option>
-                            <option value="35000">35000 so'm</option>
-                            <option value="40000">40000 so'm</option>
-                            <option value="45000">45000 so'm</option>
-                            <option value="50000">50000 so'm</option>
-                            <option value="55000">55000 so'm</option>
-                            <option value="60000">60000 so'm</option>
-                            <option value="65000">65000 so'm</option>
-                            <option value="70000">70000 so'm</option>
-                            <option value="75000">75000 so'm</option>
-                            <option value="80000">80000 so'm</option>
-                            <option value="85000">85000 so'm</option>
-                            <option value="90000">90000 so'm</option>
-                            <option value="95000">95000 so'm</option>
-                            <option value="100000">100000 so'm</option>
-                            <option value="105000">105000 so'm</option>
-                            <option value="110000">110000 so'm</option>
-                            <option value="115000">115000 so'm</option>
-                            <option value="120000">120000 so'm</option>
-                            <option value="125000">125000 so'm</option>
-                            <option value="130000">130000 so'm</option>
-                            <option value="135000">135000 so'm</option>
-                            <option value="140000">140000 so'm</option>
-                            <option value="145000">145000 so'm</option>
-                            <option value="150000">150000 so'm</option>
-                          </select>
-                          {priceError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!
-                            </p>
-                          )}
-                        </div>
+                        <label>
+                          Bir soat darsingiz uchun necha pul olmoqchisiz iltimos
+                          (<Link to="#">Narxlar bo'yicha kelishuv</Link>) bilan
+                          tanishgan holda o'zizga mos narx kiriting
+                        </label>
+                        <MySelect
+                          array={priceData}
+                          setValue={setPrice}
+                          error={priceError}
+                        />
                       </div>
                       <div className="col-3 col-md-3">
                         <div className="form-group">
@@ -632,14 +380,16 @@ const ProfileSettings = () => {
                               type="file"
                               id="resumeInput"
                               accept="application/*"
-                              onChange={(e) => setResume(e.target.files[0])}
+                              onChange={(e) => {
+                                setResume(e.target.files[0]);
+                                setResumePost(e.target.files[0]);
+                              }}
                               className="upload"
                              />
                           </div>
                           {resumeError && (
                             <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!{" "}
+                              Bu joyni to'ldirish shart
                             </p>
                           )}
                         </div>
@@ -662,46 +412,29 @@ const ProfileSettings = () => {
                           />
                           {descriptionError && (
                             <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!{" "}
+                              Bu joyni to'ldirish shart
                             </p>
                           )}
                         </div>
                       </div>
 
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Qayerdansiz</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            defaultValue={region}
-                            onChange={(e) => setRegion(e.target.value)}
-                          />
-                          {regionError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!{" "}
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Qayerdansiz"}
+                          value={region}
+                          setValue={setRegion}
+                          type={"text"}
+                          error={regionError}
+                        />
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="form-group">
-                          <label>Hozir qayerdasiz</label>
-                          <input
-                            type="text"
-                            defaultValue={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                            className="form-control"
-                          />
-                          {countryError && (
-                            <p className="text-danger mt-2">
-                              {" "}
-                              Bu joyni to'ldirish shart!{" "}
-                            </p>
-                          )}
-                        </div>
+                        <FormGroup
+                          label={"Hozir qayerdasiz"}
+                          value={country}
+                          setValue={setCountry}
+                          type={"text"}
+                          error={countryError}
+                        />
                       </div>
                       <div className="col-12">
                         <div className="form-group">
@@ -717,9 +450,8 @@ const ProfileSettings = () => {
                               className="custom-control-label"
                               htmlFor="agree_checkbox_user"
                             >
-                              Ommaviy oferta{" "}
-                              <Link to="/oferta">shartlariga</Link>
-                              <span> roziman</span>
+                              Narxlar bilan
+                              <Link to="#">tanishib</Link> chiqdim
                             </label>
                           </div>
                         </div>
