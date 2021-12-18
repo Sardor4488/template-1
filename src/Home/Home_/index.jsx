@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 //slider
 import OwlCarousel from "react-owl-carousel";
 import { Link, withRouter } from "react-router-dom";
@@ -27,6 +27,10 @@ const Home = (props) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+
+
+
   const [more, setMore] = useState(false);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
@@ -42,7 +46,7 @@ const Home = (props) => {
   const settingSlider = {
     dots: true,
     infinite: false,
-    speed: 500,
+    speed: 300,
     slidesToShow: 2,
     slidesToScroll: 2,
     responsive: [
@@ -131,7 +135,6 @@ const Home = (props) => {
     }
     getCategory();
   }, []);
-  console.log(categories);
   return (
     <div>
       <section id="section-search" className="section section-search ">
@@ -572,7 +575,7 @@ const Home = (props) => {
                     </p>
                   </div>
                   <div className="mentor-booking w-100 d-flex justify-content-end">
-                    <Link className="apt-btn p-1 " to="/app/Mentor/booking">
+                    <Link className="apt-btn p-1 " to="/app/mentor/booking">
                       Band qilish
                     </Link>
                   </div>

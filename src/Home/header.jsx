@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import AppLogo from "../constant/Logo.png";
 import { logout } from "../Api/logout";
 import logoWhite from "./assets/img/logo-white.svg";
+import { useLayoutEffect } from "react";
 const Header = (props) => {
   const role = localStorage.getItem("role");
-
+ 
   useEffect(() => {
     $(".main-nav a").on("click", function (e) {
       if ($(this).parent().hasClass("has-submenu")) {
@@ -36,7 +37,24 @@ const Header = (props) => {
       $("main-wrapper").removeClass("slide-nav");
       $("#has_menu_close").removeClass("active");
     });
+  
   }, []);
+
+  function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
+  
+
+  const [width , height] = useWindowSize()
 
   const userdata = useSelector((state) => state?.Reducer.userdata);
   const location = useLocation();
@@ -56,7 +74,6 @@ const Header = (props) => {
     };
   }, []);
   const headerSettings = useHistory().location.pathname;
-  console.log();
   return (
     <header
       className={` ${ headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}
@@ -100,7 +117,7 @@ const Header = (props) => {
               <li className={pathname.includes("/app/home") ? "active" : "" }>
                 <Link
                   to="/app/home"
-                  className={`  ${pathname.includes("/app/home") ? "  text-white " : " text-dark"}  ${scrollPosition > 50 ? "text-dark" : " text-white"  }`}
+                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : " text-dark"}  ${scrollPosition > 50 ? "text-dark" : " text-white"  }   `}
                 >
                   Asosiy
                 </Link>
@@ -108,7 +125,7 @@ const Header = (props) => {
               <li className={`pathname.includes("/app/about") ? "active" : ""   `}>
                 <Link
                   to="/app/about"
-                  className={` ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
+                  className={` ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
@@ -118,51 +135,27 @@ const Header = (props) => {
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
                   to="/app/reviwes-all"
-                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
+                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
                   Fikrlar
                 </Link>
               </li>
-
-              <li
-                className={
-                  pathname.includes("blog-list") ||
-                  pathname.includes("blog-grid") ||
-                  pathname.includes("blog-details")
-                    ? "has-submenu active"
-                    : "has-submenu"
-                }
-              >
-                <a
-                  href=""
-                  className={`  ${pathname.includes("/app/home") ? "  text-white " : "text-dark"} ${
+              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+                <Link
+                  to="/app/Blog/blog-grid"
+                  className={`  ${pathname.includes("/app/home") || width <= 992 ? "  text-white " : "text-dark"} ${
                     scrollPosition > 50 ? "text-dark" : " text-white"
                   }`}
                 >
-                  Blog <i className="fas fa-chevron-down" />
-                </a>
-                <ul className="submenu">
-                  <li
-                    className={pathname.includes("blog-list") ? "active" : ""}
-                  >
-                    <Link to="/app/Blog/blog-list">Blog List</Link>
-                  </li>
-                  <li
-                    className={pathname.includes("blog-grid") ? "active" : ""}
-                  >
-                    <Link to="/app/Blog/blog-grid">Blog Grid</Link>
-                  </li>
-                  <li
-                    className={
-                      pathname.includes("blog-details") ? "active" : ""
-                    }
-                  >
-                    <Link to="/app/Blog/blog-details">Blog Details</Link>
-                  </li>
-                </ul>
+                  Blog
+                </Link>
               </li>
+
+             
+                  
+ 
               <li className="login-link">
                 <Link to="/login">Kirish </Link>
               </li>

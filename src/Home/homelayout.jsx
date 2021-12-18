@@ -22,6 +22,7 @@ import StatusBar from "./components/StatusBar";
 const DefaultLayout = (props) => {
   const token = localStorage.getItem("access_token");
   const { location, match } = props;
+
   return (
     <div className="main-wrapper">
       <Header />

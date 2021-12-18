@@ -54,6 +54,7 @@ const Mentorroute = ({ match }) => {
             component={Profilesettings}
           />
           <Route path={`${match.url}/reviews`} component={Reviews} />
+          <Route path={`${match.url}/booking`} component={MentorBooking} />
           <Route
             path={`${match.url}/mentor-register`}
             component={MentorRegister}
@@ -63,7 +64,7 @@ const Mentorroute = ({ match }) => {
             path={`${match.url}/mentor-profile`}
             component={MentorProfile}
           />
-          <Route path={`${match.url}/booking`} component={MentorBooking} />
+          
           <Route
             path={`${match.url}/studentProfile`}
             component={StudentProfile}
@@ -74,6 +75,7 @@ const Mentorroute = ({ match }) => {
         </Switch>
       ) : (
         <Switch>
+          <Route path={`${match.url}/booking`} component={MentorBooking} />
           <Route>
             <Redirect to="/404" />
           </Route>
