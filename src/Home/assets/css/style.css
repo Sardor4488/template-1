@@ -8743,25 +8743,6 @@ PhoneInput {
   object-fit: cover;
 }
 
-<<<<<<< HEAD
-  }
- 
- 
- 
-.animate__text  .speed{
-  transition:  0.1s !important;
+.animate__text .speed {
+  transition: 0.1s !important;
 }
-=======
-/* .testBtn {
-  position: relative;
-}
-.testBtn .testBtnItem {
-  position: absolute;
-  top: 110%;
-  right: 0;
-  z-index: 1000;
-  border: 1px solid black;
-  padding: 5px;
-  border-radius: 5px;
-} */
->>>>>>> islom
