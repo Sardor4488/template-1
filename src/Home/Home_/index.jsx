@@ -11,7 +11,7 @@ import { ICON_1, USER, BLOG_01, USER_1 } from "../../constant/imagepath_home";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
 import { dataBlog, dataTeam } from "../../Data";
-import { getHomeCategory } from "../../Api/getApi";
+import { getHomeCategory, getHomeStatistcs } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 
 const Home = (props) => {
@@ -28,6 +28,7 @@ const Home = (props) => {
     };
   }, []);
   const [more, setMore] = useState(false);
+  const [statistcs, setStatistcs] = useState([]);
   const [categories, setCategories] = useState([
     { name: "Tillar" },
     { name: "Aniq fanlar" },
@@ -125,13 +126,17 @@ const Home = (props) => {
   };
   useEffect(() => {
     async function getCategory() {
-      const res = await getHomeCategory();
-      setCategories(res.categories);
+      const resCategory = await getHomeCategory();
+      const resStatistcs = await getHomeStatistcs();
+      setCategories(resCategory.categories);
+      setStatistcs(resStatistcs);
       LoadingOff();
     }
     getCategory();
   }, []);
-  console.log(categories);
+
+  console.log(statistcs);
+
   return (
     <div>
       <section id="section-search" className="section section-search ">
@@ -363,7 +368,6 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-         
         </div>
       </section>
       {/* /Home Banner */}
@@ -797,26 +801,25 @@ const Home = (props) => {
           <div className="row">
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>500+</span>
-                <h3>Happy Clients</h3>
+                <span>{statistcs.lesson_count}</span>
+                <h3>Darslar soni</h3>
               </div>
             </div>
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>120+</span>
-                <h3>Online Appointments</h3>
+                <span>{statistcs.student_count}</span>
+                <h3>O'quvchilar soni</h3>
               </div>
             </div>
             <div className="col-12 col-md-4">
               <div className="statistics-list text-center">
-                <span>100%</span>
-                <h3>Job Satisfaction</h3>
+                <span>{statistcs.teacher_count}</span>
+                <h3>O'qituvchilar soni</h3>
               </div>
             </div>
           </div>
         </div>
       </section>
-                        
     </div>
   );
 };
