@@ -13,6 +13,7 @@ import { Avatar } from "antd";
 import { dataBlog, dataTeam } from "../../Data";
 import { getHomeCategory, getHomeStatistcs } from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
+import ReactTypingEffect from "react-typing-effect";
 
 const Home = (props) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -27,9 +28,6 @@ const Home = (props) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-
-
 
   const [more, setMore] = useState(false);
   const [statistcs, setStatistcs] = useState([]);
@@ -149,25 +147,35 @@ const Home = (props) => {
             <div className="banner-header">
               <div className="mb-5">
                 <div className="animate__text">
-                  <div className="inner__text">Online</div>
-                  <Typical
-                    loop={Infinity}
-                    wrapper="div"
-                    steps={[
-                      "Ingiliz tili",
-                      3000,
-                      "Rus tili",
-                      3000,
-                      "Nemis tili",
-                      3000,
-                      "Koreys tili",
-                      3000,
-                      "Yapon tili",
-                      3000,
-                      "Xitoy tili",
-                      3000,
-                    ]}
+                  <div className="inner__text me-2">Online</div>
+                  <ReactTypingEffect
+                    text={[" Ingiliz tili ", " Rus tili ", "Koreys tili", "Nemis tili"]}
+                    speed={100}
+                    eraseSpeed={100}
+                    eraseDelay={1000}
+                    typingDelay={1000}
+                    cursorRenderer={(cursor) => <div className="  text-primary">{cursor}</div>}
+                    displayTextRenderer={(text, i) => {
+                      return (
+                        <div className="inner__text">
+                          {text.split("").map((char, i) => {
+                            const key = `${i}`;
+                            return (
+                              <span
+                              
+                                key={key}
+                                className="text-primary speed fw-bold "
+                                style={ { color: "" }, { transition:"0.4s"} }
+                              >
+                                {char}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      );
+                    }}
                   />
+
                   <div className="inner__text">kurslari</div>
                 </div>
 

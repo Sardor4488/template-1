@@ -8747,3 +8747,7 @@ PhoneInput {
   }
  
  
+ 
+.animate__text  .speed{
+  transition:  0.1s !important;
+}
