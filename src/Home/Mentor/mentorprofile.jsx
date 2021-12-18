@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { USER } from "../../constant/imagepath_home";
 import { Link } from "react-router-dom";
 import { TeacherFreeTime } from "../../Api/updateApi";
@@ -53,9 +53,8 @@ const MentorProfile = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
 
   useEffect(() => {
-    TeacherFreeTime(id)
-  }, [id])
-
+    TeacherFreeTime();
+  }, []);
 
   return (
     <div>

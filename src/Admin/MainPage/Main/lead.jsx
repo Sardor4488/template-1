@@ -28,98 +28,35 @@ const Lead = () => {
     {
       id: 1,
       image: USER_3,
-      name: "Allen Davis",
-      course: "Integrated Sum",
-      member_since_date: "5 Jul 2019",
-      member_since_time: "12.59 AM",
-      tel: "$3500.00",
+      first_name: "Sardor",
+      last_name: "Temirov",
+      created_at: "5 Jul 2012",
+      email: "sardor@gmail.com",
+      phone_number: "+998903320522",
     },
     {
       id: 2,
       image: USER_8,
-      name: "John Gibbs",
-      course: "Flow chart",
-      member_since_date: "21 Apr 2018",
-      member_since_time: "02.59 PM",
-      tel: "$4100.00",
+      first_name: "Sardor",
+      last_name: "Safarov",
+      created_at: "5 Aprel 2018",
+      email: "sardor@gmail.com",
+      phone_number: "+998903320522",
     },
     {
       id: 3,
-      image: USER,
-      name: "Jonathan Doe",
-      course: "Maths",
-      member_since_date: "14 Jan 2019",
-      member_since_time: "02.59 AM",
-      tel: "$3100.00",
-    },
-    {
-      id: 4,
-      image: USER_1,
-      name: "Julie Pennington ",
-      course: "Business Maths",
-      member_since_date: "11 Jun 2019",
-      member_since_time: "4.50 AM",
-      tel: "$5000.00",
-    },
-    {
-      id: 5,
-      image: USER_7,
-      name: "Katharine Berthold",
-      course: "Basic Calculation",
-      member_since_date: "23 Mar 2019",
-      member_since_time: "02.50 PM",
-      tel: "$4000.00",
-    },
-    {
-      id: 6,
-      image: USER_8,
-      name: "Linda Tobin",
-      course: "Math Grade II",
-      member_since_date: "14 Dec 2018",
-      member_since_time: "01.59 AM",
-      tel: "$2000.00",
-    },
-    {
-      id: 7,
-      image: USER_9,
-      name: "Olga Barlow",
-      course: "Maths",
-      member_since_date: "15 Feb 2018",
-      member_since_time: "03.59 AM",
-      tel: "$3500.00",
-    },
-    {
-      id: 8,
-      image: USER_4,
-      name: "Patricia Manzi",
-      course: "Flow chart",
-      member_since_date: "24 Jan 2019",
-      member_since_time: "02.59 PM",
-      tel: "$3700.00",
-    },
-    {
-      id: 9,
-      image: USER_7,
-      name: "Paul Richard",
-      course: "Math Grade II",
-      member_since_date: "11 Jan 2019",
-      member_since_time: "02.59 PM",
-      tel: "$3000.00",
-    },
-    {
-      id: 10,
-      image: USER_7,
-      name: "Paul Richard",
-      course: "Math Grade II",
-      member_since_date: "11 Jan 2019",
-      member_since_time: "02.59 PM",
-      tel: "$3000.00",
+      image: USER_3,
+      first_name: "Islom",
+      last_name: "Tozaboyev",
+      created_at: "5 Mart 2019",
+      email: "sardor@gmail.com",
+      phone_number: "+998903320522",
     },
   ];
   const columns = [
     {
       title: "Ism Familiyasi",
-      dataIndex: "name",
+      dataIndex: "first_name",
       render: (text, record) => (
         <h2 className="table-avatar">
           <Link to="/admin/profile" className="avatar avatar-sm mr-2">
@@ -129,32 +66,32 @@ const Lead = () => {
               alt="User Image"
             />
           </Link>
-          <Link to="/admin/leadProfile">{text}</Link>
+          <Link to="/admin/leadProfile">
+            {record.first_name} {record.last_name}
+          </Link>
         </h2>
       ),
-      sorter: (a, b) => a.name.length - b.name.length,
+      sorter: (a, b) => a.first_name.length - b.first_name.length,
     },
     {
       title: "Telefon raqam",
-      dataIndex: "tel",
-      sorter: (a, b) => a.tel.length - b.tel.length,
+      dataIndex: "phone_number",
+      sorter: (a, b) => a.phone_number.length - b.phone_number.length,
     },
     {
       title: "E-mail",
-      dataIndex: "course",
-      sorter: (a, b) => a.course.length - b.course.length,
+      dataIndex: "email",
+      sorter: (a, b) => a.email.length - b.email.length,
     },
     {
       title: "Reg vaqti",
-      dataIndex: "member_since_date",
+      dataIndex: "created_at",
       render: (text, record) => (
         <span>
-          {text}
-          <br />
-          <small>{record.member_since_time}</small>
+          <small>{text}</small>
         </span>
       ),
-      sorter: (a, b) => a.member_since_date.length - b.member_since_date.length,
+      sorter: (a, b) => a.created_at.length - b.created_at.length,
     },
     {
       title: "Account Status",
@@ -167,7 +104,11 @@ const Lead = () => {
             className="check"
             defaultChecked
           />
-          <select className="select form-control">
+          <select
+            className="select form-control"
+            defaultValue={"AAA"}
+            defaultChecked
+          >
             <option>Qayta qo'ng'iroq</option>
             <option>Ulanib bo'lmadi</option>
             <option>Sifatsiz Lead</option>
@@ -240,14 +181,14 @@ const Lead = () => {
                   <div className="table-responsive">
                     <Table
                       className="table-hover table-center mb-0"
-                      pagination={{
-                        total: data.length,
-                        showTotal: (total, range) =>
-                          `Showing ${range[0]} to ${range[1]} of ${total} entries`,
-                        showSizeChanger: true,
-                        // onShowSizeChange: onShowSizeChange,
-                        itemRender: itemRender,
-                      }}
+                      // pagination={{
+                      //   total: data.length,
+                      //   showTotal: (total, range) =>
+                      //     `Showing ${range[0]} to ${range[1]} of ${total} entries`,
+                      //   showSizeChanger: true,
+                      //   // onShowSizeChange: onShowSizeChange,
+                      //   itemRender: itemRender,
+                      // }}
                       style={{ overflowX: "auto" }}
                       columns={columns}
                       // bordered
