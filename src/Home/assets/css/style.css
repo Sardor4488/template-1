@@ -6800,7 +6800,7 @@ html.menu-opened body {
 }
 
 .PhoneInputInput:focus {
-border-color: #bbb;
+  border-color: #bbb;
   box-shadow: none;
   outline: 0 none;
 }
@@ -8722,28 +8722,28 @@ PhoneInput {
 .container-animation {
   position: relative;
 }
- .fa-long-arrow-alt-down {
- font-size: 35px;
- animation-name: down;
- animation-duration: 2s;
- animation-iteration-count: infinite;
- position: absolute;
- 
+.fa-long-arrow-alt-down {
+  font-size: 35px;
+  animation-name: down;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  position: absolute;
+}
+.container-up {
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2000;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  }
-  .container-up{
-    background-color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position:fixed;
-    z-index: 2000;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 50%;
-    object-fit: cover;
-
+<<<<<<< HEAD
   }
  
  
@@ -8751,3 +8751,17 @@ PhoneInput {
 .animate__text  .speed{
   transition:  0.1s !important;
 }
+=======
+/* .testBtn {
+  position: relative;
+}
+.testBtn .testBtnItem {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  z-index: 1000;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+} */
+>>>>>>> islom
