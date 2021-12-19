@@ -1,36 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { USER_1 } from "../../constant/imagepath_home";
-import Sidebar from "./sidebar";
-import StickyBox from "react-sticky-box";
-import { Link } from "react-router-dom";
-import { testLessons } from "../../Api/testLessons";
-import { useSelector } from "react-redux";
-import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import React, { useState, useEffect } from 'react'
+import { USER_1 } from '../../constant/imagepath_home'
+import Sidebar from './sidebar'
+import StickyBox from 'react-sticky-box'
+import { Link } from 'react-router-dom'
+import { testLessons } from '../../Api/teacherStudentsApi'
+import { useSelector } from 'react-redux'
+import { Modal, ModalBody, ModalHeader } from 'reactstrap'
 
 const Bookings = () => {
-  const userData = useSelector((state) => state.Reducer.userdata);
-  const [studentData, setStudentData] = useState([]);
-  const [modal, setModal] = useState(false);
+  const userData = useSelector((state) => state.Reducer.userdata)
+  const [studentData, setStudentData] = useState([])
+  const [modal, setModal] = useState(false)
   const [value, setValue] = useState({
-    start_time: "",
-    end_time: "",
-    date: "",
-  });
+    start_time: '',
+    end_time: '',
+    date: '',
+  })
   const modalToggle = (index) => {
     setValue({
       ...value,
       start_time: studentData[index].start_time,
       end_time: studentData[index].end_time,
       date: studentData[index].date,
-    });
-    setModal(true);
-  };
+    })
+    setModal(true)
+  }
+
+  // const editTestLesson = (index, id) => {
+  //   setValue({
+  //     ...value,
+  //     start_time: studentData[index].start_time,
+  //     end_time: studentData[index].end_time,
+  //     date: studentData[index].date,
+  //   })
+  // }
+
+  console.log(value)
 
   useEffect(() => {
     if (userData) {
-      testLessons(userData.user.teacher_id, setStudentData);
+      testLessons(userData.user.teacher_id, setStudentData)
     }
-  }, [userData]);
+  }, [userData])
 
   return (
     <div>
@@ -90,7 +101,7 @@ const Bookings = () => {
                                   <td>
                                     <h2 className="table-avatar">
                                       <Link
-                                        to="/app/Mentor/studentProfile"
+                                        to={`/app/mentor/testStudentProfile/${index}`}
                                         className="avatar avatar-sm mr-2"
                                       >
                                         <img
@@ -103,7 +114,9 @@ const Bookings = () => {
                                           alt="User Image"
                                         />
                                       </Link>
-                                      <Link to="/app/Mentor/studentProfile">
+                                      <Link
+                                        to={`/app/mentor/testStudentProfile/${index}`}
+                                      >
                                         {value.last_name} {value.first_name}
                                         <span>tyroneroberts@adobe.com</span>
                                       </Link>
@@ -134,10 +147,14 @@ const Bookings = () => {
                                           <li
                                             onClick={() => modalToggle(index)}
                                             className="mb-2 dropdown-item"
+                                            style={{ cursor: 'pointer' }}
                                           >
                                             Vaqtni o'zgartirish
                                           </li>
-                                          <li className="dropdown-item">
+                                          <li
+                                            className="dropdown-item"
+                                            style={{ cursor: 'pointer' }}
+                                          >
                                             O'tildi
                                           </li>
                                         </ul>
@@ -146,11 +163,11 @@ const Bookings = () => {
                                   </td>
                                 </tr>
                               </tbody>
-                            );
+                            )
                           })}
                         </table>
                       ) : (
-                        ""
+                        ''
                       )}
                     </div>
                   </div>
@@ -162,8 +179,8 @@ const Bookings = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={modal} toggle={() => setModal(fasle)}>
-        <ModalHeader toggle={() => setModal(fasle)}>
+      <Modal isOpen={modal} toggle={() => setModal(false)}>
+        <ModalHeader toggle={() => setModal(false)}>
           <div>Tahrirlash</div>
         </ModalHeader>
         <ModalBody>
@@ -172,13 +189,25 @@ const Bookings = () => {
               <div className="col-12">
                 <div className="form-group">
                   <label>Dars sanasi</label>
-                  <input type="date" className="form-control" />
+                  <input
+                    type="date"
+                    value={value.date || ''}
+                    onChange={(e) =>
+                      setValue({ ...value, date: e.target.value })
+                    }
+                    className="form-control"
+                  />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group">
                   <label>Start time</label>
-                  <select className="form-control">
+                  <select
+                    className="form-control"
+                    onChange={(e) =>
+                      setValue({ ...value, start_time: e.target.value })
+                    }
+                  >
                     <option value="06:00">06:00</option>
                     <option value="07:00">07:00</option>
                     <option value="08:00">08:00</option>
@@ -189,7 +218,12 @@ const Bookings = () => {
               <div className="col-md-6">
                 <div className="form-group">
                   <label>End time</label>
-                  <select className="form-control">
+                  <select
+                    className="form-control"
+                    onChange={(e) =>
+                      setValue({ ...value, end_time: e.target.value })
+                    }
+                  >
                     <option value="06:00">06:00</option>
                     <option value="07:00">07:00</option>
                     <option value="08:00">08:00</option>
@@ -197,12 +231,17 @@ const Bookings = () => {
                   </select>
                 </div>
               </div>
+              <div className="col-12 my-2 d-flex justify-content-center align-items-center">
+                <button className="btn btn-primary" type="submit">
+                  Saqlash
+                </button>
+              </div>
             </div>
           </form>
         </ModalBody>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default Bookings;
+export default Bookings

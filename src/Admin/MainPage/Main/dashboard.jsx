@@ -2,8 +2,8 @@
  * Signin Firebase
  */
 
-import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { withRouter, Link } from 'react-router-dom'
 import {
   USER,
   USER_1,
@@ -16,7 +16,7 @@ import {
   AVATAR_12,
   AVATAR_14,
   AVATAR_17,
-} from "../../imagepath";
+} from '../../imagepath'
 
 import {
   AreaChart,
@@ -29,46 +29,46 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-} from "recharts";
-import AVATAR_05 from "../../assets/img/profiles/avatar-05.jpg";
-import PROFILE_IMG from "../../assets/img/profile-img.png";
-import Ratings from "./rating";
-import "../index.css";
-import Chart from "react-apexcharts";
+} from 'recharts'
+import AVATAR_05 from '../../assets/img/profiles/avatar-05.jpg'
+import PROFILE_IMG from '../../assets/img/profile-img.png'
+import Ratings from './rating'
+import '../index.css'
+import Chart from 'react-apexcharts'
 
 const areachartdata = [
-  { y: "2013", Revenue: 60 },
-  { y: "2014", Revenue: 100 },
-  { y: "2015", Revenue: 240 },
-  { y: "2016", Revenue: 120 },
-  { y: "2017", Revenue: 80 },
-  { y: "2018", Revenue: 100 },
-  { y: "2019", Revenue: 300 },
-];
+  { y: '2013', Revenue: 60 },
+  { y: '2014', Revenue: 100 },
+  { y: '2015', Revenue: 240 },
+  { y: '2016', Revenue: 120 },
+  { y: '2017', Revenue: 80 },
+  { y: '2018', Revenue: 100 },
+  { y: '2019', Revenue: 300 },
+]
 const linechartdata = [
-  { y: "2015", Doctors: 100, Patients: 30 },
-  { y: "2016", Doctors: 20, Patients: 60 },
-  { y: "2017", Doctors: 90, Patients: 120 },
-  { y: "2018", Doctors: 50, Patients: 80 },
-  { y: "2019", Doctors: 120, Patients: 150 },
-];
+  { y: '2015', Doctors: 100, Patients: 30 },
+  { y: '2016', Doctors: 20, Patients: 60 },
+  { y: '2017', Doctors: 90, Patients: 120 },
+  { y: '2018', Doctors: 50, Patients: 80 },
+  { y: '2019', Doctors: 120, Patients: 150 },
+]
 class AdminDashboard extends Component {
   UNSAFE_componentWillMount() {
-    let firstload = localStorage.getItem("firstload");
-    if (firstload === "true") {
+    let firstload = localStorage.getItem('firstload')
+    if (firstload === 'true') {
       setTimeout(function () {
-        window.location.reload(1);
-        localStorage.removeItem("firstload");
-      }, 1000);
+        window.location.reload(1)
+        localStorage.removeItem('firstload')
+      }, 1000)
     }
   }
 
   render() {
     const barchartoptions = {
-      colors: ["#009da6", "#ff9c27"],
+      colors: ['#009da6', '#ff9c27'],
       chart: {
-        type: "bar",
-        fontFamily: "Poppins, sans-serif",
+        type: 'bar',
+        fontFamily: 'Poppins, sans-serif',
         height: 350,
         toolbar: {
           show: false,
@@ -77,8 +77,8 @@ class AdminDashboard extends Component {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "60%",
-          endingShape: "rounded",
+          columnWidth: '60%',
+          endingShape: 'rounded',
         },
       },
       dataLabels: {
@@ -87,25 +87,25 @@ class AdminDashboard extends Component {
       stroke: {
         show: true,
         width: 2,
-        colors: ["transparent"],
+        colors: ['transparent'],
       },
       xaxis: {
         categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
         ],
       },
       yaxis: {
         title: {
-          text: "$ (thousands)",
+          text: '$ (thousands)',
         },
       },
       fill: {
@@ -114,35 +114,40 @@ class AdminDashboard extends Component {
       tooltip: {
         y: {
           formatter: function (val) {
-            return "$ " + val + " thousands";
+            return '$ ' + val + ' thousands'
           },
         },
       },
-    };
+    }
     const barchartseries = [
       {
-        name: "Received",
-        type: "column",
+        name: 'Received',
+        type: 'column',
         data: [70, 150, 80, 180, 150, 175, 201, 60, 200, 120, 190, 160, 50],
       },
       {
-        name: "Pending",
-        type: "column",
+        name: 'Pending',
+        type: 'column',
         data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16, 80],
       },
-    ];
+    ]
 
     const piechartoptions = {
-      colors: ["#009da6", "#ff737b", "#ff9c27", "#1ec1b0"],
+      colors: ['#009da6', '#ff737b', '#ff9c27', '#1ec1b0'],
       chart: {
-        fontFamily: "Poppins, sans-serif",
+        fontFamily: 'Poppins, sans-serif',
         height: 240,
-        type: "donut",
+        type: 'donut',
       },
-      labels: ["Paid", "Unpaid", "Overdue", "Draft"],
+      labels: [
+        'Instagram/Facebook',
+        'Telegram',
+        'Tanish orqali',
+        'Google/Yandex',
+      ],
       legend: { show: false },
-    };
-    const piechartseries = [55, 40, 20, 10];
+    }
+    const piechartseries = [55, 80, 20, 10]
 
     return (
       <div className="page-wrapper">
@@ -197,7 +202,7 @@ class AdminDashboard extends Component {
                             className="btn btn-primary waves-effect waves-light btn-sm"
                             to="/admin/profile"
                           >
-                            Profilni ko'rish{" "}
+                            Profilni ko'rish{' '}
                             <i className="mdi mdi-arrow-right ml-1" />
                           </Link>
                         </div>
@@ -209,33 +214,19 @@ class AdminDashboard extends Component {
               <div className="card flex-fill">
                 <div className="card-header">
                   <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="card-title">Invoice Analytics</h5>
-                    <div className="dropdown" data-toggle="dropdown">
-                      <a
-                        href={"#"}
-                        className="btn btn-white btn-sm dropdown-toggle"
-                        role="button"
-                        data-toggle="dropdown"
-                      >
-                        Monthly
-                      </a>
-                      <div className="dropdown-menu dropdown-menu-right">
-                        <a href={"#"} className="dropdown-item">
-                          Weekly
-                        </a>
-                        <a href={"#"} className="dropdown-item">
-                          Monthly
-                        </a>
-                        <a href={"#"} className="dropdown-item">
-                          Yearly
-                        </a>
-                      </div>
+                    <h5 className="card-title">Mijozlar oqimi</h5>
+                    <div className="dropdown">
+                      <select className="form-control select">
+                        <option value="weekly">Haftalik</option>
+                        <option value="monthly">Oylik</option>
+                        <option value="yearly">Yillik</option>
+                      </select>
                     </div>
                   </div>
                 </div>
                 <div className="card-body">
                   <div>
-                    {" "}
+                    {' '}
                     <Chart
                       options={piechartoptions}
                       series={piechartseries}
@@ -247,28 +238,28 @@ class AdminDashboard extends Component {
                       <div className="col-4">
                         <div className="mt-4">
                           <p className="mb-2 text-truncate">
-                            <i className="fas fa-circle text-primary mr-1" />{" "}
-                            Invoiced
+                            <i className="fas fa-circle text-primary mr-1" />{' '}
+                            R/X soni
                           </p>
-                          <h5>$ 2,132</h5>
+                          <h5>2000</h5>
                         </div>
                       </div>
                       <div className="col-4">
                         <div className="mt-4">
                           <p className="mb-2 text-truncate">
-                            <i className="fas fa-circle text-success mr-1" />{" "}
-                            Received
+                            <i className="fas fa-circle text-warning mr-1" />{' '}
+                            S/D soni
                           </p>
-                          <h5>$ 1,763</h5>
+                          <h5>1999</h5>
                         </div>
                       </div>
                       <div className="col-4">
                         <div className="mt-4">
                           <p className="mb-2 text-truncate">
-                            <i className="fas fa-circle text-danger mr-1" />{" "}
-                            Pending
+                            <i className="fas fa-circle text-danger mr-1" /> T/Q
+                            soni
                           </p>
-                          <h5>$ 973</h5>
+                          <h5>2001</h5>
                         </div>
                       </div>
                     </div>
@@ -310,7 +301,7 @@ class AdminDashboard extends Component {
                         </div>
                       </div>
                       <div className="dash-widget-info">
-                        <h6 className="text-muted">Kirish darslari soni</h6>
+                        <h6 className="text-muted">Sinov darslari soni</h6>
                         <div className="progress progress-sm">
                           <div className="progress-bar bg-success w-50" />
                         </div>
@@ -375,7 +366,7 @@ class AdminDashboard extends Component {
                     </div>
                   </div>
                   <div id="sales_chart">
-                    {" "}
+                    {' '}
                     <Chart
                       options={barchartoptions}
                       series={barchartseries}
@@ -736,12 +727,12 @@ class AdminDashboard extends Component {
                                 />
                               </Link>
                               <Link to="/admin/leadProfile">
-                                Temirov Sardor{" "}
+                                Temirov Sardor{' '}
                               </Link>
                             </h2>
                           </td>
                           <td>
-                            9 Nov 2019{" "}
+                            9 Nov 2019{' '}
                             <span className="text-primary d-block">
                               11.00 AM - 11.15 AM
                             </span>
@@ -794,7 +785,7 @@ class AdminDashboard extends Component {
                             </h2>
                           </td>
                           <td>
-                            5 Nov 2019{" "}
+                            5 Nov 2019{' '}
                             <span className="text-primary d-block">
                               11.00 AM - 11.35 AM
                             </span>
@@ -847,7 +838,7 @@ class AdminDashboard extends Component {
                             </h2>
                           </td>
                           <td>
-                            11 Nov 2019{" "}
+                            11 Nov 2019{' '}
                             <span className="text-primary d-block">
                               12.00 PM - 12.15 PM
                             </span>
@@ -953,7 +944,7 @@ class AdminDashboard extends Component {
                             </h2>
                           </td>
                           <td>
-                            15 Nov 2019{" "}
+                            15 Nov 2019{' '}
                             <span className="text-primary d-block">
                               1.00 PM - 1.15 PM
                             </span>
@@ -983,8 +974,8 @@ class AdminDashboard extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(AdminDashboard);
+export default withRouter(AdminDashboard)

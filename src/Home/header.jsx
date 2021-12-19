@@ -74,7 +74,6 @@ const Header = (props) => {
     };
   }, []);
   const headerSettings = useHistory().location.pathname;
-  console.log(width);
   return (
     <header
       className={` ${ headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"}`}
