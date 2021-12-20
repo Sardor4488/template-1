@@ -21,4 +21,16 @@ const TestLessonData = (data) => {
   const action = { type: t.TEST_LESSON_DATA, payload: data };
   dispatch(action);
 };
-export { LoadingOff, LoadingOn, UserData, ClearData, TestLessonData };
+
+const TeacherStudents = (data) => {
+  const action = { type: t.TEACHER_STUDENTS, payload: data };
+  dispatch(action);
+};
+export {
+  LoadingOff,
+  LoadingOn,
+  UserData,
+  ClearData,
+  TestLessonData,
+  TeacherStudents,
+};
