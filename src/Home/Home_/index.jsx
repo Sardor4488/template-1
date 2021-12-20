@@ -192,7 +192,7 @@ const Home = (props) => {
                 <div className="col-6 col-sm-4 col-md-4 col-lg-4 mb-3 d-flex justify-content-end align-items-center">
                   <div className="home_content">
                     <div className="home_content_item">
-                      <Link to="mentee/search/lenguages" className="me-1">
+                      <Link to="mentee/search/languages" className="me-1">
                         <div className="home_content_child">
                           <div className="home_svg_content">
                             <svg
