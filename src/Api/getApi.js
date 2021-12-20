@@ -10,11 +10,12 @@ const getCourses = async () => {
     console.log(error);
   }
 };
-const getHomeCategory = async () => {
+const getHomeCategory = async (setCategories) => {
   try {
     const res = await axios.get("home-categoyr");
     if (res.status) {
-      return res.data;
+      // return res.data;
+      setCategories(res.data.categories);
     }
   } catch (error) {
     console.error(error);
@@ -40,11 +41,12 @@ const getHomeTopTeachers = async () => {
     console.error(error);
   }
 };
-const getHomeStatistcs = async () => {
+const getHomeStatistcs = async (setStatistcs) => {
   try {
     const res = await axios.get("home-statistics");
     if (res.status) {
-      return res.data;
+      // return res.data;
+      setStatistcs(res.data);
     }
   } catch (error) {
     console.error(error);

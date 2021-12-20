@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { USER } from "../../constant/imagepath_home";
 // import ModalPage from "../components/modal/Modal";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import {
   USER_1,
   USER_2,
@@ -12,6 +12,8 @@ import {
   USER_6,
   USER_7,
 } from "../../constant/imagepath_home";
+import { useSelector } from "react-redux";
+import { myStudents } from "../../Api/teacherStudentsApi";
 const StudentProfile = () => {
   const [state, setState] = useState({
     isvoicecallmodal: false,
@@ -27,6 +29,16 @@ const StudentProfile = () => {
   const [array, setArray] = useState([]);
   const [isModal, setIsModal] = useState(false);
   const [index, setIndex] = useState();
+  const { id } = useParams();
+  const data = useSelector((state) => state.Reducer.teacher_of_students[id]);
+  const location = useLocation();
+
+  useEffect(() => {
+    myStudents();
+  }, [location.pathname]);
+
+  console.log(data);
+
   const addLesson = (e) => {
     e.preventDefault();
     if (count === 0) {
@@ -139,15 +151,26 @@ const StudentProfile = () => {
                       <div className="col-12 col-sm-8 my-2">
                         <div className=" d-flex align-items-center">
                           <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
-                            <div className="pro-avatar">ST</div>
-
+                            {data?.image ? (
+                              <img
+                                className="pro-avatar-image"
+                                src={`https://teach-api.uz/teach-api/public/storage/${data?.image}`}
+                              />
+                            ) : (
+                              <div className="pro-avatar">
+                                {data?.first_name.slice(0, 1)}
+                                {data?.last_name.slice(0, 1)}
+                              </div>
+                            )}
                             <div className="mentor-details m-0">
                               <i className="fas fa-map-marker-alt" /> Tamil
                               Nadu, India
                             </div>
                           </div>
                           <div className="user-info-cont">
-                            <h4 className="">Sardor Temirov</h4>
+                            <h4 className="">
+                              {data?.first_name} {data?.last_name}
+                            </h4>
                             <p className="mentor-type mb-0">
                               English Literature (M.A)
                             </p>{" "}

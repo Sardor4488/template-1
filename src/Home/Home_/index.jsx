@@ -1,47 +1,35 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from "react";
 //slider
-import OwlCarousel from 'react-owl-carousel'
-import { Link, withRouter } from 'react-router-dom'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel/dist/assets/owl.theme.default.css'
-import icon1 from '../assets/icons/homeIcon.svg'
-import icon2 from '../assets/icons/homeIcon2.svg'
-import Typical from 'react-typical'
-import { ICON_1, USER, BLOG_01, USER_1 } from '../../constant/imagepath_home'
-import Slider from '@ant-design/react-slick'
-import { Avatar } from 'antd'
-import { dataBlog, dataTeam } from '../../Data'
-import { getHomeCategory, getHomeStatistcs } from '../../Api/getApi'
-import { LoadingOff, LoadingOn } from '../../redux/Actions'
-import ReactTypingEffect from 'react-typing-effect'
+import OwlCarousel from "react-owl-carousel";
+import { Link, withRouter } from "react-router-dom";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import icon1 from "../assets/icons/homeIcon.svg";
+import icon2 from "../assets/icons/homeIcon2.svg";
+import Typical from "react-typical";
+import { ICON_1, USER, BLOG_01, USER_1 } from "../../constant/imagepath_home";
+import Slider from "@ant-design/react-slick";
+import { Avatar } from "antd";
+import { dataBlog, dataTeam } from "../../Data";
+import { getHomeCategory, getHomeStatistcs } from "../../Api/getApi";
+import { LoadingOff, LoadingOn } from "../../redux/Actions";
+import ReactTypingEffect from "react-typing-effect";
 
 const Home = (props) => {
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const handleScroll = () => {
-    const position = window.pageYOffset
-    setScrollPosition(position)
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const [more, setMore] = useState(false)
-  const [statistcs, setStatistcs] = useState([])
+  const [more, setMore] = useState(false);
+  const [statistcs, setStatistcs] = useState([]);
   const [categories, setCategories] = useState([
-    { name: 'Tillar' },
-    { name: 'Aniq fanlar' },
-    { name: 'Tabiiy fanlar' },
-    { name: 'IT texnalogiya' },
-    { name: 'Ijtimoiy fanlar' },
-  ])
+    { name: "Tillar" },
+    { name: "Aniq fanlar" },
+    { name: "Tabiiy fanlar" },
+    { name: "IT texnalogiya" },
+    { name: "Ijtimoiy fanlar" },
+  ]);
   const moreInfo = () => {
-    setMore(!more)
-  }
-  const { history } = props
+    setMore(!more);
+  };
+  const { location } = props;
+
   const settingSlider = {
     dots: true,
     infinite: false,
@@ -74,7 +62,7 @@ const Home = (props) => {
         },
       },
     ],
-  }
+  };
   const settingSliderTeam = {
     dots: true,
     infinite: false,
@@ -125,17 +113,16 @@ const Home = (props) => {
         },
       },
     ],
-  }
+  };
+
   useEffect(() => {
-    async function getCategory() {
-      const resCategory = await getHomeCategory()
-      const resStatistcs = await getHomeStatistcs()
-      setCategories(resCategory.categories)
-      setStatistcs(resStatistcs)
-      LoadingOff()
-    }
-    getCategory()
-  }, [])
+    getHomeCategory(setCategories);
+    getHomeStatistcs(setStatistcs);
+    return () => {
+      setCategories("");
+      setStatistcs("");
+    };
+  }, [location.pathname]);
 
   return (
     <div>
@@ -148,10 +135,10 @@ const Home = (props) => {
                   <div className="inner__text me-2">Online</div>
                   <ReactTypingEffect
                     text={[
-                      ' Ingiliz tili ',
-                      ' Rus tili ',
-                      'Koreys tili',
-                      'Nemis tili',
+                      " Ingiliz tili ",
+                      " Rus tili ",
+                      "Koreys tili",
+                      "Nemis tili",
                     ]}
                     speed={100}
                     eraseSpeed={100}
@@ -163,20 +150,20 @@ const Home = (props) => {
                     displayTextRenderer={(text, i) => {
                       return (
                         <div className="inner__text">
-                          {text.split('').map((char, i) => {
-                            const key = `${i}`
+                          {text.split("").map((char, i) => {
+                            const key = `${i}`;
                             return (
                               <span
                                 key={key}
                                 className="text-primary speed fw-bold "
-                                style={({ color: '' }, { transition: '0.4s' })}
+                                style={({ color: "" }, { transition: "0.4s" })}
                               >
                                 {char}
                               </span>
-                            )
+                            );
                           })}
                         </div>
-                      )
+                      );
                     }}
                   />
 
@@ -184,7 +171,7 @@ const Home = (props) => {
                 </div>
 
                 <span className="text-white mb-3">
-                  Eng saralangan va sinalgan ustozni shu yerdan toping{' '}
+                  Eng saralangan va sinalgan ustozni shu yerdan toping{" "}
                 </span>
               </div>
 
@@ -246,7 +233,7 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {' '}
+                              {" "}
                               {categories[1]?.name}
                             </p>
                             <p className="home_item_text"> 32 nafar ustoz</p>
@@ -374,7 +361,7 @@ const Home = (props) => {
                           </div>
                           <div className="home_text_content">
                             <p className="home_item_title">
-                              {' '}
+                              {" "}
                               {categories[4]?.name}
                             </p>
                             <p className="home_item_text"> 41 nafar ustoz</p>
@@ -507,7 +494,7 @@ const Home = (props) => {
                             <Link to="/app/Mentor/booking">Ruby Perrin</Link>
                           </li>
                           <li className="text-secondary">
-                            <i className="fas fa-book text-black "></i>{' '}
+                            <i className="fas fa-book text-black "></i>{" "}
                             Matematika
                           </li>
                           <li>
@@ -531,15 +518,15 @@ const Home = (props) => {
                       <div className="user-infos">
                         <ul>
                           <li>
-                            <i className="fas fa-comment text-black" />{' '}
+                            <i className="fas fa-comment text-black" />{" "}
                             <span>17</span> ta fikr
                           </li>
                           <li>
-                            <i className="fas fa-user-graduate text-black" />{' '}
+                            <i className="fas fa-user-graduate text-black" />{" "}
                             <span className="text-primary">25</span> ta o'quvchi
                           </li>
                           <li>
-                            <i className="fas fa-heart text-black" />{' '}
+                            <i className="fas fa-heart text-black" />{" "}
                             <span>55</span> % sodiqlik
                             <i className="far fa-question-circle ps-1 text-black"></i>
                           </li>
@@ -550,7 +537,7 @@ const Home = (props) => {
                   <div>
                     <div
                       className={`pt-2  ${
-                        more ? 'about_text_size_long' : 'about_text_size_short'
+                        more ? "about_text_size_long" : "about_text_size_short"
                       }`}
                     >
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -560,9 +547,9 @@ const Home = (props) => {
                       qui et repellendus Soluta fugiat quae expedita error
                       tempora qui et repellendus Soluta fugiat quae expedita
                       error tempora qui et repellendus Soluta fugiat quae
-                      expedita error tempora qui et repellendus sapiente quasi?{' '}
+                      expedita error tempora qui et repellendus sapiente quasi?{" "}
                     </div>
-                    <div className={more ? 'about_message' : 'd-none'}>
+                    <div className={more ? "about_message" : "d-none"}>
                       <div className="row w-100 m-0">
                         <div className="col-6 d-flex align-items-center p-0">
                           <Avatar />
@@ -589,7 +576,7 @@ const Home = (props) => {
                       </div>
                     </div>
                     <p className="text-primary more m-0" onClick={moreInfo}>
-                      {more ? 'Yopish' : 'Batafsil'}
+                      {more ? "Yopish" : "Batafsil"}
                     </p>
                   </div>
                   <div className="mentor-booking w-100 d-flex justify-content-end">
@@ -791,7 +778,7 @@ const Home = (props) => {
                       <img
                         className="img-0fluid rounded-circle"
                         src={
-                          'https://www.myteacher.uz/images/team/1622616581.jpg'
+                          "https://www.myteacher.uz/images/team/1622616581.jpg"
                         }
                         alt="Post Image"
                       />
@@ -840,7 +827,7 @@ const Home = (props) => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default withRouter(Home)
+export default withRouter(Home);

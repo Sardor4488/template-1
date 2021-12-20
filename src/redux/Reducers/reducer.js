@@ -4,6 +4,7 @@ const initialState = {
   loading: true,
   userdata: "",
   testLessonData: [],
+  teacher_of_students: "",
 };
 
 const Reducer = (state = initialState, action) => {
@@ -18,6 +19,8 @@ const Reducer = (state = initialState, action) => {
       return { ...state, userdata: "" };
     case t.TEST_LESSON_DATA:
       return { ...state, testLessonData: action.payload };
+    case t.TEACHER_STUDENTS:
+      return { ...state, teacher_of_students: action.payload };
 
     default:
       return state;
