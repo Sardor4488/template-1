@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { USER } from '../../constant/imagepath_home'
 // import ModalPage from "../components/modal/Modal";
 import { Modal, ModalBody, ModalHeader } from 'reactstrap'
@@ -13,13 +13,16 @@ import {
   USER_7,
 } from '../../constant/imagepath_home'
 import { testLessons } from '../../Api/teacherStudentsApi'
+import { useSelector } from 'react-redux'
 const TestStudentProfile = () => {
   const userData = useSelector((state) => state.Reducer.userdata)
   const [data, setStudentData] = useState([])
   useEffect(() => {
-    testLessons(userData.user.teacher_id, setStudentData)
+    if (userData) {
+      testLessons(userData.user.teacher_id, setStudentData)
+    }
   }, [userData])
-  console.log(qqqq)
+  console.log('data', ' ' + data)
   return (
     <div>
       {/* Breadcrumb */}

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { modalTimeData } from '../../Data/index'
 import { data, datasheudle } from '../../Data/teacherProfile'
 import TimeSelect from '../../UI/Select/TimeSelect'
-
+import MyInput from '../../UI/Input/MyInput'
 const MentorProfile = () => {
   const [addnewtimeslot, setAddnewtimeslot] = useState([])
   const [weekDays, setWeekDays] = useState('monday')
@@ -22,6 +22,7 @@ const MentorProfile = () => {
   })
   const [isModal, setIsModal] = useState(false)
   const [time, setTime] = useState()
+  const [date, setDate] = useState()
   const modalOpen = () => {
     setIsModal(true)
   }
@@ -31,14 +32,16 @@ const MentorProfile = () => {
   const selectDay = (id) => {
     setWeekDays(id)
     setAddnewtimeslot([])
-    setTime('00:00-01:00')
+    setTime()
   }
   const addNewTime = (e) => {
     e.preventDefault()
     const cloneDay = { ...day }
-    const filterCloneMonday = cloneDay[weekDays].filter((v) => v?.time === time)
-    if (filterCloneMonday.length == 0 && time !== 'Tanlang') {
-      cloneDay[weekDays].push({ time })
+    const filterCloneDay = cloneDay[weekDays].filter(
+      (v) => v?.time === time && v?.date === date,
+    )
+    if (filterCloneDay.length == 0 && time !== 'Tanlang' && time && date) {
+      cloneDay[weekDays].push({ time, date })
       setDay(cloneDay)
       let addnewrow = [...addnewtimeslot]
       addnewrow.push(1)
@@ -53,12 +56,14 @@ const MentorProfile = () => {
   const saveTime = (e) => {
     e.preventDefault()
     const cloneDay = { ...day }
-    const filterCloneMonday = cloneDay[weekDays].filter((v) => v?.time === time)
-    if (filterCloneMonday.length == 0 && time !== 'Tanlang') {
-      cloneDay[weekDays].push({ time })
+    const filterCloneDay = cloneDay[weekDays].filter(
+      (v) => v?.time === time && v?.date === date,
+    )
+    if (filterCloneDay.length == 0 && time !== 'Tanlang' && time) {
+      cloneDay[weekDays].push({ time, date })
       setDay(cloneDay)
+      modalClose()
     }
-    modalClose()
   }
   console.log(day)
   const userdata = useSelector((state) => state.Reducer.userdata)
@@ -406,11 +411,18 @@ const MentorProfile = () => {
                         <div className="row form-row hours-cont">
                           <div className="col-12 col-md-10">
                             <div className="row form-row">
-                              <div className="col-12">
+                              <div className="col-md-6">
                                 <TimeSelect
                                   label={'Boshlanadi-tugaydi'}
                                   array={modalTimeData}
                                   setValue={setTime}
+                                />
+                              </div>
+                              <div className="col-md-6">
+                                <label>Sana</label>
+                                <MyInput
+                                  type={'date'}
+                                  onChange={(e) => setDate(e.target.value)}
                                 />
                               </div>
                             </div>
@@ -419,11 +431,18 @@ const MentorProfile = () => {
                             addnewtimeslot.map((v, i) => (
                               <div className="col-12" key={i}>
                                 <div className="row form-row">
-                                  <div className="col-10 col-md-10">
+                                  <div className="col-10 col-md-5">
                                     <TimeSelect
                                       label={'Boshlanadi-tugaydi'}
                                       array={modalTimeData}
                                       setValue={setTime}
+                                    />
+                                  </div>
+                                  <div className="col-10 col-md-5">
+                                    <label>Sana</label>
+                                    <MyInput
+                                      type={'date'}
+                                      onChange={(e) => setDate(e.target.value)}
                                     />
                                   </div>
                                   <div className="col-2 col-md-2">

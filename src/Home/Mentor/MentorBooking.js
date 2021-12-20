@@ -1,17 +1,30 @@
-import React, { Component, useState } from "react";
-import { USER } from "../../constant/imagepath_home";
-import { Link } from "react-router-dom";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import { useSelector } from "react-redux";
-import { USER_2 } from "../../constant/imagepath_home";
-import DateRangePicker from "react-bootstrap-daterangepicker";
-import click from "../assets/payicon/click.png";
-import payme from "../assets/payicon/payme.png";
+import React, { Component, useState } from 'react'
+import { USER } from '../../constant/imagepath_home'
+import { Link } from 'react-router-dom'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
+import { useSelector } from 'react-redux'
+import { USER_2 } from '../../constant/imagepath_home'
+import DateRangePicker from 'react-bootstrap-daterangepicker'
+import click from '../assets/payicon/click.png'
+import payme from '../assets/payicon/payme.png'
+import { Calendar } from '../../Data/Calendar'
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
-import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.css'
 // you will also need the css that comes with bootstrap-daterangepicker
-import "bootstrap-daterangepicker/daterangepicker.css";
+import 'bootstrap-daterangepicker/daterangepicker.css'
+// Import Swiper React components
+import { Swiper } from 'swiper/react/swiper'
+import { SwiperSlide } from 'swiper/react/swiper-slide'
+
+import 'swiper/swiper.min.css'
+import 'swiper/swiper-bundle.min.css'
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation } from 'swiper'
+
+// install Swiper modules
+SwiperCore.use([Navigation])
 const MentorBooking = () => {
   const [state, setState] = useState({
     isvoicecallmodal: false,
@@ -19,48 +32,48 @@ const MentorBooking = () => {
     isnewmodal: false,
     iseditModal: false,
     addnewtimeslot: [],
-    edittimeslot: ["placeholder", "placeholder"],
-  });
+    edittimeslot: ['placeholder', 'placeholder'],
+  })
   const onChange = (date) => {
     // Day.js object
-    console.log(date);
-  };
+    console.log(date)
+  }
   const voicecallmodalClose = () => {
-    setState({ isvoicecallmodal: false });
-  };
+    setState({ isvoicecallmodal: false })
+  }
   const videocallModalClose = () => {
-    setState({ isvideocallmodal: false });
-  };
+    setState({ isvideocallmodal: false })
+  }
   const newModalClose = () => {
-    setState({ isnewmodal: false });
-  };
+    setState({ isnewmodal: false })
+  }
   const editModalClose = () => {
-    setState({ iseditModal: false });
-  };
+    setState({ iseditModal: false })
+  }
   const addnewtimeschedule = () => {
-    const { addnewtimeslot } = state;
-    var addnewrow = addnewtimeslot;
-    addnewrow.push("placeholder");
-    setState({ addnewtimeslot: addnewrow });
-  };
+    const { addnewtimeslot } = state
+    var addnewrow = addnewtimeslot
+    addnewrow.push('placeholder')
+    setState({ addnewtimeslot: addnewrow })
+  }
   const removenewtimeschedule = (index) => {
-    var contacts = [...state.addnewtimeslot];
-    contacts.splice(index, 1);
-    setState({ addnewtimeslot: contacts });
-  };
+    var contacts = [...state.addnewtimeslot]
+    contacts.splice(index, 1)
+    setState({ addnewtimeslot: contacts })
+  }
   const edittimeschedule = () => {
-    const { edittimeslot } = state;
-    var addnewrow = edittimeslot;
-    addnewrow.push("placeholder");
-    setState({ edittimeslot: addnewrow });
-  };
+    const { edittimeslot } = state
+    var addnewrow = edittimeslot
+    addnewrow.push('placeholder')
+    setState({ edittimeslot: addnewrow })
+  }
   const removeedittimeschedule = (index) => {
-    var contacts = [...state.edittimeslot];
-    contacts.splice(index, 1);
-    setState({ edittimeslot: contacts });
-  };
-  const { addnewtimeslot, edittimeslot } = state;
-  const userdata = useSelector((state) => state.Reducer.userdata);
+    var contacts = [...state.edittimeslot]
+    contacts.splice(index, 1)
+    setState({ edittimeslot: contacts })
+  }
+  const { addnewtimeslot, edittimeslot } = state
+  const userdata = useSelector((state) => state.Reducer.userdata)
   return (
     <div>
       {/* Breadcrumb */}
@@ -92,19 +105,18 @@ const MentorBooking = () => {
               {/* Mentor Widget */}
               <div className="card">
                 <div className="card-body">
-
-                <div className="row w-100 d-flex align-items-center justify-content-between">
-                      <div className="col-12 col-sm-8 my-2">
+                  <div className="row w-100 d-flex align-items-center justify-content-between">
+                    <div className="col-12 col-sm-8 my-2">
                       <div className=" d-flex align-items-center">
                         <div className="mentor-img mr-0 d-flex flex-wrap justify-content-center">
                           <div className="pro-avatar">ST</div>
                           <div className="rating text-center">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                        </div>
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star filled" />
+                            <i className="fas fa-star" />
+                          </div>
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
                               <i className="fas fa-map-marker-alt" /> Tamil
@@ -116,30 +128,31 @@ const MentorBooking = () => {
                           <h4 className="">Sardor Temirov</h4>
                           <p className="mentor-type mb-0">
                             English Literature (M.A)
-                          </p>  <div className="mentor-action">
-                          <p className="mentor-type social-title">
-                            blabla@gmail.com
-                          </p>
-                          <a href="#infonmation-mentor" className="btn-blue">
-                            <i className="fas fa-book-reader" />
-                          </a>
-                          <a href="#location" className="btn-blue">
-                            <i className="fas fa-map-marker-alt" />
-                          </a>
-                          <a href="#sectionTime" className="btn-blue">
-                            <i className="fas fa-calendar-alt" />
-                          </a>
+                          </p>{' '}
+                          <div className="mentor-action">
+                            <p className="mentor-type social-title">
+                              blabla@gmail.com
+                            </p>
+                            <a href="#infonmation-mentor" className="btn-blue">
+                              <i className="fas fa-book-reader" />
+                            </a>
+                            <a href="#location" className="btn-blue">
+                              <i className="fas fa-map-marker-alt" />
+                            </a>
+                            <a href="#sectionTime" className="btn-blue">
+                              <i className="fas fa-calendar-alt" />
+                            </a>
+                          </div>
                         </div>
-                        </div>
-                      
                       </div>
-                      </div>
-                    
-                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
-                    <span className="hire-rate text-center">50 000 USZ / soat</span>
-                    
                     </div>
-                    </div>   
+
+                    <div className="col-12 col-sm-4 my-2 respons-button d-flex align-items-center justify-content-center flex-wrap ">
+                      <span className="hire-rate text-center">
+                        50 000 USZ / soat
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
               {/* /Mentor Widget */}
@@ -155,40 +168,34 @@ const MentorBooking = () => {
                       <i className="far fa-calendar-alt mr-2" />
                       <DateRangePicker
                         initialSettings={{
-                          endDate: new Date("2020-08-11T12:30:00.000Z"),
+                          endDate: new Date('2020-08-11T12:30:00.000Z'),
                           ranges: {
-                            "Last 30 Days": [
-                              new Date("2020-07-12T04:57:17.076Z"),
-                              new Date("2020-08-10T04:57:17.076Z"),
-                            ],
-                            "Last 7 Days": [
-                              new Date("2020-08-04T04:57:17.076Z"),
-                              new Date("2020-08-10T04:57:17.076Z"),
-                            ],
-                            "Last Month": [
-                              new Date("2020-06-30T18:30:00.000Z"),
-                              new Date("2020-07-31T18:29:59.999Z"),
-                            ],
-                            "This Month": [
-                              new Date("2020-07-31T18:30:00.000Z"),
-                              new Date("2020-08-31T18:29:59.999Z"),
-                            ],
-                            Today: [
-                              new Date("2020-08-10T04:57:17.076Z"),
-                              new Date("2020-08-10T04:57:17.076Z"),
-                            ],
-                            Yesterday: [
-                              new Date("2020-08-09T04:57:17.076Z"),
-                              new Date("2020-08-09T04:57:17.076Z"),
-                            ],
+                            // 'Last 30 Days': [
+                            //   new Date('2020-07-12T04:57:17.076Z'),
+                            //   new Date('2020-08-10T04:57:17.076Z'),
+                            // ],
+                            // 'Last 7 Days': [
+                            //   new Date('2020-08-04T04:57:17.076Z'),
+                            //   new Date('2020-08-10T04:57:17.076Z'),
+                            // ],
+                            // 'Last Month': [
+                            //   new Date('2020-06-30T18:30:00.000Z'),
+                            //   new Date('2020-07-31T18:29:59.999Z'),
+                            // ],
+                            // 'This Month': [
+                            //   new Date('2020-07-31T18:30:00.000Z'),
+                            //   new Date('2020-08-31T18:29:59.999Z'),
+                            // ],
+                            Today: [new Date(), new Date()],
+                            Yesterday: [new Date(), new Date()],
                           },
-                          startDate: new Date("2020-08-10T04:30:00.000Z"),
+                          startDate: new Date('2020-08-10T04:30:00.000Z'),
                           timePicker: false,
                         }}
                       >
                         <input
                           type="text"
-                          style={{ borderColor: "transparent" }}
+                          style={{ borderColor: 'transparent' }}
                         />
                       </DateRangePicker>
                       <i className="fas fa-chevron-down ml-2" />
@@ -196,165 +203,88 @@ const MentorBooking = () => {
                   </div>
                 </div>
                 {/* Schedule Widget */}
-                <div className="card booking-schedule schedule-widget">
-                  {/* Schedule Header */}
-                  <div className="schedule-header">
-                    <div className="row">
-                      <div className="col-md-12">
-                        {/* Day Slot */}
-                        <div className="day-slot">
-                          <ul>
-                            <li className="left-arrow">
-                              <a href="">
-                                <i className="fa fa-chevron-left" />
-                              </a>
-                            </li>
-                            <li>
-                              <span>Mon</span>
-                              <span className="slot-date">
-                                11 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Tue</span>
-                              <span className="slot-date">
-                                12 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Wed</span>
-                              <span className="slot-date">
-                                13 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Thu</span>
-                              <span className="slot-date">
-                                14 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Fri</span>
-                              <span className="slot-date">
-                                15 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Sat</span>
-                              <span className="slot-date">
-                                16 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li>
-                              <span>Sun</span>
-                              <span className="slot-date">
-                                17 Nov <small className="slot-year">2019</small>
-                              </span>
-                            </li>
-                            <li className="right-arrow">
-                              <a href="">
-                                <i className="fa fa-chevron-right" />
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        {/* /Day Slot */}
-                      </div>
-                    </div>
-                  </div>
-                  {/* /Schedule Header */}
-                  {/* Schedule Content */}
-                  <div className="schedule-cont">
-                    <div className="row">
-                      <div className="col-md-12">
-                        {/* Time Slot */}
-                        <div className="time-slot">
-                          <ul className="clearfix">
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing selected" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a className="timing" href="#">
-                                <span>9:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>10:00</span> <span>AM</span>
-                              </a>
-                              <a className="timing" href="#">
-                                <span>11:00</span> <span>AM</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        {/* /Time Slot */}
-                      </div>
-                    </div>
-                  </div>
-                  {/* /Schedule Content */}
+
+                <div className="calendarMentor">
+                  <Swiper navigation={true} className="mySwiper">
+                    {Calendar.length > 0 &&
+                      Calendar.map((v, i) => {
+                        return (
+                          <SwiperSlide key={i}>
+                            <div className="card booking-schedule schedule-widget">
+                              {/* Schedule Header */}
+                              <div className="schedule-header">
+                                <div className="row">
+                                  <div className="col-md-12">
+                                    {/* Day Slot */}
+                                    <div className="day-slot">
+                                      <ul>
+                                        {v.dayOfWeek.map((v, i) => (
+                                          <li key={i}>
+                                            <span>
+                                              {v.weekDays.slice(0, 3)}
+                                            </span>
+                                            <span className="slot-date">
+                                              <small className="slot-year">
+                                                {v.day}
+                                              </small>
+                                            </span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    {/* /Day Slot */}
+                                  </div>
+                                </div>
+                              </div>
+                              {/* /Schedule Header */}
+                              {/* Schedule Content */}
+                              <div className="schedule-cont">
+                                <div className="row">
+                                  <div className="col-md-12">
+                                    {/* Time Slot */}
+                                    <div className="time-slot">
+                                      <ul className="clearfix">
+                                        {v.dayOfWeek.map((v, i) => {
+                                          return (
+                                            <li key={i}>
+                                              {v.hours.length > 0 ? (
+                                                v.hours.map((v, i) => {
+                                                  return (
+                                                    <a
+                                                      className="timing"
+                                                      href="#"
+                                                      key={i}
+                                                    >
+                                                      <span>{v}</span>
+                                                    </a>
+                                                  )
+                                                })
+                                              ) : (
+                                                <a
+                                                  className="timing"
+                                                  href="#"
+                                                  key={i}
+                                                >
+                                                  <span>Vaqt yo'q</span>
+                                                </a>
+                                              )}
+                                            </li>
+                                          )
+                                        })}
+                                      </ul>
+                                    </div>
+                                    {/* /Time Slot */}
+                                  </div>
+                                </div>
+                              </div>
+                              {/* /Schedule Content */}
+                            </div>
+                          </SwiperSlide>
+                        )
+                      })}
+                  </Swiper>
                 </div>
+
                 {/* /Schedule Widget */}
                 {/* Submit Section */}
                 <div className="submit-section proceed-btn text-right">
@@ -505,7 +435,7 @@ const MentorBooking = () => {
                   toggle={() => newModalClose()}
                 >
                   <ModalHeader toggle={() => newModalClose()}>
-                    {" "}
+                    {' '}
                     Add Time Slots
                   </ModalHeader>
                   <ModalBody>
@@ -660,11 +590,11 @@ const MentorBooking = () => {
                                 </label>
                                 <a
                                   className="btn btn-danger trash"
-                                  style={{ cursor: "pointer" }}
+                                  style={{ cursor: 'pointer' }}
                                   onClick={() => removenewtimeschedule(index)}
                                 >
                                   <i
-                                    style={{ color: "#fff" }}
+                                    style={{ color: '#fff' }}
                                     className="far fa-trash-alt"
                                   />
                                 </a>
@@ -674,7 +604,7 @@ const MentorBooking = () => {
                         ))}
                       <div className="add-more mb-3">
                         <a
-                          style={{ cursor: "pointer", color: "#1e88e5" }}
+                          style={{ cursor: 'pointer', color: '#1e88e5' }}
                           onClick={() => addnewtimeschedule()}
                         >
                           <i className="fa fa-plus-circle" /> Add More
@@ -698,7 +628,7 @@ const MentorBooking = () => {
                   toggle={() => editModalClose()}
                 >
                   <ModalHeader toggle={() => editModalClose()}>
-                    {" "}
+                    {' '}
                     Edit Time Slots
                   </ModalHeader>
                   <ModalBody>
@@ -857,7 +787,7 @@ const MentorBooking = () => {
                                   onClick={() => removeedittimeschedule(index)}
                                 >
                                   <i
-                                    style={{ color: "#fff" }}
+                                    style={{ color: '#fff' }}
                                     className="far fa-trash-alt"
                                   />
                                 </a>
@@ -868,7 +798,7 @@ const MentorBooking = () => {
                       <div className="add-more mb-3">
                         <a
                           className="add-hours"
-                          style={{ cursor: "pointer", color: "#1e88e5" }}
+                          style={{ cursor: 'pointer', color: '#1e88e5' }}
                           onClick={() => edittimeschedule()}
                         >
                           <i className="fa fa-plus-circle" /> Add More
@@ -973,7 +903,7 @@ const MentorBooking = () => {
       </div>
       {/* Video Call Modal */}
     </div>
-  );
-};
+  )
+}
 
-export default MentorBooking;
+export default MentorBooking
