@@ -1,47 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import { USER_1 } from '../../constant/imagepath_home'
-import Sidebar from './sidebar'
-import StickyBox from 'react-sticky-box'
-import { Link } from 'react-router-dom'
-import { testLessons } from '../../Api/teacherStudentsApi'
-import { useSelector } from 'react-redux'
-import { Modal, ModalBody, ModalHeader } from 'reactstrap'
+import React, { useState, useEffect } from "react";
+import { USER_1 } from "../../constant/imagepath_home";
+import Sidebar from "./sidebar";
+import StickyBox from "react-sticky-box";
+import { Link } from "react-router-dom";
+import { testLessons } from "../../Api/teacherStudentsApi";
+import { useSelector } from "react-redux";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 const Bookings = () => {
-  const userData = useSelector((state) => state.Reducer.userdata)
-  const [studentData, setStudentData] = useState([])
-  const [modal, setModal] = useState(false)
+  const userData = useSelector((state) => state.Reducer.userdata);
+  const testLessonsData = useSelector((state) => state.Reducer.testLessonData);
+  const [modal, setModal] = useState(false);
   const [value, setValue] = useState({
-    start_time: '',
-    end_time: '',
-    date: '',
-  })
+    start_time: "",
+    end_time: "",
+    date: "",
+  });
   const modalToggle = (index) => {
     setValue({
       ...value,
       start_time: studentData[index].start_time,
       end_time: studentData[index].end_time,
       date: studentData[index].date,
-    })
-    setModal(true)
-  }
-
-  // const editTestLesson = (index, id) => {
-  //   setValue({
-  //     ...value,
-  //     start_time: studentData[index].start_time,
-  //     end_time: studentData[index].end_time,
-  //     date: studentData[index].date,
-  //   })
-  // }
-
-  console.log(value)
+    });
+    setModal(true);
+  };
 
   useEffect(() => {
     if (userData) {
-      testLessons(userData.user.teacher_id, setStudentData)
+      testLessons(userData.user.teacher_id);
     }
-  }, [userData])
+  }, [userData]);
+
+  console.log(testLessonsData);
 
   return (
     <div>
@@ -84,7 +75,7 @@ const Bookings = () => {
                 <div className="card card-table">
                   <div className="card-body">
                     <div className="table-responsive">
-                      {studentData.length > 0 ? (
+                      {testLessonsData.length > 0 ? (
                         <table className="table table-hover table-center mb-0">
                           <thead>
                             <tr>
@@ -94,7 +85,7 @@ const Bookings = () => {
                               <th className="text-center">Harakat</th>
                             </tr>
                           </thead>
-                          {studentData?.map((value, index) => {
+                          {testLessonsData?.map((value, index) => {
                             return (
                               <tbody key={index}>
                                 <tr>
@@ -147,13 +138,13 @@ const Bookings = () => {
                                           <li
                                             onClick={() => modalToggle(index)}
                                             className="mb-2 dropdown-item"
-                                            style={{ cursor: 'pointer' }}
+                                            style={{ cursor: "pointer" }}
                                           >
                                             Vaqtni o'zgartirish
                                           </li>
                                           <li
                                             className="dropdown-item"
-                                            style={{ cursor: 'pointer' }}
+                                            style={{ cursor: "pointer" }}
                                           >
                                             O'tildi
                                           </li>
@@ -163,11 +154,11 @@ const Bookings = () => {
                                   </td>
                                 </tr>
                               </tbody>
-                            )
+                            );
                           })}
                         </table>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                   </div>
@@ -191,7 +182,7 @@ const Bookings = () => {
                   <label>Dars sanasi</label>
                   <input
                     type="date"
-                    value={value.date || ''}
+                    value={value.date || ""}
                     onChange={(e) =>
                       setValue({ ...value, date: e.target.value })
                     }
@@ -241,7 +232,7 @@ const Bookings = () => {
         </ModalBody>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default Bookings
+export default Bookings;
