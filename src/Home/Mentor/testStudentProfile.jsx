@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { USER } from '../../constant/imagepath_home'
 // import ModalPage from "../components/modal/Modal";
-import { Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Link, useParams } from "react-router-dom";
 import {
   USER_1,
   USER_2,
@@ -11,18 +11,24 @@ import {
   USER_5,
   USER_6,
   USER_7,
-} from '../../constant/imagepath_home'
-import { testLessons } from '../../Api/teacherStudentsApi'
-import { useSelector } from 'react-redux'
+} from "../../constant/imagepath_home";
+import { testLessons } from "../../Api/teacherStudentsApi";
+import { useSelector } from "react-redux";
+
 const TestStudentProfile = () => {
-  const userData = useSelector((state) => state.Reducer.userdata)
-  const [data, setStudentData] = useState([])
+  const userData = useSelector((state) => state.Reducer.userdata);
+  const testLessonsData = useSelector((state) => state.Reducer.testLessonData);
+  const { id } = useParams();
+  const user = testLessonsData[id];
+
   useEffect(() => {
     if (userData) {
-      testLessons(userData.user.teacher_id, setStudentData)
+      testLessons(userData.user.teacher_id);
     }
-  }, [userData])
-  console.log('data', ' ' + data)
+  }, [userData]);
+
+  console.log(testLessonsData[id]);
+
   return (
     <div>
       {/* Breadcrumb */}
@@ -65,10 +71,12 @@ const TestStudentProfile = () => {
                             </div>
                           </div>
                           <div className="user-info-cont">
-                            <h4 className="">Sardor Temirov</h4>
+                            <h4 className="">
+                              {user?.first_name} {user?.last_name}
+                            </h4>
                             <p className="mentor-type mb-0">
                               English Literature (M.A)
-                            </p>{' '}
+                            </p>{" "}
                             <div className="mentor-action">
                               <p className="mentor-type social-title">
                                 blabla@gmail.com
@@ -158,7 +166,7 @@ const TestStudentProfile = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TestStudentProfile
+export default TestStudentProfile;

@@ -17,4 +17,8 @@ const ClearData = () => {
   const action = { type: t.CLEARDATA };
   dispatch(action);
 };
-export { LoadingOff, LoadingOn, UserData, ClearData };
+const TestLessonData = (data) => {
+  const action = { type: t.TEST_LESSON_DATA, payload: data };
+  dispatch(action);
+};
+export { LoadingOff, LoadingOn, UserData, ClearData, TestLessonData };

@@ -1,25 +1,32 @@
-import axios from 'axios'
+import axios from "axios";
+import { TestLessonData, LoadingOff, LoadingOn } from "../redux/Actions";
 
 const myStudents = async (teacher_id) => {
   try {
-    const res = await axios.get(`teacher/my_students/${teacher_id}`)
-    return res.data
+    const res = await axios.get(`teacher/my_students/${teacher_id}`);
+    return res.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
-const testLessons = (teacher_id, setStudentData) => {
+};
+
+const testLessons = (teacher_id) => {
+  LoadingOn();
   axios
     .post(`teacher/test_lessons/${teacher_id}`)
     .then((res) => {
-      setStudentData(res.data.lessons)
+      if (res.status) {
+        TestLessonData(res.data.lessons);
+        LoadingOff();
+      }
     })
     .catch((err) => {
-      console.log(err)
-    })
-}
+      console.log(err);
+      LoadingOff();
+    });
+};
 
-export { myStudents, testLessons }
+export { myStudents, testLessons };
 
 // example-2
 // axios
