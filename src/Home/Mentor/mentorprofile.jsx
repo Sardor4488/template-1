@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { USER } from '../../constant/imagepath_home'
 import { Link } from 'react-router-dom'
 import { TeacherFreeTime } from '../../Api/updateApi'
@@ -65,13 +65,15 @@ const MentorProfile = () => {
       modalClose()
     }
   }
-  console.log(day)
   const userdata = useSelector((state) => state.Reducer.userdata)
 
   useEffect(() => {
     TeacherFreeTime()
   }, [])
 
+  useMemo(() => {
+    console.log(day)
+  }, [day])
   return (
     <div>
       {/* Breadcrumb */}

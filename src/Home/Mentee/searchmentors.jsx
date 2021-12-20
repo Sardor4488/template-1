@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   USER,
   USER_1,
   USER_2,
   USER_4,
   USER_5,
-} from "../../constant/imagepath_home";
-import StickyBox from "react-sticky-box";
-import { Link, withRouter } from "react-router-dom";
-import { Avatar } from "antd";
+} from '../../constant/imagepath_home'
+import StickyBox from 'react-sticky-box'
+import { Link, withRouter, useParams } from 'react-router-dom'
+import { Avatar } from 'antd'
 
 const Search = () => {
-  const [more, setMore] = useState(false);
-
+  const [more, setMore] = useState(false)
+  const { category } = useParams()
   const moreInfo = () => {
-    setMore(!more);
-  };
+    setMore(!more)
+  }
+  console.log(category)
   return (
     <div>
       {/* Breadcrumb */}
@@ -34,7 +35,7 @@ const Search = () => {
                 </ol>
               </nav>
               <h2 className="breadcrumb-title">
-                Qidiruv bo'yicha <span>123</span> ta o'qituvchi topildi{" "}
+                Qidiruv bo'yicha <span>123</span> ta o'qituvchi topildi{' '}
               </h2>
             </div>
           </div>
@@ -155,7 +156,7 @@ const Search = () => {
                             </Link>
                           </li>
                           <li className="text-secondary">
-                            <i className="fas fa-book text-black "></i>{" "}
+                            <i className="fas fa-book text-black "></i>{' '}
                             Matematika
                           </li>
                           <li>
@@ -179,15 +180,15 @@ const Search = () => {
                       <div className="user-infos">
                         <ul>
                           <li>
-                            <i className="fas fa-comment text-black" />{" "}
+                            <i className="fas fa-comment text-black" />{' '}
                             <span>17</span> ta fikr
                           </li>
                           <li>
-                            <i className="fas fa-user-graduate text-black" />{" "}
+                            <i className="fas fa-user-graduate text-black" />{' '}
                             <span className="text-primary">25</span> ta o'quvchi
                           </li>
                           <li>
-                            <i className="fas fa-heart text-black" />{" "}
+                            <i className="fas fa-heart text-black" />{' '}
                             <span>55</span> % sodiqlik
                             <i className="far fa-question-circle ps-1 text-black"></i>
                           </li>
@@ -198,7 +199,7 @@ const Search = () => {
                   <div>
                     <div
                       className={`pt-2  ${
-                        more ? "about_text_size_long" : "about_text_size_short"
+                        more ? 'about_text_size_long' : 'about_text_size_short'
                       }`}
                     >
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -208,9 +209,9 @@ const Search = () => {
                       qui et repellendus Soluta fugiat quae expedita error
                       tempora qui et repellendus Soluta fugiat quae expedita
                       error tempora qui et repellendus Soluta fugiat quae
-                      expedita error tempora qui et repellendus sapiente quasi?{" "}
+                      expedita error tempora qui et repellendus sapiente quasi?{' '}
                     </div>
-                    <div className={more ? "about_message" : "d-none"}>
+                    <div className={more ? 'about_message' : 'd-none'}>
                       <div className="row w-100 m-0">
                         <div className="col-6 d-flex align-items-center p-0">
                           <Avatar />
@@ -231,7 +232,7 @@ const Search = () => {
                       </div>
                     </div>
                     <p className="text-primary m-0" onClick={moreInfo}>
-                      {more ? "Yopish" : "Batafsil"}
+                      {more ? 'Yopish' : 'Batafsil'}
                     </p>
                   </div>
                   <div className="mentor-booking w-100 d-flex justify-content-end">
@@ -250,7 +251,7 @@ const Search = () => {
       </div>
       {/* /Page Content */}
     </div>
-  );
-};
+  )
+}
 
-export default withRouter(Search);
+export default withRouter(Search)

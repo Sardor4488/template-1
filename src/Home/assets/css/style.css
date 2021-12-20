@@ -2749,9 +2749,7 @@ html.menu-opened body {
   flex: 0 0 145px;
   width: 145px;
 }
-.mentor-img img {
-  border-radius: 6px;
-}
+
 .user-location {
   color: #757575;
   font-size: 14px;
@@ -6749,7 +6747,7 @@ html.menu-opened body {
 }
 .pro-avatar-image {
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 50% !important;
   width: 100px;
   height: 100px;
   margin: 0 auto 15px;
