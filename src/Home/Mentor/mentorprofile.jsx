@@ -1,73 +1,73 @@
-import React, { useEffect, useState, useMemo } from 'react'
-import { USER } from '../../constant/imagepath_home'
-import { Link } from 'react-router-dom'
-import { TeacherFreeTime } from '../../Api/updateApi'
-import { Modal, ModalHeader, ModalBody } from 'reactstrap'
-import { useSelector } from 'react-redux'
-import { modalTimeData } from '../../Data/index'
-import { data, datasheudle } from '../../Data/teacherProfile'
-import TimeSelect from '../../UI/Select/TimeSelect'
-import MyInput from '../../UI/Input/MyInput'
-import { Swiper } from 'swiper/react/swiper'
-import { SwiperSlide } from 'swiper/react/swiper-slide'
-import { Calendar } from '../../Data/Calendar'
+import React, { useEffect, useState, useMemo } from "react";
+import { USER } from "../../constant/imagepath_home";
+import { Link } from "react-router-dom";
+import { TeacherFreeTime } from "../../Api/updateApi";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { useSelector } from "react-redux";
+import { modalTimeData } from "../../Data/index";
+import { data, datasheudle } from "../../Data/teacherProfile";
+import TimeSelect from "../../UI/Select/TimeSelect";
+import MyInput from "../../UI/Input/MyInput";
+import { Swiper } from "swiper/react/swiper";
+import { SwiperSlide } from "swiper/react/swiper-slide";
+import { Calendar } from "../../Data/Calendar";
 
-import 'swiper/swiper.min.css'
-import 'swiper/swiper-bundle.min.css'
+import "swiper/swiper.min.css";
+import "swiper/swiper-bundle.min.css";
 const MentorProfile = () => {
-  const [addnewtimeslot, setAddnewtimeslot] = useState([])
-  const [weekDays, setWeekDays] = useState('monday')
-  const [day, setDay] = useState([])
-  const [isModal, setIsModal] = useState(false)
-  const [time, setTime] = useState()
-  const [date, setDate] = useState()
+  const [addnewtimeslot, setAddnewtimeslot] = useState([]);
+  const [weekDays, setWeekDays] = useState("monday");
+  const [day, setDay] = useState([]);
+  const [isModal, setIsModal] = useState(false);
+  const [time, setTime] = useState();
+  const [date, setDate] = useState();
   const modalOpen = () => {
-    setIsModal(true)
-  }
+    setIsModal(true);
+  };
   const modalClose = () => {
-    setIsModal(false)
-  }
+    setIsModal(false);
+  };
 
   const addNewTime = (e) => {
-    e.preventDefault()
-    const cloneDay = [...day]
+    e.preventDefault();
+    const cloneDay = [...day];
     const filterCloneDay = cloneDay.filter(
-      (v) => v?.time === time && v?.date === date,
-    )
-    if (filterCloneDay.length == 0 && time !== 'Tanlang' && time && date) {
-      cloneDay.push({ time, date })
-      setDay(cloneDay)
-      let addnewrow = [...addnewtimeslot]
-      addnewrow.push(1)
-      setAddnewtimeslot(addnewrow)
+      (v) => v?.time === time && v?.date === date
+    );
+    if (filterCloneDay.length == 0 && time !== "Tanlang" && time && date) {
+      cloneDay.push({ time, date });
+      setDay(cloneDay);
+      let addnewrow = [...addnewtimeslot];
+      addnewrow.push(1);
+      setAddnewtimeslot(addnewrow);
     }
-  }
+  };
   const removeTime = (index) => {
-    let removerow = [...addnewtimeslot]
-    removerow.splice(index, 1)
-    setAddnewtimeslot(removerow)
-  }
+    let removerow = [...addnewtimeslot];
+    removerow.splice(index, 1);
+    setAddnewtimeslot(removerow);
+  };
   const saveTime = (e) => {
-    e.preventDefault()
-    const cloneDay = [...day]
+    e.preventDefault();
+    const cloneDay = [...day];
     const filterCloneDay = cloneDay.filter(
-      (v) => v?.time === time && v?.date === date,
-    )
-    if (filterCloneDay.length == 0 && time !== 'Tanlang' && time) {
-      cloneDay.push({ time, date })
-      setDay(cloneDay)
-      modalClose()
+      (v) => v?.time === time && v?.date === date
+    );
+    if (filterCloneDay.length == 0 && time !== "Tanlang" && time) {
+      cloneDay.push({ time, date });
+      setDay(cloneDay);
+      modalClose();
     }
-  }
-  const userdata = useSelector((state) => state.Reducer.userdata)
+  };
+  const userdata = useSelector((state) => state.Reducer.userdata);
 
   useEffect(() => {
-    TeacherFreeTime()
-  }, [])
+    TeacherFreeTime();
+  }, []);
 
   useMemo(() => {
-    console.log(day)
-  }, [day])
+    console.log(day);
+  }, [day]);
   return (
     <div>
       {/* Breadcrumb */}
@@ -131,12 +131,12 @@ const MentorProfile = () => {
                         </div>
                         <div className="user-info-cont">
                           <h4 className="">
-                            {userdata?.user?.first_name}{' '}
+                            {userdata?.user?.first_name}{" "}
                             {userdata?.user?.last_name}
                           </h4>
                           <p className="mentor-type mb-0">
                             {userdata?.user?.course_name}
-                          </p>{' '}
+                          </p>{" "}
                           <div className="mentor-action">
                             <p className="mentor-type social-title">
                               {userdata?.user?.email}
@@ -255,7 +255,7 @@ const MentorProfile = () => {
                                                             >
                                                               <span>{v}</span>
                                                             </a>
-                                                          )
+                                                          );
                                                         })
                                                       ) : (
                                                         <a
@@ -267,7 +267,7 @@ const MentorProfile = () => {
                                                         </a>
                                                       )}
                                                     </li>
-                                                  )
+                                                  );
                                                 })}
                                               </ul>
                                             </div>
@@ -278,7 +278,7 @@ const MentorProfile = () => {
                                       {/* /Schedule Content */}
                                     </div>
                                   </SwiperSlide>
-                                )
+                                );
                               })}
                           </Swiper>
                         </div>
@@ -350,7 +350,7 @@ const MentorProfile = () => {
                                   {userdata?.user?.experience
                                     ? userdata?.user?.experience
                                     : 0}
-                                </span>{' '}
+                                </span>{" "}
                                 yil
                               </div>
                             </div>
@@ -408,7 +408,7 @@ const MentorProfile = () => {
                   toggle={modalClose}
                 >
                   <ModalHeader toggle={modalClose}>
-                    {' '}
+                    {" "}
                     Bo'sh vaqtlaringizni belgilang
                   </ModalHeader>
                   <ModalBody>
@@ -419,7 +419,7 @@ const MentorProfile = () => {
                             <div className="row form-row">
                               <div className="col-md-6">
                                 <TimeSelect
-                                  label={'Boshlanadi-tugaydi'}
+                                  label={"Boshlanadi-tugaydi"}
                                   array={modalTimeData}
                                   setValue={setTime}
                                 />
@@ -427,7 +427,7 @@ const MentorProfile = () => {
                               <div className="col-md-6">
                                 <label>Sana</label>
                                 <MyInput
-                                  type={'date'}
+                                  type={"date"}
                                   onChange={(e) => setDate(e.target.value)}
                                 />
                               </div>
@@ -439,7 +439,7 @@ const MentorProfile = () => {
                                 <div className="row form-row">
                                   <div className="col-10 col-md-5">
                                     <TimeSelect
-                                      label={'Boshlanadi-tugaydi'}
+                                      label={"Boshlanadi-tugaydi"}
                                       array={modalTimeData}
                                       setValue={setTime}
                                     />
@@ -447,7 +447,7 @@ const MentorProfile = () => {
                                   <div className="col-10 col-md-5">
                                     <label>Sana</label>
                                     <MyInput
-                                      type={'date'}
+                                      type={"date"}
                                       onChange={(e) => setDate(e.target.value)}
                                     />
                                   </div>
@@ -469,7 +469,7 @@ const MentorProfile = () => {
                       </div>
                       <div className="add-more mb-3">
                         <div
-                          style={{ cursor: 'pointer', color: '#1e88e5' }}
+                          style={{ cursor: "pointer", color: "#1e88e5" }}
                           onClick={(e) => addNewTime(e)}
                         >
                           <i className="fa fa-plus-circle" /> Yana qo'shish
@@ -494,10 +494,10 @@ const MentorProfile = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MentorProfile
+export default MentorProfile;
 
 {
   /* <Modal

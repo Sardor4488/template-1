@@ -310,6 +310,15 @@ const ProfileSettingMentee = () => {
                           error={experienceError}
                         />
                       </div>
+                      <div className="col-12  ">
+                        <MySelect
+                           label={"Kasbingiz"}
+                            value={country}
+                           setValue={setCountry}
+                           type={"text"}
+                           error={countryError}
+                        />
+                      </div>
                       <div className="col-12">
                         <div className="form-group">
                           <label>Maqsadingiz</label>

@@ -440,4 +440,4 @@ const LeadProfile = () => {
   )
 }
 
-export default LeadProfile
+export default LeadProfile;

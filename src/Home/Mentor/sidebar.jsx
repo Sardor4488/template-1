@@ -106,20 +106,7 @@ const Sidebar = (props) => {
                 </span>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/app/mentor/invoices"
-                className={pathname.includes("invoices") ? "active" : ""}
-              >
-                <i className="fas fa-file-invoice" />
-                To'lovlar{" "}
-                <span>
-                  <i className="fas fa-chevron-right" />
-                </span>
-              </Link>
-            </li>
-
-            <li>
+             <li>
               <Link
                 to="/app/mentor/blog"
                 className={pathname.includes("blog") ? "active" : ""}
