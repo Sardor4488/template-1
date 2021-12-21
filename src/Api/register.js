@@ -14,16 +14,12 @@ const register = (data, history, url) => {
       .post(url, data)
       .then((res) => {
         if(res.status) {
-          history.push(`app/${res.data.user.role}/dashboard`);
           UserData(res.data);
           localStorage.setItem("access_token", res.data.token);
           localStorage.setItem("role", res.data.user.role);
           localStorage.setItem("user_id", res.data.user.id);
-          console.log(res.data.token);
-          console.log(res.data.user.role);
-          console.log(res.data.user.id);
+          history.push(`app/${res.data.user.role}/dashboard`);
           LoadingOff();
-          console.log(res);
         }
       })
       .catch((err) => {

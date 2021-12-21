@@ -4,7 +4,6 @@ const token = localStorage.getItem("access_token");
 const role = localStorage.getItem("role");
 const id = localStorage.getItem("user_id");
 const url = role == "mentee" ? "student/get-student" : "teacher/teacher-me";
-console.log(token);
 
 const UserAuth = (setPath, history) => {
   if (token !== null) {
@@ -12,13 +11,17 @@ const UserAuth = (setPath, history) => {
     axios
       .post(url + "/" + id, {})
       .then((res) => {
-        UserData(res.data);
-        setPath(`/app/${role}/dashboard`);
-        localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
-        LoadingOff();
+        if (res.status) {
+          UserData(res.data);
+          setPath(`/app/${role}/dashboard`);
+          localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
+          LoadingOff();
+          console.log(res.data.token);
+        }
       })
       .catch((err) => {
         LoadingOff();
+
         console.log(err);
         // console.log(err.response.status);
         if (err.response.status == 401) {

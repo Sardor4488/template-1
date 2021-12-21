@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   USER_1,
   USER_2,
@@ -7,15 +7,14 @@ import {
   USER_5,
   USER_6,
   USER_7,
-} from "../../constant/imagepath_home";
-import Sidebar from "./sidebar";
-import StickyBox from "react-sticky-box";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+} from '../../constant/imagepath_home'
+import Sidebar from './sidebar'
+import StickyBox from 'react-sticky-box'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Dashboard = () => {
-  const userdata = useSelector((state) => state.Reducer.userdata);
-  console.log(userdata);
+  const userdata = useSelector((state) => state.Reducer.userdata)
   return (
     <div>
       <div className="breadcrumb-bar">
@@ -164,7 +163,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentee/mentor-profile">
-                                    Julie Pennington{" "}
+                                    Julie Pennington{' '}
                                     <span>julie@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -196,7 +195,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentor/studentProfile">
-                                    Allen Davis{" "}
+                                    Allen Davis{' '}
                                     <span>allendavis@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -228,7 +227,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentor/studentProfile">
-                                    Patricia Manzi{" "}
+                                    Patricia Manzi{' '}
                                     <span>patriciamanzi@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -260,7 +259,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentee/mentor-profile">
-                                    Olive Lawrence{" "}
+                                    Olive Lawrence{' '}
                                     <span>olivelawrence@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -292,7 +291,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentee/mentor-profile">
-                                    Frances Foster{" "}
+                                    Frances Foster{' '}
                                     <span>frances@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -324,7 +323,7 @@ const Dashboard = () => {
                                     />
                                   </Link>
                                   <Link to="/app/Mentee/mentor-profile">
-                                    Deloris Briscoe{" "}
+                                    Deloris Briscoe{' '}
                                     <span>delorisbriscoe@adobe.com</span>
                                   </Link>
                                 </h2>
@@ -355,7 +354,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

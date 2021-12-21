@@ -22,6 +22,7 @@ import Appointments from "./appointments";
 import MentorProfile from "./mentorprofile";
 import StudentProfile from "./studentProfile";
 import MentorBooking from "./MentorBooking";
+import TestStudentProfile from "./testStudentProfile";
 
 const Mentorroute = ({ match }) => {
   const role = localStorage.getItem("role");
@@ -60,9 +61,13 @@ const Mentorroute = ({ match }) => {
             path={`${match.url}/mentor-profile`}
             component={MentorProfile}
           />
-          
           <Route
-            path={`${match.url}/studentProfile`}
+            path={`${match.url}/testStudentProfile/:id`}
+            component={TestStudentProfile}
+          />
+
+          <Route
+            path={`${match.url}/studentProfile/:id`}
             component={StudentProfile}
           />
           <Route>

@@ -1,29 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import { AVATAR_08, AVATAR_12 } from '../../imagepath'
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Ratings from '../Main/rating'
-import { getLead } from '../../Api/leadApi'
-import { useSelector } from 'react-redux'
-import { commentLead } from '../../Api/leadApi.js'
-const LeadProfile = () => {
-  const location = useLocation()
-  const [state, setState] = useState({ iseditmodal: false })
+import { useState } from 'react'
+
+const MenteeProfile = () => {
+  const [state, setState] = useState({
+    iseditmodal: false,
+  })
+
   const editModalClose = () => {
     setState({ iseditmodal: false })
   }
-  const [comment, setCommet] = useState('')
-  const { lead_id } = useParams()
-
-  const data = useSelector((state) => state.Reducer.lead_list[lead_id])
-  const comment_lead = (e) => {
-    e.preventDefault()
-    commentLead({ lead_id: data?.id, comment })
-    setCommet('')
-  }
-  useEffect(() => {
-    getLead()
-  }, [location.pathname])
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -57,9 +46,9 @@ const LeadProfile = () => {
                 </div>
                 <div className="col ml-md-n2 profile-user-info">
                   <h4 className="user-name text-start text-black mb-0">
-                    {data?.first_name} {data?.last_name}
+                    Allen Davis
                   </h4>
-                  <h6 className="text-muted">{data?.email}</h6>
+                  <h6 className="text-muted">allendavis@admin.com</h6>
                   <div className="pb-3">
                     <i className="fa fa-map-marker" /> Florida, United States
                   </div>
@@ -121,7 +110,7 @@ const LeadProfile = () => {
                           <a
                             className="edit-link"
                             data-toggle="modal"
-                            onClick={() => setState({ iseditmodal: true })}
+                            onClick={() => this.setState({ iseditmodal: true })}
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
@@ -130,29 +119,27 @@ const LeadProfile = () => {
                         </h5>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Ismi
+                            Name
                           </p>
-                          <p className="col-sm-10">
-                            {data?.first_name} {data?.last_name}
-                          </p>
+                          <p className="col-sm-10">Allen Davis</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Tug'ilgan sanasi
+                            Date of Birth
                           </p>
                           <p className="col-sm-10">24 Jul 1983</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Email
+                            Email ID
                           </p>
-                          <p className="col-sm-10">{data?.email}</p>
+                          <p className="col-sm-10">allendavis@example.com</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Telefon raqami
+                            Mobile
                           </p>
-                          <p className="col-sm-10">{data?.phone_number}</p>
+                          <p className="col-sm-10">305-310-5857</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0">Address</p>
@@ -208,41 +195,18 @@ const LeadProfile = () => {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-6  ">
-                        <form onSubmit={comment_lead}>
+                        <form>
                           <div className="form-group">
-                            <label>Izoh qoldirish</label>
-                            <input
-                              type="text"
-                              onChange={(e) => setCommet(e.target.value)}
-                              className="form-control"
-                            />
+                            <label>"Comment" qoldirish</label>
+                            <input type="text" className="form-control" />
                           </div>
-                          <button
-                            className={`btn btn-primary ${
-                              comment == '' ||
-                              comment == undefined ||
-                              comment == null
-                                ? 'disabled'
-                                : ''
-                            }`}
-                            type="submit"
-                          >
+                          <button className="btn btn-primary" type="submit">
                             Saqlash
                           </button>
                         </form>
                       </div>
                       <div className="col-md-6">
-                        <div className="card p-3 mt-4">
-                          {data?.comments.length > 0
-                            ? data?.comments.map((v, i) => {
-                                return (
-                                  <p className={'mb-1'} key={i}>
-                                    {v.comment}
-                                  </p>
-                                )
-                              })
-                            : 'Izoh kiritilmagan'}
-                        </div>
+                        <div className="card p-3 mt-4">Ulanib bo'lmadi</div>
                       </div>
                     </div>
                   </div>
@@ -440,4 +404,4 @@ const LeadProfile = () => {
   )
 }
 
-export default LeadProfile;
+export default MenteeProfile

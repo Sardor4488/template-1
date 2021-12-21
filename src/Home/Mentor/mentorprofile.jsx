@@ -1,62 +1,73 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { USER } from "../../constant/imagepath_home";
 import { Link } from "react-router-dom";
 import { TeacherFreeTime } from "../../Api/updateApi";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { useSelector } from "react-redux";
+import { modalTimeData } from "../../Data/index";
+import { data, datasheudle } from "../../Data/teacherProfile";
+import TimeSelect from "../../UI/Select/TimeSelect";
+import MyInput from "../../UI/Input/MyInput";
+import { Swiper } from "swiper/react/swiper";
+import { SwiperSlide } from "swiper/react/swiper-slide";
+import { Calendar } from "../../Data/Calendar";
 
+import "swiper/swiper.min.css";
+import "swiper/swiper-bundle.min.css";
 const MentorProfile = () => {
-  const [state, setState] = useState({
-    isvoicecallmodal: false,
-    isvideocallmodal: false,
-    isnewmodal: false,
-    iseditModal: false,
-    addnewtimeslot: [],
-    edittimeslot: ["placeholder", "placeholder"],
-  });
+  const [addnewtimeslot, setAddnewtimeslot] = useState([]);
+  const [weekDays, setWeekDays] = useState("monday");
+  const [day, setDay] = useState([]);
+  const [isModal, setIsModal] = useState(false);
+  const [time, setTime] = useState();
+  const [date, setDate] = useState();
+  const modalOpen = () => {
+    setIsModal(true);
+  };
+  const modalClose = () => {
+    setIsModal(false);
+  };
 
-  const voicecallmodalClose = () => {
-    setState({ isvoicecallmodal: false });
+  const addNewTime = (e) => {
+    e.preventDefault();
+    const cloneDay = [...day];
+    const filterCloneDay = cloneDay.filter(
+      (v) => v?.time === time && v?.date === date
+    );
+    if (filterCloneDay.length == 0 && time !== "Tanlang" && time && date) {
+      cloneDay.push({ time, date });
+      setDay(cloneDay);
+      let addnewrow = [...addnewtimeslot];
+      addnewrow.push(1);
+      setAddnewtimeslot(addnewrow);
+    }
   };
-  const videocallModalClose = () => {
-    setState({ isvideocallmodal: false });
+  const removeTime = (index) => {
+    let removerow = [...addnewtimeslot];
+    removerow.splice(index, 1);
+    setAddnewtimeslot(removerow);
   };
-  const newModalClose = () => {
-    setState({ isnewmodal: false });
+  const saveTime = (e) => {
+    e.preventDefault();
+    const cloneDay = [...day];
+    const filterCloneDay = cloneDay.filter(
+      (v) => v?.time === time && v?.date === date
+    );
+    if (filterCloneDay.length == 0 && time !== "Tanlang" && time) {
+      cloneDay.push({ time, date });
+      setDay(cloneDay);
+      modalClose();
+    }
   };
-  const editModalClose = () => {
-    setState({ iseditModal: false });
-  };
-  const addnewtimeschedule = () => {
-    const { addnewtimeslot } = state;
-    var addnewrow = addnewtimeslot;
-    addnewrow.push("placeholder");
-    setState({ addnewtimeslot: addnewrow });
-  };
-  const removenewtimeschedule = (index) => {
-    var contacts = [...state.addnewtimeslot];
-    contacts.splice(index, 1);
-    setState({ addnewtimeslot: contacts });
-  };
-  const edittimeschedule = () => {
-    const { edittimeslot } = state;
-    var addnewrow = edittimeslot;
-    addnewrow.push("placeholder");
-    setState({ edittimeslot: addnewrow });
-  };
-  const removeedittimeschedule = (index) => {
-    var contacts = [...state.edittimeslot];
-    contacts.splice(index, 1);
-    setState({ edittimeslot: contacts });
-  };
-  const { addnewtimeslot, edittimeslot } = state;
   const userdata = useSelector((state) => state.Reducer.userdata);
 
   useEffect(() => {
-    TeacherFreeTime(id)
-  }, [id])
+    TeacherFreeTime();
+  }, []);
 
-
+  useMemo(() => {
+    console.log(day);
+  }, [day]);
   return (
     <div>
       {/* Breadcrumb */}
@@ -190,237 +201,94 @@ const MentorProfile = () => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-12">
-                        <div className="schedule-widget mb-0">
-                          {/* Schedule Header */}
-                          <div className="schedule-header">
-                            {/* Schedule Nav */}
-                            <div className="schedule-nav">
-                              <ul className="nav nav-tabs nav-justified">
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_sunday"
-                                  >
-                                    Yakshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link active"
-                                    data-toggle="tab"
-                                    href="#slot_monday"
-                                  >
-                                    Dushanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_tuesday"
-                                  >
-                                    Seshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_wednesday"
-                                  >
-                                    Chorshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_thursday"
-                                  >
-                                    Payshanba
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_friday"
-                                  >
-                                    Juma
-                                  </a>
-                                </li>
-                                <li className="nav-item">
-                                  <a
-                                    className="nav-link"
-                                    data-toggle="tab"
-                                    href="#slot_saturday"
-                                  >
-                                    Shanba
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            {/* /Schedule Nav */}
-                          </div>
-                          {/* /Schedule Header */}
-                          {/* Schedule Content */}
-                          <div className="tab-content schedule-cont">
-                            {/* Sunday Slot */}
-                            <div id="slot_sunday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">
-                                Vaqt kiritilmagan
-                              </p>
-                            </div>
-                            {/* /Sunday Slot */}
-                            {/* Monday Slot */}
-                            <div
-                              id="slot_monday"
-                              className="tab-pane fade show active"
-                            >
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() =>
-                                    setState({ iseditModal: true })
-                                  }
-                                  data-toggle="modal"
-                                  href="#"
-                                >
-                                  <i className="fa fa-edit mr-1" />
-                                  Tahrirlash
-                                </a>
-                              </h4>
-                              {/* Slot List */}
-                              <div className="user-times">
-                                <div className="user-slot-list">
-                                  8:00 pm - 11:30 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  11:30 pm - 1:30 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  3:00 pm - 5:00 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                                <div className="user-slot-list">
-                                  6:00 pm - 11:00 pm
-                                  <a href="" className="delete_schedule">
-                                    <i className="fa fa-times" />
-                                  </a>
-                                </div>
-                              </div>
-                              {/* /Slot List */}
-                            </div>
-                            {/* /Monday Slot */}
-                            {/* Tuesday Slot */}
-                            <div id="slot_tuesday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Add Slot
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Tuesday Slot */}
-                            {/* Wednesday Slot */}
-                            <div id="slot_wednesday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Wednesday Slot */}
-                            {/* Thursday Slot */}
-                            <div id="slot_thursday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Thursday Slot */}
-                            {/* Friday Slot */}
-                            <div id="slot_friday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vaqt
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Mavjud emas</p>
-                            </div>
-                            {/* /Friday Slot */}
-                            {/* Saturday Slot */}
-                            <div id="slot_saturday" className="tab-pane fade">
-                              <h4 className="card-title d-flex justify-content-between">
-                                <span>Bo'sh dars soatlari</span>
-                                <a
-                                  className="edit-link"
-                                  onClick={() => setState({ isnewmodal: true })}
-                                  data-toggle="modal"
-                                  href="#add_time_slot"
-                                >
-                                  <i className="fa fa-plus-circle" /> Vat
-                                  qo'shish
-                                </a>
-                              </h4>
-                              <p className="text-muted mb-0">Vaqt qo'shish</p>
-                            </div>
-                            {/* /Saturday Slot */}
-                          </div>
-                          {/* /Schedule Content */}
+                      <div className="col-12">
+                        <div className="calendarMentor">
+                          <Swiper navigation={true} className="mySwiper">
+                            {Calendar.length > 0 &&
+                              Calendar.map((v, i) => {
+                                return (
+                                  <SwiperSlide key={i}>
+                                    <div className="card booking-schedule schedule-widget">
+                                      {/* Schedule Header */}
+                                      <div className="schedule-header">
+                                        <div className="row">
+                                          <div className="col-md-12">
+                                            {/* Day Slot */}
+                                            <div className="day-slot">
+                                              <ul>
+                                                {v.dayOfWeek.map((v, i) => (
+                                                  <li key={i}>
+                                                    <span>
+                                                      {v.weekDays.slice(0, 3)}
+                                                    </span>
+                                                    <span className="slot-date">
+                                                      <small className="slot-year">
+                                                        {v.day}
+                                                      </small>
+                                                    </span>
+                                                  </li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                            {/* /Day Slot */}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {/* /Schedule Header */}
+                                      {/* Schedule Content */}
+                                      <div className="schedule-cont">
+                                        <div className="row">
+                                          <div className="col-md-12">
+                                            {/* Time Slot */}
+                                            <div className="time-slot">
+                                              <ul className="clearfix">
+                                                {v.dayOfWeek.map((v, i) => {
+                                                  return (
+                                                    <li key={i}>
+                                                      {v.hours.length > 0 ? (
+                                                        v.hours.map((v, i) => {
+                                                          return (
+                                                            <a
+                                                              className="timing"
+                                                              href="#"
+                                                              key={i}
+                                                            >
+                                                              <span>{v}</span>
+                                                            </a>
+                                                          );
+                                                        })
+                                                      ) : (
+                                                        <a
+                                                          className="timing"
+                                                          href="#"
+                                                          key={i}
+                                                        >
+                                                          <span>Vaqt yo'q</span>
+                                                        </a>
+                                                      )}
+                                                    </li>
+                                                  );
+                                                })}
+                                              </ul>
+                                            </div>
+                                            {/* /Time Slot */}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {/* /Schedule Content */}
+                                    </div>
+                                  </SwiperSlide>
+                                );
+                              })}
+                          </Swiper>
+                        </div>
+                        <div className="col-12 d-flex justify-content-end">
+                          <button
+                            className="btn btn-primary"
+                            onClick={modalOpen}
+                          >
+                            Vaqt qo'shish
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -536,12 +404,12 @@ const MentorProfile = () => {
                 {/* Add Time Slot Modal */}
                 <Modal
                   className="modal-dialog-centered"
-                  isOpen={state.isnewmodal}
-                  toggle={() => newModalClose()}
+                  isOpen={isModal}
+                  toggle={modalClose}
                 >
-                  <ModalHeader toggle={() => newModalClose()}>
+                  <ModalHeader toggle={modalClose}>
                     {" "}
-                    Add Time Slots
+                    Bo'sh vaqtlaringizni belgilang
                   </ModalHeader>
                   <ModalBody>
                     <form>
@@ -549,372 +417,71 @@ const MentorProfile = () => {
                         <div className="row form-row hours-cont">
                           <div className="col-12 col-md-10">
                             <div className="row form-row">
-                              <div className="col-12 col-md-6">
-                                <div className="form-group">
-                                  <label>Start Time</label>
-                                  <select className="form-control">
-                                    <option>Select</option>
-                                    <option>12.00 am</option>
-                                    <option>1.00 am</option>
-                                    <option>2.00 am</option>
-                                    <option>3.00 am</option>
-                                    <option>4.00 am</option>
-                                    <option>5.00 am</option>
-                                    <option>6.00 am</option>
-                                    <option>7.00 am</option>
-                                    <option>8.00 am</option>
-                                    <option>9.00 am</option>
-                                    <option>10.00 am</option>
-                                    <option>11.00 am</option>
-                                    <option>12.00 pm</option>
-                                    <option>1.00 pm</option>
-                                    <option>2.00 pm</option>
-                                    <option>3.00 pm</option>
-                                    <option>4.00 pm</option>
-                                    <option>5.00 pm</option>
-                                    <option>6.00 pm</option>
-                                    <option>7.00 pm</option>
-                                    <option>8.00 pm</option>
-                                    <option>9.00 pm</option>
-                                    <option>10.00 pm</option>
-                                    <option>11.00 pm</option>
-                                  </select>
-                                </div>
+                              <div className="col-md-6">
+                                <TimeSelect
+                                  label={"Boshlanadi-tugaydi"}
+                                  array={modalTimeData}
+                                  setValue={setTime}
+                                />
                               </div>
-                              <div className="col-12 col-md-6">
-                                <div className="form-group">
-                                  <label>End Time</label>
-                                  <select className="form-control">
-                                    <option>Select</option>
-                                    <option>12.00 am</option>
-                                    <option>1.00 am</option>
-                                    <option>2.00 am</option>
-                                    <option>3.00 am</option>
-                                    <option>4.00 am</option>
-                                    <option>5.00 am</option>
-                                    <option>6.00 am</option>
-                                    <option>7.00 am</option>
-                                    <option>8.00 am</option>
-                                    <option>9.00 am</option>
-                                    <option>10.00 am</option>
-                                    <option>11.00 am</option>
-                                    <option>12.00 pm</option>
-                                    <option>1.00 pm</option>
-                                    <option>2.00 pm</option>
-                                    <option>3.00 pm</option>
-                                    <option>4.00 pm</option>
-                                    <option>5.00 pm</option>
-                                    <option>6.00 pm</option>
-                                    <option>7.00 pm</option>
-                                    <option>8.00 pm</option>
-                                    <option>9.00 pm</option>
-                                    <option>10.00 pm</option>
-                                    <option>11.00 pm</option>
-                                  </select>
-                                </div>
+                              <div className="col-md-6">
+                                <label>Sana</label>
+                                <MyInput
+                                  type={"date"}
+                                  onChange={(e) => setDate(e.target.value)}
+                                />
                               </div>
                             </div>
                           </div>
+                          {addnewtimeslot &&
+                            addnewtimeslot.map((v, i) => (
+                              <div className="col-12" key={i}>
+                                <div className="row form-row">
+                                  <div className="col-10 col-md-5">
+                                    <TimeSelect
+                                      label={"Boshlanadi-tugaydi"}
+                                      array={modalTimeData}
+                                      setValue={setTime}
+                                    />
+                                  </div>
+                                  <div className="col-10 col-md-5">
+                                    <label>Sana</label>
+                                    <MyInput
+                                      type={"date"}
+                                      onChange={(e) => setDate(e.target.value)}
+                                    />
+                                  </div>
+                                  <div className="col-2 col-md-2">
+                                    <div className="form-group">
+                                      <label>&nbsp;</label>
+                                      <div
+                                        className="btn btn-danger trash"
+                                        onClick={() => removeTime(i)}
+                                      >
+                                        <i className="far fa-trash-alt"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
                         </div>
                       </div>
-                      {addnewtimeslot &&
-                        addnewtimeslot.map((newrow, index) => (
-                          <div className="hours-info" key={index}>
-                            <div className="row form-row hours-cont">
-                              <div className="col-12 col-md-10">
-                                <div className="row form-row">
-                                  <div className="col-12 col-md-6">
-                                    <div className="form-group">
-                                      <label>Start Time</label>
-                                      <select className="form-control">
-                                        <option>Select</option>
-                                        <option>12.00 am</option>
-                                        <option>1.00 am</option>
-                                        <option>2.00 am</option>
-                                        <option>3.00 am</option>
-                                        <option>4.00 am</option>
-                                        <option>5.00 am</option>
-                                        <option>6.00 am</option>
-                                        <option>7.00 am</option>
-                                        <option>8.00 am</option>
-                                        <option>9.00 am</option>
-                                        <option>10.00 am</option>
-                                        <option>11.00 am</option>
-                                        <option>12.00 pm</option>
-                                        <option>1.00 pm</option>
-                                        <option>2.00 pm</option>
-                                        <option>3.00 pm</option>
-                                        <option>4.00 pm</option>
-                                        <option>5.00 pm</option>
-                                        <option>6.00 pm</option>
-                                        <option>7.00 pm</option>
-                                        <option>8.00 pm</option>
-                                        <option>9.00 pm</option>
-                                        <option>10.00 pm</option>
-                                        <option>11.00 pm</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div className="col-12 col-md-6">
-                                    <div className="form-group">
-                                      <label>End Time</label>
-                                      <select className="form-control">
-                                        <option>Select</option>
-                                        <option>12.00 am</option>
-                                        <option>1.00 am</option>
-                                        <option>2.00 am</option>
-                                        <option>3.00 am</option>
-                                        <option>4.00 am</option>
-                                        <option>5.00 am</option>
-                                        <option>6.00 am</option>
-                                        <option>7.00 am</option>
-                                        <option>8.00 am</option>
-                                        <option>9.00 am</option>
-                                        <option>10.00 am</option>
-                                        <option>11.00 am</option>
-                                        <option>12.00 pm</option>
-                                        <option>1.00 pm</option>
-                                        <option>2.00 pm</option>
-                                        <option>3.00 pm</option>
-                                        <option>4.00 pm</option>
-                                        <option>5.00 pm</option>
-                                        <option>6.00 pm</option>
-                                        <option>7.00 pm</option>
-                                        <option>8.00 pm</option>
-                                        <option>9.00 pm</option>
-                                        <option>10.00 pm</option>
-                                        <option>11.00 pm</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 col-md-2">
-                                <label className="d-md-block d-sm-none d-none">
-                                  &nbsp;
-                                </label>
-                                <a
-                                  className="btn btn-danger trash"
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() => removenewtimeschedule(index)}
-                                >
-                                  <i
-                                    style={{ color: "#fff" }}
-                                    className="far fa-trash-alt"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
                       <div className="add-more mb-3">
-                        <a
+                        <div
                           style={{ cursor: "pointer", color: "#1e88e5" }}
-                          onClick={() => addnewtimeschedule()}
+                          onClick={(e) => addNewTime(e)}
                         >
-                          <i className="fa fa-plus-circle" /> Add More
-                        </a>
+                          <i className="fa fa-plus-circle" /> Yana qo'shish
+                        </div>
                       </div>
                       <div className="submit-section text-center">
                         <button
                           type="button"
+                          onClick={(e) => saveTime(e)}
                           className="btn btn-primary submit-btn"
                         >
-                          Save Changes
-                        </button>
-                      </div>
-                    </form>
-                  </ModalBody>
-                </Modal>
-                {/* Edit Time Slot Modal */}
-                <Modal
-                  className="modal-dialog-centered"
-                  isOpen={state.iseditModal}
-                  toggle={() => editModalClose()}
-                >
-                  <ModalHeader toggle={() => editModalClose()}>
-                    {" "}
-                    Edit Time Slots
-                  </ModalHeader>
-                  <ModalBody>
-                    <form>
-                      <div className="hours-info">
-                        <div className="row form-row hours-cont">
-                          <div className="col-12 col-md-10">
-                            <div className="row form-row">
-                              <div className="col-12 col-md-6">
-                                <div className="form-group">
-                                  <label>Start Time</label>
-                                  <select className="form-control">
-                                    <option>Select</option>
-                                    <option>12.00 am</option>
-                                    <option>1.00 am</option>
-                                    <option>2.00 am</option>
-                                    <option>3.00 am</option>
-                                    <option>4.00 am</option>
-                                    <option>5.00 am</option>
-                                    <option>6.00 am</option>
-                                    <option>7.00 am</option>
-                                    <option>8.00 am</option>
-                                    <option>9.00 am</option>
-                                    <option>10.00 am</option>
-                                    <option>11.00 am</option>
-                                    <option>12.00 pm</option>
-                                    <option>1.00 pm</option>
-                                    <option>2.00 pm</option>
-                                    <option>3.00 pm</option>
-                                    <option>4.00 pm</option>
-                                    <option>5.00 pm</option>
-                                    <option>6.00 pm</option>
-                                    <option>7.00 pm</option>
-                                    <option>8.00 pm</option>
-                                    <option>9.00 pm</option>
-                                    <option>10.00 pm</option>
-                                    <option>11.00 pm</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div className="col-12 col-md-6">
-                                <div className="form-group">
-                                  <label>End Time</label>
-                                  <select className="form-control">
-                                    <option>Select</option>
-                                    <option>12.00 am</option>
-                                    <option>1.00 am</option>
-                                    <option>2.00 am</option>
-                                    <option>3.00 am</option>
-                                    <option>4.00 am</option>
-                                    <option>5.00 am</option>
-                                    <option>6.00 am</option>
-                                    <option>7.00 am</option>
-                                    <option>8.00 am</option>
-                                    <option>9.00 am</option>
-                                    <option>10.00 am</option>
-                                    <option>11.00 am</option>
-                                    <option>12.00 pm</option>
-                                    <option>1.00 pm</option>
-                                    <option>2.00 pm</option>
-                                    <option>3.00 pm</option>
-                                    <option>4.00 pm</option>
-                                    <option>5.00 pm</option>
-                                    <option>6.00 pm</option>
-                                    <option>7.00 pm</option>
-                                    <option>8.00 pm</option>
-                                    <option>9.00 pm</option>
-                                    <option>10.00 pm</option>
-                                    <option>11.00 pm</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {edittimeslot &&
-                          edittimeslot.map((timeslot, index) => (
-                            <div
-                              className="row form-row hours-cont"
-                              key={index}
-                            >
-                              <div className="col-12 col-md-10">
-                                <div className="row form-row">
-                                  <div className="col-12 col-md-6">
-                                    <div className="form-group">
-                                      <label>Start Time</label>
-                                      <select className="form-control">
-                                        <option>Select</option>
-                                        <option>12.00 am</option>
-                                        <option>1.00 am</option>
-                                        <option>2.00 am</option>
-                                        <option>3.00 am</option>
-                                        <option>4.00 am</option>
-                                        <option>5.00 am</option>
-                                        <option>6.00 am</option>
-                                        <option>7.00 am</option>
-                                        <option>8.00 am</option>
-                                        <option>9.00 am</option>
-                                        <option>10.00 am</option>
-                                        <option>11.00 am</option>
-                                        <option>12.00 pm</option>
-                                        <option>1.00 pm</option>
-                                        <option>2.00 pm</option>
-                                        <option>3.00 pm</option>
-                                        <option>4.00 pm</option>
-                                        <option>5.00 pm</option>
-                                        <option>6.00 pm</option>
-                                        <option>7.00 pm</option>
-                                        <option>8.00 pm</option>
-                                        <option>9.00 pm</option>
-                                        <option>10.00 pm</option>
-                                        <option>11.00 pm</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div className="col-12 col-md-6">
-                                    <div className="form-group">
-                                      <label>End Time</label>
-                                      <select className="form-control">
-                                        <option>Select</option>
-                                        <option>12.00 am</option>
-                                        <option>1.00 am</option>
-                                        <option>2.00 am</option>
-                                        <option>3.00 am</option>
-                                        <option>4.00 am</option>
-                                        <option>5.00 am</option>
-                                        <option>6.00 am</option>
-                                        <option>7.00 am</option>
-                                        <option>8.00 am</option>
-                                        <option>9.00 am</option>
-                                        <option>10.00 am</option>
-                                        <option>11.00 am</option>
-                                        <option>12.00 pm</option>
-                                        <option>1.00 pm</option>
-                                        <option>2.00 pm</option>
-                                        <option>3.00 pm</option>
-                                        <option>4.00 pm</option>
-                                        <option>5.00 pm</option>
-                                        <option>6.00 pm</option>
-                                        <option>7.00 pm</option>
-                                        <option>8.00 pm</option>
-                                        <option>9.00 pm</option>
-                                        <option>10.00 pm</option>
-                                        <option>11.00 pm</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-12 col-md-2">
-                                <label className="d-md-block d-sm-none d-none">
-                                  &nbsp;
-                                </label>
-                                <a
-                                  className="btn btn-danger trash"
-                                  onClick={() => removeedittimeschedule(index)}
-                                >
-                                  <i
-                                    style={{ color: "#fff" }}
-                                    className="far fa-trash-alt"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                      <div className="add-more mb-3">
-                        <a
-                          className="add-hours"
-                          style={{ cursor: "pointer", color: "#1e88e5" }}
-                          onClick={() => edittimeschedule()}
-                        >
-                          <i className="fa fa-plus-circle" /> Add More
-                        </a>
-                      </div>
-                      <div className="submit-section text-center">
-                        <button
-                          type="button"
-                          className="btn btn-primary submit-btn"
-                        >
-                          Save Changes
+                          Saqlash
                         </button>
                       </div>
                     </form>
@@ -926,9 +493,14 @@ const MentorProfile = () => {
           </div>
         </div>
       </div>
-      {/* /Page Content */}
-      {/* Voice Call Modal */}
-      <Modal
+    </div>
+  );
+};
+
+export default MentorProfile;
+
+{
+  /* <Modal
         className="modal-dialog-centered"
         isOpen={state.isvoicecallmodal}
         toggle={() => voicecallmodalClose()}
@@ -962,14 +534,14 @@ const MentorProfile = () => {
             </div>
           </div>
         </ModalBody>
-      </Modal>
-      {/* /Voice Call Modal */}
-      {/* Video Call Modal */}
-      <div className="modal fade call-modal" id="video_call">
+      </Modal> */
+}
+
+{
+  /* <div className="modal fade call-modal" id="video_call">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-body">
-              {/* Incoming Call */}
               <div className="call-box incoming-box">
                 <div className="call-wrapper">
                   <div className="call-inner">
@@ -1001,14 +573,8 @@ const MentorProfile = () => {
                   </div>
                 </div>
               </div>
-              {/* /Incoming Call */}
             </div>
           </div>
         </div>
-      </div>
-      {/* Video Call Modal */}
-    </div>
-  );
-};
-
-export default MentorProfile;
+      </div> */
+}
