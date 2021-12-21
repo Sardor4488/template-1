@@ -22,7 +22,7 @@ import Appointments from "./appointments";
 import MentorProfile from "./mentorprofile";
 import StudentProfile from "./studentProfile";
 import MentorBooking from "./MentorBooking";
-import TestStudentProfile from "./teststudentProfile";
+import TestStudentProfile from "./testStudentProfile";
 
 const Mentorroute = ({ match }) => {
   const role = localStorage.getItem("role");
