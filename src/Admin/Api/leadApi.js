@@ -8,17 +8,6 @@ const config = {
   },
 }
 
-const addLead = (data) => {
-  axios
-    .post('create-student', data)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}
-
 const getLead = () => {
   axios
     .get('admin/lead-list', config)
@@ -31,7 +20,18 @@ const getLead = () => {
       console.log(err)
     })
 }
-
+const addLead = (data) => {
+  axios
+    .post('create-student', data)
+    .then((res) => {
+      if (res.status == 200) {
+        getLead()
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
 const commentLead = (data) => {
   axios
     .post('admin/add-comment-lead', data, config)
