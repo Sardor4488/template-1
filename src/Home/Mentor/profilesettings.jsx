@@ -369,7 +369,7 @@ const ProfileSettings = () => {
                           error={priceError}
                         />
                       </div>
-                      <div className="col-3 col-md-3">
+                      <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Resyume yuklash</label>
                           <div className="change-photo-btn">
@@ -394,7 +394,15 @@ const ProfileSettings = () => {
                           )}
                         </div>
                       </div>
-
+                            <div className="col-12 col-md-6">
+                            <FormGroup
+                          label={"Biz haqimizda qayerdan eshitdingiz"}
+                          value={region}
+                          setValue={setRegion}
+                          type={"text"}
+                          error={regionError}
+                        />
+                            </div>
                       <div className="col-12">
                         <div className="form-group">
                           <label className="w-75">

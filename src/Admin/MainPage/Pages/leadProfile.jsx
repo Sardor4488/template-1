@@ -1,20 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { AVATAR_08, AVATAR_12 } from "../../imagepath";
 import { Link } from "react-router-dom";
 import Ratings from "../Main/rating";
 
-class LeadProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      iseditmodal: false,
-    };
-  }
-  editModalClose() {
-    this.setState({ iseditmodal: false });
-  }
-  render() {
+const LeadProfile  =()=> {
+let iseditmodal=false;
+const  editModalClose =() => {
+iseditmodal=true
+};
+
+const [value, setValue] = useState('')
+console.log(value);
+   
     return (
       <div className="page-wrapper">
         <div className="content container-fluid">
@@ -204,9 +202,9 @@ class LeadProfile extends Component {
                       <div className="row">
                         <div className="col-md-6  ">
                           <form>
-                            <div className="form-group">
+                            <div className="form-group  ">
                               <label>"Comment" qoldirish</label>
-                              <input type="text" className="form-control" />
+                              <input type="text" value={value} onChange={ e => setValue(e.target.value) } className="form-control border" />
                             </div>
                             <button className="btn btn-primary" type="submit">
                               Saqlash
@@ -214,7 +212,9 @@ class LeadProfile extends Component {
                           </form>
                         </div>
                         <div className="col-md-6">
-                          <div className="card p-3 mt-4">Ulanib bo'lmadi</div>
+                          <div className=" card border p-3 mt-4">
+                            <p>Ulanib bo'lmadi</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -251,19 +251,18 @@ class LeadProfile extends Component {
                               <tr>
                                 <td>
                                   <h2 className="table-avatar">
-                                    <Link
-                                      to="/admin/mentor-profile"
-                                      className="avatar avatar-sm mr-2"
+                                    <div
+                                       className="avatar avatar-sm mr-2"
                                     >
                                       <img
                                         className="avatar-img rounded-circle"
                                         src={AVATAR_08}
                                         alt="User Image"
                                       />
-                                    </Link>
-                                    <Link to="/admin/mentor-profile">
+                                    </div>
+                                    <div  >
                                       James Amen
-                                    </Link>
+                                    </div>
                                   </h2>
                                 </td>
                                 <td>Maths</td>
@@ -285,10 +284,10 @@ class LeadProfile extends Component {
         </div>
         <Modal
           className="modal-dialog-centered"
-          isOpen={this.state.iseditmodal}
-          toggle={() => this.editModalClose()}
+          isOpen={iseditmodal}
+          toggle={() =>  editModalClose()}
         >
-          <ModalHeader toggle={() => this.editModalClose()}>
+          <ModalHeader toggle={() =>  editModalClose()}>
             Personal Details
           </ModalHeader>
           <ModalBody>
@@ -411,6 +410,6 @@ class LeadProfile extends Component {
       </div>
     );
   }
-}
+ 
 
 export default LeadProfile;

@@ -45,9 +45,7 @@ const Mentorroute = ({ match }) => {
           <Route path={`${match.url}/add-blog`} component={AddBlog} />
           <Route path={`${match.url}/edit-blog`} component={EditBlog} />
           <Route path={`${match.url}/chat`} component={Chat} />
-          <Route path={`${match.url}/invoices`} component={Invoice} />
-          <Route path={`${match.url}/invoice-view`} component={InvoiceView} />
-          <Route
+           <Route
             path={`${match.url}/profile-settings`}
             component={Profilesettings}
           />

@@ -11,7 +11,7 @@ import { USER,USER_1,USER_2,USER_4,AVATAR_12, AVATAR_06, AdminLogo, US_FLAG, DE_
     let pathname = location.pathname
     
       return (        
-        <div className="header">
+        <div className="header bg-white">
         {/* Logo */}
         <div className="header-left">
           <a href="#" className="logo">
