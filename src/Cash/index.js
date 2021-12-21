@@ -693,3 +693,82 @@
 //     </div>
 //   </div>
 // </div>
+{/* <div className="col-md-12">
+<div className="schedule-widget mb-0">
+  {/* Schedule Header */}
+//   <div className="schedule-header">
+//     {/* Schedule Nav */}
+//     <div className="schedule-nav">
+//       <ul className="nav nav-tabs nav-justified">
+//         {data &&
+//           data.map((v, i) => (
+//             <li
+//               className="nav-item"
+//               key={i}
+//               onClick={() => selectDay(v.id)}
+//             >
+//               <a
+//                 className={`nav-link ${v.className} `}
+//                 data-toggle="tab"
+//                 href={v.href}
+//               >
+//                 {v.body}
+//               </a>
+//             </li>
+//           ))}
+//       </ul>
+//     </div>
+ 
+//   </div>
+
+//   <div className="tab-content schedule-cont">
+
+
+//     {datasheudle.length > 0 &&
+//       datasheudle.map((v, i) => (
+//         <div
+//           id={v.id}
+//           key={v.id}
+//           className={`tab-pane fade ${v.className} `}
+//         >
+//           <h4 className="card-title d-flex justify-content-between">
+//             <span>Bo'sh dars soatlari</span>
+//             <div
+//               className="edit-link"
+//               onClick={modalOpen}
+//               style={{ cursor: 'pointer' }}
+//             >
+//               <i className="fa fa-plus-circle" /> Vaqt
+//               qo'shish
+//             </div>
+//           </h4>
+      
+//           {day[weekDays].length > 0 ? (
+//             <div className="user-times">
+//               {day[weekDays] &&
+//                 day[weekDays].map((v, i) => (
+//                   <div
+//                     className="user-slot-list d-flex align-items-center"
+//                     key={i}
+//                   >
+//                     {v.time}
+//                     <div
+//                       className="delete_schedule ms-2"
+//                       style={{ cursor: 'pointer' }}
+//                     >
+//                       <i className="fa fa-times" />
+//                     </div>
+//                   </div>
+//                 ))}
+//             </div>
+//           ) : (
+//             <p className="text-muted mb-0">
+//               Mavjud emas
+//             </p>
+//           )}
+//         </div>
+//       ))}
+//   </div>
+
+// </div>
+// </div> 

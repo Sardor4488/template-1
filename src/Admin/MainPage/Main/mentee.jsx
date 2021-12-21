@@ -116,16 +116,19 @@ const Clients = () => {
     {
       title: 'Mentor Name',
       dataIndex: 'name',
-      render: (text, record) => (
+      render: (text, record, index) => (
         <h2 className="table-avatar">
-          <Link to="/admin/profile" className="avatar avatar-sm mr-2">
+          <Link
+            to={`/admin/menteeProfile/${index}`}
+            className="avatar avatar-sm mr-2"
+          >
             <img
               className="avatar-img rounded-circle"
               src={record.image}
               alt="User Image"
             />
           </Link>
-          <Link to="/admin/profile">{text}</Link>
+          <Link to={`/admin/menteeProfile/${index}`}>{text}</Link>
         </h2>
       ),
       sorter: (a, b) => a.name.length - b.name.length,

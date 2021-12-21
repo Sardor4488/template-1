@@ -17,6 +17,7 @@ import 'bootstrap-daterangepicker/daterangepicker.css'
 import { Swiper } from 'swiper/react/swiper'
 import { SwiperSlide } from 'swiper/react/swiper-slide'
 
+
 import 'swiper/swiper.min.css'
 import 'swiper/swiper-bundle.min.css'
 

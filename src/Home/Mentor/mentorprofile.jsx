@@ -8,18 +8,16 @@ import { modalTimeData } from '../../Data/index'
 import { data, datasheudle } from '../../Data/teacherProfile'
 import TimeSelect from '../../UI/Select/TimeSelect'
 import MyInput from '../../UI/Input/MyInput'
+import { Swiper } from 'swiper/react/swiper'
+import { SwiperSlide } from 'swiper/react/swiper-slide'
+import { Calendar } from '../../Data/Calendar'
+
+import 'swiper/swiper.min.css'
+import 'swiper/swiper-bundle.min.css'
 const MentorProfile = () => {
   const [addnewtimeslot, setAddnewtimeslot] = useState([])
   const [weekDays, setWeekDays] = useState('monday')
-  const [day, setDay] = useState({
-    monday: [],
-    tuesday: [],
-    wednesday: [],
-    thursday: [],
-    friday: [],
-    saturday: [],
-    sunday: [],
-  })
+  const [day, setDay] = useState([])
   const [isModal, setIsModal] = useState(false)
   const [time, setTime] = useState()
   const [date, setDate] = useState()
@@ -29,19 +27,15 @@ const MentorProfile = () => {
   const modalClose = () => {
     setIsModal(false)
   }
-  const selectDay = (id) => {
-    setWeekDays(id)
-    setAddnewtimeslot([])
-    setTime()
-  }
+
   const addNewTime = (e) => {
     e.preventDefault()
-    const cloneDay = { ...day }
-    const filterCloneDay = cloneDay[weekDays].filter(
+    const cloneDay = [...day]
+    const filterCloneDay = cloneDay.filter(
       (v) => v?.time === time && v?.date === date,
     )
     if (filterCloneDay.length == 0 && time !== 'Tanlang' && time && date) {
-      cloneDay[weekDays].push({ time, date })
+      cloneDay.push({ time, date })
       setDay(cloneDay)
       let addnewrow = [...addnewtimeslot]
       addnewrow.push(1)
@@ -55,12 +49,12 @@ const MentorProfile = () => {
   }
   const saveTime = (e) => {
     e.preventDefault()
-    const cloneDay = { ...day }
-    const filterCloneDay = cloneDay[weekDays].filter(
+    const cloneDay = [...day]
+    const filterCloneDay = cloneDay.filter(
       (v) => v?.time === time && v?.date === date,
     )
     if (filterCloneDay.length == 0 && time !== 'Tanlang' && time) {
-      cloneDay[weekDays].push({ time, date })
+      cloneDay.push({ time, date })
       setDay(cloneDay)
       modalClose()
     }
@@ -207,84 +201,94 @@ const MentorProfile = () => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-12">
-                        <div className="schedule-widget mb-0">
-                          {/* Schedule Header */}
-                          <div className="schedule-header">
-                            {/* Schedule Nav */}
-                            <div className="schedule-nav">
-                              <ul className="nav nav-tabs nav-justified">
-                                {data &&
-                                  data.map((v, i) => (
-                                    <li
-                                      className="nav-item"
-                                      key={i}
-                                      onClick={() => selectDay(v.id)}
-                                    >
-                                      <a
-                                        className={`nav-link ${v.className} `}
-                                        data-toggle="tab"
-                                        href={v.href}
-                                      >
-                                        {v.body}
-                                      </a>
-                                    </li>
-                                  ))}
-                              </ul>
-                            </div>
-                            {/* /Schedule Nav */}
-                          </div>
-                          {/* /Schedule Header */}
-                          {/* Schedule Content */}
-                          <div className="tab-content schedule-cont">
-                            {/* Monday Slot */}
-
-                            {datasheudle.length > 0 &&
-                              datasheudle.map((v, i) => (
-                                <div
-                                  id={v.id}
-                                  key={v.id}
-                                  className={`tab-pane fade ${v.className} `}
-                                >
-                                  <h4 className="card-title d-flex justify-content-between">
-                                    <span>Bo'sh dars soatlari</span>
-                                    <div
-                                      className="edit-link"
-                                      onClick={modalOpen}
-                                      style={{ cursor: 'pointer' }}
-                                    >
-                                      <i className="fa fa-plus-circle" /> Vaqt
-                                      qo'shish
-                                    </div>
-                                  </h4>
-                                  {/* Slot List */}
-                                  {day[weekDays].length > 0 ? (
-                                    <div className="user-times">
-                                      {day[weekDays] &&
-                                        day[weekDays].map((v, i) => (
-                                          <div
-                                            className="user-slot-list d-flex align-items-center"
-                                            key={i}
-                                          >
-                                            {v.time}
-                                            <div
-                                              className="delete_schedule ms-2"
-                                              style={{ cursor: 'pointer' }}
-                                            >
-                                              <i className="fa fa-times" />
+                      <div className="col-12">
+                        <div className="calendarMentor">
+                          <Swiper navigation={true} className="mySwiper">
+                            {Calendar.length > 0 &&
+                              Calendar.map((v, i) => {
+                                return (
+                                  <SwiperSlide key={i}>
+                                    <div className="card booking-schedule schedule-widget">
+                                      {/* Schedule Header */}
+                                      <div className="schedule-header">
+                                        <div className="row">
+                                          <div className="col-md-12">
+                                            {/* Day Slot */}
+                                            <div className="day-slot">
+                                              <ul>
+                                                {v.dayOfWeek.map((v, i) => (
+                                                  <li key={i}>
+                                                    <span>
+                                                      {v.weekDays.slice(0, 3)}
+                                                    </span>
+                                                    <span className="slot-date">
+                                                      <small className="slot-year">
+                                                        {v.day}
+                                                      </small>
+                                                    </span>
+                                                  </li>
+                                                ))}
+                                              </ul>
                                             </div>
+                                            {/* /Day Slot */}
                                           </div>
-                                        ))}
+                                        </div>
+                                      </div>
+                                      {/* /Schedule Header */}
+                                      {/* Schedule Content */}
+                                      <div className="schedule-cont">
+                                        <div className="row">
+                                          <div className="col-md-12">
+                                            {/* Time Slot */}
+                                            <div className="time-slot">
+                                              <ul className="clearfix">
+                                                {v.dayOfWeek.map((v, i) => {
+                                                  return (
+                                                    <li key={i}>
+                                                      {v.hours.length > 0 ? (
+                                                        v.hours.map((v, i) => {
+                                                          return (
+                                                            <a
+                                                              className="timing"
+                                                              href="#"
+                                                              key={i}
+                                                            >
+                                                              <span>{v}</span>
+                                                            </a>
+                                                          )
+                                                        })
+                                                      ) : (
+                                                        <a
+                                                          className="timing"
+                                                          href="#"
+                                                          key={i}
+                                                        >
+                                                          <span>Vaqt yo'q</span>
+                                                        </a>
+                                                      )}
+                                                    </li>
+                                                  )
+                                                })}
+                                              </ul>
+                                            </div>
+                                            {/* /Time Slot */}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {/* /Schedule Content */}
                                     </div>
-                                  ) : (
-                                    <p className="text-muted mb-0">
-                                      Mavjud emas
-                                    </p>
-                                  )}
-                                </div>
-                              ))}
-                          </div>
-                          {/* /Schedule Content */}
+                                  </SwiperSlide>
+                                )
+                              })}
+                          </Swiper>
+                        </div>
+                        <div className="col-12 d-flex justify-content-end">
+                          <button
+                            className="btn btn-primary"
+                            onClick={modalOpen}
+                          >
+                            Vaqt qo'shish
+                          </button>
                         </div>
                       </div>
                     </div>

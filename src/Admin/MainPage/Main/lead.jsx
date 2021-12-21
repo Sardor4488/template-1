@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
 // import { Helmet } from "react-helmet";
 import {
   AVATAR_07,
@@ -12,61 +12,41 @@ import {
   USER_9,
   USER_4,
   USER_7,
-} from "../../imagepath";
-import { Link } from "react-router-dom";
-import { Table } from "antd";
-import "antd/dist/antd.css";
-import { itemRender, onShowSizeChange } from "../paginationfunction";
-import "../antdstyle.css";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import FormGroup from "../../UI/input/MyInput";
-import PhoneInput from "react-phone-number-input";
-import { addLead } from "../../Api";
+} from '../../imagepath'
+import { Link } from 'react-router-dom'
+import { Table } from 'antd'
+import 'antd/dist/antd.css'
+import { itemRender, onShowSizeChange } from '../paginationfunction'
+import '../antdstyle.css'
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import FormGroup from '../../UI/input/MyInput'
+import PhoneInput from 'react-phone-number-input'
+import { addLead, getLead } from '../../Api/leadApi'
+import { useSelector } from 'react-redux'
 
 const Lead = () => {
-  const data = [
-    {
-      id: 1,
-      image: USER_3,
-      first_name: "Sardor",
-      last_name: "Temirov",
-      created_at: "5 Jul 2012",
-      email: "sardor@gmail.com",
-      phone_number: "+998903320522",
-    },
-    {
-      id: 2,
-      image: USER_8,
-      first_name: "Sardor",
-      last_name: "Safarov",
-      created_at: "5 Aprel 2018",
-      email: "sardor@gmail.com",
-      phone_number: "+998903320522",
-    },
-    {
-      id: 3,
-      image: USER_3,
-      first_name: "Islom",
-      last_name: "Tozaboyev",
-      created_at: "5 Mart 2019",
-      email: "sardor@gmail.com",
-      phone_number: "+998903320522",
-    },
-  ];
+  const data = useSelector((state) => state.Reducer.lead_list)
   const columns = [
     {
-      title: "Ism Familiyasi",
-      dataIndex: "first_name",
-      render: (text, record) => (
+      title: 'Ism Familiyasi',
+      dataIndex: 'first_name',
+      render: (text, record, index) => (
         <h2 className="table-avatar">
-          <Link to="/admin/profile" className="avatar avatar-sm mr-2">
+          <Link
+            to={`/admin/leadProfile/${index}`}
+            className="avatar avatar-sm mr-2"
+          >
             <img
               className="avatar-img rounded-circle"
-              src={record.image}
+              src={
+                record?.image
+                  ? `https://teach-api.uz/teach-api/public/storage/${record.image}`
+                  : USER
+              }
               alt="User Image"
             />
           </Link>
-          <Link to="/admin/leadProfile">
+          <Link to={`/admin/leadProfile/${index}`}>
             {record.first_name} {record.last_name}
           </Link>
         </h2>
@@ -74,28 +54,30 @@ const Lead = () => {
       sorter: (a, b) => a.first_name.length - b.first_name.length,
     },
     {
-      title: "Telefon raqam",
-      dataIndex: "phone_number",
+      title: 'Telefon raqam',
+      dataIndex: 'phone_number',
       sorter: (a, b) => a.phone_number.length - b.phone_number.length,
     },
     {
-      title: "E-mail",
-      dataIndex: "email",
+      title: 'E-mail',
+      dataIndex: 'email',
       sorter: (a, b) => a.email.length - b.email.length,
     },
     {
-      title: "Reg vaqti",
-      dataIndex: "created_at",
+      title: 'Reg vaqti',
+      dataIndex: 'created_at',
       render: (text, record) => (
         <span>
-          <small>{text}</small>
+          <small>
+            {text.slice(0, 10)} <br /> {text.slice(11, 19)}
+          </small>
         </span>
       ),
       sorter: (a, b) => a.created_at.length - b.created_at.length,
     },
     {
-      title: "Account Status",
-      dataIndex: "status",
+      title: 'Account Status',
+      dataIndex: 'status',
       render: (text, record) => (
         <div className="status-toggle d-flex">
           <input
@@ -106,7 +88,7 @@ const Lead = () => {
           />
           <select
             className="select form-control"
-            defaultValue={"AAA"}
+            defaultValue={'AAA'}
             defaultChecked
           >
             <option>Qayta qo'ng'iroq</option>
@@ -116,23 +98,27 @@ const Lead = () => {
         </div>
       ),
     },
-  ];
+  ]
 
-  const [openModal, setOpenModal] = useState(false);
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [password_confirmation, setPasswordConfirmation] = useState("");
+  useEffect(() => {
+    getLead()
+  }, [location.pathname])
+
+  const [openModal, setOpenModal] = useState(false)
+  const [first_name, setFirstName] = useState('')
+  const [last_name, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone_number, setPhoneNumber] = useState('')
+  const [password, setPassword] = useState('')
+  const [password_confirmation, setPasswordConfirmation] = useState('')
   // const [offert, setOffert] = useState(0);
 
   const toggleModal = () => {
-    setOpenModal(true);
-  };
+    setOpenModal(true)
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const data = {
       first_name,
@@ -142,10 +128,10 @@ const Lead = () => {
       password,
       password_confirmation,
       offert: 1,
-    };
+    }
 
-    addLead(data);
-  };
+    addLead(data)
+  }
 
   return (
     <>
@@ -189,7 +175,7 @@ const Lead = () => {
                       //   // onShowSizeChange: onShowSizeChange,
                       //   itemRender: itemRender,
                       // }}
-                      style={{ overflowX: "auto" }}
+                      style={{ overflowX: 'auto' }}
                       columns={columns}
                       // bordered
                       dataSource={data}
@@ -215,18 +201,18 @@ const Lead = () => {
                 <FormGroup
                   value={first_name}
                   setValue={setFirstName}
-                  label={"Ism"}
-                  type={"text"}
-                  className={"text-capitalize"}
+                  label={'Ism'}
+                  type={'text'}
+                  className={'text-capitalize'}
                 />
               </div>
               <div className="col-12 col-md-6">
                 <FormGroup
                   value={last_name}
                   setValue={setLastName}
-                  label={"Familya"}
-                  type={"text"}
-                  className={"text-capitalize"}
+                  label={'Familya'}
+                  type={'text'}
+                  className={'text-capitalize'}
                 />
               </div>
               <div className="col-12">
@@ -246,38 +232,38 @@ const Lead = () => {
                 <FormGroup
                   value={email}
                   setValue={setEmail}
-                  label={"Email"}
-                  type={"email"}
+                  label={'Email'}
+                  type={'email'}
                 />
               </div>
               <div className="col-12 col-md-6">
                 <FormGroup
                   value={password}
                   setValue={setPassword}
-                  label={"Parol"}
-                  type={"password"}
+                  label={'Parol'}
+                  type={'password'}
                 />
               </div>
               <div className="col-12 col-md-6">
                 <FormGroup
                   value={password_confirmation}
                   setValue={setPasswordConfirmation}
-                  label={"Parolni qayta kiriting"}
-                  type={"password"}
+                  label={'Parolni qayta kiriting'}
+                  type={'password'}
                 />
               </div>
               <div className="col-12 d-flex align-items-center justify-content-center">
                 <button
                   onClick={() => setOpenModal(false)}
                   className={`btn btn-success px-2 py-1 ${
-                    first_name === "" ||
-                    last_name === "" ||
-                    email === "" ||
-                    phone_number === "" ||
-                    password_confirmation === "" ||
-                    password === ""
-                      ? "disabled"
-                      : ""
+                    first_name === '' ||
+                    last_name === '' ||
+                    email === '' ||
+                    phone_number === '' ||
+                    password_confirmation === '' ||
+                    password === ''
+                      ? 'disabled'
+                      : ''
                   }`}
                   type="submit"
                 >
@@ -289,7 +275,7 @@ const Lead = () => {
         </ModalBody>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default Lead;
+export default Lead
