@@ -1,36 +1,36 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from 'react'
 
-import {
-  USER,
-  USER_1,
-  USER_2,
-  USER_3,
-  USER_4,
-  USER_5,
-  USER_6,
-  USER_7,
-  USER_8,
-  USER_9,
-  USER_10,
-  USER_11,
-} from "../../constant/imagepath_home";
-import Sidebar from "./sidebar";
-import StickyBox from "react-sticky-box";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { myStudents } from "../../Api/teacherStudentsApi";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { USER_1 } from '../../constant/imagepath_home'
+import Sidebar from './sidebar'
+import StickyBox from 'react-sticky-box'
+import { Link, useLocation } from 'react-router-dom'
+import { myStudents } from '../../Api/teacherStudentsApi'
+import { Modal, ModalBody, ModalHeader } from 'reactstrap'
+import { useSelector } from 'react-redux'
 
 const MenteeList = () => {
-  const data = useSelector((state) => state.Reducer.teacher_of_students);
-  const location = useLocation();
-
+  const data = useSelector((state) => state.Reducer.teacher_of_students)
+  const location = useLocation()
+  const [modal, setModal] = useState(false)
+  const [value, setValue] = useState({
+    start_time: '',
+    end_time: '',
+    date: '',
+  })
+  const modalToggle = (index) => {
+    setValue({
+      ...value,
+      start_time: data[index].start_time,
+      end_time: data[index].end_time,
+      date: data[index].date,
+    })
+    setModal(true)
+  }
   useEffect(() => {
-    myStudents();
-  }, [location.pathname]);
+    myStudents()
+  }, [location.pathname])
 
-  console.log(data);
+  console.log(data)
 
   return (
     <div>
@@ -140,15 +140,15 @@ const MenteeList = () => {
                                             </Link>
                                           </li>
                                           <li
-                                            onClick={() => modalToggle(index)}
+                                            onClick={() => modalToggle(i)}
                                             className="mb-2 dropdown-item"
-                                            style={{ cursor: "pointer" }}
+                                            style={{ cursor: 'pointer' }}
                                           >
                                             Vaqtni o'zgartirish
                                           </li>
                                           <li
                                             className="dropdown-item"
-                                            style={{ cursor: "pointer" }}
+                                            style={{ cursor: 'pointer' }}
                                           >
                                             O'tildi
                                           </li>
@@ -158,11 +158,11 @@ const MenteeList = () => {
                                   </td>
                                 </tr>
                               </tbody>
-                            );
+                            )
                           })}
                         </table>
                       ) : (
-                        ""
+                        ''
                       )}
                     </div>
                   </div>
@@ -174,8 +174,69 @@ const MenteeList = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={modal} toggle={() => setModal(false)}>
+        <ModalHeader toggle={() => setModal(false)}>
+          <div>Tahrirlash</div>
+        </ModalHeader>
+        <ModalBody>
+          <form>
+            <div className="row">
+              <div className="col-12">
+                <div className="form-group">
+                  <label>Dars sanasi</label>
+                  <input
+                    type="date"
+                    value={value.date || ''}
+                    onChange={(e) =>
+                      setValue({ ...value, date: e.target.value })
+                    }
+                    className="form-control"
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>Start time</label>
+                  <select
+                    className="form-control"
+                    onChange={(e) =>
+                      setValue({ ...value, start_time: e.target.value })
+                    }
+                  >
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>End time</label>
+                  <select
+                    className="form-control"
+                    onChange={(e) =>
+                      setValue({ ...value, end_time: e.target.value })
+                    }
+                  >
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-12 my-2 d-flex justify-content-center align-items-center">
+                <button className="btn btn-primary" type="submit">
+                  Saqlash
+                </button>
+              </div>
+            </div>
+          </form>
+        </ModalBody>
+      </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default MenteeList;
+export default MenteeList

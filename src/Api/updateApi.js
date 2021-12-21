@@ -1,67 +1,65 @@
-import axios from "axios";
-import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
-const token = localStorage.getItem("access_token");
+import axios from 'axios'
+import { LoadingOff, LoadingOn, UserData } from '../redux/Actions'
+const token = localStorage.getItem('access_token')
 const UpdateStudent = (data, id) => {
   if (data) {
     const config = {
       headers: {
-        Authorization: "Bearer" + " " + token,
-        "Content-Type": "multipart/form-data",
+        Authorization: 'Bearer' + ' ' + token,
+        'Content-Type': 'multipart/form-data',
       },
-    };
+    }
     axios
       .post(`student/update-student/${id}?_method=PUT`, data, config)
       .then((res) => {
-        console.log(res);
-        UserData(res.data);
+        if (res.status == 200) {
+          UserData(res.data)
+          alert('Malumotlaringiz saqlandi')
+        }
       })
       .catch((err) => {
-        console.log(err);
-      });
+        alert('Malumotlaringiz saqlanmadi')
+        console.log(err)
+      })
   } else {
-    return false;
+    console.log("Malumotlaringiz to'liq kiritilmagan.")
   }
-};
+}
 
 const UpdateTeacher = (data, id) => {
-  LoadingOn();
+  LoadingOn()
   if (data) {
     const config = {
       headers: {
-        Authorization: "Bearer" + " " + token,
-        "Content-Type": "multipart/form-data",
+        Authorization: 'Bearer' + ' ' + token,
+        'Content-Type': 'multipart/form-data',
       },
-    };
-    console.log(data);
+    }
+    console.log(data)
     axios
       .post(`teacher/update-teacher/${id}?_method=PUT`, data, config)
       .then((res) => {
-        console.log(res);
-        LoadingOff();
+        console.log(res)
+        LoadingOff()
       })
       .catch((err) => {
-        alert("Saqlanmadi");
-        console.log(err);
-        LoadingOff();
-      });
+        alert('Saqlanmadi')
+        console.log(err)
+        LoadingOff()
+      })
   } else {
-    return false;
+    console.log("Malumotlaringiz to'liq kiritilmagan.")
   }
-};
+}
 
 const TeacherFreeTime = (id) => {
   if (id) {
     axios
       .post(`teacher/free_time/${id}`)
-      .then((res) => {
-        console.log(res);
-        console.log("123");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => {})
+      .catch((err) => {})
   } else {
-    return false;
+    return false
   }
-};
-export { UpdateStudent, UpdateTeacher, TeacherFreeTime };
+}
+export { UpdateStudent, UpdateTeacher, TeacherFreeTime }

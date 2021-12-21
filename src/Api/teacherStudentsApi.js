@@ -1,56 +1,37 @@
-import axios from "axios";
+import axios from 'axios'
 import {
   TestLessonData,
   LoadingOff,
   LoadingOn,
   TeacherStudents,
-} from "../redux/Actions";
+} from '../redux/Actions'
 
-const teacherId = localStorage.getItem("teacher_id");
+const teacherId = localStorage.getItem('teacher_id')
 
 const myStudents = () => {
-  LoadingOn();
   axios
     .post(`teacher/my_students/${teacherId}`)
     .then((res) => {
-      if (res.status) {
-        TeacherStudents(res.data.mystudent);
-        LoadingOff();
+      if (res.status == 200) {
+        TeacherStudents(res.data.mystudent)
       }
     })
     .catch((err) => {
-      console.log(err);
-      LoadingOff();
-    });
-};
+      console.log(err)
+    })
+}
 
 const testLessons = () => {
-  LoadingOn();
   axios
     .post(`teacher/test_lessons/${teacherId}`)
     .then((res) => {
-      if (res.status) {
-        TestLessonData(res.data.lessons);
-        LoadingOff();
+      if (res.status == 200) {
+        TestLessonData(res.data.lessons)
       }
     })
     .catch((err) => {
-      console.log(err);
-      LoadingOff();
-    });
-};
+      console.log(err)
+    })
+}
 
-export { myStudents, testLessons };
-
-// example-2
-// axios
-//   .post(`teacher/my_students/${teacher_id}`)
-//   .then((res) => {
-//     if (res.status) {
-//       console.log(res);
-//       return res.data;
-//     }
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+export { myStudents, testLessons }

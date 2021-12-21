@@ -14,7 +14,6 @@ const LeadProfile = () => {
   }
   const [comment, setCommet] = useState('')
   const { lead_id } = useParams()
-
   const data = useSelector((state) => state.Reducer.lead_list[lead_id])
   const comment_lead = (e) => {
     e.preventDefault()
@@ -440,4 +439,4 @@ const LeadProfile = () => {
   )
 }
 
-export default LeadProfile;
+export default LeadProfile

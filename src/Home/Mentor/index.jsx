@@ -1,34 +1,34 @@
 /**
  * Tables Routes
  */
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
-import MentorDashboard from "./mentordashboard";
-import Bookings from "./bookings";
-import Profilesettings from "./profilesettings";
-import ScheduleTiming from "./scheduletime";
-import MenteeList from "./menteelist";
+import MentorDashboard from './mentordashboard'
+import Bookings from './bookings'
+import Profilesettings from './profilesettings'
+import ScheduleTiming from './scheduletime'
+import MenteeList from './menteelist'
 // import Menteeprofile from "./menteeprofile"
-import Blog from "./blog";
-import AddBlog from "./blogadd";
-import EditBlog from "./blogedit";
-import Chat from "./chat";
-import Invoice from "./invoice";
-import InvoiceView from "./invoice-view";
-import Reviews from "./reviews";
-import MentorRegister from "./mentorregister";
-import Appointments from "./appointments";
-import MentorProfile from "./mentorprofile";
-import StudentProfile from "./studentProfile";
-import MentorBooking from "./MentorBooking";
-import TestStudentProfile from "./testStudentProfile";
+import Blog from './blog'
+import AddBlog from './blogadd'
+import EditBlog from './blogedit'
+import Chat from './chat'
+import Invoice from './invoice'
+import InvoiceView from './invoice-view'
+import Reviews from './reviews'
+import MentorRegister from './mentorregister'
+import Appointments from './appointments'
+import MentorProfile from './mentorprofile'
+import StudentProfile from './studentProfile'
+import MentorBooking from './MentorBooking'
+import TestStudentProfile from './testStudentProfile'
 
 const Mentorroute = ({ match }) => {
-  const role = localStorage.getItem("role");
+  const role = localStorage.getItem('role')
   return (
     <>
-      {role == "mentor" ? (
+      {role == 'mentor' ? (
         <Switch>
           <Redirect
             exact
@@ -46,7 +46,9 @@ const Mentorroute = ({ match }) => {
           <Route path={`${match.url}/add-blog`} component={AddBlog} />
           <Route path={`${match.url}/edit-blog`} component={EditBlog} />
           <Route path={`${match.url}/chat`} component={Chat} />
-           <Route
+          <Route path={`${match.url}/invoices`} component={Invoice} />
+          <Route path={`${match.url}/invoice-view`} component={InvoiceView} />
+          <Route
             path={`${match.url}/profile-settings`}
             component={Profilesettings}
           />
@@ -83,7 +85,7 @@ const Mentorroute = ({ match }) => {
         </Switch>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Mentorroute;
+export default Mentorroute

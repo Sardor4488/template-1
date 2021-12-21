@@ -1,48 +1,41 @@
-import axios from "axios";
-import { LoadingOff, LoadingOn, UserData } from "../redux/Actions";
-const token = localStorage.getItem("access_token");
-const role = localStorage.getItem("role");
-const id = localStorage.getItem("user_id");
-const url = role == "mentee" ? "student/get-student" : "teacher/teacher-me";
+import axios from 'axios'
+import { LoadingOff, LoadingOn, UserData } from '../redux/Actions'
+const token = localStorage.getItem('access_token')
+const role = localStorage.getItem('role')
+const id = localStorage.getItem('user_id')
+const url = role == 'mentee' ? 'student/get-student' : 'teacher/teacher-me'
 
 const UserAuth = (setPath, history) => {
   if (token !== null) {
-    LoadingOn();
+    LoadingOn()
     axios
-      .post(url + "/" + id, {})
+      .post(url + '/' + id, {})
       .then((res) => {
-        if (res.status) {
-          UserData(res.data);
-          setPath(`/app/${role}/dashboard`);
-          localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
-          LoadingOff();
-          console.log(res.data.token);
+        if (res.status == 200) {
+          UserData(res.data)
+          setPath(`/app/${role}/dashboard`)
+          localStorage.setItem('teacher_id', res?.data?.user?.teacher_id)
+          LoadingOff()
         }
       })
       .catch((err) => {
-        LoadingOff();
-
-        console.log(err);
-        // console.log(err.response.status);
+        LoadingOff()
+        console.log(err)
         if (err.response.status == 401) {
-          setPath("/login");
-          history.push("/login");
+          history.push('/login')
         } else if (err.response.status == 403) {
-          history.push("/register");
-          setPath(`/register`);
-          localStorage.clear();
+          history.push('/register')
+          localStorage.clear()
         } else if (err.response.status == 500) {
-          setPath(`/app/home`);
-          history.push("/app/home");
-          localStorage.clear();
+          history.push('/app/home')
         } else {
-          setPath(`/app/home`);
+          setPath(`/app/home`)
         }
-      });
-  } else if (token == "" || token == null || token == undefined) {
-    setPath("app/home");
-    LoadingOff();
+      })
+  } else if (token == '' || token == null || token == undefined) {
+    setPath('app/home')
+    LoadingOff()
   }
-};
+}
 
-export { UserAuth };
+export { UserAuth }
