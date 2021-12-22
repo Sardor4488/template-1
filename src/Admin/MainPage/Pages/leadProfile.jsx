@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { Modal, ModalHeader, ModalBody } from 'reactstrap'
-import { AVATAR_08, AVATAR_12 } from '../../imagepath'
-import { Link, useParams, useLocation } from 'react-router-dom'
-import Ratings from '../Main/rating'
-import { getLead } from '../../Api/leadApi'
-import { useSelector } from 'react-redux'
-import { commentLead } from '../../Api/leadApi.js'
+import React, { useEffect, useState } from "react";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { AVATAR_08, AVATAR_12 } from "../../imagepath";
+import { Link, useParams, useLocation } from "react-router-dom";
+import Ratings from "../Main/rating";
+import { getLead } from "../../Api/leadApi";
+import { useSelector } from "react-redux";
+import { commentLead } from "../../Api/leadApi.js";
 const LeadProfile = () => {
-  const location = useLocation()
-  const [state, setState] = useState({ iseditmodal: false })
+  const location = useLocation();
+  const [state, setState] = useState({ iseditmodal: false });
   const editModalClose = () => {
-    setState({ iseditmodal: false })
-  }
-  const [comment, setCommet] = useState('')
-  const { lead_id } = useParams()
-  const data = useSelector((state) => state.Reducer.lead_list[lead_id])
-  const comment_lead = (e) => {
-    e.preventDefault()
-    commentLead({ lead_id: data?.id, comment })
-    setCommet('')
-  }
+    setState({ iseditmodal: false });
+  };
+  const { lead_id } = useParams();
+  const data = useSelector((state) => state.Reducer.lead_list[lead_id]);
+  const [comment, setComment] = useState("");
+  const [openComment, setOpenComment] = useState(false);
+
+  const commentSubmit = (e) => {
+    e.preventDefault();
+    commentLead({ lead_id: data?.id, comment });
+    setComment("");
+  };
+
+  console.log(data);
+
   useEffect(() => {
-    getLead()
-  }, [location.pathname])
+    getLead();
+  }, [location.pathname]);
+
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -131,6 +137,7 @@ const LeadProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Ismi
                           </p>
+
                           <p className="col-sm-10">
                             {data?.first_name} {data?.last_name}
                           </p>
@@ -151,7 +158,7 @@ const LeadProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Telefon raqami
                           </p>
-                          <p className="col-sm-10">{data?.phone_number}</p>
+                          <p className="col-sm-10">+99899 999 99 99</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0">Address</p>
@@ -207,23 +214,19 @@ const LeadProfile = () => {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-6  ">
-                        <form onSubmit={comment_lead}>
+                        <form onSubmit={commentSubmit}>
                           <div className="form-group">
                             <label>Izoh qoldirish</label>
                             <input
+                              value={comment || ""}
+                              onChange={(e) => setComment(e.target.value)}
                               type="text"
-                              onChange={(e) => setCommet(e.target.value)}
                               className="form-control"
                             />
                           </div>
                           <button
-                            className={`btn btn-primary ${
-                              comment == '' ||
-                              comment == undefined ||
-                              comment == null
-                                ? 'disabled'
-                                : ''
-                            }`}
+                            // onClick={addComment}
+                            className={`btn btn-primary`}
                             type="submit"
                           >
                             Saqlash
@@ -231,17 +234,55 @@ const LeadProfile = () => {
                         </form>
                       </div>
                       <div className="col-md-6">
-                        <div className="card p-3 mt-4">
-                          {data?.comments.length > 0
-                            ? data?.comments.map((v, i) => {
-                                return (
-                                  <p className={'mb-1'} key={i}>
-                                    {v.comment}
-                                  </p>
-                                )
-                              })
-                            : 'Izoh kiritilmagan'}
+                        <div
+                          style={{ cursor: "pointer" }}
+                          className="p-3 mt-4 d-flex align-items-center"
+                          onClick={() => setOpenComment(!openComment)}
+                        >
+                          Izohlarni ko'rish ({data?.comments?.length}) ta
+                          <i
+                            style={{
+                              color: `#009DA6`,
+                              transition: "0.5s ease",
+                            }}
+                            className={`fas fa-chevron-up ms-2 ${
+                              openComment ? "rotate" : ""
+                            }`}
+                          ></i>
                         </div>
+                      </div>
+                      <div className={`col-12 mt-3`}>
+                        {data?.comments.length > 0
+                          ? data?.comments?.map((value, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  style={{
+                                    transition: ".5s ease",
+                                  }}
+                                  className={`card ${
+                                    openComment
+                                      ? "comment_open px-3 pt-2 my-2"
+                                      : "comment_close"
+                                  }`}
+                                >
+                                  <div className="card_body">
+                                    <p>
+                                      {index + 1}. {value.comment}
+                                    </p>
+                                  </div>
+                                  <div className="card_footer text-end">
+                                    <p className="mb-0">
+                                      {value.created_at.slice(0, 10)}
+                                    </p>
+                                    <small className="mb-0 text-secondary">
+                                      {value.created_at.slice(11, 16)}
+                                    </small>
+                                  </div>
+                                </div>
+                              );
+                            })
+                          : "Hozircha izoh yoq !"}
                       </div>
                     </div>
                   </div>
@@ -436,7 +477,7 @@ const LeadProfile = () => {
         </ModalBody>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default LeadProfile
+export default LeadProfile;

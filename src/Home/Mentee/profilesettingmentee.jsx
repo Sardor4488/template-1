@@ -128,6 +128,8 @@ const ProfileSettingMentee = () => {
               width: "250px",
               height: "250px",
               margin: "auto",
+              borderRadius: "15px",
+              overflow: "hidden",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -312,11 +314,11 @@ const ProfileSettingMentee = () => {
                       </div>
                       <div className="col-12  ">
                         <MySelect
-                           label={"Kasbingiz"}
-                            value={country}
-                           setValue={setCountry}
-                           type={"text"}
-                           error={countryError}
+                          label={"Kasbingiz"}
+                          value={country}
+                          setValue={setCountry}
+                          type={"text"}
+                          error={countryError}
                         />
                       </div>
                       <div className="col-12">

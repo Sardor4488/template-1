@@ -57,7 +57,7 @@ const ProfileSettings = () => {
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
-  
+
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
@@ -176,6 +176,8 @@ const ProfileSettings = () => {
         <div className={`modalimg`} onClick={() => setImgModal(false)}>
           <div
             style={{
+              borderRadius: "15px",
+              overflow: "hidden",
               width: "250px",
               height: "250px",
               margin: "auto",
@@ -385,7 +387,7 @@ const ProfileSettings = () => {
                                 setResumePost(e.target.files[0]);
                               }}
                               className="upload"
-                             />
+                            />
                           </div>
                           {resumeError && (
                             <p className="text-danger mt-2">
@@ -394,15 +396,15 @@ const ProfileSettings = () => {
                           )}
                         </div>
                       </div>
-                            <div className="col-12 col-md-6">
-                            <FormGroup
+                      <div className="col-12 col-md-6">
+                        <FormGroup
                           label={"Biz haqimizda qayerdan eshitdingiz"}
                           value={region}
                           setValue={setRegion}
                           type={"text"}
                           error={regionError}
                         />
-                            </div>
+                      </div>
                       <div className="col-12">
                         <div className="form-group">
                           <label className="w-75">

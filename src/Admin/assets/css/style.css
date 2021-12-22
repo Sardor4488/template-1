@@ -5806,3 +5806,18 @@ table.table-inbox tbody tr.checked {
     max-width: 160px;
   }
 }
+
+.comment_close {
+  height: 0px;
+  overflow: hidden;
+}
+.comment_open {
+  max-height: 1000px;
+  transition: 0.5s;
+  overflow: auto;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  /* transition: .5s ease; */
+}
