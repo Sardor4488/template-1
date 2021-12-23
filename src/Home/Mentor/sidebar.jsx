@@ -7,9 +7,10 @@ const Sidebar = (props) => {
   const { location } = props;
   let pathname = location.pathname;
   const userdata = useSelector((state) => state.Reducer.userdata);
+
   return (
     <>
-      <div className="profile-sidebar  ">
+      <div className="profile-sidebar">
         <div className="user-widget">
           {userdata?.user?.image ? (
             <img
@@ -25,17 +26,37 @@ const Sidebar = (props) => {
           )}
 
           <div className="rating">
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star filled" />
-            <i className="fas fa-star" />
+            <i
+              className={`fas fa-star ${
+                userdata?.user?.rating == 1 ? "filled" : ""
+              }`}
+            />
+            <i
+              className={`fas fa-star ${
+                userdata?.user?.rating == 2 ? "filled" : ""
+              }`}
+            />
+            <i
+              className={`fas fa-star ${
+                userdata?.user?.rating == 3 ? "filled" : ""
+              }`}
+            />
+            <i
+              className={`fas fa-star ${
+                userdata?.user?.rating == 4 ? "filled" : ""
+              }`}
+            />
+            <i
+              className={`fas fa-star ${
+                userdata?.user?.rating == 5 ? "filled" : ""
+              }`}
+            />
           </div>
           <div className="user-info-cont">
             <h4 className="usr-name">
               {userdata?.user?.first_name} {userdata?.user?.last_name}
             </h4>
-            <p className="mentor-type">English (M.A)</p>
+            <p className="mentor-type">{userdata?.user?.course_name}</p>
           </div>
         </div>
         <div className="progress-bar-custom">
@@ -106,7 +127,7 @@ const Sidebar = (props) => {
                 </span>
               </Link>
             </li>
-             <li>
+            <li>
               <Link
                 to="/app/mentor/blog"
                 className={pathname.includes("blog") ? "active" : ""}

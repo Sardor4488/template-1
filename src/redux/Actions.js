@@ -33,6 +33,10 @@ const Lead_list = (data) => {
   const action = { type: t.LEAD_LIST, payload: data };
   dispatch(action);
 };
+const Teacher_list = (data) => {
+  const action = { type: t.TEACHER_LIST, payload: data };
+  dispatch(action);
+};
 
 export {
   LoadingOff,
@@ -43,4 +47,5 @@ export {
   TeacherStudents,
   ADMINDATA,
   Lead_list,
+  Teacher_list,
 };

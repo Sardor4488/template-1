@@ -399,10 +399,10 @@ const ProfileSettings = () => {
                       <div className="col-12 col-md-6">
                         <FormGroup
                           label={"Biz haqimizda qayerdan eshitdingiz"}
-                          value={region}
-                          setValue={setRegion}
                           type={"text"}
-                          error={regionError}
+                          // value={region}
+                          // setValue={setRegion}
+                          // error={regionError}
                         />
                       </div>
                       <div className="col-12">

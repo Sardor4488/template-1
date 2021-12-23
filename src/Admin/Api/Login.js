@@ -1,19 +1,20 @@
-import axios from 'axios'
-import { ADMINDATA } from '../../redux/Actions'
+import axios from "axios";
+import { ADMINDATA } from "../../redux/Actions";
 const Admin_login = (data, history) => {
   axios
-    .post('login', data)
+    .post("login", data)
     .then((res) => {
       if (res.status == 200) {
-        ADMINDATA(res.data)
-        localStorage.setItem('admin_token', res.data.token)
-        console.log(res)
-        history.push('/admin/index')
+        ADMINDATA(res.data);
+        localStorage.setItem("admin_token", res.data.token);
+        console.log(res);
+        history.push("/admin/index");
+        window.location.reload();
       }
     })
     .catch((err) => {
-      console.log(err)
-    })
-}
+      console.log(err);
+    });
+};
 
-export { Admin_login }
+export { Admin_login };
