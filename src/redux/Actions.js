@@ -37,6 +37,10 @@ const Teacher_list = (data) => {
   const action = { type: t.TEACHER_LIST, payload: data };
   dispatch(action);
 };
+const Teacher_status_id = (id) => {
+  const action = { type: t.TEACHER_STATUS_ID, payload: id };
+  dispatch(action);
+};
 
 export {
   LoadingOff,
@@ -48,4 +52,5 @@ export {
   ADMINDATA,
   Lead_list,
   Teacher_list,
+  Teacher_status_id,
 };

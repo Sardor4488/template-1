@@ -7,31 +7,42 @@ import { Link, useLocation } from "react-router-dom";
 import { TeacherApi } from "../../Api/teacherApi";
 import { useSelector } from "react-redux";
 import { USER_1 } from "../../imagepath";
+import { Teacher_status_id } from "../../../redux/Actions";
 
-const Clients = () => {
+const Clients = (props) => {
   const location = useLocation();
   const [search, setSearch] = useState("");
   const data = useSelector((state) => state?.Reducer?.teacher_list); //[List...] && [Statuses_list...]
-
-  const filterData = (e) => {
-    setSearch(e.target.value);
-    const clone = { ...data };
-
-    if (search) {
-      clone?.List?.filter((v) =>
-        v.last_name.toLowerCase().includes(search.toLowerCase())
-      );
-      console.log(clone);
-    }
+  const [list, setList] = useState([]);
+  const filterData = (text) => {
+    setSearch(text);
+    const lists = { ...data };
+    const filterList = lists.List.filter(
+      (v) =>
+        v.first_name.toLowerCase().includes(text.toLowerCase()) ||
+        v?.course_name.toLowerCase().includes(text.toLowerCase()) ||
+        v.last_name.toLowerCase().includes(text.toLowerCase())
+    );
+    setList(filterList);
   };
 
   useEffect(() => {
-    TeacherApi();
-  }, [location.pathname]);
+    setList(data.List);
+  }, [data]);
 
+  const status_id = useSelector((state) => state.Reducer.teacher_status_id);
   const getCategoryTeacher = (id) => {
+    Teacher_status_id(data?.Statuses_list[id].id);
     TeacherApi({ status_id: data?.Statuses_list[id].id });
   };
+
+  useEffect(() => {
+    if (status_id) {
+      TeacherApi({ status_id });
+    } else {
+      TeacherApi();
+    }
+  }, [location.pathname]);
 
   // birth_date: null
   // certificate: null
@@ -120,7 +131,13 @@ const Clients = () => {
       title: "Account Status",
       dataIndex: "created_at",
       render: (text, record, index) => (
-        <h2 className="table-avatar">{record.status_id}</h2>
+        <h2 className="table-avatar">
+          {" "}
+          {
+            data?.Statuses_list?.filter((v) => v.id == record.status_id)[0]
+              .description
+          }
+        </h2>
       ),
       sorter: (a, b) => a.status_id.length - b.status_id.length,
     },
@@ -165,7 +182,7 @@ const Clients = () => {
           <div className="col-sm-6 mb-3">
             <input
               value={search}
-              onChange={filterData}
+              onChange={(e) => filterData(e.target.value)}
               className="form-control"
               placeholder="...search"
               type="text"
@@ -178,7 +195,7 @@ const Clients = () => {
                   <Table
                     className="table-hover table-center mb-0"
                     pagination={{
-                      total: data.length,
+                      total: list?.length,
                       showTotal: (total, range) =>
                         `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                       showSizeChanger: true,
@@ -187,8 +204,8 @@ const Clients = () => {
                     }}
                     style={{ overflowX: "auto" }}
                     columns={columns}
-                    dataSource={data?.List}
-                    rowKey={(record) => record.email}
+                    dataSource={list}
+                    rowKey={(record) => record.phone_number}
                   />
                 </div>
               </div>
