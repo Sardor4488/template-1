@@ -4,7 +4,7 @@ import Main from './Main'
 import axios from 'axios'
 import { Provider } from 'react-redux'
 
-axios.defaults.baseURL = 'https://teach-api.uz/teach-api/public/api/'
+axios.defaults.baseURL = 'http://teach-api.uz/teach-api/public/api/'
 
 ReactDOM.render(<Main />, document.getElementById('app'))
 

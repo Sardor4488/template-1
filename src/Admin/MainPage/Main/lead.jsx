@@ -26,6 +26,7 @@ import { useSelector } from "react-redux";
 
 const Lead = () => {
   const data = useSelector((state) => state.Reducer.lead_list);
+  
   const columns = [
     {
       title: "Ism Familiyasi",
