@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
-import { USER_1 } from '../../constant/imagepath_home'
-import Sidebar from './sidebar'
-import StickyBox from 'react-sticky-box'
-import { Link, useLocation } from 'react-router-dom'
-import { myStudents } from '../../Api/teacherStudentsApi'
-import { Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { useSelector } from 'react-redux'
+import { USER_1 } from "../../constant/imagepath_home";
+import Sidebar from "./sidebar";
+import StickyBox from "react-sticky-box";
+import { Link, useLocation } from "react-router-dom";
+import { myStudents } from "../../Api/teacherStudentsApi";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { useSelector } from "react-redux";
 
 const MenteeList = () => {
-  const data = useSelector((state) => state.Reducer.teacher_of_students)
-  const location = useLocation()
-  const [modal, setModal] = useState(false)
+  const data = useSelector((state) => state.Reducer.teacher_of_students);
+  const location = useLocation();
+  const [modal, setModal] = useState(false);
   const [value, setValue] = useState({
-    start_time: '',
-    end_time: '',
-    date: '',
-  })
+    start_time: "",
+    end_time: "",
+    date: "",
+  });
   const modalToggle = (index) => {
     setValue({
       ...value,
       start_time: data[index].start_time,
       end_time: data[index].end_time,
       date: data[index].date,
-    })
-    setModal(true)
-  }
+    });
+    setModal(true);
+  };
   useEffect(() => {
-    myStudents()
-  }, [location.pathname])
+    myStudents();
+  }, [location.pathname]);
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div>
@@ -72,7 +72,7 @@ const MenteeList = () => {
                 <div className="card card-table">
                   <div className="card-body">
                     <div className="table-responsive">
-                      {data ? (
+                      {data.length > 0 ? (
                         <table className="table table-hover table-center mb-0">
                           <thead>
                             <tr>
@@ -142,13 +142,13 @@ const MenteeList = () => {
                                           <li
                                             onClick={() => modalToggle(i)}
                                             className="mb-2 dropdown-item"
-                                            style={{ cursor: 'pointer' }}
+                                            style={{ cursor: "pointer" }}
                                           >
                                             Vaqtni o'zgartirish
                                           </li>
                                           <li
                                             className="dropdown-item"
-                                            style={{ cursor: 'pointer' }}
+                                            style={{ cursor: "pointer" }}
                                           >
                                             O'tildi
                                           </li>
@@ -158,11 +158,11 @@ const MenteeList = () => {
                                   </td>
                                 </tr>
                               </tbody>
-                            )
+                            );
                           })}
                         </table>
                       ) : (
-                        ''
+                        <p className="my-3">Sizda O'quvchilar yo'q</p>
                       )}
                     </div>
                   </div>
@@ -186,7 +186,7 @@ const MenteeList = () => {
                   <label>Dars sanasi</label>
                   <input
                     type="date"
-                    value={value.date || ''}
+                    value={value.date || ""}
                     onChange={(e) =>
                       setValue({ ...value, date: e.target.value })
                     }
@@ -236,7 +236,7 @@ const MenteeList = () => {
         </ModalBody>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default MenteeList
+export default MenteeList;

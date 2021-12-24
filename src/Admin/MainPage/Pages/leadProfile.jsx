@@ -313,6 +313,7 @@ const LeadProfile = () => {
                               <th>Fanlari</th>
                               <th>Darajasi</th>
                               <th>Narxi</th>
+                              <th>Biriktirish</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -339,6 +340,12 @@ const LeadProfile = () => {
                                 <Ratings rating={5} />
                               </td>
                               <td>$3200.00</td>
+                              <td>
+                                <button className="btn btn-primary">
+                                  {" "}
+                                  Biriktirish{" "}
+                                </button>
+                              </td>
                             </tr>
                           </tbody>
                         </table>
