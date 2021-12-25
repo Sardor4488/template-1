@@ -11,7 +11,6 @@ const config = {
 };
 
 export const TeacherApi = (data = {}) => {
-  // console.log(data);
   axios
     .post("admin/get-mentors", data, config)
     .then((res) => {
