@@ -575,7 +575,11 @@ const Home = (props) => {
                         </p>
                       </div>
                     </div>
-                    <p className="text-primary more m-0" onClick={moreInfo}>
+                    <p
+                      className="text-primary more m-0"
+                      style={{ cursor: "pointer" }}
+                      onClick={moreInfo}
+                    >
                       {more ? "Yopish" : "Batafsil"}
                     </p>
                   </div>

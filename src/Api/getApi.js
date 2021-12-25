@@ -12,7 +12,7 @@ const getCourses = async () => {
 }
 const getHomeCategory = async (setCategories) => {
   try {
-    const res = await axios.get('home-categoyr')
+    const res = await axios.get('home-category')
     if (res.status == 200) {
       setCategories(res.data.categories)
     }
