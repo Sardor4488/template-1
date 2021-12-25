@@ -9,31 +9,34 @@ import { useSelector } from "react-redux";
 import { USER_1 } from "../../imagepath";
 import { Teacher_status_id } from "../../../redux/Actions";
 
-const Clients = (props) => {
+const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
-  const data = useSelector((state) => state?.Reducer?.teacher_list); //[List...] && [Statuses_list...]
+  const data = useSelector((state) => state?.Reducer?.teacher_list)
+  const teacher_status_list = useSelector(
+    (state) => state?.Reducer?.teacher_status_list
+  );
   const [list, setList] = useState([]);
+
   const filterData = (text) => {
     setSearch(text);
     const lists = { ...data };
-    const filterList = lists.List.filter(
+    const filterList = lists?.filter(
       (v) =>
         v.first_name.toLowerCase().includes(text.toLowerCase()) ||
-        v?.course_name.toLowerCase().includes(text.toLowerCase()) ||
         v.last_name.toLowerCase().includes(text.toLowerCase())
     );
     setList(filterList);
   };
 
   useEffect(() => {
-    setList(data.List);
+    setList(data);
   }, [data]);
 
   const status_id = useSelector((state) => state.Reducer.teacher_status_id);
   const getCategoryTeacher = (id) => {
-    Teacher_status_id(data?.Statuses_list[id].id);
-    TeacherApi({ status_id: data?.Statuses_list[id].id });
+    Teacher_status_id(teacher_status_list[id].id);
+    TeacherApi({ status_id: teacher_status_list[id].id });
   };
 
   useEffect(() => {
@@ -43,33 +46,6 @@ const Clients = (props) => {
       TeacherApi();
     }
   }, [location.pathname]);
-
-  // birth_date: null
-  // certificate: null
-  // country: null
-  // course_id: null
-  // course_name: null
-  // created_at: null
-  // description: null
-  // experience: null
-  // id: null
-  // image: null
-  // language: null
-  // loyalty: null
-  // offert_price: null
-  // price: null
-  // rating: null
-  // region: null
-  // resume: null
-  // telegram_number: null
-  // updated_at: null
-  // user_id: null
-  // email: "higudsdsogsfshggihhdhghi@gmail.com"
-  // role: "mentor"
-  // first_name: "Mentor"
-  // last_name: "Mentor"
-  // phone_number: "+998996404777"
-  // status_id: "8"
 
   const columns = [
     {
@@ -170,7 +146,7 @@ const Clients = (props) => {
               onChange={(e) => getCategoryTeacher(e.target.value)}
               className="form-control"
             >
-              {data?.Statuses_list?.map((value, index) => {
+              {teacher_status_list?.map((value, index) => {
                 return (
                   <option key={value.id} value={index}>
                     {value.description}

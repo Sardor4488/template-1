@@ -1,22 +1,37 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import { AVATAR_08, AVATAR_12 } from "../../imagepath";
-import { Link, useParams } from "react-router-dom";
-import Ratings from "../Main/rating";
+import { AVATAR_12 } from "../../imagepath";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { TeacherApi } from "../../Api/teacherApi";
 
 const MentorProfile = () => {
   const { mentor_id } = useParams();
+  const location = useLocation();
+
   const data = useSelector(
-    (state) => state?.Reducer?.teacher_list?.List[mentor_id]
+    (state) => state?.Reducer?.teacher_list[mentor_id]
   );
-  console.log(data);
+  const status_id = useSelector((state) => state?.Reducer?.teacher_status_id);
+
+  useEffect(() => {
+    if (status_id) {
+      TeacherApi({ status_id });
+    } else {
+      TeacherApi();
+    }
+  }, [location.pathname]);
+
   const [state, setState] = useState({
     iseditmodal: false,
   });
+
+  console.log(data);
+
   const editModalClose = () => {
     setState({ iseditmodal: false });
   };
+
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -50,16 +65,17 @@ const MentorProfile = () => {
                 </div>
                 <div className="col ml-md-n2 profile-user-info">
                   <h4 className="user-name text-start text-black mb-0">
-                    Allen Davis
+                    {data?.first_name} {data?.last_name}
                   </h4>
-                  <h6 className="text-muted">allendavis@admin.com</h6>
+                  <h6 className="text-muted">{data?.email}</h6>
                   <div className="pb-3">
-                    <i className="fa fa-map-marker" /> Florida, United States
+                    <i className="fa fa-map-marker" />{" "}
+                    {data?.region ? data?.region : "Kiritilmagan"}
                   </div>
                   <div className="about-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    {data?.description
+                      ? data?.description
+                      : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
                   </div>
                 </div>
                 <div className="col-auto profile-btn"></div>
@@ -116,25 +132,35 @@ const MentorProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Name
                           </p>
-                          <p className="col-sm-10">Allen Davis</p>
+                          <p className="col-sm-10">
+                            {data?.first_name} {data?.last_name}
+                          </p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Date of Birth
                           </p>
-                          <p className="col-sm-10">24 Jul 1983</p>
+                          <p className="col-sm-10">
+                            {data?.birth_date
+                              ? data?.birth_date
+                              : "Kiritilmagan"}
+                          </p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Email ID
                           </p>
-                          <p className="col-sm-10">allendavis@example.com</p>
+                          <p className="col-sm-10">{data?.email}</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Mobile
                           </p>
-                          <p className="col-sm-10">305-310-5857</p>
+                          <p className="col-sm-10">
+                            {data?.phone_number
+                              ? data?.phone_number
+                              : "Kiritilmagan"}
+                          </p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0">Address</p>

@@ -8,6 +8,7 @@ const initialState = {
   admin_data: "",
   lead_list: [],
   teacher_list: [],
+  teacher_status_list: [],
   teacher_status_id: "",
 };
 
@@ -30,7 +31,11 @@ const Reducer = (state = initialState, action) => {
     case t.LEAD_LIST:
       return { ...state, lead_list: action.payload };
     case t.TEACHER_LIST:
-      return { ...state, teacher_list: action.payload };
+      return {
+        ...state,
+        teacher_list: action.payload.List,
+        teacher_status_list: action.payload.Statuses_list,
+      };
     case t.TEACHER_STATUS_ID:
       return { ...state, teacher_status_id: action.payload };
     default:

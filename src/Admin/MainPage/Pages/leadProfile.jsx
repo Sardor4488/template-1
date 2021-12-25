@@ -14,6 +14,7 @@ const LeadProfile = () => {
   };
   const { lead_id } = useParams();
   const data = useSelector((state) => state.Reducer.lead_list[lead_id]);
+  
   const [comment, setComment] = useState("");
   const [openComment, setOpenComment] = useState(false);
 

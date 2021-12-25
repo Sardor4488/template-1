@@ -16,7 +16,7 @@ export const TeacherApi = (data = {}) => {
     .post("admin/get-mentors", data, config)
     .then((res) => {
       if (res.status == 200) {
-        Teacher_list(res.data);
+        Teacher_list(res?.data);
       }
     })
     .catch((err) => {
