@@ -91,7 +91,7 @@ const ProfileSettings = () => {
     language,
     country,
     region,
-    userdata?.user?.resume,
+    resume ? resume : userdata?.user?.resume,
   ];
   const arrayError = [
     setEmailError,
