@@ -110,7 +110,7 @@ const Clients = () => {
         <h2 className="table-avatar">
           {" "}
           {
-            data?.Statuses_list?.filter((v) => v.id == record.status_id)[0]
+            teacher_status_list?.filter((v) => v.id == record.status_id)[0]
               .description
           }
         </h2>
