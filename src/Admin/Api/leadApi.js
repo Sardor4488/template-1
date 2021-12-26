@@ -5,7 +5,7 @@ const admin_token = localStorage.getItem("admin_token");
 //headersga token qo'shib jo'natish
 const config = {
   headers: {
-    Authorization: "Bearer" + admin_token,
+    Authorization: "Bearer " + admin_token,
   },
 };
 

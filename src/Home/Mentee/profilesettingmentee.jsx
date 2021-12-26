@@ -129,7 +129,6 @@ const ProfileSettingMentee = () => {
               height: "250px",
               margin: "auto",
               borderRadius: "15px",
-              overflow: "hidden",
             }}
             onClick={(e) => e.stopPropagation()}
           >

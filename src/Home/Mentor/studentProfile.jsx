@@ -163,8 +163,8 @@ const StudentProfile = () => {
                               </div>
                             )}
                             <div className="mentor-details m-0">
-                              <i className="fas fa-map-marker-alt" /> Tamil
-                              Nadu, India
+                              <i className="fas fa-map-marker-alt" />
+                              {data?.region} {data?.country}
                             </div>
                           </div>
                           <div className="user-info-cont">
@@ -173,10 +173,10 @@ const StudentProfile = () => {
                             </h4>
                             <p className="mentor-type mb-0">
                               English Literature (M.A)
-                            </p>{" "}
+                            </p>
                             <div className="mentor-action">
                               <p className="mentor-type social-title">
-                                blabla@gmail.com
+                                {data?.email}
                               </p>
                             </div>
                           </div>

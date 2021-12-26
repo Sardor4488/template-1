@@ -8766,3 +8766,21 @@ PhoneInput {
   font-weight: 600 !important;
   color: #028ee1 !important;
 }
+.custom_file_input {
+  position: relative;
+  padding-left: 122px;
+}
+.custom_file_input::before {
+  content: "Yuklash";
+  position: absolute;
+  height: 100%;
+  width: 104px;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}

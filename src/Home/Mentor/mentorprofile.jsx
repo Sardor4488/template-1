@@ -307,9 +307,7 @@ const MentorProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Qayerni tugatgan (o'qiyapti)</span>
-                              <div className="row-result">
-                                Coimbatore University
-                              </div>
+                              <div className="row-result">Kiritilmagan</div>
                             </div>
                           </div>
                         </li>
@@ -317,7 +315,9 @@ const MentorProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Mutaxassisligi</span>
-                              <div className="row-result">Mathematics</div>
+                              <div className="row-result">
+                                {userdata?.user?.course_name}
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -325,9 +325,7 @@ const MentorProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Sertifikatlari</span>
-                              <div className="row-result">
-                                IELTS, Topik va h.k
-                              </div>
+                              <div className="row-result">Kiritilmagan</div>
                             </div>
                           </div>
                         </li>
@@ -352,6 +350,26 @@ const MentorProfile = () => {
                                     : 0}
                                 </span>{" "}
                                 yil
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Telefon raqami</span>
+                              <div className="row-result">
+                                {userdata?.user?.phone_number}
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Telegram</span>
+                              <div className="row-result">
+                                {userdata?.user?.telegram_number}
                               </div>
                             </div>
                           </div>

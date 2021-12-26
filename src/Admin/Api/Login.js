@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ADMINDATA } from "../../redux/Actions";
+
 const Admin_login = (data, history) => {
   axios
     .post("login", data)

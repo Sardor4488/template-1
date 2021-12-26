@@ -40,7 +40,6 @@ const ProfileSettings = () => {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [resume, setResume] = useState(null);
-  const [resumePost, setResumePost] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
 
   const [emailError, setEmailError] = useState(false);
@@ -57,7 +56,6 @@ const ProfileSettings = () => {
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
-
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
@@ -93,7 +91,7 @@ const ProfileSettings = () => {
     language,
     country,
     region,
-    resumePost,
+    resume ? resume : userdata?.user?.resume,
   ];
   const arrayError = [
     setEmailError,
@@ -177,7 +175,6 @@ const ProfileSettings = () => {
           <div
             style={{
               borderRadius: "15px",
-              overflow: "hidden",
               width: "250px",
               height: "250px",
               margin: "auto",
@@ -318,7 +315,6 @@ const ProfileSettings = () => {
                             international
                             defaultCountry="UZ"
                             value={phone_number}
-                            className=""
                             onChange={setPhoneNumber}
                           />
                           {phoneNumberError && (
@@ -374,21 +370,16 @@ const ProfileSettings = () => {
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Resyume yuklash</label>
-                          <div className="change-photo-btn">
-                            <span>
-                              <i className="fa fa-upload"></i> Resume yuklash
-                            </span>
-                            <input
-                              type="file"
-                              id="resumeInput"
-                              accept="application/*"
-                              onChange={(e) => {
-                                setResume(e.target.files[0]);
-                                setResumePost(e.target.files[0]);
-                              }}
-                              className="upload"
-                            />
-                          </div>
+                          <input
+                            type="file"
+                            id="resumeInput"
+                            accept="application/*"
+                            className="form-control custom_file_input"
+                            style={{ height: "42px", padding: "9px 0px" }}
+                            onChange={(e) => {
+                              setResume(e.target.files[0]);
+                            }}
+                          />
                           {resumeError && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart
@@ -399,10 +390,10 @@ const ProfileSettings = () => {
                       <div className="col-12 col-md-6">
                         <FormGroup
                           label={"Biz haqimizda qayerdan eshitdingiz"}
-                          value={region}
-                          setValue={setRegion}
                           type={"text"}
-                          error={regionError}
+                          // value={region}
+                          // setValue={setRegion}
+                          // error={regionError}
                         />
                       </div>
                       <div className="col-12">
@@ -415,10 +406,10 @@ const ProfileSettings = () => {
                           <textarea
                             type="text"
                             minLength="30"
-                            maxLength="200"
                             value={description || ""}
                             onChange={(e) => setDescription(e.target.value)}
                             className="form-control"
+                            required
                           />
                           {descriptionError && (
                             <p className="text-danger mt-2">
@@ -461,7 +452,10 @@ const ProfileSettings = () => {
                               htmlFor="agree_checkbox_user"
                             >
                               Narxlar bilan
-                              <Link to="#">tanishib</Link> chiqdim
+                              <Link className="mx-1" to="#">
+                                tanishib
+                              </Link>
+                              chiqdim
                             </label>
                           </div>
                         </div>

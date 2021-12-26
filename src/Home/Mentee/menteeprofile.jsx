@@ -31,11 +31,11 @@ const MenteeProfile = () => {
                     <a href="/app/index">My teacher</a>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
-                    O'qituvchi profili
+                    O'quvchi profili
                   </li>
                 </ol>
               </nav>
-              <h2 className="breadcrumb-title">O'qituvchi profili</h2>
+              <h2 className="breadcrumb-title">O'quvchi profili</h2>
             </div>
           </div>
         </div>
@@ -67,14 +67,17 @@ const MenteeProfile = () => {
                           )}
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
-                              <i className="fas fa-map-marker-alt" />{" "}
-                              {userdata?.user?.region}
+                              <i className="fas fa-map-marker-alt me-2" />
+                              {userdata?.user?.region
+                                ? userdata?.user?.region +
+                                  userdata?.user?.country
+                                : " Kiritilmagan"}
                             </p>
                           </div>
                         </div>
                         <div className="user-info-cont">
                           <h4 className="">
-                            {userdata?.user?.first_name}{" "}
+                            {userdata?.user?.first_name}
                             {userdata?.user?.last_name}
                           </h4>
                           <p className="mentor-type">
@@ -103,7 +106,9 @@ const MenteeProfile = () => {
                   <div className="widget about-widget custom-about mb-0">
                     <h4 className="widget-title">Men haqimda</h4>
                     <hr />
-                    {userdata?.user?.description}
+                    {userdata?.user?.description
+                      ? userdata?.user?.description
+                      : "Kiritilmagan"}
                   </div>
                   {/* /About Details */}
                 </div>
@@ -120,7 +125,11 @@ const MenteeProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Kasbingiz</span>
-                              <div className="row-result">O'quvchi</div>
+                              <div className="row-result">
+                                {userdata?.user?.job
+                                  ? userdata?.user?.job
+                                  : "Kiritilmagan"}
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -128,7 +137,11 @@ const MenteeProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Tug'ilgan kuni</span>
-                              <div className="row-result">01 - 02 - 2000</div>
+                              <div className="row-result">
+                                {userdata?.user?.birth_date
+                                  ? userdata?.user?.birth_date
+                                  : "Kiritilmagan"}
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -137,7 +150,9 @@ const MenteeProfile = () => {
                             <div className="timeline-content">
                               <span>Telefon raqam</span>
                               <div className="row-result">
-                                +998 91 234 56 78
+                                {userdata?.user?.phone_number
+                                  ? userdata?.user?.phone_number
+                                  : "Kiritilmagan"}
                               </div>
                             </div>
                           </div>
@@ -195,92 +210,94 @@ const MenteeProfile = () => {
                 </div>
                 {/* /Personal Details */}
               </div>
-            </div>
-            <div className="card">
-              <div className="card-body custom-border-card pb-0">
-                {/* Qualification Details */}
-                <div className="widget experience-widget mb-0">
-                  <h4 className="widget-title">Qualification</h4>
-                  <hr />
-                  <div className="experience-box">
-                    <ul className="experience-list profile-custom-list">
-                      <li>
-                        <div className="experience-content">
-                          <div className="timeline-content">
-                            <span>Undergraduate College</span>
-                            <div className="row-result">
-                              Coimbatore University
+              <div className="card">
+                <div className="card-body custom-border-card ">
+                  {/* Qualification Details */}
+                  <div className="widget experience-widget mb-0">
+                    <h4 className="widget-title">Qualification</h4>
+                    <hr />
+                    <div className="experience-box">
+                      <ul className="experience-list profile-custom-list">
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Undergraduate College</span>
+                              <div className="row-result">
+                                Coimbatore University
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="experience-content">
-                          <div className="timeline-content">
-                            <span>Undergraduate Major</span>
-                            <div className="row-result">Mathematics</div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="experience-content">
-                          <div className="timeline-content">
-                            <span>Graduate College</span>
-                            <div className="row-result">
-                              Coimbatore University
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Undergraduate Major</span>
+                              <div className="row-result">Mathematics</div>
                             </div>
                           </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="experience-content">
-                          <div className="timeline-content">
-                            <span>Type of Degree</span>
-                            <div className="row-result">B.Sc (Maths)</div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Graduate College</span>
+                              <div className="row-result">
+                                Coimbatore University
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </li>
-                    </ul>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Type of Degree</span>
+                              <div className="row-result">B.Sc (Maths)</div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
+                  {/* /Qualification Details */}
                 </div>
-                {/* /Qualification Details */}
               </div>
-              <div className="py-3">
-                <h3>O'qituvchim</h3>
-                <table className="table table-hover table-center mb-0">
-                  <thead>
-                    <tr>
-                      <th>O'qituvchi ismi</th>
-                      <th>Dars sanasi</th>
-                      <th className="text-center">Dars vaqti</th>
-                      {/* <th className="text-center">Harakat</th> */}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <h2 className="table-avatar">
-                          <Link
-                            to="/app/Mentee/booking"
-                            className="avatar avatar-sm mr-2"
-                          >
-                            <img
-                              className="avatar-img rounded-circle"
-                              src={USER_2}
-                              alt="User Image"
-                            />
-                          </Link>
-                          <Link to="/app/Mentee/booking">
-                            Tyrone Roberts
-                            <span>tyroneroberts@adobe.com</span>
-                          </Link>
-                        </h2>
-                      </td>
-                      <td>08 April 2020</td>
-                      <td className="text-center">
-                        <span className="pending">9:00 AM - 10:00 AM</span>
-                      </td>
-                      {/* <td className="text-center">
+              <div className="card">
+                <div className="card-body custom-border-card">
+                  <div className="py-3">
+                    <h4 className="widget-title">O'qituvchim</h4>
+                    <table className="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>O'qituvchi ismi</th>
+                          <th>Dars sanasi</th>
+                          <th className="text-center">Dars vaqti</th>
+                          {/* <th className="text-center">Harakat</th> */}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <h2 className="table-avatar">
+                              <Link
+                                to="/app/Mentee/booking"
+                                className="avatar avatar-sm mr-2"
+                              >
+                                <img
+                                  className="avatar-img rounded-circle"
+                                  src={USER_2}
+                                  alt="User Image"
+                                />
+                              </Link>
+                              <Link to="/app/Mentee/booking">
+                                Tyrone Roberts
+                                <span>tyroneroberts@adobe.com</span>
+                              </Link>
+                            </h2>
+                          </td>
+                          <td>08 April 2020</td>
+                          <td className="text-center">
+                            <span className="pending">9:00 AM - 10:00 AM</span>
+                          </td>
+                          {/* <td className="text-center">
                                 <Link
                                   to="/app/Mentee/mentor-profile"
                                   className="btn btn-sm bg-info-light"
@@ -288,9 +305,11 @@ const MenteeProfile = () => {
                                   <i className="far fa-eye" /> View
                                 </Link>
                               </td> */}
-                    </tr>
-                  </tbody>
-                </table>{" "}
+                        </tr>
+                      </tbody>
+                    </table>{" "}
+                  </div>
+                </div>
               </div>
             </div>
 
