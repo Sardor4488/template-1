@@ -13,7 +13,7 @@ const UserAuth = (setPath, history) => {
       .then((res) => {
         if (res.status == 200) {
           UserData(res.data);
-          setPath(`/${role}/dashboard`);
+          setPath(`/app/${role}/dashboard`);
           localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
           LoadingOff();
         }
@@ -28,10 +28,10 @@ const UserAuth = (setPath, history) => {
           localStorage.clear();
         } else if (err.response.status == 500) {
           console.log(err);
-          setPath(`/`);
-          // history.push('/home')
+          setPath(`/app/home`);
+          // history.push('/app/home')
         } else {
-          setPath(`/`);
+          setPath(`/app/home`);
         }
       });
   } else if (token == "" || token == null || token == undefined) {

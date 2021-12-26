@@ -410,7 +410,7 @@ const LeadProfile = () => {
         toggle={() => editModalClose()}
       >
         <ModalHeader toggle={() => editModalClose()}>
-          Personal Details
+          O'quvchi malumotlari
         </ModalHeader>
         <ModalBody>
           <form onSubmit={updateLeadProfile}>

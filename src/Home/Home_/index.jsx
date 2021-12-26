@@ -135,11 +135,10 @@ const Home = (props) => {
                   <div className="inner__text me-2">Online</div>
                   <ReactTypingEffect
                     text={[
-                      " Ingiliz tili ",
+                      " Ingliz tili ",
                       " Rus tili ",
                       "Koreys tili",
                       "Nemis tili",
-                      "Xitoy tili",
                     ]}
                     speed={100}
                     eraseSpeed={100}
@@ -762,7 +761,7 @@ const Home = (props) => {
       </section>
       {/* /Blog Section */}
       {/* Team */}
-      <section className="section section-team" id="section-team">
+      <section className="section section-team">
         <div className="container">
           {/* Section Header */}
           <div className="section-header text-center">

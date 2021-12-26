@@ -7,7 +7,11 @@ import StickyBox from "react-sticky-box";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { UpdateStudent } from "../../Api/updateApi";
-import { jobData, levelData as experienceData } from "../../Data/index";
+import {
+  aboutUsdata,
+  jobData,
+  levelData as experienceData,
+} from "../../Data/index";
 import AvatarImageCropper from "react-avatar-image-cropper";
 import PhoneInput from "react-phone-number-input";
 import MySelect from "../../UI/Select/MySelect";
@@ -298,8 +302,8 @@ const ProfileSettingMentee = () => {
                       <div className="col-12 col-md-6">
                         <MySelect
                           label={"Kasbingiz"}
-                          setValue={setJob}
                           array={jobData}
+                          setValue={setJob}
                           error={jobError}
                         />
                       </div>
@@ -313,11 +317,8 @@ const ProfileSettingMentee = () => {
                       </div>
                       <div className="col-12  ">
                         <MySelect
-                          label={"Kasbingiz"}
-                          value={country}
-                          setValue={setCountry}
-                          type={"text"}
-                          error={countryError}
+                          label={"Biz haqimizda qayerdan eshitdingiz"}
+                          array={aboutUsdata}
                         />
                       </div>
                       <div className="col-12">
