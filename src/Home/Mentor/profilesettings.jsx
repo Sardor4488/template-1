@@ -7,7 +7,12 @@ import PhoneInput from "react-phone-number-input";
 import { useSelector } from "react-redux";
 import { getCourses } from "../../Api/getApi";
 import { UpdateTeacher } from "../../Api/updateApi";
-import { experienceData, languageData, priceData } from "../../Data/index";
+import {
+  aboutUsdata,
+  experienceData,
+  languageData,
+  priceData,
+} from "../../Data/index";
 import AvatarImageCropper from "react-avatar-image-cropper";
 import FormGroup from "../../UI/FormGroup/FormGroup";
 import MySelect from "../../UI/Select/MySelect";
@@ -30,6 +35,7 @@ const ProfileSettings = () => {
   const [experience, setExperience] = useState(
     userdata?.user?.experience ? userdata?.user?.experience : "1-3"
   );
+  const [about_us, setAboutUs] = useState("Telegram");
   const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
   const [languages, setLanguages] = useState([]);
   const [language, setLanguage] = useState(
@@ -56,6 +62,7 @@ const ProfileSettings = () => {
   const [countryError, setCountryError] = useState(false);
   const [regionError, setRegionError] = useState(false);
   const [resumeError, setResumeError] = useState(false);
+  const [aboutError, setAboutError] = useState(false);
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
@@ -92,6 +99,7 @@ const ProfileSettings = () => {
     country,
     region,
     resume ? resume : userdata?.user?.resume,
+    about_us,
   ];
   const arrayError = [
     setEmailError,
@@ -108,6 +116,7 @@ const ProfileSettings = () => {
     setCountryError,
     setRegionError,
     setResumeError,
+    setAboutError,
   ];
   const updateTeacher = (e) => {
     e.preventDefault();
@@ -139,6 +148,7 @@ const ProfileSettings = () => {
       fd.append("language", language);
       fd.append("country", country);
       fd.append("region", region);
+      fd.append("about_us", about_us);
       fd.append("resume", resume);
       fd.append("birth_date", birth_date);
       fd.append("offert_price", offert_price);
@@ -388,12 +398,11 @@ const ProfileSettings = () => {
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <FormGroup
+                        <MySelect
                           label={"Biz haqimizda qayerdan eshitdingiz"}
-                          type={"text"}
-                          // value={region}
-                          // setValue={setRegion}
-                          // error={regionError}
+                          array={aboutUsdata}
+                          setValue={setAboutUs}
+                          error={aboutError}
                         />
                       </div>
                       <div className="col-12">

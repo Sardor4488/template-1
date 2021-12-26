@@ -27,6 +27,9 @@ const ProfileSettingMentee = () => {
   const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
   const [region, setRegion] = useState(userdata?.user?.region);
   const [country, setCountry] = useState(userdata?.user?.country);
+  const [about_us, setAboutUs] = useState(
+    userdata?.user?.about_us ? userdata?.user?.about_us : "Telegram"
+  );
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [job, setJob] = useState(
@@ -49,6 +52,7 @@ const ProfileSettingMentee = () => {
   const [jobError, setJobError] = useState(false);
   const [experienceError, setExperienceError] = useState(false);
   const [targetError, setTargetError] = useState(false);
+  const [aboutError, setAboutError] = useState(false);
   const updateprofile = (e) => {
     e.preventDefault();
 
@@ -64,6 +68,7 @@ const ProfileSettingMentee = () => {
       job,
       experience,
       target,
+      about_us,
     ];
     const arrayError = [
       setEmailError,
@@ -77,6 +82,7 @@ const ProfileSettingMentee = () => {
       setJobError,
       setExperienceError,
       setTargetError,
+      setAboutError,
     ];
     let update = false;
     for (let i = 0; i < array.length; i++) {
@@ -101,6 +107,7 @@ const ProfileSettingMentee = () => {
       fd.append("country", country);
       fd.append("image", image);
       fd.append("job", job);
+      fd.append("about_us", about_us);
       fd.append("experience", experience);
       fd.append("target", target);
       UpdateStudent(fd, id);
@@ -319,6 +326,8 @@ const ProfileSettingMentee = () => {
                         <MySelect
                           label={"Biz haqimizda qayerdan eshitdingiz"}
                           array={aboutUsdata}
+                          setValue={setAboutUs}
+                          error={aboutError}
                         />
                       </div>
                       <div className="col-12">
@@ -344,7 +353,7 @@ const ProfileSettingMentee = () => {
                     <div className="submit-section">
                       <button
                         type="submit"
-                        className="btn btn-primary submit-btn"
+                        className={`btn btn-primary submit-btn`}
                       >
                         Saqlash
                       </button>

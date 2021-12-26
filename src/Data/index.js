@@ -190,16 +190,16 @@ export const levelData = [
 
 export const aboutUsdata = [
   {
-    id: "Facebook",
-    name: "Facebook",
+    id: "Telegram",
+    name: "Telegram",
   },
   {
     id: "Instagram",
     name: "Instagram",
   },
   {
-    id: "Telegram",
-    name: "Telegram",
+    id: "Facebook",
+    name: "Facebook",
   },
   {
     id: "Tanishilarim orqali",
