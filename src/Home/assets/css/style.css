@@ -8445,7 +8445,7 @@ PhoneInput {
 
 @media screen and (max-width: 400px) {
   .animate__text div {
-    font-size: 25px;
+    font-size: 20px !important;
   }
   .mentor-widget {
     justify-content: space-between;
@@ -8654,6 +8654,12 @@ PhoneInput {
     .home_text_content
     .home_item_text {
     font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 433px) {
+  .inner__text div {
+    font-size: 24px !important ;
   }
 }
 
