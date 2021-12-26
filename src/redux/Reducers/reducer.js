@@ -9,7 +9,6 @@ const initialState = {
   lead_list: [],
   teacher_list: [],
   teacher_status_list: [],
-  teacher_status_id: "",
 };
 
 const Reducer = (state = initialState, action) => {
@@ -36,8 +35,6 @@ const Reducer = (state = initialState, action) => {
         teacher_list: action.payload.List,
         teacher_status_list: action.payload.Statuses_list,
       };
-    case t.TEACHER_STATUS_ID:
-      return { ...state, teacher_status_id: action.payload };
     default:
       return state;
   }

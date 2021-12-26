@@ -315,7 +315,6 @@ const ProfileSettings = () => {
                             international
                             defaultCountry="UZ"
                             value={phone_number}
-                            className=""
                             onChange={setPhoneNumber}
                           />
                           {phoneNumberError && (
@@ -407,10 +406,10 @@ const ProfileSettings = () => {
                           <textarea
                             type="text"
                             minLength="30"
-                            maxLength="200"
                             value={description || ""}
                             onChange={(e) => setDescription(e.target.value)}
                             className="form-control"
+                            required
                           />
                           {descriptionError && (
                             <p className="text-danger mt-2">
@@ -453,7 +452,10 @@ const ProfileSettings = () => {
                               htmlFor="agree_checkbox_user"
                             >
                               Narxlar bilan
-                              <Link to="#">tanishib</Link> chiqdim
+                              <Link className="mx-1" to="#">
+                                tanishib
+                              </Link>
+                              chiqdim
                             </label>
                           </div>
                         </div>

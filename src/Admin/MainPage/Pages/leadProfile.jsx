@@ -6,6 +6,11 @@ import Ratings from "../Main/rating";
 import { getLead } from "../../Api/leadApi";
 import { useSelector } from "react-redux";
 import { commentLead } from "../../Api/leadApi.js";
+import PhoneInput from "react-phone-number-input";
+import FormGroup from "../../UI/input/MyInput";
+import MySelect from "../../UI/input/select/MySelect";
+import { aboutUsdata, jobData, levelData } from "../../../Data";
+import { UpdateStudent } from "../../../Api/updateApi";
 const LeadProfile = () => {
   const location = useLocation();
   const [state, setState] = useState({ iseditmodal: false });
@@ -14,10 +19,20 @@ const LeadProfile = () => {
   };
   const { lead_id } = useParams();
   const data = useSelector((state) => state.Reducer.lead_list[lead_id]);
-  
+  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
   const [comment, setComment] = useState("");
   const [openComment, setOpenComment] = useState(false);
-
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [birth_date, setBirthDate] = useState("");
+  const [region, setRegion] = useState("");
+  const [country, setCountry] = useState("");
+  const [job, setJob] = useState("Talaba");
+  const [experience, setExperience] = useState("Boshlang'ich");
+  const [target, setTarget] = useState("");
   const commentSubmit = (e) => {
     e.preventDefault();
     commentLead({ lead_id: data?.id, comment });
@@ -30,6 +45,38 @@ const LeadProfile = () => {
     getLead();
   }, [location.pathname]);
 
+  const editLead = () => {
+    setFirstName(data?.first_name);
+    setLastName(data?.last_name);
+    setPhoneNumber(data?.phone_number);
+    setEmail(data?.email);
+    setTelegram(data?.telegram_number);
+    setBirthDate(data?.birth_date);
+    setRegion(data?.region);
+    setCountry(data?.country);
+    setJob("Talaba");
+    setExperience("Boshlang'ich");
+    setTarget(data?.target);
+    setState({ iseditmodal: true });
+  };
+
+  const updateLeadProfile = (e) => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append("first_name", first_name);
+    fd.append("last_name", last_name);
+    fd.append("phone_number", phone_number);
+    fd.append("email", email);
+    fd.append("telegram_number", telegram);
+    fd.append("birth_date", birth_date);
+    fd.append("region", region);
+    fd.append("country", country);
+    fd.append("job", job);
+    fd.append("experience", experience);
+    fd.append("target", target);
+    UpdateStudent(fd, data?.id);
+    console.log(fd);
+  };
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -127,7 +174,7 @@ const LeadProfile = () => {
                           <a
                             className="edit-link"
                             data-toggle="modal"
-                            onClick={() => setState({ iseditmodal: true })}
+                            onClick={editLead}
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
@@ -136,9 +183,8 @@ const LeadProfile = () => {
                         </h5>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Ismi
+                            Ismi familiyasi
                           </p>
-
                           <p className="col-sm-10">
                             {data?.first_name} {data?.last_name}
                           </p>
@@ -147,7 +193,7 @@ const LeadProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Tug'ilgan sanasi
                           </p>
-                          <p className="col-sm-10">24 Jul 1983</p>
+                          <p className="col-sm-10">{data?.birth_date}</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
@@ -299,57 +345,56 @@ const LeadProfile = () => {
                           <input
                             type="text"
                             className="form-control w-100 admin-mentor-search"
-                            placeholder="Qidiruv"
+                            placeholder="Qidiruv..."
                           />
-
-                          <button className="btn btn-primary ml-1">
-                            <i className="fas fa-search"></i>
-                          </button>
                         </div>
-
-                        <table className="table table-hover table-center mb-0">
-                          <thead>
-                            <tr>
-                              <th>Ism Familiyasi</th>
-                              <th>Fanlari</th>
-                              <th>Darajasi</th>
-                              <th>Narxi</th>
-                              <th>Biriktirish</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <h2 className="table-avatar">
-                                  <Link
-                                    to="/admin/mentor-profile"
-                                    className="avatar avatar-sm mr-2"
-                                  >
-                                    <img
-                                      className="avatar-img rounded-circle"
-                                      src={AVATAR_08}
-                                      alt="User Image"
-                                    />
-                                  </Link>
-                                  <Link to="/admin/mentor-profile">
-                                    James Amen
-                                  </Link>
-                                </h2>
-                              </td>
-                              <td>Maths</td>
-                              <td>
-                                <Ratings rating={5} />
-                              </td>
-                              <td>$3200.00</td>
-                              <td>
-                                <button className="btn btn-primary">
-                                  {" "}
-                                  Biriktirish{" "}
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        {teacher_list.length > 0 ? (
+                          <table className="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Ism Familiyasi</th>
+                                <th>Fanlari</th>
+                                <th>Darajasi</th>
+                                <th>Narxi</th>
+                                <th>Biriktirish</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <h2 className="table-avatar">
+                                    <Link
+                                      to="/admin/mentor-profile"
+                                      className="avatar avatar-sm mr-2"
+                                    >
+                                      <img
+                                        className="avatar-img rounded-circle"
+                                        src={AVATAR_08}
+                                        alt="User Image"
+                                      />
+                                    </Link>
+                                    <Link to="/admin/mentor-profile">
+                                      James Amen
+                                    </Link>
+                                  </h2>
+                                </td>
+                                <td>Maths</td>
+                                <td>
+                                  <Ratings rating={5} />
+                                </td>
+                                <td>$3200.00</td>
+                                <td>
+                                  <button className="btn btn-primary">
+                                    {" "}
+                                    Biriktirish{" "}
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : (
+                          "O'qituvchilar topilmadi"
+                        )}
                       </div>
                     </div>
                   </div>
@@ -368,118 +413,112 @@ const LeadProfile = () => {
           Personal Details
         </ModalHeader>
         <ModalBody>
-          <form>
+          <form onSubmit={updateLeadProfile}>
             <div className="row form-row">
               <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>First Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Allen"
-                  />
-                </div>
+                <FormGroup
+                  label={"Ism"}
+                  type={"text"}
+                  value={first_name}
+                  setValue={setFirstName}
+                  className={"text-capitalize"}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <FormGroup
+                  label={"Familiya"}
+                  type={"text"}
+                  value={last_name}
+                  setValue={setLastName}
+                  className={"text-capitalize"}
+                />
+              </div>
+              <div className="col-12">
+                <FormGroup
+                  label={"Tug'ilgan sana"}
+                  value={birth_date}
+                  setValue={setBirthDate}
+                  type={"date"}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <FormGroup
+                  label={"Email"}
+                  type={"email"}
+                  value={email}
+                  setValue={setEmail}
+                />
               </div>
               <div className="col-12 col-sm-6">
                 <div className="form-group">
-                  <label>Last Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Davis"
+                  <label>Telefon raqami</label>
+                  <PhoneInput
+                    international
+                    defaultCountry="UZ"
+                    value={phone_number}
+                    onChange={setPhoneNumber}
                   />
                 </div>
+              </div>
+              <div className="col-sm-12">
+                <FormGroup
+                  label={"Telegram akkauntingiz yoki raqamingiz"}
+                  type={"text"}
+                  value={telegram}
+                  setValue={setTelegram}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <FormGroup
+                  label={"Qayerdansiz"}
+                  type={"text"}
+                  value={region}
+                  setValue={setRegion}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <FormGroup
+                  label={"Hozir qayerdasiz"}
+                  type={"text"}
+                  value={country}
+                  setValue={setCountry}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <MySelect
+                  label={"Kasbingiz"}
+                  array={jobData}
+                  setValue={setJob}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <MySelect
+                  label={"Hozirgi bilim darajangiz"}
+                  array={levelData}
+                  setValue={setExperience}
+                />
+              </div>
+              <div className="col-12">
+                <MySelect
+                  label={"Biz haqimizda qayerdan eshitdingiz"}
+                  array={aboutUsdata}
+                />
               </div>
               <div className="col-12">
                 <div className="form-group">
-                  <label>Date of Birth</label>
-                  <div className="cal-icon">
-                    <input
-                      type="text"
-                      className="form-control"
-                      defaultValue="24-07-1983"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Email ID</label>
-                  <input
-                    type="email"
+                  <label>Maqsadingiz</label>
+                  <textarea
                     className="form-control"
-                    defaultValue="allendavis@example.com"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Mobile</label>
-                  <input
-                    type="text"
-                    defaultValue="+1 202-555-0125"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="col-12">
-                <h5 className="form-title">
-                  <span>Address</span>
-                </h5>
-              </div>
-              <div className="col-12">
-                <div className="form-group">
-                  <label>Address</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="4663 Agriculture Lane"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>City</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Miami"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>State</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Florida"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Zip Code</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue={22434}
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Country</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="United States"
+                    cols="30"
+                    rows="10"
+                    value={target || ""}
+                    onChange={(e) => setTarget(e.target.value)}
                   />
                 </div>
               </div>
             </div>
             <button type="submit" className="btn btn-primary btn-block">
-              Save Changes
+              Saqlash
             </button>
           </form>
         </ModalBody>

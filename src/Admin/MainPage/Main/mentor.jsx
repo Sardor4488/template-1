@@ -7,12 +7,11 @@ import { Link, useLocation } from "react-router-dom";
 import { TeacherApi } from "../../Api/teacherApi";
 import { useSelector } from "react-redux";
 import { USER_1 } from "../../imagepath";
-import { Teacher_status_id } from "../../../redux/Actions";
 
 const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
-  const data = useSelector((state) => state?.Reducer?.teacher_list)
+  const data = useSelector((state) => state?.Reducer?.teacher_list);
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
@@ -33,11 +32,12 @@ const Clients = () => {
     setList(data);
   }, [data]);
 
-  const status_id = useSelector((state) => state.Reducer.teacher_status_id);
   const getCategoryTeacher = (id) => {
-    Teacher_status_id(teacher_status_list[id].id);
+    localStorage.setItem("teacher_status_id", teacher_status_list[id].id);
     TeacherApi({ status_id: teacher_status_list[id].id });
   };
+
+  const status_id = localStorage.getItem("teacher_status_id");
 
   useEffect(() => {
     if (status_id) {

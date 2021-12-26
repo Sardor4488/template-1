@@ -139,6 +139,7 @@ const Home = (props) => {
                       " Rus tili ",
                       "Koreys tili",
                       "Nemis tili",
+                      "Xitoy tili",
                     ]}
                     speed={100}
                     eraseSpeed={100}
