@@ -132,7 +132,7 @@ const Home = (props) => {
             <div className="banner-header">
               <div className="mb-5">
                 <div className="animate__text">
-                  <div className="inner__text me-2">Online</div>
+                  <div className="inner__text me-1">Online</div>
                   <ReactTypingEffect
                     text={[
                       " Ingiliz tili ",

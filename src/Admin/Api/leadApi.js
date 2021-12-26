@@ -15,7 +15,7 @@ const getLead = () => {
     .then((res) => {
       if (res.status == 200) {
         Lead_list(res.data?.leads_list);
-      }
+      } 
     })
     .catch((err) => {
       console.log(err);
