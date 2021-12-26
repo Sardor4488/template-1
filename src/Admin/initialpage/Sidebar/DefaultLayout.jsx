@@ -22,6 +22,7 @@ if (window.location.pathname.includes("admin")) {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { LoadingOff } from "../../../redux/Actions";
 
 // import '../../assets/js/bootstrap.min.js';
 // import '../../assets/css/select2.min.css';
@@ -65,6 +66,7 @@ const DefaultLayout = (props) => {
         $("body").addClass("error-page");
       }
     }
+    LoadingOff();
   }, []);
 
   const { location, match, history } = props;

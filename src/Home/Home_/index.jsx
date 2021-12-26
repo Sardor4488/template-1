@@ -762,7 +762,7 @@ const Home = (props) => {
       </section>
       {/* /Blog Section */}
       {/* Team */}
-      <section className="section section-team">
+      <section className="section section-team" id="section-team">
         <div className="container">
           {/* Section Header */}
           <div className="section-header text-center">

@@ -70,19 +70,19 @@ const Footer = () => {
                 <h2 className="footer-title">Menyu</h2>
                 <ul>
                   <li>
-                    <Link to="/app/home">Asosiy</Link>
+                    <Link to="/">Asosiy</Link>
                   </li>
                   <li>
-                    <Link to="/app/about">Biz haqimizda</Link>
+                    <Link to="/about">Biz haqimizda</Link>
                   </li>
                   <li>
-                    <Link to="/app/blog">Blog</Link>
+                    <Link to="/blog">Blog</Link>
                   </li>
                   <li>
                     <Link to="/">Fikirlar</Link>
                   </li>
                   <li>
-                    <Link to="/">Jamoa</Link>
+                    <a href="#section-team">Jamoa</a>
                   </li>
                 </ul>
               </div>

@@ -30,11 +30,11 @@ const App = () => {
   const { location, match, user } = this.props
   console.log(location.pathname)
   if (location.pathname === '/') {
-    return <Redirect to={'/app'} />
+    return <Redirect to={'/'} />
   }
   return (
     <Switch>
-      <Route path="/app" component={DefaultLayout} />
+      <Route path="/" component={DefaultLayout} />
       <Route path="/admin_error-404" component={Error404} />
       <Route path="/admin_error-500" component={Error500} />
       <Route path="/admin_login" component={Login} />

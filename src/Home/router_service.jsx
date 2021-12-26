@@ -9,8 +9,9 @@ import ReviewsGeneral from "./rewiseall/rewise";
 
 export default [
   {
-    path: "home",
+    path: "",
     component: Home,
+    exact: true
   },
   {
     path: "mentor",

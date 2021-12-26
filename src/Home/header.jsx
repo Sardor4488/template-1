@@ -74,9 +74,7 @@ const Header = (props) => {
   const headerSettings = useHistory().location.pathname;
   return (
     <header
-      className={` ${
-        headerSettings.includes("/app/home") ? "mb-0 pb-0" : "mb-5 pb-3"
-      }`}
+      className={` ${headerSettings === "/" ? "mb-0 pb-0" : "mb-5 pb-3"}`}
     >
       <div className="has_menu_close " id="has_menu_close"></div>
       <div
@@ -86,7 +84,7 @@ const Header = (props) => {
       >
         <nav
           className={`navbar navbar-expand-lg header-nav ${
-            pathname.includes("/app/home") ? "  bg-transparent " : ""
+            pathname.includes("/") ? "  bg-transparent " : ""
           }`}
         >
           <div className="navbar-header">
@@ -102,7 +100,7 @@ const Header = (props) => {
               </span>
             </a>
 
-            <Link to="/app/home" className="navbar-brand logo">
+            <Link to="/" className="navbar-brand logo">
               <img
                 src={AppLogo}
                 className="img-fluid ms-4 logotipSize"
@@ -112,7 +110,7 @@ const Header = (props) => {
           </div>
           <div className="main-menu-wrapper">
             <div className="menu-header">
-              <Link to="/app/home" className="menu-logo">
+              <Link to="/" className="menu-logo">
                 <img src={AppLogo} className="img-fluid" alt="Logo" />
               </Link>
               <a id="menu_close" className="menu-close" href="#">
@@ -120,16 +118,16 @@ const Header = (props) => {
               </a>
             </div>
             <ul className="main-nav">
-              <li className={pathname.includes("/app/home") ? "active" : ""}>
+              <li className={pathname.includes("/") ? "active" : ""}>
                 <Link
                   id="menu_close"
-                  to="/app/home"
+                  to="/"
                   className={`${
                     scrollPosition > 50 && width > 992
                       ? "text-dark"
                       : " text-white"
                   }  ${
-                    pathname.includes("/app/home") || width <= 992
+                    pathname === "/" || width <= 992
                       ? "  text-white "
                       : " text-dark"
                   }    `}
@@ -137,18 +135,16 @@ const Header = (props) => {
                   Asosiy
                 </Link>
               </li>
-              <li
-                className={`pathname.includes("/app/about") ? "active" : ""   `}
-              >
+              <li className={pathname.includes("/about") ? "active" : ""}>
                 <Link
                   id="menu_close"
-                  to="/app/about"
+                  to="/about"
                   className={` ${
                     scrollPosition > 50 && width > 992
                       ? "text-dark"
                       : " text-white"
                   } ${
-                    pathname.includes("/app/home") || width <= 992
+                    pathname === "/" || width <= 992
                       ? "  text-white "
                       : "text-dark"
                   }`}
@@ -156,16 +152,16 @@ const Header = (props) => {
                   Biz haqimizda
                 </Link>
               </li>
-              <li className={pathname.includes("blog-grid") ? "active" : ""}>
+              <li className={pathname.includes("/blog-grid") ? "active" : ""}>
                 <Link
                   id="menu_close"
-                  to="/app/reviwes-all"
+                  to="/reviwes-all"
                   className={`${
                     scrollPosition > 50 && width > 992
                       ? "text-dark"
                       : " text-white"
                   }  ${
-                    pathname.includes("/app/home") || width <= 992
+                    pathname === "/" || width <= 992
                       ? "  text-white "
                       : "text-dark"
                   } `}
@@ -176,13 +172,13 @@ const Header = (props) => {
               <li className={pathname.includes("blog-grid") ? "active" : ""}>
                 <Link
                   id="menu_close"
-                  to="/app/Blog/blog-grid"
+                  to="/Blog/blog-grid"
                   className={` ${
                     scrollPosition > 50 && width > 992
                       ? "text-dark"
                       : " text-white"
                   }  ${
-                    pathname.includes("/app/home") || width <= 992
+                    pathname === "/" || width <= 992
                       ? "  text-white "
                       : "text-dark"
                   } `}
@@ -232,12 +228,12 @@ const Header = (props) => {
                         : "O'quvchi"}
                     </p>
                   </div>
-                  <Link className="dropdown-item" to={`/app/${role}/dashboard`}>
+                  <Link className="dropdown-item" to={`/${role}/dashboard`}>
                     Dashboard
                   </Link>
                   <Link
                     className="dropdown-item"
-                    to={`/app/${role}/profile-settings`}
+                    to={`/${role}/profile-settings`}
                   >
                     Profile Settings
                   </Link>
@@ -257,9 +253,7 @@ const Header = (props) => {
               <li className="nav-item">
                 <Link
                   className={`nav-link${
-                    pathname.includes("/app/home")
-                      ? "  text-white "
-                      : " text-primary  "
+                    pathname.includes("/") ? "  text-white " : " text-primary  "
                   } ${scrollPosition > 50 ? "text-primary" : " text-white"} `}
                   to="/login"
                 >

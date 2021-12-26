@@ -70,7 +70,7 @@ const Sidebar = (props) => {
           <ul>
             <li>
               <Link
-                to="/app/mentor/dashboard"
+                to="/mentor/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -82,7 +82,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentor/bookings"
+                to="/mentor/bookings"
                 className={pathname.includes("mentor/bookings") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
@@ -94,7 +94,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentor/mentee-list"
+                to="/mentor/mentee-list"
                 className={pathname.includes("mentee-list") ? "active" : ""}
               >
                 <i className="fas fa-user-graduate" />
@@ -106,7 +106,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/mentor/schedule-timings"
+                to="/mentor/schedule-timings"
                 className={
                   pathname.includes("schedule-timings") ? "active" : ""
                 }
@@ -119,7 +119,7 @@ const Sidebar = (props) => {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/mentor/chat">
+              <Link to="/mentor/chat">
                 <i className="fas fa-comments" />
                 Chat{" "}
                 <span>
@@ -129,7 +129,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentor/blog"
+                to="/mentor/blog"
                 className={pathname.includes("blog") ? "active" : ""}
               >
                 <i className="fab fa-blogger-b" />
@@ -141,7 +141,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentor/mentor-profile"
+                to="/mentor/mentor-profile"
                 className={pathname.includes("mentor-profile") ? "active" : ""}
               >
                 <i className="fas fa-user" />
@@ -153,7 +153,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentor/profile-settings"
+                to="/mentor/profile-settings"
                 className={
                   pathname.includes("profile-settings") ? "active" : ""
                 }

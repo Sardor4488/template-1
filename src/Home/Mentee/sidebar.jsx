@@ -48,7 +48,7 @@ const Sidebar = (props) => {
           <ul>
             <li>
               <Link
-                to="/app/mentee/dashboard"
+                to="/mentee/dashboard"
                 className={pathname.includes("dashboard") ? "active" : ""}
               >
                 <i className="fas fa-home" />
@@ -60,7 +60,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/favourites"
+                to="/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-book-reader" />
@@ -72,7 +72,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/menteebookings-mentee"
+                to="/menteebookings-mentee"
                 className={pathname.includes("bookings-mentee") ? "active" : ""}
               >
                 <i className="fas fa-clock" />
@@ -83,7 +83,7 @@ const Sidebar = (props) => {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/mentee/chat-mentee">
+              <Link to="/mentee/chat-mentee">
                 <i className="fas fa-comments" />
                 Yozishmalar{" "}
                 <span>
@@ -93,7 +93,7 @@ const Sidebar = (props) => {
             </li>
             {/* <li>
               <Link
-                to="/app/mentee/favourites"
+                to="/mentee/favourites"
                 className={pathname.includes("favourites") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -106,7 +106,7 @@ const Sidebar = (props) => {
 
             <li>
               <Link
-                to="/app/mentee/share-friends"
+                to="/mentee/share-friends"
                 className={pathname.includes("share-friends") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
@@ -130,7 +130,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/invoices"
+                to="/mentee/invoices"
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
@@ -142,7 +142,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/mentee-profile"
+                to="/mentee/mentee-profile"
                 className={pathname.includes("profile-mentee") ? "active" : ""}
               >
                 <i className="fas fa-user" />
@@ -154,7 +154,7 @@ const Sidebar = (props) => {
             </li>
             <li>
               <Link
-                to="/app/mentee/profile-settings"
+                to="/mentee/profile-settings"
                 className={
                   pathname.includes("profile-settings") ? "active" : ""
                 }
@@ -183,30 +183,30 @@ const Sidebar = (props) => {
       <div className="sidebar-bottom-show d-none  sidebar-bottom">
         <div className="row bg-white d-flex justufy-content-center align-items-center w-100">
           <div className="col-3 border text-center shadow bg-white py-3  ">
-            <Link to="/app/index">
+            <Link to="/index">
               {" "}
               <i className="fas fa-user" />{" "}
             </Link>
           </div>
           <div className="col-3 border text-center shadow bg-white py-3  ">
-            <Link to="/app/index">
+            <Link to="/index">
               {" "}
               <i className="fas fa-user-plus" />{" "}
             </Link>
           </div>
           <div className="col-3 border text-center shadow bg-white py-3  ">
-            <Link to="/app/index">
+            <Link to="/index">
               {" "}
               <i className="fas fa-home" />{" "}
             </Link>
           </div>
           <div className="col-3 border text-center shadow bg-white py-3  ">
-            <Link to="/app/index">
+            <Link to="/index">
               {" "}
               <i className="fas fa-home" />{" "}
             </Link>
           </div>
-          {/* <div className="col-3"> <Link to="/app/index"> <i className="fas fa-home" />  </Link></div> */}
+          {/* <div className="col-3"> <Link to="/index"> <i className="fas fa-home" />  </Link></div> */}
         </div>
       </div>
     </div>
