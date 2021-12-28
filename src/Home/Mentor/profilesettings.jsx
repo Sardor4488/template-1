@@ -16,6 +16,7 @@ import {
 import AvatarImageCropper from "react-avatar-image-cropper";
 import FormGroup from "../../UI/FormGroup/FormGroup";
 import MySelect from "../../UI/Select/MySelect";
+import Validation from "./components/Validation";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
@@ -47,22 +48,7 @@ const ProfileSettings = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [resume, setResume] = useState(null);
   const [offert_price, setOffertprice] = useState(0);
-
-  const [emailError, setEmailError] = useState(false);
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [telegramNumberError, setTelegramNumberError] = useState(false);
-  const [courseIdError, setCourseIdError] = useState(false);
-  const [priceError, setPriceError] = useState(false);
-  const [descriptionError, setDescriptionError] = useState(false);
-  const [experienceError, setExperienceError] = useState(false);
-  const [birthDateError, setBirthDateError] = useState(false);
-  const [languageError, setLanguageError] = useState(false);
-  const [countryError, setCountryError] = useState(false);
-  const [regionError, setRegionError] = useState(false);
-  const [resumeError, setResumeError] = useState(false);
-  const [aboutError, setAboutError] = useState(false);
+  const [errors, setErrors] = useState({});
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
@@ -84,56 +70,52 @@ const ProfileSettings = () => {
     setLanguages(languagea);
     setLanguage(languagea);
   };
-  const array = [
-    email,
-    first_name,
-    last_name,
-    phone_number,
-    telegram_number,
-    course_id,
-    price,
-    description,
-    experience,
-    birth_date,
-    language,
-    country,
-    region,
-    resume ? resume : userdata?.user?.resume,
-    about_us,
-  ];
-  const arrayError = [
-    setEmailError,
-    setFirstNameError,
-    setLastNameError,
-    setPhoneNumberError,
-    setTelegramNumberError,
-    setCourseIdError,
-    setPriceError,
-    setDescriptionError,
-    setExperienceError,
-    setBirthDateError,
-    setLanguageError,
-    setCountryError,
-    setRegionError,
-    setResumeError,
-    setAboutError,
-  ];
+
+  let resumeEr = resume ? resume : userdata?.user?.resume;
+
   const updateTeacher = (e) => {
     e.preventDefault();
-    let update = false;
-    console.log("ishladi");
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
-        arrayError[i](false);
-        update = true;
-      }
-      if (array[i] == null || array[i] == undefined || array[i] == "") {
-        arrayError[i](true);
-        update = false;
-      }
-    }
-    console.log(array);
-    if (update) {
+
+    setErrors(
+      Validation({
+        email,
+        first_name,
+        last_name,
+        phone_number,
+        telegram_number,
+        course_id,
+        price,
+        description,
+        experience,
+        birth_date,
+        language,
+        country,
+        region,
+        resumeEr,
+        about_us,
+      })
+    );
+    if (
+      Object.keys(
+        Validation({
+          email,
+          first_name,
+          last_name,
+          phone_number,
+          telegram_number,
+          course_id,
+          price,
+          description,
+          experience,
+          birth_date,
+          language,
+          country,
+          region,
+          resumeEr,
+          about_us,
+        })
+      ).length == 0
+    ) {
       const fd = new FormData();
       fd.append("email", email);
       fd.append("first_name", first_name);
@@ -162,6 +144,7 @@ const ProfileSettings = () => {
     }
     fetchCourses();
   }, []);
+  console.log(errors);
 
   const offerta = () => {
     if (offert_price == 0) {
@@ -250,7 +233,7 @@ const ProfileSettings = () => {
                                   imagePreview
                                     ? imagePreview
                                     : userdata?.user?.image
-                                    ? `https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`
+                                    ? `https://teach-api.uz/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"
@@ -279,7 +262,7 @@ const ProfileSettings = () => {
                           value={first_name}
                           setValue={setFirstName}
                           type={"text"}
-                          error={firstNameError}
+                          error={errors.first_name}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -288,7 +271,7 @@ const ProfileSettings = () => {
                           value={last_name}
                           setValue={setLastName}
                           type={"text"}
-                          error={lastNameError}
+                          error={errors.last_name}
                         />
                       </div>
 
@@ -298,7 +281,7 @@ const ProfileSettings = () => {
                           value={birth_date}
                           setValue={setBirthDate}
                           type={"date"}
-                          error={birthDateError}
+                          error={errors.birth_date}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -306,7 +289,7 @@ const ProfileSettings = () => {
                           label={"Fan nomi"}
                           setValue={setCourseId}
                           array={coursesData}
-                          error={courseIdError}
+                          error={errors.course_id}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -315,7 +298,7 @@ const ProfileSettings = () => {
                           value={email}
                           setValue={setEmail}
                           type={"email"}
-                          error={emailError}
+                          error={errors.email}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -327,7 +310,7 @@ const ProfileSettings = () => {
                             value={phone_number}
                             onChange={setPhoneNumber}
                           />
-                          {phoneNumberError && (
+                          {errors.phone_number && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart
                             </p>
@@ -342,7 +325,7 @@ const ProfileSettings = () => {
                           value={telegram_number}
                           setValue={setTelegramNumber}
                           type={"text"}
-                          error={telegramNumberError}
+                          error={errors.telegram_number}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -350,7 +333,7 @@ const ProfileSettings = () => {
                           label={"Tajriba"}
                           setValue={setExperience}
                           array={experienceData}
-                          error={experienceError}
+                          error={errors.experience}
                         />
                       </div>
                       <div className="col-12">
@@ -360,7 +343,7 @@ const ProfileSettings = () => {
                           }
                           setValue={handleLanguageAdd}
                           array={languageData}
-                          error={languageError}
+                          error={errors.language}
                           item={languages}
                           itemDelete={handleLanguageDelete}
                         />
@@ -374,7 +357,7 @@ const ProfileSettings = () => {
                         <MySelect
                           array={priceData}
                           setValue={setPrice}
-                          error={priceError}
+                          error={errors.price}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -390,7 +373,7 @@ const ProfileSettings = () => {
                               setResume(e.target.files[0]);
                             }}
                           />
-                          {resumeError && (
+                          {errors.resumeEr && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart
                             </p>
@@ -402,7 +385,7 @@ const ProfileSettings = () => {
                           label={"Biz haqimizda qayerdan eshitdingiz"}
                           array={aboutUsdata}
                           setValue={setAboutUs}
-                          error={aboutError}
+                          error={errors.about_us}
                         />
                       </div>
                       <div className="col-12">
@@ -418,13 +401,22 @@ const ProfileSettings = () => {
                             value={description || ""}
                             onChange={(e) => setDescription(e.target.value)}
                             className="form-control"
-                            required
+                            cols="30"
+                            rows="10"
                           />
-                          {descriptionError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart
-                            </p>
-                          )}
+                          <div className="d-flex flex-wrap">
+                            {errors.description && (
+                              <p className="text-danger mt-2">
+                                Bu joyni to'ldirish shart
+                              </p>
+                            )}
+                            {errors.description_length && (
+                              <p className="text-danger ms-2 mt-2">
+                                So'zlarning uzunligi 50 tadan kam bo'lmasligi
+                                lozim!
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
 
@@ -434,7 +426,7 @@ const ProfileSettings = () => {
                           value={region}
                           setValue={setRegion}
                           type={"text"}
-                          error={regionError}
+                          error={errors.region}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -443,7 +435,7 @@ const ProfileSettings = () => {
                           value={country}
                           setValue={setCountry}
                           type={"text"}
-                          error={countryError}
+                          error={errors.country}
                         />
                       </div>
                       <div className="col-12">

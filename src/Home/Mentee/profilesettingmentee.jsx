@@ -16,6 +16,7 @@ import AvatarImageCropper from "react-avatar-image-cropper";
 import PhoneInput from "react-phone-number-input";
 import MySelect from "../../UI/Select/MySelect";
 import FormGroup from "../../UI/FormGroup/FormGroup";
+import Validation from "./components/Validation";
 const ProfileSettingMentee = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
@@ -39,63 +40,46 @@ const ProfileSettingMentee = () => {
     userdata?.user?.experience ? userdata?.user?.experience : "Boshlang'ich"
   );
   const [target, setTarget] = useState(userdata?.user?.target);
+  const [errors, setErrors] = useState({});
   // ERROR data
   const id = localStorage.getItem("user_id");
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [telegramError, setTelegramError] = useState(false);
-  const [birthDateError, setBirthDateError] = useState(false);
-  const [regionError, setRegionError] = useState(false);
-  const [countryError, setCountryError] = useState(false);
-  const [jobError, setJobError] = useState(false);
-  const [experienceError, setExperienceError] = useState(false);
-  const [targetError, setTargetError] = useState(false);
-  const [aboutError, setAboutError] = useState(false);
+
   const updateprofile = (e) => {
     e.preventDefault();
-
-    const array = [
-      email,
-      first_name,
-      last_name,
-      phone_number,
-      telegram,
-      birth_date,
-      country,
-      region,
-      job,
-      experience,
-      target,
-      about_us,
-    ];
-    const arrayError = [
-      setEmailError,
-      setFirstNameError,
-      setLastNameError,
-      setPhoneNumberError,
-      setTelegramError,
-      setBirthDateError,
-      setCountryError,
-      setRegionError,
-      setJobError,
-      setExperienceError,
-      setTargetError,
-      setAboutError,
-    ];
-    let update = false;
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
-        update = true;
-        arrayError[i](false);
-      }
-      if (array[i] === null || array[i] === undefined || array[i] === "") {
-        update = false;
-        arrayError[i](true);
-      }
-    }
-    if (update) {
+    setErrors(
+      Validation({
+        first_name,
+        last_name,
+        phone_number,
+        email,
+        telegram,
+        birth_date,
+        region,
+        country,
+        about_us,
+        job,
+        experience,
+        target,
+      })
+    );
+    if (
+      Object.keys(
+        Validation({
+          first_name,
+          last_name,
+          phone_number,
+          email,
+          telegram,
+          birth_date,
+          region,
+          country,
+          about_us,
+          job,
+          experience,
+          target,
+        })
+      ).length == 0
+    ) {
       const fd = new FormData();
       fd.append("first_name", first_name);
       fd.append("last_name", last_name);
@@ -111,9 +95,11 @@ const ProfileSettingMentee = () => {
       fd.append("experience", experience);
       fd.append("target", target);
       UpdateStudent(fd, id);
+    } else {
+      alert("Ma'lumotlaringizni to'liq kiriting.");
     }
   };
-
+  // console.log(errors);
   const apply = (file) => {
     setImage(file);
     const reader = new FileReader();
@@ -202,7 +188,7 @@ const ProfileSettingMentee = () => {
                                   imagePreview
                                     ? imagePreview
                                     : userdata?.user?.image
-                                    ? `https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`
+                                    ? `http://teach-api.uz/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"
@@ -232,7 +218,7 @@ const ProfileSettingMentee = () => {
                           value={first_name}
                           setValue={setFirstName}
                           type={"text"}
-                          error={firstNameError}
+                          error={errors.first_name}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -241,7 +227,7 @@ const ProfileSettingMentee = () => {
                           value={last_name}
                           setValue={setLastName}
                           type={"text"}
-                          error={lastNameError}
+                          error={errors.last_name}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -250,7 +236,7 @@ const ProfileSettingMentee = () => {
                           value={birth_date}
                           setValue={setBirthDate}
                           type={"date"}
-                          error={birthDateError}
+                          error={errors.birth_date}
                         />
                       </div>
 
@@ -260,7 +246,7 @@ const ProfileSettingMentee = () => {
                           value={email}
                           setValue={setEmail}
                           type={"email"}
-                          error={emailError}
+                          error={errors.email}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -272,7 +258,7 @@ const ProfileSettingMentee = () => {
                             value={phone_number}
                             onChange={setPhoneNumber}
                           />
-                          {phoneNumberError && (
+                          {errors.phone_number && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart!
                             </p>
@@ -285,7 +271,7 @@ const ProfileSettingMentee = () => {
                           value={telegram}
                           setValue={setTelegram}
                           type={"text"}
-                          error={telegramError}
+                          error={errors.telegram}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -294,7 +280,7 @@ const ProfileSettingMentee = () => {
                           value={region}
                           setValue={setRegion}
                           type={"text"}
-                          error={regionError}
+                          error={errors.region}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -303,7 +289,7 @@ const ProfileSettingMentee = () => {
                           value={country}
                           setValue={setCountry}
                           type={"text"}
-                          error={countryError}
+                          error={errors.country}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -311,7 +297,7 @@ const ProfileSettingMentee = () => {
                           label={"Kasbingiz"}
                           array={jobData}
                           setValue={setJob}
-                          error={jobError}
+                          error={errors.job}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -319,7 +305,7 @@ const ProfileSettingMentee = () => {
                           label={"Hozirgi bilim darajangiz"}
                           setValue={setExperience}
                           array={experienceData}
-                          error={experienceError}
+                          error={errors.experience}
                         />
                       </div>
                       <div className="col-12  ">
@@ -327,7 +313,7 @@ const ProfileSettingMentee = () => {
                           label={"Biz haqimizda qayerdan eshitdingiz"}
                           array={aboutUsdata}
                           setValue={setAboutUs}
-                          error={aboutError}
+                          error={errors.about_us}
                         />
                       </div>
                       <div className="col-12">
@@ -336,15 +322,19 @@ const ProfileSettingMentee = () => {
                           <textarea
                             defaultValue={target}
                             onChange={(e) => setTarget(e.target.value)}
-                            minLength="10"
-                            maxLength="200"
                             className="form-control textarea"
                             cols="30"
                             rows="10"
                           ></textarea>
-                          {targetError && (
+                          {errors.target && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart!
+                            </p>
+                          )}
+                          {errors.target_length && (
+                            <p className="text-danger mt-2">
+                              So'zlarning uzunligi 20 tadan kam bo'lmasligi
+                              lozim!
                             </p>
                           )}
                         </div>

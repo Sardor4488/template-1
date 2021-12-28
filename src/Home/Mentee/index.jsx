@@ -1,30 +1,29 @@
-/**
- * Tables Routes
- */
-import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import React from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 // import MapGrid from "./mapgrid";
-import Maplist from './maplist'
-import Searchmentors from './searchmentors'
-import BookingsMentee from './bookingsmentee'
-import MenteeDashboard from './menteedashboard'
-import Booking from './booking'
-import Checkout from './checkout'
-import BookingSuccess from './bookingsuccess'
-import Chatmentee from './chatmentee'
-import Favorites from './favorites'
-import Invoice from './invoice'
-import Changepassword from './changepassword'
-import Invoiceview from './invoice-view'
-import MenteeProfile from './menteeprofile'
-import ProfileSettingMentee from './profilesettingmentee'
-import Share from './shareWebsite'
+import Maplist from "./maplist";
+import Searchmentors from "./searchmentors";
+import BookingsMentee from "./bookingsmentee";
+import MenteeDashboard from "./menteedashboard";
+import Booking from "./booking";
+import Checkout from "./checkout";
+import BookingSuccess from "./bookingsuccess";
+import Chatmentee from "./chatmentee";
+import Favorites from "./favorites";
+import Invoice from "./invoice";
+import Changepassword from "./changepassword";
+import Invoiceview from "./invoice-view";
+import MenteeProfile from "./menteeprofile";
+import ProfileSettingMentee from "./profilesettingmentee";
+import Share from "./shareWebsite";
+import { useSelector } from "react-redux";
 
 const Menteeroute = ({ match }) => {
-  const role = localStorage.getItem('role')
-  return (
-    <>
-      {role == 'mentee' ? (
+  const role = localStorage.getItem("role");
+
+  if (role == "mentee") {
+    return (
+      <>
         <Switch>
           <Redirect
             exact
@@ -60,31 +59,23 @@ const Menteeroute = ({ match }) => {
             component={ProfileSettingMentee}
           />
           <Route path={`${match.url}/favourites`} component={Favorites} />
-          {/* <Route
-      path={`${match.url}/profile-settings-mentee`}
-      component={Profilesettingmentee}
-    /> */}
           <Route
             path={`${match.url}/change-password`}
             component={Changepassword}
           />
-
           <Route>
             <Redirect to="/404" />
           </Route>
         </Switch>
-      ) : (
-        <Switch>
-          <Route
-            path={`${match.url}/search/:category`}
-            component={Searchmentors}
-          />
-          <Route>
-            <Redirect to="/404" />
-          </Route>
-        </Switch>
-      )}
-    </>
-  )
-}
-export default Menteeroute
+      </>
+    );
+  } else {
+    <Switch>
+      <Route path={`${match.url}/search/:category`} component={Searchmentors} />
+      <Route>
+        <Redirect to="/404" />
+      </Route>
+    </Switch>;
+  }
+};
+export default Menteeroute;

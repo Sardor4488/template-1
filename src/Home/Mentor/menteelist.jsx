@@ -69,10 +69,10 @@ const MenteeList = () => {
               <h3 className="pb-3">O'quvchilar</h3>
               {/* Mentee List Tab */}
               <div className="tab-pane show active" id="mentee-list">
-                <div className="card card-table">
-                  <div className="card-body">
-                    <div className="table-responsive">
-                      {data.length > 0 ? (
+                {data.length > 0 ? (
+                  <div className="card card-table">
+                    <div className="card-body">
+                      <div className="table-responsive">
                         <table className="table table-hover table-center mb-0">
                           <thead>
                             <tr>
@@ -161,12 +161,12 @@ const MenteeList = () => {
                             );
                           })}
                         </table>
-                      ) : (
-                        <p className="my-3">Sizda O'quvchilar yo'q</p>
-                      )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <p className="my-3">Sizda O'quvchilar yo'q</p>
+                )}
               </div>
               {/* /Mentee List Tab */}
             </div>
