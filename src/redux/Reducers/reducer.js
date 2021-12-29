@@ -9,7 +9,6 @@ const initialState = {
   lead_list: [],
   teacher_list: [],
   teacher_status_list: [],
-  teacher_status_id: "",
 };
 
 const Reducer = (state = initialState, action) => {
@@ -19,7 +18,7 @@ const Reducer = (state = initialState, action) => {
     case t.LOADINGON:
       return { ...state, loading: true };
     case t.USERDATA:
-      return { ...state, userdata: action.payload };
+      return { ...state, userdata: action.payload, loading: false };
     case t.CLEARDATA:
       return { ...state, userdata: "" };
     case t.TEST_LESSON_DATA:
@@ -34,10 +33,8 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         teacher_list: action.payload.List,
-        teacher_status_list: action.payload.Statuses_list,
+        teacher_status_list: action.payload.Course_names,
       };
-    case t.TEACHER_STATUS_ID:
-      return { ...state, teacher_status_id: action.payload };
     default:
       return state;
   }

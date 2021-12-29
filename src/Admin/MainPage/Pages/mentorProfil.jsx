@@ -9,11 +9,8 @@ const MentorProfile = () => {
   const { mentor_id } = useParams();
   const location = useLocation();
 
-  const data = useSelector(
-    (state) => state?.Reducer?.teacher_list[mentor_id]
-  );
-  const status_id = useSelector((state) => state?.Reducer?.teacher_status_id);
-
+  const data = useSelector((state) => state?.Reducer?.teacher_list[mentor_id]);
+  const status_id = localStorage.getItem("teacher_status_id");
   useEffect(() => {
     if (status_id) {
       TeacherApi({ status_id });
@@ -117,7 +114,7 @@ const MentorProfile = () => {
                     <div className="card">
                       <div className="card-body">
                         <h5 className="card-title d-flex justify-content-between">
-                          <span>Personal Details</span>
+                          <span>Qisqacha malumot</span>
                           <a
                             className="edit-link"
                             data-toggle="modal"
@@ -125,12 +122,12 @@ const MentorProfile = () => {
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
-                            Edit
+                            Taxrirlash
                           </a>
                         </h5>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Name
+                            Ism familiyasi
                           </p>
                           <p className="col-sm-10">
                             {data?.first_name} {data?.last_name}
@@ -138,9 +135,9 @@ const MentorProfile = () => {
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Date of Birth
+                            Tug'ilgan sanasi
                           </p>
-                          <p className="col-sm-10">
+                          <p className="col-sm-8">
                             {data?.birth_date
                               ? data?.birth_date
                               : "Kiritilmagan"}
@@ -148,13 +145,13 @@ const MentorProfile = () => {
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Email ID
+                            Email
                           </p>
                           <p className="col-sm-10">{data?.email}</p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Mobile
+                            Telefon raqami
                           </p>
                           <p className="col-sm-10">
                             {data?.phone_number
@@ -163,16 +160,13 @@ const MentorProfile = () => {
                           </p>
                         </div>
                         <div className="row">
-                          <p className="col-sm-2 text-muted mb-0">Address</p>
-                          <p className="col-sm-10 mb-0">
-                            4663 Agriculture Lane,
-                            <br />
-                            Miami,
-                            <br />
-                            Florida - 33165,
-                            <br />
-                            United States.
-                          </p>
+                          <p className="col-sm-2 text-muted mb-0">Manzili</p>
+                          <div className="col-sm-10 mb-0">
+                            <p>Qayerdan</p>
+                            {data?.region ? data?.region : "Kiritilmagan"}
+                            <p>Hozirgi manzili</p>
+                            {data?.country ? data?.country : "Kiritilmagan"}
+                          </div>
                         </div>
                       </div>
                     </div>

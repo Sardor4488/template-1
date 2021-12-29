@@ -7,20 +7,23 @@ import { Link, useLocation } from "react-router-dom";
 import { TeacherApi } from "../../Api/teacherApi";
 import { useSelector } from "react-redux";
 import { USER_1 } from "../../imagepath";
-import { Teacher_status_id } from "../../../redux/Actions";
 
 const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
+<<<<<<< HEAD
   const [list, setList] = useState([]);
   const data = useSelector((state) => state?.Reducer?.teacher_list)
+=======
+  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
+>>>>>>> e8376e562c58eba82fe23bb2410427574c1433e0
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
 
   const filterData = (text) => {
     setSearch(text);
-    const lists = { ...data };
+    const lists = { ...teacher_list };
     const filterList = lists?.filter(
       (v) =>
         v.first_name.toLowerCase().includes(text.toLowerCase()) ||
@@ -30,14 +33,15 @@ const Clients = () => {
   };
 
   useEffect(() => {
-    setList(data);
-  }, [data]);
+    setList(teacher_list);
+  }, [teacher_list]);
 
-  const status_id = useSelector((state) => state.Reducer.teacher_status_id);
   const getCategoryTeacher = (id) => {
-    Teacher_status_id(teacher_status_list[id].id);
+    localStorage.setItem("teacher_status_id", teacher_status_list[id].id);
     TeacherApi({ status_id: teacher_status_list[id].id });
   };
+
+  const status_id = localStorage.getItem("teacher_status_id");
 
   useEffect(() => {
     if (status_id) {
@@ -61,8 +65,7 @@ const Clients = () => {
               className="avatar-img rounded-circle"
               src={
                 record?.image
-                  ? "https://teach-api.uz/teach-api/public/storage/" +
-                    record?.image
+                  ? "http://teach-api.uz/storage/" + record?.image
                   : USER_1
               }
               alt="User Image"
@@ -110,7 +113,7 @@ const Clients = () => {
         <h2 className="table-avatar">
           {" "}
           {
-            data?.Statuses_list?.filter((v) => v.id == record.status_id)[0]
+            teacher_status_list?.filter((v) => v.id == record.status_id)[0]
               .description
           }
         </h2>

@@ -34,28 +34,24 @@ const Footer = () => {
                   <div className="social-icon">
                     <ul>
                       <li>
-                        <a href="#" target="_blank">
-                          <i aria-hidden="true" className="fab fa-facebook-f" />{" "}
+                        <a href="https://t.me/MyTeacheruzb" target="_blank">
+                          <i className="fab fa-telegram-plane" />{" "}
                         </a>
                       </li>
                       <li>
-                        <a href="#" target="_blank">
-                          <i className="fab fa-twitter" />{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" target="_blank">
-                          <i className="fab fa-linkedin-in" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" target="_blank">
+                        <a
+                          href="https://instagram.com/uzmyteacher?utm_medium=copy_link"
+                          target="_blank"
+                        >
                           <i className="fab fa-instagram" />
                         </a>
                       </li>
                       <li>
-                        <a href="#" target="_blank">
-                          <i className="fab fa-dribbble" />{" "}
+                        <a
+                          href="https://www.facebook.com/uzmyteacher/"
+                          target="_blank"
+                        >
+                          <i aria-hidden="true" className="fab fa-facebook-f" />{" "}
                         </a>
                       </li>
                     </ul>

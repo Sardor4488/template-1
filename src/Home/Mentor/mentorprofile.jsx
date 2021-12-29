@@ -125,7 +125,9 @@ const MentorProfile = () => {
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
                               <i className="fas fa-map-marker-alt" />
-                              {userdata?.user?.region} {userdata?.user?.country}
+                              {userdata?.user?.country
+                                ? userdata?.user?.country
+                                : "Kiritilmagan"}
                             </p>
                           </div>
                         </div>

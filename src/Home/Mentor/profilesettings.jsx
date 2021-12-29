@@ -7,10 +7,16 @@ import PhoneInput from "react-phone-number-input";
 import { useSelector } from "react-redux";
 import { getCourses } from "../../Api/getApi";
 import { UpdateTeacher } from "../../Api/updateApi";
-import { experienceData, languageData, priceData } from "../../Data/index";
+import {
+  aboutUsdata,
+  experienceData,
+  languageData,
+  priceData,
+} from "../../Data/index";
 import AvatarImageCropper from "react-avatar-image-cropper";
 import FormGroup from "../../UI/FormGroup/FormGroup";
 import MySelect from "../../UI/Select/MySelect";
+import Validation from "./components/Validation";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
@@ -30,6 +36,7 @@ const ProfileSettings = () => {
   const [experience, setExperience] = useState(
     userdata?.user?.experience ? userdata?.user?.experience : "1-3"
   );
+  const [about_us, setAboutUs] = useState("Telegram");
   const [birth_date, setBirthDate] = useState(userdata?.user?.birth_date);
   const [languages, setLanguages] = useState([]);
   const [language, setLanguage] = useState(
@@ -40,24 +47,8 @@ const ProfileSettings = () => {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [resume, setResume] = useState(null);
-  const [resumePost, setResumePost] = useState(userdata?.user?.resume);
   const [offert_price, setOffertprice] = useState(0);
-
-  const [emailError, setEmailError] = useState(false);
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [telegramNumberError, setTelegramNumberError] = useState(false);
-  const [courseIdError, setCourseIdError] = useState(false);
-  const [priceError, setPriceError] = useState(false);
-  const [descriptionError, setDescriptionError] = useState(false);
-  const [experienceError, setExperienceError] = useState(false);
-  const [birthDateError, setBirthDateError] = useState(false);
-  const [languageError, setLanguageError] = useState(false);
-  const [countryError, setCountryError] = useState(false);
-  const [regionError, setRegionError] = useState(false);
-  const [resumeError, setResumeError] = useState(false);
-
+  const [errors, setErrors] = useState({});
   const id = localStorage.getItem("user_id");
   const apply = (file) => {
     setImage(file);
@@ -79,54 +70,52 @@ const ProfileSettings = () => {
     setLanguages(languagea);
     setLanguage(languagea);
   };
-  const array = [
-    email,
-    first_name,
-    last_name,
-    phone_number,
-    telegram_number,
-    course_id,
-    price,
-    description,
-    experience,
-    birth_date,
-    language,
-    country,
-    region,
-    resumePost,
-  ];
-  const arrayError = [
-    setEmailError,
-    setFirstNameError,
-    setLastNameError,
-    setPhoneNumberError,
-    setTelegramNumberError,
-    setCourseIdError,
-    setPriceError,
-    setDescriptionError,
-    setExperienceError,
-    setBirthDateError,
-    setLanguageError,
-    setCountryError,
-    setRegionError,
-    setResumeError,
-  ];
+
+  let resumeEr = resume ? resume : userdata?.user?.resume;
+
   const updateTeacher = (e) => {
     e.preventDefault();
-    let update = false;
-    console.log("ishladi");
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] !== null || array[i] !== undefined || array[i] !== "") {
-        arrayError[i](false);
-        update = true;
-      }
-      if (array[i] == null || array[i] == undefined || array[i] == "") {
-        arrayError[i](true);
-        update = false;
-      }
-    }
-    console.log(array);
-    if (update) {
+
+    setErrors(
+      Validation({
+        email,
+        first_name,
+        last_name,
+        phone_number,
+        telegram_number,
+        course_id,
+        price,
+        description,
+        experience,
+        birth_date,
+        language,
+        country,
+        region,
+        resumeEr,
+        about_us,
+      })
+    );
+    if (
+      Object.keys(
+        Validation({
+          email,
+          first_name,
+          last_name,
+          phone_number,
+          telegram_number,
+          course_id,
+          price,
+          description,
+          experience,
+          birth_date,
+          language,
+          country,
+          region,
+          resumeEr,
+          about_us,
+        })
+      ).length == 0
+    ) {
       const fd = new FormData();
       fd.append("email", email);
       fd.append("first_name", first_name);
@@ -141,6 +130,7 @@ const ProfileSettings = () => {
       fd.append("language", language);
       fd.append("country", country);
       fd.append("region", region);
+      fd.append("about_us", about_us);
       fd.append("resume", resume);
       fd.append("birth_date", birth_date);
       fd.append("offert_price", offert_price);
@@ -154,6 +144,7 @@ const ProfileSettings = () => {
     }
     fetchCourses();
   }, []);
+  console.log(errors);
 
   const offerta = () => {
     if (offert_price == 0) {
@@ -177,7 +168,6 @@ const ProfileSettings = () => {
           <div
             style={{
               borderRadius: "15px",
-              overflow: "hidden",
               width: "250px",
               height: "250px",
               margin: "auto",
@@ -243,7 +233,7 @@ const ProfileSettings = () => {
                                   imagePreview
                                     ? imagePreview
                                     : userdata?.user?.image
-                                    ? `https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`
+                                    ? `http://teach-api.uz/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"
@@ -272,7 +262,7 @@ const ProfileSettings = () => {
                           value={first_name}
                           setValue={setFirstName}
                           type={"text"}
-                          error={firstNameError}
+                          error={errors.first_name}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -281,7 +271,7 @@ const ProfileSettings = () => {
                           value={last_name}
                           setValue={setLastName}
                           type={"text"}
-                          error={lastNameError}
+                          error={errors.last_name}
                         />
                       </div>
 
@@ -291,7 +281,7 @@ const ProfileSettings = () => {
                           value={birth_date}
                           setValue={setBirthDate}
                           type={"date"}
-                          error={birthDateError}
+                          error={errors.birth_date}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -299,7 +289,7 @@ const ProfileSettings = () => {
                           label={"Fan nomi"}
                           setValue={setCourseId}
                           array={coursesData}
-                          error={courseIdError}
+                          error={errors.course_id}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -308,7 +298,7 @@ const ProfileSettings = () => {
                           value={email}
                           setValue={setEmail}
                           type={"email"}
-                          error={emailError}
+                          error={errors.email}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -318,10 +308,9 @@ const ProfileSettings = () => {
                             international
                             defaultCountry="UZ"
                             value={phone_number}
-                            className=""
                             onChange={setPhoneNumber}
                           />
-                          {phoneNumberError && (
+                          {errors.phone_number && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart
                             </p>
@@ -336,7 +325,7 @@ const ProfileSettings = () => {
                           value={telegram_number}
                           setValue={setTelegramNumber}
                           type={"text"}
-                          error={telegramNumberError}
+                          error={errors.telegram_number}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -344,7 +333,7 @@ const ProfileSettings = () => {
                           label={"Tajriba"}
                           setValue={setExperience}
                           array={experienceData}
-                          error={experienceError}
+                          error={errors.experience}
                         />
                       </div>
                       <div className="col-12">
@@ -354,7 +343,7 @@ const ProfileSettings = () => {
                           }
                           setValue={handleLanguageAdd}
                           array={languageData}
-                          error={languageError}
+                          error={errors.language}
                           item={languages}
                           itemDelete={handleLanguageDelete}
                         />
@@ -368,28 +357,23 @@ const ProfileSettings = () => {
                         <MySelect
                           array={priceData}
                           setValue={setPrice}
-                          error={priceError}
+                          error={errors.price}
                         />
                       </div>
                       <div className="col-12 col-md-6">
                         <div className="form-group">
                           <label>Resyume yuklash</label>
-                          <div className="change-photo-btn">
-                            <span>
-                              <i className="fa fa-upload"></i> Resume yuklash
-                            </span>
-                            <input
-                              type="file"
-                              id="resumeInput"
-                              accept="application/*"
-                              onChange={(e) => {
-                                setResume(e.target.files[0]);
-                                setResumePost(e.target.files[0]);
-                              }}
-                              className="upload"
-                            />
-                          </div>
-                          {resumeError && (
+                          <input
+                            type="file"
+                            id="resumeInput"
+                            accept="application/*"
+                            className="form-control custom_file_input"
+                            style={{ height: "42px", padding: "9px 0px" }}
+                            onChange={(e) => {
+                              setResume(e.target.files[0]);
+                            }}
+                          />
+                          {errors.resumeEr && (
                             <p className="text-danger mt-2">
                               Bu joyni to'ldirish shart
                             </p>
@@ -397,12 +381,11 @@ const ProfileSettings = () => {
                         </div>
                       </div>
                       <div className="col-12 col-md-6">
-                        <FormGroup
+                        <MySelect
                           label={"Biz haqimizda qayerdan eshitdingiz"}
-                          type={"text"}
-                          // value={region}
-                          // setValue={setRegion}
-                          // error={regionError}
+                          array={aboutUsdata}
+                          setValue={setAboutUs}
+                          error={errors.about_us}
                         />
                       </div>
                       <div className="col-12">
@@ -415,16 +398,25 @@ const ProfileSettings = () => {
                           <textarea
                             type="text"
                             minLength="30"
-                            maxLength="200"
                             value={description || ""}
                             onChange={(e) => setDescription(e.target.value)}
                             className="form-control"
+                            cols="30"
+                            rows="10"
                           />
-                          {descriptionError && (
-                            <p className="text-danger mt-2">
-                              Bu joyni to'ldirish shart
-                            </p>
-                          )}
+                          <div className="d-flex flex-wrap">
+                            {errors.description && (
+                              <p className="text-danger mt-2">
+                                Bu joyni to'ldirish shart
+                              </p>
+                            )}
+                            {errors.description_length && (
+                              <p className="text-danger ms-2 mt-2">
+                                So'zlarning uzunligi 50 tadan kam bo'lmasligi
+                                lozim!
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
 
@@ -434,7 +426,7 @@ const ProfileSettings = () => {
                           value={region}
                           setValue={setRegion}
                           type={"text"}
-                          error={regionError}
+                          error={errors.region}
                         />
                       </div>
                       <div className="col-12 col-md-6">
@@ -443,7 +435,7 @@ const ProfileSettings = () => {
                           value={country}
                           setValue={setCountry}
                           type={"text"}
-                          error={countryError}
+                          error={errors.country}
                         />
                       </div>
                       <div className="col-12">
@@ -461,7 +453,10 @@ const ProfileSettings = () => {
                               htmlFor="agree_checkbox_user"
                             >
                               Narxlar bilan
-                              <Link to="#">tanishib</Link> chiqdim
+                              <Link className="mx-1" to="#">
+                                tanishib
+                              </Link>
+                              chiqdim
                             </label>
                           </div>
                         </div>

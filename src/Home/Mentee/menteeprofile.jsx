@@ -56,7 +56,7 @@ const MenteeProfile = () => {
                           {userdata?.user?.image ? (
                             <img
                               className="pro-avatar-image"
-                              src={`https://teach-api.uz/teach-api/public/storage/${userdata?.user?.image}`}
+                              src={`http://teach-api.uz/storage/${userdata?.user?.image}`}
                               alt="user_image"
                             />
                           ) : (
@@ -68,9 +68,8 @@ const MenteeProfile = () => {
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
                               <i className="fas fa-map-marker-alt me-2" />
-                              {userdata?.user?.region
-                                ? userdata?.user?.region +
-                                  userdata?.user?.country
+                              {userdata?.user?.country
+                                ? userdata?.user?.country
                                 : " Kiritilmagan"}
                             </p>
                           </div>
@@ -80,9 +79,9 @@ const MenteeProfile = () => {
                             {userdata?.user?.first_name}
                             {userdata?.user?.last_name}
                           </h4>
-                          <p className="mentor-type">
+                          {/* <p className="mentor-type">
                             English Literature (M.A)
-                          </p>
+                          </p> */}
                         </div>
                       </div>
                     </div>
@@ -106,8 +105,8 @@ const MenteeProfile = () => {
                   <div className="widget about-widget custom-about mb-0">
                     <h4 className="widget-title">Men haqimda</h4>
                     <hr />
-                    {userdata?.user?.description
-                      ? userdata?.user?.description
+                    {userdata?.user?.target
+                      ? userdata?.user?.target
                       : "Kiritilmagan"}
                   </div>
                   {/* /About Details */}
@@ -176,7 +175,11 @@ const MenteeProfile = () => {
                           <div className="experience-content">
                             <div className="timeline-content">
                               <span>Hozirgi bilm daraja</span>
-                              <div className="row-result">Boshlang'ich</div>
+                              <div className="row-result">
+                                {userdata?.user?.experience
+                                  ? userdata?.user?.experience
+                                  : "Kiritilmagan"}
+                              </div>
                             </div>
                           </div>
                         </li>

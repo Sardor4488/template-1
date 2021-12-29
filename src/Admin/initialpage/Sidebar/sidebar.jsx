@@ -41,6 +41,12 @@ class Sidebar extends Component {
                   <span>O'quvchilar</span>
                 </Link>
               </li>
+              <li className={pathname.includes("team") ? "active" : ""}>
+                <Link to="/admin/team">
+                  <i className="feather-users" />
+                  <span>Bizning jamoa</span>
+                </Link>
+              </li>
               <li className={pathname.includes("booking-list") ? "active" : ""}>
                 <Link to="/admin/booking-list">
                   <i className="feather-list" />

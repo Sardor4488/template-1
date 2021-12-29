@@ -29,6 +29,7 @@ import Error404 from "../MainPage/Pages/ErrorPage/error404";
 import Error500 from "../MainPage/Pages/ErrorPage/error500";
 import LeadProfile from "../MainPage/Pages/leadProfile";
 import MentorProfile from "../MainPage/Pages/mentorProfil";
+import Team from "../MainPage/Main/team";
 
 export default [
   {
@@ -38,6 +39,10 @@ export default [
   {
     path: "lead",
     component: Lead,
+  },
+  {
+    path: "team",
+    component: Team,
   },
   {
     path: "leadProfile/:lead_id",
