@@ -23,13 +23,6 @@ const Sidebar = (props) => {
               {userdata?.user?.last_name.slice(0, 1)}
             </div>
           )}
-          {/* <div className="rating">
-              <i className="fas fa-star filled" />
-              <i className="fas fa-star filled" />
-              <i className="fas fa-star filled" />
-              <i className="fas fa-star filled" />
-              <i className="fas fa-star" />
-          </div> */}
           <div className="user-info-cont">
             <h4 className="usr-name">
               {userdata?.user?.first_name} {userdata?.user?.last_name}
@@ -83,7 +76,7 @@ const Sidebar = (props) => {
               </Link>
             </li> */}
             <li>
-              <Link to="/app/mentee/chat-mentee">
+              <Link to="#" disabled className="disabled">
                 <i className="fas fa-comments" />
                 Yozishmalar{" "}
                 <span>
@@ -106,7 +99,8 @@ const Sidebar = (props) => {
 
             <li>
               <Link
-                to="/app/mentee/share-friends"
+                to="#"
+                disabled
                 className={pathname.includes("share-friends") ? "active" : ""}
               >
                 <i className="fas fa-user-plus" />
@@ -119,6 +113,7 @@ const Sidebar = (props) => {
             <li>
               <Link
                 to="#"
+                disabled
                 className={pathname.includes("default") ? "active" : ""}
               >
                 <i className="fas fa-check-square" />
@@ -134,7 +129,7 @@ const Sidebar = (props) => {
                 className={pathname.includes("invoices") ? "active" : ""}
               >
                 <i className="fas fa-wallet" />
-                To'lovlar{" "}
+                To'lovlar
                 <span>
                   <i className="fas fa-chevron-right" />
                 </span>

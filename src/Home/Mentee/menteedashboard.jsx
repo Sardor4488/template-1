@@ -190,7 +190,7 @@ const MenteeDashboard = () => {
                                         <div className="user-infos mb-0">
                                           <ul className="m-0 p-0">
                                             <li className="usr-name">
-                                              <Link to="/app/Mentee/booking">
+                                              <Link to="/app/mentor/booking">
                                                 Ruby Perrin
                                               </Link>
                                             </li>
@@ -285,7 +285,7 @@ const MenteeDashboard = () => {
                                             <br />
                                             <span className="">
                                               <Link
-                                                to="/app/Mentee/booking"
+                                                to="/app/mentee/booking"
                                                 className="more"
                                               >
                                                 Barcha fikrlar
@@ -304,7 +304,7 @@ const MenteeDashboard = () => {
                                     <div className="mentor-booking w-100 d-flex justify-content-end">
                                       <Link
                                         className="apt-btn p-1 "
-                                        to="/app/Mentee/booking"
+                                        to="/app/mentor/booking"
                                       >
                                         Band qilish
                                       </Link>

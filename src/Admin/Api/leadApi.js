@@ -15,7 +15,7 @@ const getLead = () => {
     .then((res) => {
       if (res.status == 200) {
         Lead_list(res.data?.leads_list);
-      } 
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -24,7 +24,7 @@ const getLead = () => {
 
 const commentLead = (data) => {
   axios
-    .post("admin/add-comment-lead", data, config)
+    .post("admin/add-comment-user", data, config)
     .then((res) => {
       if (res.status == 200) {
         getLead();

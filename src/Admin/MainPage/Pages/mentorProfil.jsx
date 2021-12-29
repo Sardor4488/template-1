@@ -134,7 +134,7 @@ const MentorProfile = () => {
                           </p>
                         </div>
                         <div className="row">
-                          <p className="col-sm-4 text-muted mb-0 mb-sm-3">
+                          <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Tug'ilgan sanasi
                           </p>
                           <p className="col-sm-8">

@@ -1,31 +1,30 @@
-import React, { Component, useState } from 'react'
-import { USER } from '../../constant/imagepath_home'
-import { Link } from 'react-router-dom'
-import { Modal, ModalHeader, ModalBody } from 'reactstrap'
-import { useSelector } from 'react-redux'
-import { USER_2 } from '../../constant/imagepath_home'
-import DateRangePicker from 'react-bootstrap-daterangepicker'
-import click from '../assets/payicon/click.png'
-import payme from '../assets/payicon/payme.png'
-import { Calendar } from '../../Data/Calendar'
+import React, { Component, useState } from "react";
+import { USER } from "../../constant/imagepath_home";
+import { Link } from "react-router-dom";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import { useSelector } from "react-redux";
+import { USER_2 } from "../../constant/imagepath_home";
+import DateRangePicker from "react-bootstrap-daterangepicker";
+import click from "../assets/payicon/click.png";
+import payme from "../assets/payicon/payme.png";
+import { Calendar } from "../../Data/Calendar";
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
-import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap/dist/css/bootstrap.css";
 // you will also need the css that comes with bootstrap-daterangepicker
-import 'bootstrap-daterangepicker/daterangepicker.css'
+import "bootstrap-daterangepicker/daterangepicker.css";
 // Import Swiper React components
-import { Swiper } from 'swiper/react/swiper'
-import { SwiperSlide } from 'swiper/react/swiper-slide'
+import { Swiper } from "swiper/react/swiper";
+import { SwiperSlide } from "swiper/react/swiper-slide";
 
-
-import 'swiper/swiper.min.css'
-import 'swiper/swiper-bundle.min.css'
+import "swiper/swiper.min.css";
+import "swiper/swiper-bundle.min.css";
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation } from 'swiper'
+import SwiperCore, { Navigation } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([Navigation])
+SwiperCore.use([Navigation]);
 const MentorBooking = () => {
   const [state, setState] = useState({
     isvoicecallmodal: false,
@@ -33,48 +32,48 @@ const MentorBooking = () => {
     isnewmodal: false,
     iseditModal: false,
     addnewtimeslot: [],
-    edittimeslot: ['placeholder', 'placeholder'],
-  })
+    edittimeslot: ["placeholder", "placeholder"],
+  });
   const onChange = (date) => {
     // Day.js object
-    console.log(date)
-  }
+    console.log(date);
+  };
   const voicecallmodalClose = () => {
-    setState({ isvoicecallmodal: false })
-  }
+    setState({ isvoicecallmodal: false });
+  };
   const videocallModalClose = () => {
-    setState({ isvideocallmodal: false })
-  }
+    setState({ isvideocallmodal: false });
+  };
   const newModalClose = () => {
-    setState({ isnewmodal: false })
-  }
+    setState({ isnewmodal: false });
+  };
   const editModalClose = () => {
-    setState({ iseditModal: false })
-  }
+    setState({ iseditModal: false });
+  };
   const addnewtimeschedule = () => {
-    const { addnewtimeslot } = state
-    var addnewrow = addnewtimeslot
-    addnewrow.push('placeholder')
-    setState({ addnewtimeslot: addnewrow })
-  }
+    const { addnewtimeslot } = state;
+    var addnewrow = addnewtimeslot;
+    addnewrow.push("placeholder");
+    setState({ addnewtimeslot: addnewrow });
+  };
   const removenewtimeschedule = (index) => {
-    var contacts = [...state.addnewtimeslot]
-    contacts.splice(index, 1)
-    setState({ addnewtimeslot: contacts })
-  }
+    var contacts = [...state.addnewtimeslot];
+    contacts.splice(index, 1);
+    setState({ addnewtimeslot: contacts });
+  };
   const edittimeschedule = () => {
-    const { edittimeslot } = state
-    var addnewrow = edittimeslot
-    addnewrow.push('placeholder')
-    setState({ edittimeslot: addnewrow })
-  }
+    const { edittimeslot } = state;
+    var addnewrow = edittimeslot;
+    addnewrow.push("placeholder");
+    setState({ edittimeslot: addnewrow });
+  };
   const removeedittimeschedule = (index) => {
-    var contacts = [...state.edittimeslot]
-    contacts.splice(index, 1)
-    setState({ edittimeslot: contacts })
-  }
-  const { addnewtimeslot, edittimeslot } = state
-  const userdata = useSelector((state) => state.Reducer.userdata)
+    var contacts = [...state.edittimeslot];
+    contacts.splice(index, 1);
+    setState({ edittimeslot: contacts });
+  };
+  const { addnewtimeslot, edittimeslot } = state;
+  const userdata = useSelector((state) => state.Reducer.userdata);
   return (
     <div>
       {/* Breadcrumb */}
@@ -129,7 +128,7 @@ const MentorBooking = () => {
                           <h4 className="">Sardor Temirov</h4>
                           <p className="mentor-type mb-0">
                             English Literature (M.A)
-                          </p>{' '}
+                          </p>{" "}
                           <div className="mentor-action">
                             <p className="mentor-type social-title">
                               blabla@gmail.com
@@ -164,7 +163,7 @@ const MentorBooking = () => {
                     <h4 className="mb-1">11 November 2019</h4>
                     <p className="text-muted">Monday</p>
                   </div>
-                  <div className="col-12 col-sm-8 col-md-6 text-sm-right">
+                  {/* <div className="col-12 col-sm-8 col-md-6 text-sm-right">
                     <div className="bookingrange btn btn-white btn-sm mb-3">
                       <i className="far fa-calendar-alt mr-2" />
                       <DateRangePicker
@@ -201,7 +200,7 @@ const MentorBooking = () => {
                       </DateRangePicker>
                       <i className="fas fa-chevron-down ml-2" />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 {/* Schedule Widget */}
 
@@ -258,7 +257,7 @@ const MentorBooking = () => {
                                                     >
                                                       <span>{v}</span>
                                                     </a>
-                                                  )
+                                                  );
                                                 })
                                               ) : (
                                                 <a
@@ -270,7 +269,7 @@ const MentorBooking = () => {
                                                 </a>
                                               )}
                                             </li>
-                                          )
+                                          );
                                         })}
                                       </ul>
                                     </div>
@@ -281,7 +280,7 @@ const MentorBooking = () => {
                               {/* /Schedule Content */}
                             </div>
                           </SwiperSlide>
-                        )
+                        );
                       })}
                   </Swiper>
                 </div>
@@ -411,7 +410,7 @@ const MentorBooking = () => {
                         <li>
                           <div className="experience-content">
                             <div className="timeline-content">
-                              <span>Doiiy yashash manzili</span>
+                              <span>Doimiy yashash manzili</span>
                               <div className="row-result">
                                 National highway road
                               </div>
@@ -436,7 +435,7 @@ const MentorBooking = () => {
                   toggle={() => newModalClose()}
                 >
                   <ModalHeader toggle={() => newModalClose()}>
-                    {' '}
+                    {" "}
                     Add Time Slots
                   </ModalHeader>
                   <ModalBody>
@@ -591,11 +590,11 @@ const MentorBooking = () => {
                                 </label>
                                 <a
                                   className="btn btn-danger trash"
-                                  style={{ cursor: 'pointer' }}
+                                  style={{ cursor: "pointer" }}
                                   onClick={() => removenewtimeschedule(index)}
                                 >
                                   <i
-                                    style={{ color: '#fff' }}
+                                    style={{ color: "#fff" }}
                                     className="far fa-trash-alt"
                                   />
                                 </a>
@@ -605,7 +604,7 @@ const MentorBooking = () => {
                         ))}
                       <div className="add-more mb-3">
                         <a
-                          style={{ cursor: 'pointer', color: '#1e88e5' }}
+                          style={{ cursor: "pointer", color: "#1e88e5" }}
                           onClick={() => addnewtimeschedule()}
                         >
                           <i className="fa fa-plus-circle" /> Add More
@@ -629,7 +628,7 @@ const MentorBooking = () => {
                   toggle={() => editModalClose()}
                 >
                   <ModalHeader toggle={() => editModalClose()}>
-                    {' '}
+                    {" "}
                     Edit Time Slots
                   </ModalHeader>
                   <ModalBody>
@@ -788,7 +787,7 @@ const MentorBooking = () => {
                                   onClick={() => removeedittimeschedule(index)}
                                 >
                                   <i
-                                    style={{ color: '#fff' }}
+                                    style={{ color: "#fff" }}
                                     className="far fa-trash-alt"
                                   />
                                 </a>
@@ -799,7 +798,7 @@ const MentorBooking = () => {
                       <div className="add-more mb-3">
                         <a
                           className="add-hours"
-                          style={{ cursor: 'pointer', color: '#1e88e5' }}
+                          style={{ cursor: "pointer", color: "#1e88e5" }}
                           onClick={() => edittimeschedule()}
                         >
                           <i className="fa fa-plus-circle" /> Add More
@@ -904,7 +903,7 @@ const MentorBooking = () => {
       </div>
       {/* Video Call Modal */}
     </div>
-  )
-}
+  );
+};
 
-export default MentorBooking
+export default MentorBooking;

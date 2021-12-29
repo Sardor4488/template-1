@@ -179,7 +179,10 @@ const Home = (props) => {
                 <div className="col-6 col-sm-4 col-md-4 col-lg-4 mb-3 d-flex justify-content-end align-items-center">
                   <div className="home_content">
                     <div className="home_content_item">
-                      <Link to="mentee/search/languages" className="me-1">
+                      <Link
+                        to={`mentee/search/languages/${categories[0]?.id}`}
+                        className="me-1"
+                      >
                         <div className="home_content_child">
                           <div className="home_svg_content">
                             <svg
@@ -198,7 +201,10 @@ const Home = (props) => {
                             <p className="home_item_title">
                               {categories[0]?.name}
                             </p>
-                            <p className="home_item_text"> 12 nafar ustoz</p>
+                            <p className="home_item_text">
+                              {" "}
+                              {categories[0]?.teacher_count} nafar ustoz
+                            </p>
                           </div>
                         </div>
                       </Link>
@@ -208,7 +214,10 @@ const Home = (props) => {
                 <div className="col-6 col-sm-4 col-md-4 col-lg-3 mb-3 d-flex justify-content-center align-items-center">
                   <div className="home_content">
                     <div className="home_content_item">
-                      <Link to="mentee/search/exact-sciences" className="me-1">
+                      <Link
+                        to={`mentee/search/exact-sciences/${categories[1]?.id}`}
+                        className="me-1"
+                      >
                         <div className="home_content_child">
                           <div className="home_svg_content">
                             <svg
@@ -236,7 +245,9 @@ const Home = (props) => {
                               {" "}
                               {categories[1]?.name}
                             </p>
-                            <p className="home_item_text"> 32 nafar ustoz</p>
+                            <p className="home_item_text">
+                              {categories[1]?.teacher_count} nafar ustoz
+                            </p>
                           </div>
                         </div>
                       </Link>
@@ -247,7 +258,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to="mentee/search/natural-sciences"
+                        to={`mentee/search/natural-sciences/${categories[2]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -284,7 +295,10 @@ const Home = (props) => {
                             <p className="home_item_title">
                               {categories[2]?.name}
                             </p>
-                            <p className="home_item_text"> 65 nafar ustoz</p>
+                            <p className="home_item_text">
+                              {" "}
+                              {categories[2]?.teacher_count} nafar ustoz
+                            </p>
                           </div>
                         </div>
                       </Link>
@@ -294,7 +308,10 @@ const Home = (props) => {
                 <div className="col-6 col-sm-5 col-lg-5 d-flex mb-3 mb-sm-0 justify-content-end align-items-center">
                   <div className="home_content">
                     <div className="home_content_item">
-                      <Link to="mentee/search/it" className="me-1">
+                      <Link
+                        to={`mentee/search/it/${categories[3]?.id}`}
+                        className="me-1"
+                      >
                         <div className="home_content_child">
                           <div className="home_svg_content">
                             <svg
@@ -326,7 +343,10 @@ const Home = (props) => {
                             <p className="home_item_title">
                               {categories[3]?.name}
                             </p>
-                            <p className="home_item_text"> 11 nafar ustoz</p>
+                            <p className="home_item_text">
+                              {" "}
+                              {categories[3]?.teacher_count} nafar ustoz
+                            </p>
                           </div>
                         </div>
                       </Link>
@@ -336,7 +356,10 @@ const Home = (props) => {
                 <div className="col-6 col-sm-5 col-lg-5 d-flex justify-content-start align-items-center">
                   <div className="home_content">
                     <div className="home_content_item">
-                      <Link to="mentee/search/social-sciences" className="me-1">
+                      <Link
+                        to={`mentee/search/social-sciences/${categories[4]?.id}`}
+                        className="me-1"
+                      >
                         <div className="home_content_child">
                           <div className="home_svg_content">
                             <svg
@@ -364,7 +387,10 @@ const Home = (props) => {
                               {" "}
                               {categories[4]?.name}
                             </p>
-                            <p className="home_item_text"> 41 nafar ustoz</p>
+                            <p className="home_item_text">
+                              {" "}
+                              {categories[4]?.teacher_count} nafar ustoz
+                            </p>
                           </div>
                         </div>
                       </Link>

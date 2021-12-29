@@ -11,15 +11,17 @@ import FormGroup from "../../UI/input/MyInput";
 import MySelect from "../../UI/input/select/MySelect";
 import { aboutUsdata, jobData, levelData } from "../../../Data";
 import { UpdateStudent } from "../../../Api/updateApi";
+import { TeacherApi } from "../../Api/teacherApi";
 const LeadProfile = () => {
   const location = useLocation();
   const [state, setState] = useState({ iseditmodal: false });
+
+  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
   const editModalClose = () => {
     setState({ iseditmodal: false });
   };
   const { lead_id } = useParams();
   const data = useSelector((state) => state.Reducer.lead_list[lead_id]);
-  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
   const [comment, setComment] = useState("");
   const [openComment, setOpenComment] = useState(false);
   const [first_name, setFirstName] = useState("");
@@ -43,6 +45,7 @@ const LeadProfile = () => {
 
   useEffect(() => {
     getLead();
+    TeacherApi({ status_id: 9 });
   }, [location.pathname]);
 
   const editLead = () => {
@@ -84,12 +87,12 @@ const LeadProfile = () => {
         <div className="page-header">
           <div className="row">
             <div className="col">
-              <h3 className="page-title">O'quvchi profili</h3>
+              <h3 className="page-title">Lead profili</h3>
               <ul className="breadcrumb">
                 <li className="breadcrumb-item">
                   <Link to="/admin/index">Admin</Link>
                 </li>
-                <li className="breadcrumb-item active">O'quvchi profili</li>
+                <li className="breadcrumb-item active">Lead profili</li>
               </ul>
             </div>
           </div>
@@ -114,12 +117,11 @@ const LeadProfile = () => {
                   </h4>
                   <h6 className="text-muted">{data?.email}</h6>
                   <div className="pb-3">
-                    <i className="fa fa-map-marker" /> Florida, United States
+                    <i className="fa fa-map-marker" />{" "}
+                    {data?.region ? data?.region : "Kiritilmagan"}
                   </div>
                   <div className="about-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    {data?.target ? data?.target : "Kritilmagan"}
                   </div>
                 </div>
                 <div className="col-auto profile-btn"></div>
@@ -170,7 +172,7 @@ const LeadProfile = () => {
                     <div className="card">
                       <div className="card-body">
                         <h5 className="card-title d-flex justify-content-between">
-                          <span>Personal Details</span>
+                          <span>Shaxsiy ma'lumotlari</span>
                           <a
                             className="edit-link"
                             data-toggle="modal"
@@ -178,7 +180,7 @@ const LeadProfile = () => {
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
-                            Edit
+                            Taxrirlash
                           </a>
                         </h5>
                         <div className="row">
@@ -193,7 +195,11 @@ const LeadProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Tug'ilgan sanasi
                           </p>
-                          <p className="col-sm-10">{data?.birth_date}</p>
+                          <p className="col-sm-10">
+                            {data?.birth_date
+                              ? data?.birth_date
+                              : "Kiritilmagan"}
+                          </p>
                         </div>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
@@ -205,19 +211,20 @@ const LeadProfile = () => {
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
                             Telefon raqami
                           </p>
-                          <p className="col-sm-10">+99899 999 99 99</p>
+                          <p className="col-sm-10">{data?.phone_number}</p>
                         </div>
                         <div className="row">
-                          <p className="col-sm-2 text-muted mb-0">Address</p>
-                          <p className="col-sm-10 mb-0">
-                            4663 Agriculture Lane,
-                            <br />
-                            Miami,
-                            <br />
-                            Florida - 33165,
-                            <br />
-                            United States.
-                          </p>
+                          <p className="col-sm-2 text-muted mb-0">Manzili</p>
+                          <div className="col-sm-10 mb-0">
+                            <p className="mb-1 fw-bold">Qayerdan</p>
+                            <p className="mb-1">
+                              {data?.region ? data?.region : "Kiritilmagan"}
+                            </p>
+                            <p className="mb-1 fw-bold">Hozir qayerda</p>
+                            <p>
+                              {data?.country ? data?.country : "Kiritilmagan"}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -360,36 +367,38 @@ const LeadProfile = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>
-                                  <h2 className="table-avatar">
-                                    <Link
-                                      to="/admin/mentor-profile"
-                                      className="avatar avatar-sm mr-2"
-                                    >
-                                      <img
-                                        className="avatar-img rounded-circle"
-                                        src={AVATAR_08}
-                                        alt="User Image"
-                                      />
-                                    </Link>
-                                    <Link to="/admin/mentor-profile">
-                                      James Amen
-                                    </Link>
-                                  </h2>
-                                </td>
-                                <td>Maths</td>
-                                <td>
-                                  <Ratings rating={5} />
-                                </td>
-                                <td>$3200.00</td>
-                                <td>
-                                  <button className="btn btn-primary">
-                                    {" "}
-                                    Biriktirish{" "}
-                                  </button>
-                                </td>
-                              </tr>
+                              {teacher_list.map((v, i) => (
+                                <tr key={i}>
+                                  <td>
+                                    <h2 className="table-avatar">
+                                      <Link
+                                        to="/admin/mentor-profile"
+                                        className="avatar avatar-sm mr-2"
+                                      >
+                                        <img
+                                          className="avatar-img rounded-circle"
+                                          src={AVATAR_08}
+                                          alt="User Image"
+                                        />
+                                      </Link>
+                                      <Link to="/admin/mentor-profile">
+                                        {v.first_name} {v.last_name}
+                                      </Link>
+                                    </h2>
+                                  </td>
+                                  <td>{v.course_name}</td>
+                                  <td>
+                                    <Ratings rating={4.5} />
+                                  </td>
+                                  <td>{v.price}</td>
+                                  <td>
+                                    <button className="btn btn-primary">
+                                      {" "}
+                                      Biriktirish{" "}
+                                    </button>
+                                  </td>
+                                </tr>
+                              ))}
                             </tbody>
                           </table>
                         ) : (

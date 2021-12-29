@@ -35,10 +35,7 @@ const Menteeroute = ({ match }) => {
             component={MenteeProfile}
           />
           <Route path={`${match.url}/map-list`} component={Maplist} />
-          <Route
-            path={`${match.url}/search/:category`}
-            component={Searchmentors}
-          />
+          <Route path={`${match.url}/search/:category/:id`} component={Searchmentors} />
           <Route
             path={`${match.url}/bookings-mentee`}
             component={BookingsMentee}
@@ -70,12 +67,17 @@ const Menteeroute = ({ match }) => {
       </>
     );
   } else {
-    <Switch>
-      <Route path={`${match.url}/search/:category`} component={Searchmentors} />
-      <Route>
-        <Redirect to="/404" />
-      </Route>
-    </Switch>;
+    return (
+      <Switch>
+        <Route
+          path={`${match.url}/search/:category/:id`}
+          component={Searchmentors}
+        />
+        <Route>
+          <Redirect to="/404" />
+        </Route>
+      </Switch>
+    );
   }
 };
 export default Menteeroute;

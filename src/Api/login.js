@@ -13,6 +13,7 @@ const login = (data, history) => {
         localStorage.setItem("user_id", res.data.user.id);
         localStorage.setItem("teacher_id", res?.data?.user?.teacher_id);
         history.push(`app/${res.data.user.role}/dashboard`);
+        window.location.reload()
         LoadingOff();
       }
     })

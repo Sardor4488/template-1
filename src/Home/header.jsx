@@ -195,7 +195,7 @@ const Header = (props) => {
                 <Link to="/login">Kirish </Link>
               </li>
               <li className="login-link">
-                <Link to="/register">A'zo bo'lish</Link>
+                <Link to="/register">Ro'ytdan o'tish</Link>
               </li>
             </ul>
           </div>
@@ -268,7 +268,7 @@ const Header = (props) => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link header-login " to="/register">
-                  <span> A'zo bo'lish</span>
+                  <span>Ro'yxatdan o'tish</span>
                 </Link>
               </li>
             </ul>

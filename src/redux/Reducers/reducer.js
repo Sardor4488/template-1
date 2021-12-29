@@ -33,7 +33,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         teacher_list: action.payload.List,
-        teacher_status_list: action.payload.Statuses_list,
+        teacher_status_list: action.payload.Course_names,
       };
     default:
       return state;

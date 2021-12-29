@@ -11,7 +11,7 @@ import { USER_1 } from "../../imagepath";
 const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
-  const data = useSelector((state) => state?.Reducer?.teacher_list);
+  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
@@ -19,7 +19,7 @@ const Clients = () => {
 
   const filterData = (text) => {
     setSearch(text);
-    const lists = { ...data };
+    const lists = { ...teacher_list };
     const filterList = lists?.filter(
       (v) =>
         v.first_name.toLowerCase().includes(text.toLowerCase()) ||
@@ -29,8 +29,8 @@ const Clients = () => {
   };
 
   useEffect(() => {
-    setList(data);
-  }, [data]);
+    setList(teacher_list);
+  }, [teacher_list]);
 
   const getCategoryTeacher = (id) => {
     localStorage.setItem("teacher_status_id", teacher_status_list[id].id);
@@ -61,8 +61,7 @@ const Clients = () => {
               className="avatar-img rounded-circle"
               src={
                 record?.image
-                  ? "https://teach-api.uz/teach-api/public/storage/" +
-                    record?.image
+                  ? "http://teach-api.uz/storage/" + record?.image
                   : USER_1
               }
               alt="User Image"
