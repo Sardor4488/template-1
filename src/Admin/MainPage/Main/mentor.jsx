@@ -12,11 +12,11 @@ import { Teacher_status_id } from "../../../redux/Actions";
 const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
+  const [list, setList] = useState([]);
   const data = useSelector((state) => state?.Reducer?.teacher_list)
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
-  const [list, setList] = useState([]);
 
   const filterData = (text) => {
     setSearch(text);
