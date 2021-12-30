@@ -20,7 +20,7 @@ import Validation from "./components/Validation";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
-  
+
   const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.user?.email);
   const [first_name, setFirstName] = useState(userdata?.user?.first_name);
@@ -72,6 +72,13 @@ const ProfileSettings = () => {
     setLanguage(languagea);
   };
 
+  useEffect(() => {
+    async function fetchCourses() {
+      const res = await getCourses();
+      setCoursesData(res);
+    }
+    fetchCourses();
+  }, []);
   let resumeEr = resume ? resume : userdata?.user?.resume;
 
   const updateTeacher = (e) => {
@@ -138,7 +145,7 @@ const ProfileSettings = () => {
       UpdateTeacher(fd, id);
     }
   };
-                                                                
+
   console.log(errors);
 
   const offerta = () => {
