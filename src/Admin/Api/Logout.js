@@ -1,9 +1,13 @@
 import axios from "axios";
-
+const token = localStorage.getItem("admin_token");
+const config = {
+  headers: {
+    Authorization: "Bearer " + token,
+  },
+};
 const logout = (history) => {
-  const token = localStorage.getItem("admin_token");
   axios
-    .post("logout", token)
+    .post("logout", token, config)
     .then((res) => {
       if (res.data.success) {
         history.push("/admin_login");
