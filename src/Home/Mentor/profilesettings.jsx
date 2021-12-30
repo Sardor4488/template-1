@@ -20,6 +20,7 @@ import Validation from "./components/Validation";
 const ProfileSettings = () => {
   const userdata = useSelector((state) => state.Reducer.userdata);
   const [imgmodal, setImgModal] = useState(false);
+  
   const [coursesData, setCoursesData] = useState([]);
   const [email, setEmail] = useState(userdata?.user?.email);
   const [first_name, setFirstName] = useState(userdata?.user?.first_name);

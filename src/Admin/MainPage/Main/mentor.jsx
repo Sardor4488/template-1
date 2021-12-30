@@ -12,7 +12,7 @@ const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
   const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
-  
+
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
@@ -27,10 +27,6 @@ const Clients = () => {
     );
     setList(filterList);
   };
-
-  useEffect(() => {
-    setList(teacher_list);
-  }, [teacher_list]);
 
   const getCategoryTeacher = (id) => {
     localStorage.setItem("teacher_status_id", teacher_status_list[id].id);
@@ -170,7 +166,7 @@ const Clients = () => {
                   <Table
                     className="table-hover table-center mb-0"
                     pagination={{
-                      total: list?.length,
+                      total: teacher_list?.length,
                       showTotal: (total, range) =>
                         `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                       showSizeChanger: true,
@@ -179,7 +175,7 @@ const Clients = () => {
                     }}
                     style={{ overflowX: "auto" }}
                     columns={columns}
-                    dataSource={list}
+                    dataSource={teacher_list}
                     rowKey={(record) => record.phone_number}
                   />
                 </div>
