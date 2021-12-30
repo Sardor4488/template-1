@@ -11,12 +11,7 @@ import { USER_1 } from "../../imagepath";
 const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
-<<<<<<< HEAD
-  const [list, setList] = useState([]);
-  const data = useSelector((state) => state?.Reducer?.teacher_list)
-=======
   const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
->>>>>>> e8376e562c58eba82fe23bb2410427574c1433e0
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );
