@@ -70,7 +70,11 @@ const DefaultLayout = (props) => {
   }, []);
 
   const { location, match, history } = props;
+  const admin_role = localStorage.getItem("admin_role");
   const admin_token = localStorage.getItem("admin_token");
+
+  console.log(admin_token);
+
   return (
     <div className="main-wrapper">
       {location.pathname.includes("error-404") ||
@@ -80,14 +84,16 @@ const DefaultLayout = (props) => {
         <Header />
       )}
       <div>
-        {admin_token && location.pathname.includes("/admin") ? (
+        {admin_token &&
+        admin_role == "admin" &&
+        location.pathname.includes("/admin") ? (
           <Route exact path={"/admin"}>
             <Redirect to={"/admin/index"} />
           </Route>
         ) : (
           <Redirect to={"/admin_login"} />
         )}
-        {admin_token ? (
+        {admin_token && admin_role == "admin" ? (
           routerService &&
           routerService.map((route, key) => (
             <Route
