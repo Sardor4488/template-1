@@ -11,7 +11,7 @@ const Admin_login = (data, history) => {
         localStorage.setItem("admin_role", res.data.user.role);
         console.log(res);
         history.push("/admin/index");
-        // window.location.reload();
+        window.location.reload();
       }
     })
     .catch((err) => {
