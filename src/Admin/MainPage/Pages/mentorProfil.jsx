@@ -5,7 +5,34 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TeacherApi } from "../../Api/teacherApi";
 import { commentLead } from "../../Api/leadApi";
+import FormGroup from "../../UI/input/MyInput";
+import MySelect from "../../UI/input/select/MySelect";
+import { getCourses } from "../../../Api/getApi";
+import PhoneInput from "react-phone-number-input";
+import {
+  aboutUsdata,
+  experienceData,
+  languageData,
+  priceData,
+} from "../../../Data";
+
 const MentorProfile = () => {
+  const [coursesData, setCoursesData] = useState([]);
+  const [email, setEmail] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [telegram_number, setTelegramNumber] = useState("");
+  const [course_id, setCourseId] = useState("");
+  const [price, setPrice] = useState(10000);
+  const [description, setDescription] = useState("");
+  const [experience, setExperience] = useState("");
+  const [about_us, setAboutUs] = useState("Telegram");
+  const [birth_date, setBirthDate] = useState("");
+  const [language, setLanguage] = useState(["O'zbek"]);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+
   const { mentor_id } = useParams();
   const location = useLocation();
 
@@ -19,6 +46,14 @@ const MentorProfile = () => {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    async function fetchCourses() {
+      const res = await getCourses();
+      setCoursesData(res);
+    }
+    fetchCourses();
+  }, []);
+
   const [state, setState] = useState({
     iseditmodal: false,
   });
@@ -30,10 +65,32 @@ const MentorProfile = () => {
     setComment("");
   };
 
-  console.log(data);
-
   const editModalClose = () => {
     setState({ iseditmodal: false });
+  };
+
+  const handleLanguages = (event) => {
+    language?.filter((v) => v == event).length == 0 &&
+      setLanguage([...language, event]);
+  };
+
+  const deleteLanguages = (v) => {
+    const clone = [...language];
+    if (clone.length > 1) {
+      setLanguage(clone?.filter((value) => value !== v));
+    }
+  };
+
+  const edit = () => {
+    setState({ iseditmodal: true });
+    setFirstName(data?.first_name);
+    setLastName(data?.last_name);
+    setPhoneNumber(data?.phone_number);
+    setEmail(data?.email);
+    setRegion(data?.region);
+    setDescription(data?.description);
+    setBirthDate(data?.birth_date)
+    setCountry(data?.country)
   };
 
   return (
@@ -125,7 +182,7 @@ const MentorProfile = () => {
                           <a
                             className="edit-link"
                             data-toggle="modal"
-                            onClick={() => setState({ iseditmodal: true })}
+                            onClick={edit}
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
@@ -161,7 +218,7 @@ const MentorProfile = () => {
                             Telefon raqami
                           </p>
                           <p className="col-sm-10">
-                            {data?.phone_number
+                            {data?.phone_number 
                               ? data?.phone_number
                               : "Kiritilmagan"}
                           </p>
@@ -294,126 +351,145 @@ const MentorProfile = () => {
           </div>
         </div>
       </div>
+
       <Modal
         className="modal-dialog-centered"
         isOpen={state.iseditmodal}
         toggle={() => editModalClose()}
       >
         <ModalHeader toggle={() => editModalClose()}>
-          Personal Details
+          Shaxsiy ma'lumotlar
         </ModalHeader>
         <ModalBody>
           <form>
             <div className="row form-row">
               <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>First Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Allen"
-                  />
-                </div>
+                <FormGroup
+                  type={"text"}
+                  className={"text-capitalize"}
+                  value={first_name}
+                  setValue={setFirstName}
+                  label={"Ism"}
+                />
               </div>
               <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Last Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Davis"
-                  />
-                </div>
+                <FormGroup
+                  type={"text"}
+                  className={"text-capitalize"}
+                  value={last_name}
+                  setValue={setLastName}
+                  label={"Familya"}
+                />
               </div>
               <div className="col-12">
-                <div className="form-group">
-                  <label>Date of Birth</label>
-                  <div className="cal-icon">
-                    <input
-                      type="text"
-                      className="form-control"
-                      defaultValue="24-07-1983"
-                    />
-                  </div>
-                </div>
+                <FormGroup
+                  type={"date"}
+                  className={"text-capitalize"}
+                  value={birth_date}
+                  setValue={setBirthDate}
+                  label={"Tug'ilgan sana"}
+                />
               </div>
               <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Email ID</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    defaultValue="allendavis@example.com"
-                  />
-                </div>
+                <FormGroup
+                  type={"email"}
+                  value={email}
+                  setValue={setEmail}
+                  label={"Email"}
+                />
               </div>
               <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Mobile</label>
-                  <input
-                    type="text"
-                    defaultValue="+1 202-555-0125"
-                    className="form-control"
-                  />
-                </div>
+                <MySelect
+                  label={"Fan nomi"}
+                  setValue={setCourseId}
+                  array={coursesData}
+                />
               </div>
+
+              <div className="col-12 col-sm-6">
+                <label>Telefon raqam</label>
+                <PhoneInput
+                  international
+                  defaultCountry="UZ"
+                  value={phone_number}
+                  onChange={setPhoneNumber}
+                />
+              </div>
+              <div className="col-12 col-sm-6">
+                <MySelect
+                  label={"Tajribangiz"}
+                  setValue={setExperience}
+                  array={experienceData}
+                />
+              </div>
+
               <div className="col-12">
-                <h5 className="form-title">
-                  <span>Address</span>
-                </h5>
+                <MySelect
+                  label={"Bir soat darsingiz uchun qancha pul olmoqchisiz?"}
+                  setValue={setPrice}
+                  array={priceData}
+                />
               </div>
-              <div className="col-12">
-                <div className="form-group">
-                  <label>Address</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="4663 Agriculture Lane"
-                  />
+
+              <div className="col-12 col-sm-12">
+                <FormGroup
+                  type={"text"}
+                  value={telegram_number}
+                  setValue={setTelegramNumber}
+                  label={"Telegram akkaunt yoki telefon raqamingiz"}
+                />
+              </div>
+
+              <div className="col-12 col-sm-12">
+                <MySelect
+                  label={"Qaysi tillarda dars o'ta olasiz?"}
+                  setValue={handleLanguages}
+                  array={languageData}
+                />
+              </div>
+
+              {language.length > 0 && (
+                <div className="col-12 col-sm-12 d-flex flex-wrap">
+                  {language?.map((v) => (
+                    <div className="mx-2 mb-2">
+                      {v}
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={() => deleteLanguages(v)}
+                        className="ms-1 text-danger"
+                      >
+                        <i className="fa fa-times"></i>
+                      </span>
+                    </div>
+                  ))}
                 </div>
+              )}
+
+              <div className="col-12 col-sm-12 mt-2">
+                <MySelect
+                  label={"Biz haqimizda qayerdan eshitdingiz?"}
+                  setValue={setAboutUs}
+                  array={aboutUsdata}
+                />
               </div>
-              <div className="col-12 col-sm-6">
+              <div className="col-12 col-sm-12">
                 <div className="form-group">
-                  <label>City</label>
-                  <input
-                    type="text"
+                  <label>
+                    O’quvchilar sizni tanlashlari uchun o’zingizning dars o’tish
+                    uslubingiz haqida to’liqroq ma’lumot bering. Sifatli e’lon
+                    sifatli mijozlarni chaqiradi.
+                  </label>
+                  <textarea
                     className="form-control"
-                    defaultValue="Miami"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>State</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="Florida"
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Zip Code</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue={22434}
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="form-group">
-                  <label>Country</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    defaultValue="United States"
-                  />
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    cols="30"
+                    rows="10"
+                  ></textarea>
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn btn-primary btn-block">
+            <button type="submit" className="btn btn-primary btn-block mt-2">
               Save Changes
             </button>
           </form>

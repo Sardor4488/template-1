@@ -149,13 +149,15 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
-.form-control {
+.form-control{
   border: 1px solid #ddd;
   box-shadow: none;
   color: #333;
   font-size: 15px;
   height: 40px;
 }
+
+
 .form-control:focus {
   border-color: #009da6;
   box-shadow: none;
@@ -5820,4 +5822,17 @@ table.table-inbox tbody tr.checked {
 .rotate {
   transform: rotate(180deg);
   /* transition: .5s ease; */
+}
+
+.PhoneInputInput {
+  border: 1px solid #ddd;
+  box-shadow: none;
+  color: #333;
+  font-size: 15px;
+  height: 48px;
+}
+.PhoneInputInput:focus{
+  border-color: #009da6;
+  box-shadow: none;
+  outline: 0 none;
 }

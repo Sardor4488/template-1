@@ -12,6 +12,7 @@ const Clients = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
   const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
+
   const teacher_status_list = useSelector(
     (state) => state?.Reducer?.teacher_status_list
   );

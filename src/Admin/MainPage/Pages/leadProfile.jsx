@@ -12,6 +12,7 @@ import MySelect from "../../UI/input/select/MySelect";
 import { aboutUsdata, jobData, levelData } from "../../../Data";
 import { UpdateStudent } from "../../../Api/updateApi";
 import { TeacherApi } from "../../Api/teacherApi";
+
 const LeadProfile = () => {
   const location = useLocation();
   const [state, setState] = useState({ iseditmodal: false });
@@ -35,6 +36,7 @@ const LeadProfile = () => {
   const [job, setJob] = useState("Talaba");
   const [experience, setExperience] = useState("Boshlang'ich");
   const [target, setTarget] = useState("");
+  
   const commentSubmit = (e) => {
     e.preventDefault();
     commentLead({ lead_id: data?.id, comment });
