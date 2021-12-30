@@ -4,7 +4,7 @@ import { AVATAR_12 } from "../../imagepath";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TeacherApi } from "../../Api/teacherApi";
-
+import { commentLead } from "../../Api/leadApi";
 const MentorProfile = () => {
   const { mentor_id } = useParams();
   const location = useLocation();
@@ -22,6 +22,13 @@ const MentorProfile = () => {
   const [state, setState] = useState({
     iseditmodal: false,
   });
+  const [comment, setComment] = useState("");
+  const [openComment, setOpenComment] = useState(false);
+  const commentSubmit = (e) => {
+    e.preventDefault();
+    commentLead({ lead_id: data?.id, comment });
+    setComment("");
+  };
 
   console.log(data);
 
@@ -118,7 +125,7 @@ const MentorProfile = () => {
                           <a
                             className="edit-link"
                             data-toggle="modal"
-                            onClick={() => this.setState({ iseditmodal: true })}
+                            onClick={() => setState({ iseditmodal: true })}
                             href="#edit_personal_details"
                           >
                             <i className="fa fa-edit mr-1" />
@@ -210,10 +217,15 @@ const MentorProfile = () => {
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-6  ">
-                        <form>
+                        <form onSubmit={commentSubmit}>
                           <div className="form-group">
                             <label>"Comment" qoldirish</label>
-                            <input type="text" className="form-control" />
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={comment || ""}
+                              onChange={(e) => setComment(e.target.value)}
+                            />
                           </div>
                           <button className="btn btn-primary" type="submit">
                             Saqlash
@@ -221,7 +233,57 @@ const MentorProfile = () => {
                         </form>
                       </div>
                       <div className="col-md-6">
-                        <div className="card p-3 mt-4">Ulanib bo'lmadi</div>
+                        <div
+                          style={{ cursor: "pointer" }}
+                          className="p-3 mt-4 d-flex align-items-center"
+                          onClick={() => setOpenComment(!openComment)}
+                        >
+                          Izohlarni ko'rish ({data?.comments?.length}) ta
+                          <i
+                            style={{
+                              color: `#009DA6`,
+                              transition: "0.5s ease",
+                            }}
+                            className={`fas fa-chevron-up ms-2 ${
+                              openComment ? "rotate" : ""
+                            }`}
+                          ></i>
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className={`col-12 mt-3`}>
+                          {data?.comments?.length > 0
+                            ? data?.comments?.map((value, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      transition: ".5s ease",
+                                    }}
+                                    className={`card ${
+                                      openComment
+                                        ? "comment_open px-3 pt-2 my-2"
+                                        : "comment_close"
+                                    }`}
+                                  >
+                                    <div className="card_body">
+                                      <p>
+                                        {index + 1}. {value.comment}
+                                      </p>
+                                    </div>
+                                    <div className="card_footer text-end">
+                                      <p className="mb-0">
+                                        {value.created_at.slice(0, 10)}
+                                      </p>
+                                      <small className="mb-0 text-secondary">
+                                        {value.created_at.slice(11, 16)}
+                                      </small>
+                                    </div>
+                                  </div>
+                                );
+                              })
+                            : "Hozircha izoh yoq !"}
+                        </div>
                       </div>
                     </div>
                   </div>
