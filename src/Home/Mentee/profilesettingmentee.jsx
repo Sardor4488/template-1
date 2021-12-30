@@ -188,7 +188,7 @@ const ProfileSettingMentee = () => {
                                   imagePreview
                                     ? imagePreview
                                     : userdata?.user?.image
-                                    ? `http://teach-api.uz/storage/${userdata?.user?.image}`
+                                    ? `https://teach-api.uz/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"

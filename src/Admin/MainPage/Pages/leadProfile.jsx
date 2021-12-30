@@ -45,7 +45,7 @@ const LeadProfile = () => {
 
   useEffect(() => {
     getLead();
-    TeacherApi({ status_id: 9 });
+    TeacherApi({ status_id: 12 });
   }, [location.pathname]);
 
   const editLead = () => {
@@ -107,7 +107,11 @@ const LeadProfile = () => {
                     <img
                       className="rounded-circle"
                       alt="User Image"
-                      src={AVATAR_12}
+                      src={
+                        data.image
+                          ? "https://teach-api.uz/storage/" + data.image
+                          : AVATAR_12
+                      }
                     />
                   </a>
                 </div>
@@ -372,7 +376,7 @@ const LeadProfile = () => {
                                   <td>
                                     <h2 className="table-avatar">
                                       <Link
-                                        to="/admin/mentor-profile"
+                                        to={`/admin/mentor-profile/${i}`}
                                         className="avatar avatar-sm mr-2"
                                       >
                                         <img
@@ -381,7 +385,7 @@ const LeadProfile = () => {
                                           alt="User Image"
                                         />
                                       </Link>
-                                      <Link to="/admin/mentor-profile">
+                                      <Link to={`/admin/mentor-profile/${i}`}>
                                         {v.first_name} {v.last_name}
                                       </Link>
                                     </h2>

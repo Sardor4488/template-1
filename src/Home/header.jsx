@@ -213,7 +213,7 @@ const Header = (props) => {
                       className="rounded-circle"
                       src={
                         userdata.user.image
-                          ? `http://teach-api.uz/storage/${userdata.user.image}`
+                          ? `https://teach-api.uz/storage/${userdata.user.image}`
                           : USER
                       }
                       width={31}

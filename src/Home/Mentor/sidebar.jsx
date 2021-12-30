@@ -15,7 +15,7 @@ const Sidebar = (props) => {
           {userdata?.user?.image ? (
             <img
               className="pro-avatar-image"
-              src={`http://teach-api.uz/storage/${userdata?.user?.image}`}
+              src={`https://teach-api.uz/storage/${userdata?.user?.image}`}
               alt="user_image"
             />
           ) : (

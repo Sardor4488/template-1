@@ -137,13 +137,7 @@ const ProfileSettings = () => {
       UpdateTeacher(fd, id);
     }
   };
-  useEffect(() => {
-    async function fetchCourses() {
-      const res = await getCourses();
-      setCoursesData(res);
-    }
-    fetchCourses();
-  }, []);
+                                                                
   console.log(errors);
 
   const offerta = () => {
@@ -233,7 +227,7 @@ const ProfileSettings = () => {
                                   imagePreview
                                     ? imagePreview
                                     : userdata?.user?.image
-                                    ? `http://teach-api.uz/storage/${userdata?.user?.image}`
+                                    ? `https://teach-api.uz/storage/${userdata?.user?.image}`
                                     : USER
                                 }
                                 alt="User Image"

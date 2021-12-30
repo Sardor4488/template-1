@@ -41,7 +41,7 @@ const Lead = () => {
               className="avatar-img rounded-circle"
               src={
                 record?.image
-                  ? `http://teach-api.uz/storage/${record.image}`
+                  ? `https://teach-api.uz/storage/${record.image}`
                   : USER
               }
               alt="User Image"

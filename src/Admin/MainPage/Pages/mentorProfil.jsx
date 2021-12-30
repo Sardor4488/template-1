@@ -63,7 +63,7 @@ const MentorProfile = () => {
                     <img
                       className="rounded-circle"
                       alt="User Image"
-                      src={AVATAR_12}
+                      src={data.image ? "https://teach-api.uz/storage/" + data.image : AVATAR_12}
                     />
                   </a>
                 </div>
