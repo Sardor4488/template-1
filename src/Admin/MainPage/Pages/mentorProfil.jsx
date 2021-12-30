@@ -89,8 +89,8 @@ const MentorProfile = () => {
     setEmail(data?.email);
     setRegion(data?.region);
     setDescription(data?.description);
-    setBirthDate(data?.birth_date)
-    setCountry(data?.country)
+    setBirthDate(data?.birth_date);
+    setCountry(data?.country);
   };
 
   return (
@@ -120,7 +120,11 @@ const MentorProfile = () => {
                     <img
                       className="rounded-circle"
                       alt="User Image"
-                      src={data.image ? "https://teach-api.uz/storage/" + data.image : AVATAR_12}
+                      src={
+                        data?.image
+                          ? "https://teach-api.uz/storage/" + data?.image
+                          : AVATAR_12
+                      }
                     />
                   </a>
                 </div>
@@ -218,7 +222,7 @@ const MentorProfile = () => {
                             Telefon raqami
                           </p>
                           <p className="col-sm-10">
-                            {data?.phone_number 
+                            {data?.phone_number
                               ? data?.phone_number
                               : "Kiritilmagan"}
                           </p>
@@ -451,7 +455,7 @@ const MentorProfile = () => {
               {language.length > 0 && (
                 <div className="col-12 col-sm-12 d-flex flex-wrap">
                   {language?.map((v) => (
-                    <div className="mx-2 mb-2">
+                    <div className="mx-2 mb-2" key={v}>
                       {v}
                       <span
                         style={{ cursor: "pointer" }}
@@ -481,7 +485,7 @@ const MentorProfile = () => {
                   </label>
                   <textarea
                     className="form-control"
-                    value={description}
+                    value={description || ""}
                     onChange={(e) => setDescription(e.target.value)}
                     cols="30"
                     rows="10"

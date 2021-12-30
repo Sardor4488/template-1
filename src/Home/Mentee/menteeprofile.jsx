@@ -76,7 +76,7 @@ const MenteeProfile = () => {
                         </div>
                         <div className="user-info-cont">
                           <h4 className="">
-                            {userdata?.user?.first_name}
+                            {userdata?.user?.first_name}{" "}
                             {userdata?.user?.last_name}
                           </h4>
                           {/* <p className="mentor-type">
