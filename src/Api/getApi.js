@@ -79,6 +79,6 @@ export {
   getHomeTeam,
   getHomeTopTeachers,
   getHomeStatistcs,
-  getAllTeachers,
+  // getAllTeachers,
   getCategoryTeachers,
 };
