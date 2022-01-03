@@ -50,7 +50,7 @@ const Clients = () => {
       render: (text, record, index) => (
         <h2 className="table-avatar">
           <Link
-            to={`/admin/mentor-profile/${index}`}
+            to={`/admin/mentor-profile/${record.id}`}
             className="avatar avatar-sm mr-2"
           >
             <img
@@ -63,7 +63,7 @@ const Clients = () => {
               alt="User Image"
             />
           </Link>
-          <Link to={`/admin/mentor-profile/${index}`}>
+          <Link to={`/admin/mentor-profile/${record.id}`}>
             {record.first_name} {record.last_name}
           </Link>
         </h2>

@@ -49,4 +49,15 @@ const addLead = (data) => {
     });
 };
 
-export { getLead, addLead, commentLead };
+const deleteLead = async (id) => {
+  try {
+    const res = await axios.delete("delete_lead/" + id);
+    if (res.status == 200) {
+      getLead();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getLead, addLead, commentLead, deleteLead };

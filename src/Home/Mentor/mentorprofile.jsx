@@ -124,7 +124,7 @@ const MentorProfile = () => {
                           </div>
                           <div className="mentor-details m-0">
                             <p className="user-location m-0">
-                              <i className="fas fa-map-marker-alt" />
+                              <i className="fas fa-map-marker-alt me-2" />
                               {userdata?.user?.country
                                 ? userdata?.user?.country
                                 : "Kiritilmagan"}
@@ -175,7 +175,7 @@ const MentorProfile = () => {
               {/* /Mentor Widget */}
               {/* Mentor Details Tab */}
               <div className="card">
-                <div className="card-body custom-border-card pb-0">
+                <div className="card-body custom-border-card">
                   {/* About Details */}
                   <div className="widget about-widget custom-about mb-0">
                     <h4 className="widget-title">Men haqimda</h4>
@@ -372,6 +372,16 @@ const MentorProfile = () => {
                               <span>Telegram</span>
                               <div className="row-result">
                                 {userdata?.user?.telegram_number}
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="experience-content">
+                            <div className="timeline-content">
+                              <span>Tug'ilgan sanasi</span>
+                              <div className="row-result">
+                                {userdata?.user?.birth_date}
                               </div>
                             </div>
                           </div>

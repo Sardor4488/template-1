@@ -37,6 +37,9 @@ const Teacher_list = (data) => {
   const action = { type: t.TEACHER_LIST, payload: data };
   dispatch(action);
 };
+const Home_Teacher_List = (data) => {
+  dispatch({ type: t.HOME_TEACHER_LIST, payload: data });
+};
 
 export {
   LoadingOff,
@@ -48,4 +51,5 @@ export {
   ADMINDATA,
   Lead_list,
   Teacher_list,
+  Home_Teacher_List,
 };

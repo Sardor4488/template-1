@@ -8,3 +8,4 @@ export const ADMIN_DATA = "ADMIN_DATA";
 export const LEAD_LIST = "LEAD_LIST";
 export const TEACHER_LIST = "TEACHER_LIST";
 export const ADMIN_TEACHER_FILTER = "ADMIN_TEACHER_FILTER";
+export const HOME_TEACHER_LIST = "HOME_TEACHER_LIST";

@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import {
-  USER,
-  USER_1,
-  USER_2,
-  USER_4,
-  USER_5,
-} from "../../constant/imagepath_home";
+import React, { useEffect, useState } from "react";
+import { USER } from "../../constant/imagepath_home";
 import StickyBox from "react-sticky-box";
 import { Link, withRouter, useParams } from "react-router-dom";
 import { Avatar } from "antd";
+import { getAllTeachers, getCategoryTeachers } from "../../Api/getApi";
 
 const Search = () => {
   const [more, setMore] = useState(false);
-  const category = useParams();
+  const { id } = useParams();
   const moreInfo = () => {
     setMore(!more);
   };
-  console.log(category);
+  useEffect(() => {
+    if (id <= 5) {
+      getCategoryTeachers(id);
+    } else {
+      getAllTeachers();
+    }
+  }, []);
   return (
     <div>
       {/* Breadcrumb */}
@@ -255,3 +256,4 @@ const Search = () => {
 };
 
 export default withRouter(Search);
+ 

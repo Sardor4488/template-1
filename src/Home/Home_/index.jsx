@@ -10,25 +10,25 @@ import Typical from "react-typical";
 import { ICON_1, USER, BLOG_01, USER_1 } from "../../constant/imagepath_home";
 import Slider from "@ant-design/react-slick";
 import { Avatar } from "antd";
-import { dataBlog, dataTeam } from "../../Data";
-import { getHomeCategory, getHomeStatistcs } from "../../Api/getApi";
+import { dataBlog } from "../../Data";
+import {
+  getHomeCategory,
+  getHomeStatistcs,
+  getHomeTeam,
+  getHomeTopTeachers,
+} from "../../Api/getApi";
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 import ReactTypingEffect from "react-typing-effect";
+import { useSelector } from "react-redux";
 
 const Home = (props) => {
   const [more, setMore] = useState(false);
   const [statistcs, setStatistcs] = useState([]);
-  const [categories, setCategories] = useState([
-    { name: "Tillar" },
-    { name: "Aniq fanlar" },
-    { name: "Tabiiy fanlar" },
-    { name: "IT texnalogiya" },
-    { name: "Ijtimoiy fanlar" },
-  ]);
-  const moreInfo = () => {
-    setMore(!more);
+  const [categories, setCategories] = useState([]);
+  const [team, setTeam] = useState([]);
+  const moreInfo = (id) => {
+    setMore(id);
   };
-  const { location } = props;
 
   const settingSlider = {
     dots: true,
@@ -115,9 +115,15 @@ const Home = (props) => {
     ],
   };
 
+  const home_teacher_list = useSelector(
+    (state) => state.Reducer.home_teacher_list
+  );
+
   useEffect(() => {
     getHomeCategory(setCategories);
     getHomeStatistcs(setStatistcs);
+    getHomeTeam(setTeam);
+    getHomeTopTeachers();
     return () => {
       setCategories("");
       setStatistcs("");
@@ -180,7 +186,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to={`mentee/search/languages/${categories[0]?.id}`}
+                        to={`mentee/search/${categories[0]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -215,7 +221,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to={`mentee/search/exact-sciences/${categories[1]?.id}`}
+                        to={`mentee/search/${categories[1]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -258,7 +264,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to={`mentee/search/natural-sciences/${categories[2]?.id}`}
+                        to={`mentee/search/${categories[2]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -309,7 +315,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to={`mentee/search/it/${categories[3]?.id}`}
+                        to={`mentee/search/${categories[3]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -357,7 +363,7 @@ const Home = (props) => {
                   <div className="home_content">
                     <div className="home_content_item">
                       <Link
-                        to={`mentee/search/social-sciences/${categories[4]?.id}`}
+                        to={`mentee/search/${categories[4]?.id}`}
                         className="me-1"
                       >
                         <div className="home_content_child">
@@ -477,7 +483,7 @@ const Home = (props) => {
       <section className="section popular-courses">
         <div className="container">
           <div className="section-header text-center">
-            <span>Mentoring Flow</span>
+            {/* <span>Mentoring Flow</span> */}
             <h2>Bizning TOP o'qituvchilarimiz</h2>
             <p className="sub-title">
               Bu yerda siz o'qituvchilarni narxi, bilim darajasi, reytingi hamda
@@ -487,145 +493,213 @@ const Home = (props) => {
             </p>
           </div>
           <div className="row m-0 p-0">
-            <div className="col-xl-6 col-12  card-mentors-lg   ">
-              {/* Mentor Widget */}
-              <div className="card card-size">
-                <div className="card-body">
-                  <div className="mentor-widget">
-                    <div className="user-info-left">
-                      <div className="mentor-img">
-                        <Link to="/app/Mentor/booking">
-                          <img
-                            src={USER}
-                            className="img-fluid img-mentee "
-                            alt="User Image"
-                          />
-                        </Link>
-                        <div className="rating ">
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star filled" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            (17)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="user-info-right">
-                      <div className="user-infos mb-0">
-                        <ul className="m-0 p-0">
-                          <li className="usr-name">
-                            <Link to="/app/Mentor/booking">Ruby Perrin</Link>
-                          </li>
-                          <li className="text-secondary">
-                            <i className="fas fa-book text-black "></i>{" "}
-                            Matematika
-                          </li>
-                          <li>
-                            <i className="fas fa-wallet text-black"></i> 550 000
-                            UZS
-                          </li>
-                          <li>
-                            <div className="rating">
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star filled" />
-                              <i className="fas fa-star" />
-                              <span className="d-inline-block average-rating">
-                                (17)
-                              </span>
+            {home_teacher_list.length > 0 &&
+              home_teacher_list.map((v, i) => {
+                return (
+                  <div className="col-xl-6 col-12  card-mentors-lg   " key={i}>
+                    {/* Mentor Widget */}
+                    <div className="card card-size">
+                      <div className="card-body">
+                        <div className="mentor-widget">
+                          <div className="user-info-left">
+                            <div className="mentor-img">
+                              <Link to="/app/Mentor/booking">
+                                <img
+                                  src={
+                                    v.image
+                                      ? "https://teach-api.uz/storage/" +
+                                        v.image
+                                      : USER
+                                  }
+                                  className="img-fluid img-mentee "
+                                  alt="User Image"
+                                />
+                              </Link>
+                              <div className="rating ">
+                                <i className="fas fa-star filled" />
+                                <i className="fas fa-star filled" />
+                                <i className="fas fa-star filled" />
+                                <i className="fas fa-star filled" />
+                                <i className="fas fa-star" />
+                                <span className="d-inline-block average-rating">
+                                  (17)
+                                </span>
+                              </div>
                             </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="user-infos">
-                        <ul>
-                          <li>
-                            <i className="fas fa-comment text-black" />{" "}
-                            <span>17</span> ta fikr
-                          </li>
-                          <li>
-                            <i className="fas fa-user-graduate text-black" />{" "}
-                            <span className="text-primary">25</span> ta o'quvchi
-                          </li>
-                          <li>
-                            <i className="fas fa-heart text-black" />{" "}
-                            <span>55</span> % sodiqlik
-                            <i className="far fa-question-circle ps-1 text-black"></i>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className={`pt-2  ${
-                        more ? "about_text_size_long" : "about_text_size_short"
-                      }`}
-                    >
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Soluta fugiat quae expedita error tempora qui et
-                      repellendus Soluta fugiat quae expedita error tempora qui
-                      et repellendus Soluta fugiat quae expedita error tempora
-                      qui et repellendus Soluta fugiat quae expedita error
-                      tempora qui et repellendus Soluta fugiat quae expedita
-                      error tempora qui et repellendus Soluta fugiat quae
-                      expedita error tempora qui et repellendus sapiente quasi?{" "}
-                    </div>
-                    <div className={more ? "about_message" : "d-none"}>
-                      <div className="row w-100 m-0">
-                        <div className="col-6 d-flex align-items-center p-0">
-                          <Avatar />
-                          <p className="user_message_name mb-0  ms-3">
-                            Sardor Safarov
-                          </p>
+                          </div>
+                          <div className="user-info-right">
+                            <div className="user-infos mb-0">
+                              <ul className="m-0 p-0">
+                                <li className="usr-name">
+                                  <Link to="/app/Mentor/booking">
+                                    {v?.first_name} {v?.last_name}
+                                  </Link>
+                                </li>
+                                <li className="text-secondary">
+                                  <i className="fas fa-book text-black "></i>{" "}
+                                  {v?.course_name}
+                                </li>
+                                <li>
+                                  <i className="fas fa-wallet text-black"></i>{" "}
+                                  {v?.price} UZS
+                                </li>
+                                <li>
+                                  <div className="rating">
+                                    <i
+                                      className={`fas fa-star ${
+                                        v?.star_raytings == 0 && "filled"
+                                      }  `}
+                                    />
+                                    <i
+                                      className={`fas fa-star ${
+                                        v?.star_raytings == 1 && "filled"
+                                      }  `}
+                                    />
+                                    <i
+                                      className={`fas fa-star ${
+                                        v?.star_raytings == 2 && "filled"
+                                      }  `}
+                                    />
+                                    <i
+                                      className={`fas fa-star ${
+                                        v?.star_raytings == 3 && "filled"
+                                      }  `}
+                                    />
+                                    <i
+                                      className={`fas fa-star ${
+                                        v?.star_raytings == 4 && "filled"
+                                      }  `}
+                                    />
+                                    <span className="d-inline-block average-rating">
+                                      ({v?.star_raytings_count})
+                                    </span>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="user-infos">
+                              <ul>
+                                <li>
+                                  <i className="fas fa-comment text-black" />{" "}
+                                  <span>{v?.comments_count}</span> ta fikr
+                                </li>
+                                <li>
+                                  <i className="fas fa-user-graduate text-black" />{" "}
+                                  <span className="text-primary">
+                                    {v?.student_count}
+                                  </span>{" "}
+                                  ta o'quvchi
+                                </li>
+                                <li>
+                                  <i className="fas fa-heart text-black" />{" "}
+                                  <span>{v?.loyalty}</span> % sodiqlik
+                                  <i className="far fa-question-circle ps-1 text-black"></i>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <div className="col-6 text-end p-0">
-                          <p className="m-0">01.10.2021</p>
-                        </div>
-                      </div>
-                      <div className="d-block w-100 mt-3">
-                        <p className="m-0 user_message_text">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Doloremque nobis qui voluptates autem quos
-                          libero quod a voluptas id vero.
-                          <br />
-                          <span className="">
-                            <Link to="/app/mentee/booking" className="more">
-                              Barcha fikrlar
-                            </Link>
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                    <p
-                      className="text-primary more m-0"
-                      style={{ cursor: "pointer" }}
-                      onClick={moreInfo}
-                    >
-                      {more ? "Yopish" : "Batafsil"}
-                    </p>
-                  </div>
-                  <div className="mentor-booking w-100 d-flex justify-content-end">
-                    <Link className="apt-btn p-1 " to="/app/mentor/booking">
-                      Band qilish
-                    </Link>
-                  </div>
-                </div>
-              </div>
+                        <div>
+                          <div
+                            className={`pt-2  ${
+                              more == v.id
+                                ? "about_text_size_long"
+                                : "about_text_size_short"
+                            }`}
+                          >
+                            {v?.description}
+                          </div>
+                          {v?.comments.length > 0 ? (
+                            <div
+                              className={
+                                more == v.id ? "about_message" : "d-none"
+                              }
+                            >
+                              <div className="row w-100 m-0">
+                                <div className="col-6 d-flex align-items-center p-0">
+                                  <img
+                                    style={{
+                                      width: "20px",
+                                      height: "20px",
+                                      borderRadius: "50%",
+                                    }}
+                                    src={
+                                      v?.comments[0].image
+                                        ? "https://teach-api.uz/storage/" +
+                                          v?.comments[0].image
+                                        : USER
+                                    }
+                                    alt="user"
+                                  />
+                                  <p className="user_message_name mb-0  ms-3">
+                                    {v?.comments[0].first_name}{" "}
+                                    {v?.comments[0].last_name}
+                                  </p>
+                                </div>
+                                <div className="col-6 text-end p-0">
+                                  <p className="m-0">
+                                    {v?.comments[0].created_at.slice(0, 10)}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="d-block w-100 mt-3">
+                                <p className="m-0 user_message_text">
+                                  {v?.comments[0].content}
+                                  <br />
+                                  <span className="">
+                                    <Link
+                                      to="/app/mentee/booking"
+                                      className="more"
+                                    >
+                                      Barcha fikrlar
+                                    </Link>
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              className={
+                                more == v.id ? "about_message" : "d-none"
+                              }
+                            >
+                              Fikirlar mavjud emas
+                            </div>
+                          )}
 
-              {/* /Mentor Widget */}
-              {/* Mentor Widget */}
-            </div>
+                          <div
+                            className="text-primary more m-0"
+                            style={{ cursor: "pointer" }}
+                          >
+                            {more == v.id ? (
+                              <p onClick={() => moreInfo(0)}>Yopish</p>
+                            ) : (
+                              <p onClick={() => moreInfo(v.id)}>Batafsil</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="mentor-booking w-100 d-flex justify-content-end">
+                          <Link
+                            className="apt-btn p-1 "
+                            to="/app/mentor/booking"
+                          >
+                            Band qilish
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* /Mentor Widget */}
+                    {/* Mentor Widget */}
+                  </div>
+                );
+              })}
           </div>
 
           <div className="load-more text-center">
-            <a className="btn btn-primary btn-sm" href="">
+            <Link className="btn btn-primary btn-sm" to="/app/mentee/search/6">
               Yana ko'rish
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -755,7 +829,7 @@ const Home = (props) => {
               dataBlog.map((v, i) => (
                 <div className="col-md-6 col-lg-4 col-xl-3" key={i}>
                   {/* Blog Post */}
-                  <div className="blog grid-blog">
+                  <div className="blog grid-blog h-100">
                     <div className="blog-image">
                       <img
                         className="img-fluid"
@@ -778,7 +852,7 @@ const Home = (props) => {
                 </div>
               ))}
           </div>
-          <div className="view-all text-center">
+          <div className="view-all text-center mt-3">
             <Link to="/register" className="btn btn-primary">
               Ro'yxatdan o'tish
             </Link>
@@ -799,8 +873,8 @@ const Home = (props) => {
           </div>
           {/* /Section Header */}
           <Slider {...settingSliderTeam}>
-            {dataTeam &&
-              dataTeam.map((v, i) => (
+            {team &&
+              team.map((v, i) => (
                 <div className="px-2" key={i}>
                   {/* Blog Post */}
                   <div className="blog grid-blog">
@@ -813,15 +887,12 @@ const Home = (props) => {
                         alt="Post Image"
                       />
                     </div>
-                    <div className="blog-content">
-                      <h3 className="blog-title">
-                        <p className="mb-0">{v.title}</p>
-                      </h3>
-                      <p className="mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Officiis, odio. Odit aliquam omnis eveniet
-                        aperiam!
-                      </p>
+                    <div className="blog-content w-100">
+                      <div className="blog-title text-center">
+                        <h5 className="mb-0 fw-bold">{v.full_name}</h5>
+                        <p className="mb-0">{v.job}</p>
+                      </div>
+                      <p className="mb-0 text-secondary">{v.description}</p>
                     </div>
                   </div>
                   {/* /Blog Post */}

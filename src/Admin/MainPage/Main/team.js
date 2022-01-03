@@ -5,12 +5,17 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { USER } from "../../imagepath";
 import FormGroup from "../../UI/input/MyInput";
 import AvatarImageCropper from "react-avatar-image-cropper";
+import { add_team, get_team } from "../../Api/team_api";
+import { useEffect } from "react";
 const Team = () => {
   const [modal, setModal] = useState(false);
-  const [image, setImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
+  const [image, setImage] = useState("");
   const [imgmodal, setImgModal] = useState(false);
-
+  const [full_name, setFullName] = useState("");
+  const [description, setDescripton] = useState("");
+  const [job, setJob] = useState("");
+  const [team, setTeam] = useState([]);
   const toggleModal = () => {
     setModal(true);
   };
@@ -27,6 +32,21 @@ const Team = () => {
   };
   const handleImg = () => {
     setImgModal(true);
+  };
+  useEffect(() => {
+    get_team(setTeam);
+    return () => {
+      get_team(setTeam);
+    };
+  }, []);
+  const Add_Team = (e) => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append("image", image);
+    fd.append("full_name", full_name);
+    fd.append("description", description);
+    fd.append("job", job);
+    add_team(fd, setModal);
   };
   return (
     <div className="page-wrapper">
@@ -52,34 +72,43 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-4 ">
-            <div className="card">
-              <div className="card-body">
-                <img
-                  src={USER}
-                  className=" mb-3 mx-auto"
-                  style={{
-                    height: "250px",
-                    width: "250px",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                  }}
-                  alt="rasm"
-                />
-                <h4 className="fw-bold text-center">Sardor Safarov</h4>
-                <p className="text-center"> Frontend</p>
-                <small
-                  className="text-secondary"
-                  style={{ lineHeight: "10px" }}
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur possimus alias quos neque sunt id eaque placeat
-                  ratione earum molestiae.
-                </small>
+        <div className="row justify-content-center">
+          {team.length > 0 &&
+            team.map((v, i) => (
+              <div
+                className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4"
+                key={i}
+              >
+                <div className="card h-100">
+                  <div className="card-body">
+                    <div className="d-flex justify-content-center align-items-center mb-3">
+                      <img
+                        src={
+                          v.image
+                            ? "https://teach-api.uz/storage/" + v.image
+                            : USER
+                        }
+                        style={{
+                          height: "200px",
+                          width: "200px",
+                          objectFit: "cover",
+                          borderRadius: "50%",
+                        }}
+                        alt="rasm"
+                      />
+                    </div>
+                    <h4 className="fw-bold text-center">{v.full_name}</h4>
+                    <p className="text-center">{v.job}</p>
+                    <small
+                      className="text-secondary"
+                      style={{ lineHeight: "10px" }}
+                    >
+                      {v.description}
+                    </small>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ))}
         </div>
       </div>
       <Modal isOpen={modal} toggle={closeModal} className="modal-center">
@@ -105,7 +134,7 @@ const Team = () => {
               </div>
             </div>
           )}
-          <form>
+          <form onSubmit={Add_Team}>
             <div className="row">
               <div className="col-12">
                 <div className="form-group">
@@ -131,13 +160,20 @@ const Team = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <FormGroup label={"Ism"} className={"text-capitalize"} />
+                <FormGroup
+                  label={"Ism va Familiyasi"}
+                  className={"text-capitalize"}
+                  value={full_name}
+                  setValue={setFullName}
+                />
               </div>
               <div className="col-md-6">
-                <FormGroup label={"Familiya"} className={"text-capitalize"} />
-              </div>
-              <div className="col-sm-12">
-                <FormGroup label={"Kasbi"} className={"text-capitalize"} />
+                <FormGroup
+                  label={"Kasbi"}
+                  value={job}
+                  setValue={setJob}
+                  className={"text-capitalize"}
+                />
               </div>
               <div className="col-12">
                 <div className="form-group">
@@ -146,6 +182,8 @@ const Team = () => {
                     className="form-control"
                     cols="30"
                     rows="10"
+                    value={description || ""}
+                    onChange={(e) => setDescripton(e.target.value)}
                   ></textarea>
                 </div>
               </div>

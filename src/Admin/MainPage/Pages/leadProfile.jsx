@@ -12,6 +12,7 @@ import MySelect from "../../UI/input/select/MySelect";
 import { aboutUsdata, jobData, levelData } from "../../../Data";
 import { UpdateStudent } from "../../../Api/updateApi";
 import { TeacherApi } from "../../Api/teacherApi";
+import { deleteLead } from "../../Api/leadApi";
 
 const LeadProfile = () => {
   const location = useLocation();
@@ -22,7 +23,8 @@ const LeadProfile = () => {
     setState({ iseditmodal: false });
   };
   const { lead_id } = useParams();
-  const data = useSelector((state) => state.Reducer.lead_list[lead_id]);
+  const lead_list = useSelector((state) => state.Reducer.lead_list);
+  const data = lead_list.filter((v) => v.id == lead_id)[0];
   const [comment, setComment] = useState("");
   const [openComment, setOpenComment] = useState(false);
   const [first_name, setFirstName] = useState("");
@@ -36,10 +38,10 @@ const LeadProfile = () => {
   const [job, setJob] = useState("Talaba");
   const [experience, setExperience] = useState("Boshlang'ich");
   const [target, setTarget] = useState("");
-  
+
   const commentSubmit = (e) => {
     e.preventDefault();
-    commentLead({ lead_id: data?.id, comment });
+    commentLead({ user_id: data?.id, comment });
     setComment("");
   };
 
@@ -110,8 +112,8 @@ const LeadProfile = () => {
                       className="rounded-circle"
                       alt="User Image"
                       src={
-                        data.image
-                          ? "https://teach-api.uz/storage/" + data.image
+                        data?.image
+                          ? "https://teach-api.uz/storage/" + data?.image
                           : AVATAR_12
                       }
                     />
@@ -130,7 +132,12 @@ const LeadProfile = () => {
                     {data?.target ? data?.target : "Kritilmagan"}
                   </div>
                 </div>
-                <div className="col-auto profile-btn"></div>
+                <div
+                  className="col-auto profile-btn btn btn-danger"
+                  onClick={() => deleteLead(data?.id)}
+                >
+                  <i className="fas fa-trash-alt"></i>
+                </div>
               </div>
             </div>
             <div className="profile-menu">
@@ -191,7 +198,7 @@ const LeadProfile = () => {
                         </h5>
                         <div className="row">
                           <p className="col-sm-2 text-muted mb-0 mb-sm-3">
-                            Ismi familiyasi
+                            Ism familiyasi
                           </p>
                           <p className="col-sm-10">
                             {data?.first_name} {data?.last_name}
@@ -243,24 +250,20 @@ const LeadProfile = () => {
               <div id="password_tab" className="tab-pane fade">
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">Change Password</h5>
+                    <h5 className="card-title">Parolni o'zgartirish</h5>
                     <div className="row">
                       <div className="col-md-10 col-lg-6">
                         <form>
                           <div className="form-group">
-                            <label>Old Password</label>
+                            <label>Yangi Parol</label>
                             <input type="password" className="form-control" />
                           </div>
                           <div className="form-group">
-                            <label>New Password</label>
-                            <input type="password" className="form-control" />
-                          </div>
-                          <div className="form-group">
-                            <label>Confirm Password</label>
+                            <label>Parolni takrorlang</label>
                             <input type="password" className="form-control" />
                           </div>
                           <button className="btn btn-primary" type="submit">
-                            Save Changes
+                            Saqlash
                           </button>
                         </form>
                       </div>

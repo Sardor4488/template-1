@@ -22,3 +22,14 @@ export const TeacherApi = (data = {}) => {
       console.log(err);
     });
 };
+
+export const deleteTeacher = async (id) => {
+  try {
+    const res = await axios.delete("delete_teacher/" + id);
+    if (res.status == 200) {
+      getLead();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

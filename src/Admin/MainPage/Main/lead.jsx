@@ -26,7 +26,7 @@ import { useSelector } from "react-redux";
 
 const Lead = () => {
   const data = useSelector((state) => state.Reducer.lead_list);
-  
+
   const columns = [
     {
       title: "Ism Familiyasi",
@@ -34,7 +34,7 @@ const Lead = () => {
       render: (text, record, index) => (
         <h2 className="table-avatar">
           <Link
-            to={`/admin/leadProfile/${index}`}
+            to={`/admin/leadProfile/${record.id}`}
             className="avatar avatar-sm mr-2"
           >
             <img
@@ -47,7 +47,7 @@ const Lead = () => {
               alt="User Image"
             />
           </Link>
-          <Link to={`/admin/leadProfile/${index}`}>
+          <Link to={`/admin/leadProfile/${record.id}`}>
             {record.first_name} {record.last_name}
           </Link>
         </h2>
