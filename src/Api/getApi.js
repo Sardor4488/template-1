@@ -41,16 +41,16 @@ const getHomeTopTeachers = async () => {
     console.error(error);
   }
 };
-// const getAllTeachers = async () => {
-//   try {
-//     const res = await axios.get("all-teachers");
-//     if (res.status == 200) {
-//       Home_Teacher_List(res.data.teachers);
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+const getAllTeachers = async () => {
+  try {
+    const res = await axios.get("all-teachers");
+    if (res.status == 200) {
+      Home_Teacher_List(res.data.teachers);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 const getCategoryTeachers = async (id) => {
   try {
     const res = await axios.get(`categorySearchteacher/${id}`);
@@ -79,6 +79,6 @@ export {
   getHomeTeam,
   getHomeTopTeachers,
   getHomeStatistcs,
-  // getAllTeachers,
+  getAllTeachers,
   getCategoryTeachers,
 };

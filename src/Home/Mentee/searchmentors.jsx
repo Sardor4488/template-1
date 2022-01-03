@@ -3,7 +3,7 @@ import { USER } from "../../constant/imagepath_home";
 import StickyBox from "react-sticky-box";
 import { Link, withRouter, useParams } from "react-router-dom";
 import { Avatar } from "antd";
-import {  getCategoryTeachers } from "../../Api/getApi";
+import { getAllTeachers, getCategoryTeachers } from "../../Api/getApi";
 import { useSelector } from "react-redux";
 import StarRatings from "react-star-ratings";
 
@@ -21,7 +21,7 @@ const Search = () => {
     if (id <= 5) {
       getCategoryTeachers(id);
     } else {
-      // getAllTeachers();
+      getAllTeachers();
     }
   }, []);
 
