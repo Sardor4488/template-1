@@ -20,12 +20,14 @@ import {
 import { LoadingOff, LoadingOn } from "../../redux/Actions";
 import ReactTypingEffect from "react-typing-effect";
 import { useSelector } from "react-redux";
+import StarRatings from "react-star-ratings";
 
 const Home = (props) => {
   const [more, setMore] = useState(false);
   const [statistcs, setStatistcs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [team, setTeam] = useState([]);
+
   const moreInfo = (id) => {
     setMore(id);
   };
@@ -496,7 +498,7 @@ const Home = (props) => {
             {home_teacher_list.length > 0 &&
               home_teacher_list.map((v, i) => {
                 return (
-                  <div className="col-xl-6 col-12  card-mentors-lg   " key={i}>
+                  <div className="col-xl-6 col-12  card-mentors-lg" key={i}>
                     {/* Mentor Widget */}
                     <div className="card card-size">
                       <div className="card-body">
@@ -516,11 +518,13 @@ const Home = (props) => {
                                 />
                               </Link>
                               <div className="rating ">
-                                <i className="fas fa-star filled" />
-                                <i className="fas fa-star filled" />
-                                <i className="fas fa-star filled" />
-                                <i className="fas fa-star filled" />
-                                <i className="fas fa-star" />
+                                <StarRatings
+                                  rating={v?.star_raytings}
+                                  starDimension="17px"
+                                  starSpacing="2px"
+                                  starRatedColor="yellow"
+                                />
+
                                 <span className="d-inline-block average-rating">
                                   (17)
                                 </span>
@@ -545,30 +549,11 @@ const Home = (props) => {
                                 </li>
                                 <li>
                                   <div className="rating">
-                                    <i
-                                      className={`fas fa-star ${
-                                        v?.star_raytings == 0 && "filled"
-                                      }  `}
-                                    />
-                                    <i
-                                      className={`fas fa-star ${
-                                        v?.star_raytings == 1 && "filled"
-                                      }  `}
-                                    />
-                                    <i
-                                      className={`fas fa-star ${
-                                        v?.star_raytings == 2 && "filled"
-                                      }  `}
-                                    />
-                                    <i
-                                      className={`fas fa-star ${
-                                        v?.star_raytings == 3 && "filled"
-                                      }  `}
-                                    />
-                                    <i
-                                      className={`fas fa-star ${
-                                        v?.star_raytings == 4 && "filled"
-                                      }  `}
+                                    <StarRatings
+                                      rating={v?.star_raytings}
+                                      starDimension="17px"
+                                      starSpacing="2px"
+                                      starRatedColor="yellow"
                                     />
                                     <span className="d-inline-block average-rating">
                                       ({v?.star_raytings_count})
@@ -882,7 +867,9 @@ const Home = (props) => {
                       <img
                         className="img-0fluid rounded-circle"
                         src={
-                          "https://www.myteacher.uz/images/team/1622616581.jpg"
+                          v.image
+                            ? `https://teach-api.uz/storage/${v.image}`
+                            : USER_1
                         }
                         alt="Post Image"
                       />

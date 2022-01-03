@@ -3,7 +3,7 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import { AVATAR_12 } from "../../imagepath";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { deleteTeacher, TeacherApi } from "../../Api/teacherApi";
+import { TeacherApi } from "../../Api/teacherApi";
 import { commentLead } from "../../Api/leadApi";
 import FormGroup from "../../UI/input/MyInput";
 import MySelect from "../../UI/input/select/MySelect";
@@ -15,7 +15,6 @@ import {
   languageData,
   priceData,
 } from "../../../Data";
-import { UpdateTeacher } from "../../../Api/updateApi";
 
 const MentorProfile = () => {
   const [coursesData, setCoursesData] = useState([]);
@@ -24,10 +23,10 @@ const MentorProfile = () => {
   const [last_name, setLastName] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [telegram_number, setTelegramNumber] = useState("");
-  const [course_id, setCourseId] = useState(1);
+  const [course_id, setCourseId] = useState("");
   const [price, setPrice] = useState(10000);
   const [description, setDescription] = useState("");
-  const [experience, setExperience] = useState("1-3");
+  const [experience, setExperience] = useState("");
   const [about_us, setAboutUs] = useState("Telegram");
   const [birth_date, setBirthDate] = useState("");
   const [language, setLanguage] = useState(["O'zbek"]);
@@ -37,8 +36,7 @@ const MentorProfile = () => {
   const { mentor_id } = useParams();
   const location = useLocation();
 
-  const teacher_list = useSelector((state) => state?.Reducer?.teacher_list);
-  const data = teacher_list.filter((v) => v.id == mentor_id)[0];
+  const data = useSelector((state) => state?.Reducer?.teacher_list[mentor_id]);
   const status_id = localStorage.getItem("teacher_status_id");
   useEffect(() => {
     if (status_id) {
@@ -63,7 +61,7 @@ const MentorProfile = () => {
   const [openComment, setOpenComment] = useState(false);
   const commentSubmit = (e) => {
     e.preventDefault();
-    commentLead({ user_id: data?.user_id, comment });
+    commentLead({ lead_id: data?.id, comment });
     setComment("");
   };
 
@@ -83,11 +81,6 @@ const MentorProfile = () => {
     }
   };
 
-  const passwordChange = (e) => {
-    e.preventDefault();
-    changePassword({ password, confirm_password });
-  };
-
   const edit = () => {
     setState({ iseditmodal: true });
     setFirstName(data?.first_name);
@@ -95,35 +88,9 @@ const MentorProfile = () => {
     setPhoneNumber(data?.phone_number);
     setEmail(data?.email);
     setRegion(data?.region);
-    setCountry(data?.country);
     setDescription(data?.description);
-    setBirthDate(data?.birth_date);
-    setTelegramNumber(data?.telegram_number);
-    setCourseId(data?.course_id ? data?.course_id : 1);
-    setAboutUs(data?.about_us ? data?.about_us : "Telegram");
-    setExperience(data?.experience ? data?.experience : "1-3");
-    setPrice(data?.price ? data?.price : 10000);
-  };
-
-  const saveTeacher = (e) => {
-    e.preventDefault();
-    const fd = new FormData();
-    fd.append("email", email);
-    fd.append("first_name", first_name);
-    fd.append("last_name", last_name);
-    fd.append("phone_number", phone_number);
-    fd.append("telegram_number", telegram_number);
-    fd.append("course_id", course_id);
-    fd.append("price", price);
-    fd.append("description", description);
-    fd.append("experience", experience);
-    fd.append("language", language);
-    fd.append("country", country);
-    fd.append("region", region);
-    fd.append("about_us", about_us);
-    fd.append("birth_date", birth_date);
-    fd.append("offert_price", 1);
-    UpdateTeacher(fd, data?.user_id);
+    setBirthDate(data?.birth_date)
+    setCountry(data?.country)
   };
 
   return (
@@ -133,12 +100,12 @@ const MentorProfile = () => {
         <div className="page-header">
           <div className="row">
             <div className="col">
-              <h3 className="page-title">O'qituvchi profili</h3>
+              <h3 className="page-title">O'quvchi profili</h3>
               <ul className="breadcrumb">
                 <li className="breadcrumb-item">
                   <Link to="/admin/index">Admin</Link>
                 </li>
-                <li className="breadcrumb-item active">O'qituvchi profili</li>
+                <li className="breadcrumb-item active">O'quvchi profili</li>
               </ul>
             </div>
           </div>
@@ -153,11 +120,7 @@ const MentorProfile = () => {
                     <img
                       className="rounded-circle"
                       alt="User Image"
-                      src={
-                        data?.image
-                          ? "https://teach-api.uz/storage/" + data?.image
-                          : AVATAR_12
-                      }
+                      src={AVATAR_12}
                     />
                   </a>
                 </div>
@@ -168,7 +131,7 @@ const MentorProfile = () => {
                   <h6 className="text-muted">{data?.email}</h6>
                   <div className="pb-3">
                     <i className="fa fa-map-marker" />{" "}
-                    {data?.country ? data?.country : "Kiritilmagan"}
+                    {data?.region ? data?.region : "Kiritilmagan"}
                   </div>
                   <div className="about-text">
                     {data?.description
@@ -176,12 +139,7 @@ const MentorProfile = () => {
                       : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
                   </div>
                 </div>
-                <div
-                  className="col-auto profile-btn btn btn-danger mx-4"
-                  onClick={() => deleteTeacher(data?.user_id)}
-                >
-                  <i className="fas fa-trash-alt"></i>
-                </div>
+                <div className="col-auto profile-btn"></div>
               </div>
             </div>
             <div className="profile-menu">
@@ -260,7 +218,7 @@ const MentorProfile = () => {
                             Telefon raqami
                           </p>
                           <p className="col-sm-10">
-                            {data?.phone_number
+                            {data?.phone_number 
                               ? data?.phone_number
                               : "Kiritilmagan"}
                           </p>
@@ -285,20 +243,24 @@ const MentorProfile = () => {
               <div id="password_tab" className="tab-pane fade">
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title">Parolni o'zgartirish</h5>
+                    <h5 className="card-title">Change Password</h5>
                     <div className="row">
                       <div className="col-md-10 col-lg-6">
-                        <form onSubmit={passwordChange}>
+                        <form>
                           <div className="form-group">
-                            <label>Yangi Parol</label>
+                            <label>Old Password</label>
                             <input type="password" className="form-control" />
                           </div>
                           <div className="form-group">
-                            <label>Parolni takrorlang</label>
+                            <label>New Password</label>
+                            <input type="password" className="form-control" />
+                          </div>
+                          <div className="form-group">
+                            <label>Confirm Password</label>
                             <input type="password" className="form-control" />
                           </div>
                           <button className="btn btn-primary" type="submit">
-                            Saqlash
+                            Save Changes
                           </button>
                         </form>
                       </div>
@@ -399,7 +361,7 @@ const MentorProfile = () => {
           Shaxsiy ma'lumotlar
         </ModalHeader>
         <ModalBody>
-          <form onSubmit={saveTeacher}>
+          <form>
             <div className="row form-row">
               <div className="col-12 col-sm-6">
                 <FormGroup
@@ -489,7 +451,7 @@ const MentorProfile = () => {
               {language.length > 0 && (
                 <div className="col-12 col-sm-12 d-flex flex-wrap">
                   {language?.map((v) => (
-                    <div className="mx-2 mb-2" key={v}>
+                    <div className="mx-2 mb-2">
                       {v}
                       <span
                         style={{ cursor: "pointer" }}
@@ -519,7 +481,7 @@ const MentorProfile = () => {
                   </label>
                   <textarea
                     className="form-control"
-                    value={description || ""}
+                    value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     cols="30"
                     rows="10"

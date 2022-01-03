@@ -5,8 +5,9 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { USER } from "../../imagepath";
 import FormGroup from "../../UI/input/MyInput";
 import AvatarImageCropper from "react-avatar-image-cropper";
-import { add_team, get_team } from "../../Api/team_api";
+import { add_team, delete_team, edit_team, get_team } from "../../Api/team_api";
 import { useEffect } from "react";
+
 const Team = () => {
   const [modal, setModal] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
@@ -16,6 +17,33 @@ const Team = () => {
   const [description, setDescripton] = useState("");
   const [job, setJob] = useState("");
   const [team, setTeam] = useState([]);
+  const [editId, setEditId] = useState(0);
+
+  console.log(team);
+
+  const edit = (id) => {
+    const clone = team.filter((v) => v.id == id)[0];
+    setFullName(clone.full_name);
+    setJob(clone.job);
+    setDescripton(clone.description);
+    setImagePreview(`https://teach-api.uz/storage/${clone.image}`);
+    setEditId(id);
+
+    setModal(true);
+  };
+
+  const save = (e) => {
+    e.preventDefault();
+
+    const fd = new FormData();
+    fd.append("image", image);
+    fd.append("full_name", full_name);
+    fd.append("description", description);
+    fd.append("job", job);
+
+    edit_team(editId, fd, setModal);
+  };
+
   const toggleModal = () => {
     setModal(true);
   };
@@ -27,6 +55,7 @@ const Team = () => {
     const reader = new FileReader();
     reader.onloadend = () => {
       setImagePreview(reader.result);
+      setImgModal(false);
     };
     reader.readAsDataURL(file);
   };
@@ -39,6 +68,7 @@ const Team = () => {
       get_team(setTeam);
     };
   }, []);
+
   const Add_Team = (e) => {
     e.preventDefault();
     const fd = new FormData();
@@ -48,6 +78,7 @@ const Team = () => {
     fd.append("job", job);
     add_team(fd, setModal);
   };
+
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -106,6 +137,20 @@ const Team = () => {
                       {v.description}
                     </small>
                   </div>
+                  <div className="d-flex flex-wrap justify-content-center align-items-center w-100 py-2">
+                    <button
+                      className="btn btn-success text-center"
+                      onClick={() => edit(v.id)}
+                    >
+                      Taxrirlash
+                    </button>
+                    <button
+                      onClick={() => delete_team(v.id)}
+                      className="btn btn-danger text-center ms-2"
+                    >
+                      O'chirish
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -134,7 +179,7 @@ const Team = () => {
               </div>
             </div>
           )}
-          <form onSubmit={Add_Team}>
+          <form>
             <div className="row">
               <div className="col-12">
                 <div className="form-group">
@@ -188,7 +233,15 @@ const Team = () => {
                 </div>
               </div>
               <div className="col-12 text-center">
-                <button className="btn btn-primary">Saqlash</button>
+                {editId > 0 ? (
+                  <button onClick={save} className="btn btn-success">
+                    O'zgartirish
+                  </button>
+                ) : (
+                  <button onClick={Add_Team} className="btn btn-primary">
+                    Saqlash
+                  </button>
+                )}
               </div>
             </div>
           </form>

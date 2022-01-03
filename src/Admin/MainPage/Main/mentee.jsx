@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Helmet } from 'react-helmet'
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import {
   AVATAR_07,
   AVATAR_08,
@@ -12,110 +12,29 @@ import {
   USER_9,
   USER_4,
   USER_7,
-} from '../../imagepath'
-import { Link } from 'react-router-dom'
-import { Table } from 'antd'
-import 'antd/dist/antd.css'
-import { itemRender, onShowSizeChange } from '../paginationfunction'
-import '../antdstyle.css'
+} from "../../imagepath";
+import { Link } from "react-router-dom";
+import { Table } from "antd";
+import "antd/dist/antd.css";
+import { itemRender, onShowSizeChange } from "../paginationfunction";
+import "../antdstyle.css";
+import { get_students } from "../../../Api/students";
 
 const Clients = () => {
-  const data = [
-    {
-      id: 1,
-      image: USER_3,
-      name: 'Allen Davis',
-      course: 'Integrated Sum',
-      member_since_date: '5 Jul 2019',
-      member_since_time: '12.59 AM',
-      earned: '$3500.00',
-    },
-    {
-      id: 2,
-      image: USER_8,
-      name: 'John Gibbs',
-      course: 'Flow chart',
-      member_since_date: '21 Apr 2018',
-      member_since_time: '02.59 PM',
-      earned: '$4100.00',
-    },
-    {
-      id: 3,
-      image: USER,
-      name: 'Jonathan Doe',
-      course: 'Maths',
-      member_since_date: '14 Jan 2019',
-      member_since_time: '02.59 AM',
-      earned: '$3100.00',
-    },
-    {
-      id: 4,
-      image: USER_1,
-      name: 'Julie Pennington ',
-      course: 'Business Maths',
-      member_since_date: '11 Jun 2019',
-      member_since_time: '4.50 AM',
-      earned: '$5000.00',
-    },
-    {
-      id: 5,
-      image: USER_7,
-      name: 'Katharine Berthold',
-      course: 'Basic Calculation',
-      member_since_date: '23 Mar 2019',
-      member_since_time: '02.50 PM',
-      earned: '$4000.00',
-    },
-    {
-      id: 6,
-      image: USER_8,
-      name: 'Linda Tobin',
-      course: 'Math Grade II',
-      member_since_date: '14 Dec 2018',
-      member_since_time: '01.59 AM',
-      earned: '$2000.00',
-    },
-    {
-      id: 7,
-      image: USER_9,
-      name: 'Olga Barlow',
-      course: 'Maths',
-      member_since_date: '15 Feb 2018',
-      member_since_time: '03.59 AM',
-      earned: '$3500.00',
-    },
-    {
-      id: 8,
-      image: USER_4,
-      name: 'Patricia Manzi',
-      course: 'Flow chart',
-      member_since_date: '24 Jan 2019',
-      member_since_time: '02.59 PM',
-      earned: '$3700.00',
-    },
-    {
-      id: 9,
-      image: USER_7,
-      name: 'Paul Richard',
-      course: 'Math Grade II',
-      member_since_date: '11 Jan 2019',
-      member_since_time: '02.59 PM',
-      earned: '$3000.00',
-    },
-    {
-      id: 10,
-      image: USER_7,
-      name: 'Paul Richard',
-      course: 'Math Grade II',
-      member_since_date: '11 Jan 2019',
-      member_since_time: '02.59 PM',
-      earned: '$3000.00',
-    },
-  ]
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getStudents() {
+      const res = await get_students();
+      console.log(res);
+    }
+    getStudents();
+  }, []);
+
   const columns = [
     {
-      title: 'Mentor Name',
-      dataIndex: 'name',
+      title: "Mentor Name",
+      dataIndex: "name",
       render: (text, record, index) => (
         <h2 className="table-avatar">
           <Link
@@ -134,14 +53,14 @@ const Clients = () => {
       sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-      title: 'Course',
-      dataIndex: 'course',
+      title: "Course",
+      dataIndex: "course",
       sorter: (a, b) => a.course.length - b.course.length,
     },
 
     {
-      title: 'Member Since',
-      dataIndex: 'member_since_date',
+      title: "Member Since",
+      dataIndex: "member_since_date",
       render: (text, record) => (
         <span>
           {text}
@@ -152,13 +71,13 @@ const Clients = () => {
       sorter: (a, b) => a.member_since_date.length - b.member_since_date.length,
     },
     {
-      title: 'Earned',
-      dataIndex: 'earned',
+      title: "Earned",
+      dataIndex: "earned",
       sorter: (a, b) => a.earned.length - b.earned.length,
     },
     {
-      title: 'Account Status',
-      dataIndex: 'status',
+      title: "Account Status",
+      dataIndex: "status",
       render: (text, record) => (
         <div className="status-toggle d-flex">
           <input
@@ -173,7 +92,8 @@ const Clients = () => {
         </div>
       ),
     },
-  ]
+  ];
+
   return (
     <div className="page-wrapper">
       <div className="content container-fluid">
@@ -210,7 +130,7 @@ const Clients = () => {
                       onShowSizeChange: onShowSizeChange,
                       itemRender: itemRender,
                     }}
-                    style={{ overflowX: 'auto' }}
+                    style={{ overflowX: "auto" }}
                     columns={columns}
                     // bordered
                     dataSource={data}
@@ -223,7 +143,7 @@ const Clients = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Clients
+export default Clients;

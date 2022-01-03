@@ -66,6 +66,7 @@
     "react-scripts": "^3.4.1",
     "react-slick": "^0.28.1",
     "react-star-rating-component": "^1.4.1",
+    "react-star-ratings": "^2.3.0",
     "react-sticky-box": "^0.9.3",
     "react-summernote": "^2.0.2",
     "react-type-animation": "^1.1.2",
